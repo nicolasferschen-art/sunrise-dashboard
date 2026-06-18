@@ -5,9 +5,9 @@
     "color": "#1a56db",
     "name": "Standortfonds AT",
     "nav": 167203974.33,
+    "nav_per_share": 225.4,
     "perf_ytd": 16.914778,
     "perf_fy": 23.179024,
-    "nav_per_share": 225.56,
     "countries": [
       {
         "label": "Austria",
@@ -300,13 +300,13 @@
       {
         "date": "2025-10-01",
         "label": "01.10.2025",
-        "price": 183.1156,
+        "price": 182.9857,
         "note": "GJ-Start (berechnet aus BVI)"
       },
       {
         "date": "2026-01-01",
         "label": "01.01.2026",
-        "price": 192.9269,
+        "price": 192.79,
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
@@ -318,7 +318,7 @@
       {
         "date": "2026-06-18",
         "label": "18.06.2026",
-        "price": 225.56,
+        "price": 225.4,
         "note": "Heute (Inventarblatt)"
       }
     ],
@@ -3633,9 +3633,9 @@
     "color": "#d03801",
     "name": "Standortfonds DE",
     "nav": 55433569.02,
+    "nav_per_share": 191.52,
     "perf_ytd": 10.833333,
     "perf_fy": 15.013279,
-    "nav_per_share": 2188.27,
     "countries": [
       {
         "label": "United States",
@@ -3920,13 +3920,13 @@
       {
         "date": "2025-10-01",
         "label": "01.10.2025",
-        "price": 1902.6238,
+        "price": 166.5199,
         "note": "GJ-Start (berechnet aus BVI)"
       },
       {
         "date": "2026-01-01",
         "label": "01.01.2026",
-        "price": 1974.379,
+        "price": 172.8,
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
@@ -3938,7 +3938,7 @@
       {
         "date": "2026-06-18",
         "label": "18.06.2026",
-        "price": 2188.27,
+        "price": 191.52,
         "note": "Heute (Inventarblatt)"
       }
     ],
@@ -7445,9 +7445,9 @@
     "color": "#046c4e",
     "name": "Dividends and Interest",
     "nav": 26786317.91,
+    "nav_per_share": 112.91,
     "perf_ytd": 5.849817,
     "perf_fy": 8.898999,
-    "nav_per_share": 113.08,
     "countries": [
       {
         "label": "United States",
@@ -7652,13 +7652,13 @@
       {
         "date": "2025-10-01",
         "label": "01.10.2025",
-        "price": 103.8393,
+        "price": 103.6832,
         "note": "GJ-Start (berechnet aus BVI)"
       },
       {
         "date": "2026-01-01",
         "label": "01.01.2026",
-        "price": 106.8306,
+        "price": 106.67,
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
@@ -7670,7 +7670,7 @@
       {
         "date": "2026-06-18",
         "label": "18.06.2026",
-        "price": 113.08,
+        "price": 112.91,
         "note": "Heute (Inventarblatt)"
       }
     ],
