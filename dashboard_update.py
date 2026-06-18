@@ -699,8 +699,64 @@ def build_price_history(nav_per_share, perf_ytd, perf_fy, nav_per_share_prev=Non
     return hist
 
 
+# ─── News fetchen ─────────────────────────────────────────────────────────────
+def _clean_news_name(name):
+    """Bereinigt Firmennamen für Google News Suche."""
+    clean = re.sub(
+        r'\s+(PLC|AG|SE|INC\.?|CORP\.?|LTD\.?|S\.A\.|SA|NV|BV|SPA|CO\.?|GRP|GROUP|'
+        r'HOLDINGS?|INH\.?|O\.N\.|DL-?[\d,\.]+|EO[\s\-]?[\d,\.]+|LS-?[\d,\.]+|'
+        r'SF\s*[\d,\.]+|CL\.[A-Z]|BNK)(\s.*)?$',
+        '', name.strip(), flags=re.IGNORECASE
+    ).strip()
+    return ' '.join(clean.split()[:3])
+
+
+def fetch_all_news(companies, max_per_company=3, request_timeout=5):
+    """Fetcht News via Google News RSS für alle Unternehmen."""
+    import xml.etree.ElementTree as ET
+    import time as _time
+    from urllib.parse import quote as _quote
+
+    news_data = {}
+    items_list = list(companies.items())
+    total = len(items_list)
+    print(f"\n📰 Fetche News für {total} Unternehmen…")
+
+    for i, (key, co) in enumerate(items_list):
+        clean = _clean_news_name(co["name"])
+        if not clean or len(clean) < 3:
+            continue
+        q = _quote(clean[:50])
+        url = f"https://news.google.com/rss/search?q={q}&hl=de&gl=AT&ceid=AT:de"
+        try:
+            req = Request(url, headers={
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+            })
+            with urlopen(req, timeout=request_timeout) as resp:
+                content = resp.read()
+            root = ET.fromstring(content)
+            arts = []
+            for el in root.findall(".//item")[:max_per_company]:
+                title = re.sub(r"<[^>]+>|<!\[CDATA\[|\]\]>", "", el.findtext("title") or "").strip()
+                link  = (el.findtext("link") or "#").strip()
+                pub   = (el.findtext("pubDate") or "").strip()
+                src   = getattr(el.find("source"), "text", "") or ""
+                if title:
+                    arts.append({"title": title, "link": link, "pubDate": pub, "source": src})
+            if arts:
+                news_data[key] = {"company": co["name"], "funds": co["funds"], "articles": arts}
+        except Exception:
+            pass
+        if (i + 1) % 20 == 0:
+            print(f"  {i+1}/{total}…")
+        _time.sleep(0.2)
+
+    print(f"  ✅ {len(news_data)}/{total} Unternehmen mit Artikeln")
+    return news_data
+
+
 # ─── Dashboard HTML generieren ────────────────────────────────────────────────
-def generate_html(funds_data, updated_at, nav_history=None):
+def generate_html(funds_data, updated_at, nav_history=None, news_data=None):
     """Generiert das vollständige Dashboard-HTML."""
     data_json = json.dumps(funds_data, ensure_ascii=False, separators=(',', ':'))
     nav_history_json = json.dumps(nav_history or {}, ensure_ascii=False, separators=(',', ':'))
@@ -895,7 +951,6 @@ tr:hover td {{ background: var(--surface2); }}
     for f in funds_data:
         html += f'  <div class="tab" data-tab="fund-{f["id"]}">{f["name"]}</div>\n'
 
-    html += '  <div class="tab" data-tab="winners">🏆 Gewinner/Verlierer</div>\n'
     html += '  <div class="tab" data-tab="news">📰 News</div>\n'
     html += '  <div class="tab" data-tab="calc">🧮 Rechner</div>\n'
     html += '</div>\n\n'
@@ -1191,83 +1246,20 @@ tr:hover td {{ background: var(--surface2); }}
 
         html += '</div>\n\n'  # end fund panel
 
-    # ── Gewinner/Verlierer Panel ─────────────────────────────────────────────
-    html += '<div class="panel" id="panel-winners">\n'
-    # Build fund filter buttons
-    fund_btns = '<button class="range-btn active" id="wlf-all" onclick="setWLFund(\'all\')" style="font-size:13px">Alle Fonds</button>\n'
-    for f in funds_data:
-        fund_btns += f'<button class="range-btn" id="wlf-{f["id"]}" onclick="setWLFund(\'{f["id"]}\')" style="font-size:13px;border-color:{f["color"]}40;color:{f["color"]}">{f["name"]}</button>\n'
-
-    html += f'''<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:20px">
-  <div style="display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px">
-    <button class="wl-tab active" onclick="switchWLTab('pl')" id="wltab-pl" style="padding:8px 20px;border:none;background:var(--accent);color:white;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600;transition:all .15s">Unrealisiertes P/L</button>
-    <button class="wl-tab" onclick="switchWLTab('month')" id="wltab-month" style="padding:8px 20px;border:none;background:transparent;color:var(--muted);border-radius:7px;cursor:pointer;font-size:13px;font-weight:500;transition:all .15s">1 Monat</button>
-    <button class="wl-tab" onclick="switchWLTab('day')" id="wltab-day" style="padding:8px 20px;border:none;background:transparent;color:var(--muted);border-radius:7px;cursor:pointer;font-size:13px;font-weight:500;transition:all .15s">Heute</button>
-  </div>
-  <div style="display:flex;gap:6px;flex-wrap:wrap">
-    {fund_btns}
-  </div>
-</div>
-'''
-
-    html += '''<!-- P/L Tab -->
-<div id="wl-pl" class="wl-section">
-  <div class="grid-2" style="gap:20px">
-    <div class="card">
-      <h3 style="color:var(--green);margin-bottom:14px">🟢 Top Gewinner — Unrealisiertes P/L %</h3>
-      <div id="wl-pl-winners"></div>
-    </div>
-    <div class="card">
-      <h3 style="color:var(--red);margin-bottom:14px">🔴 Top Verlierer — Unrealisiertes P/L %</h3>
-      <div id="wl-pl-losers"></div>
-    </div>
-  </div>
-  <div class="card" style="margin-top:16px">
-    <div class="chart-wrap tall"><canvas id="wl-chart-pl"></canvas></div>
-  </div>
-</div>
-
-<!-- Month Tab -->
-<div id="wl-month" class="wl-section" style="display:none">
-  <div class="grid-2" style="gap:20px">
-    <div class="card">
-      <h3 style="color:var(--green);margin-bottom:14px">🟢 Top Gewinner — 1 Monat</h3>
-      <div id="wl-month-winners"></div>
-    </div>
-    <div class="card">
-      <h3 style="color:var(--red);margin-bottom:14px">🔴 Top Verlierer — 1 Monat</h3>
-      <div id="wl-month-losers"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Day Tab -->
-<div id="wl-day" class="wl-section" style="display:none">
-  <div class="grid-2" style="gap:20px">
-    <div class="card">
-      <h3 style="color:var(--green);margin-bottom:14px">🟢 Top Gewinner — Heute vs. Gestern</h3>
-      <div id="wl-day-winners"></div>
-    </div>
-    <div class="card">
-      <h3 style="color:var(--red);margin-bottom:14px">🔴 Top Verlierer — Heute vs. Gestern</h3>
-      <div id="wl-day-losers"></div>
-    </div>
-  </div>
-</div>
-'''
-    html += '</div>\n\n'  # end winners panel
-
     # ── News Panel ───────────────────────────────────────────────────────────
     html += '<div class="panel" id="panel-news">\n'
-    html += '''<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+    news_fund_btns = '<button class="range-btn active" id="newsf-all" onclick="setNewsFund(\'all\')">Alle Fonds</button>\n'
+    for f in funds_data:
+        news_fund_btns += f'<button class="range-btn" id="newsf-{f["id"]}" onclick="setNewsFund(\'{f["id"]}\')" style="border-color:{f["color"]}40;color:{f["color"]}">{f["name"]}</button>\n'
+
+    html += f'''<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px">
   <div>
-    <div class="section-title" style="margin:0">📰 News — Top-Positionen</div>
-    <div style="font-size:12px;color:var(--muted);margin-top:4px" id="news-status">Klicke auf den Tab um Nachrichten zu laden.</div>
+    <div class="section-title" style="margin:0">📰 News — Alle Positionen</div>
+    <div style="font-size:12px;color:var(--muted);margin-top:4px" id="news-status">Lade…</div>
   </div>
-  <button onclick="loadNews(true)" id="news-refresh-btn" class="range-btn" style="padding:8px 16px;font-size:13px">↻ Aktualisieren</button>
 </div>
-<div id="news-progress-wrap" style="height:4px;background:var(--border);border-radius:2px;margin-bottom:20px;display:none">
-  <div id="news-progress-bar" style="height:100%;width:0%;background:var(--accent);border-radius:2px;transition:width .4s"></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">
+  {news_fund_btns}
 </div>
 <div id="news-feed" style="display:grid;gap:10px"></div>
 '''
@@ -1331,6 +1323,8 @@ tr:hover td {{ background: var(--surface2); }}
     # ── Scripts ─────────────────────────────────────────────────────────────
     html += f'<script>\nconst FUNDS_DATA = {data_json};\n'
     html += f'const NAV_HISTORY = {nav_history_json};\n'
+    news_data_json = json.dumps(news_data or {}, ensure_ascii=False, separators=(',', ':'))
+    html += f'const NEWS_DATA = {news_data_json};\n'
     html += '''
 const PAGE_SIZE = 25;
 const tableState = {};
@@ -1395,218 +1389,6 @@ new Chart(document.getElementById('cov-aum'), {
     tooltip:{callbacks:{label:ctx=>ctx.label.split('–')[0]+': '+ctx.raw.toFixed(2)+' Mio. €'}}}}
 });
 
-// ── Gewinner / Verlierer ──────────────────────────────────────────────────
-let _wlFund = 'all';
-function setWLFund(fid) {
-  _wlFund = fid;
-  // Update button styles
-  document.querySelectorAll('[id^="wlf-"]').forEach(b => {
-    const isActive = b.id === 'wlf-' + fid;
-    if (b.id === 'wlf-all') {
-      b.style.background = isActive ? 'var(--accent)' : '';
-      b.style.color = isActive ? 'white' : '';
-      b.style.borderColor = isActive ? 'var(--accent)' : '';
-    } else {
-      const fund = FUNDS_DATA.find(f => 'wlf-'+f.id === b.id);
-      const col = fund ? fund.color : 'var(--accent)';
-      b.style.background = isActive ? col : '';
-      b.style.color = isActive ? 'white' : col;
-      b.style.borderColor = isActive ? col : col+'40';
-    }
-  });
-  _wlRendered = false;
-  initWL();
-}
-
-function _filterByFund(items) {
-  if (_wlFund === 'all') return items;
-  return items.filter(x => x.fundId === _wlFund);
-}
-
-function switchWLTab(tab) {
-  ['pl','month','day'].forEach(t => {
-    const sec = document.getElementById('wl-'+t);
-    const btn = document.getElementById('wltab-'+t);
-    if (sec) sec.style.display = (t===tab) ? '' : 'none';
-    if (btn) {
-      btn.style.background = t===tab ? 'var(--accent)' : 'transparent';
-      btn.style.color = t===tab ? 'white' : 'var(--muted)';
-    }
-  });
-}
-
-function wlRow(h, pct, abs, fundName, fundColor) {
-  const cls = pct >= 0 ? 'pos' : 'neg';
-  const sign = pct >= 0 ? '+' : '';
-  return `<div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--border)">
-    <div>
-      <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px">${h.name||h.isin||'—'}</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px">${h.isin||''} &nbsp;·&nbsp; <span style="color:${fundColor};font-weight:600">${fundName}</span></div>
-    </div>
-    <div style="text-align:right;font-size:13px;color:var(--muted)">${abs !== null ? (abs>=0?'+':'') + fmtEur(abs)+' €' : '—'}</div>
-    <div style="text-align:right;font-size:15px;font-weight:700;min-width:72px" class="${cls}">${sign}${pct.toFixed(2)}%</div>
-  </div>`;
-}
-
-function buildWLRows(items, containerId, limit=10) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  if (!items.length) { el.innerHTML = '<div class="placeholder">Keine Daten verfügbar</div>'; return; }
-  el.innerHTML = items.slice(0, limit).map(i => wlRow(i.h, i.pct, i.abs, i.fundName, i.fundColor)).join('');
-}
-
-// Collect all holdings with pl_pct
-const allPL = [];
-FUNDS_DATA.forEach(fund => {
-  (fund.holdings || []).forEach(h => {
-    if (!h.isin || h.isin === 'None') return;
-    let pct = null;
-    if (h.pl !== null && h.pl !== undefined) {
-      const cost = h.cost && h.cost > 0 ? h.cost : (h.mv_eur && h.pl ? h.mv_eur - h.pl : null);
-      if (cost && cost > 0) pct = (h.pl / cost) * 100;
-    }
-    if (pct !== null && Math.abs(pct) < 200) {
-      allPL.push({ h, pct, abs: h.pl, fundName: fund.name, fundColor: fund.color, fundId: fund.id });
-    }
-  });
-});
-allPL.sort((a,b) => b.pct - a.pct);
-
-// Day change: compare with prev_holdings by ISIN
-const allDay = [];
-FUNDS_DATA.forEach(fund => {
-  const prevMap = {};
-  (fund.prev_holdings || []).forEach(p => { if (p.isin) prevMap[p.isin] = p; });
-  (fund.holdings || []).forEach(h => {
-    if (!h.isin || h.isin === 'None') return;
-    const prev = prevMap[h.isin];
-    if (!prev || !prev.mv_eur || !h.mv_eur || prev.mv_eur === 0) return;
-    const delta = h.mv_eur - prev.mv_eur;
-    const pct   = (delta / prev.mv_eur) * 100;
-    if (Math.abs(pct) < 50) {
-      allDay.push({ h, pct, abs: delta, fundName: fund.name, fundColor: fund.color, fundId: fund.id });
-    }
-  });
-});
-allDay.sort((a,b) => b.pct - a.pct);
-
-// Month: look up nav_history 30 days back
-const allMonth = [];
-(function() {
-  const today = new Date();
-  const oneMonthAgo = new Date(today.getFullYear(), today.getMonth()-1, today.getDate()).toISOString().slice(0,10);
-  FUNDS_DATA.forEach(fund => {
-    const hist = [...(NAV_HISTORY[fund.id] || [])];
-    (fund.price_history || []).forEach(p => { if (!hist.find(h=>h.date===p.date)) hist.push(p); });
-    hist.sort((a,b) => a.date < b.date ? -1 : 1);
-    const afterMonth = hist.filter(p => p.date >= oneMonthAgo);
-    const current    = hist[hist.length-1];
-    if (!afterMonth.length || !current) return;
-    const ref = afterMonth[0];
-    if (ref.date === current.date || !ref.price || !current.price) return;
-    const pct = (current.price - ref.price) / ref.price * 100;
-    allMonth.push({ fund, ref, current, pct });
-  });
-})();
-
-function renderWLPL() {
-  const filtered = _filterByFund(allPL);
-  const plWinners = filtered.filter(x => x.pct >= 0);
-  const plLosers  = filtered.filter(x => x.pct < 0).reverse();
-  buildWLRows(plWinners, 'wl-pl-winners');
-  buildWLRows(plLosers,  'wl-pl-losers');
-  // Bar chart top 10 each side
-  const top = [...plWinners.slice(0,10), ...plLosers.slice(0,10)];
-  const ctx = document.getElementById('wl-chart-pl');
-  if (ctx && top.length) {
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: top.map(x => (x.h.name||x.h.isin||'').slice(0,25)),
-        datasets: [{
-          label: 'P/L %',
-          data: top.map(x => x.pct),
-          backgroundColor: top.map(x => x.pct >= 0 ? '#16A34A88' : '#DC262688'),
-          borderColor:     top.map(x => x.pct >= 0 ? '#16A34A'   : '#DC2626'),
-          borderWidth: 1, borderRadius: 3,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-        plugins: { legend: { display: false } },
-        scales: { x: { ticks: { callback: v => v.toFixed(1)+'%' } } }
-      }
-    });
-  }
-}
-
-function renderWLMonth() {
-  const win = allMonth.filter(x=>x.pct>=0).sort((a,b)=>b.pct-a.pct);
-  const los = allMonth.filter(x=>x.pct<0).sort((a,b)=>a.pct-b.pct);
-  const mWinEl = document.getElementById('wl-month-winners');
-  const mLosEl = document.getElementById('wl-month-losers');
-  if (mWinEl) {
-    if (!win.length) { mWinEl.innerHTML = '<div class="placeholder">Keine Daten — wird nach 30 Tagen Dashboard-Laufzeit befüllt</div>'; }
-    else mWinEl.innerHTML = win.map(x => {
-      const sign = x.pct>=0?'+':''; const cls=x.pct>=0?'pos':'neg';
-      return `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div><div style="font-size:13px;font-weight:600">${x.fund.name}</div><div style="font-size:11px;color:var(--muted)">${x.ref.date} → ${x.current.date}</div></div>
-          <div style="font-size:16px;font-weight:700" class="${cls}">${sign}${x.pct.toFixed(2)}%</div>
-        </div></div>`;
-    }).join('');
-  }
-  if (mLosEl) {
-    if (!los.length) { mLosEl.innerHTML = '<div class="placeholder">Keine Daten — wird nach 30 Tagen Dashboard-Laufzeit befüllt</div>'; }
-    else mLosEl.innerHTML = los.map(x => {
-      const sign=x.pct>=0?'+':''; const cls=x.pct>=0?'pos':'neg';
-      return `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div><div style="font-size:13px;font-weight:600">${x.fund.name}</div><div style="font-size:11px;color:var(--muted)">${x.ref.date} → ${x.current.date}</div></div>
-          <div style="font-size:16px;font-weight:700" class="${cls}">${sign}${x.pct.toFixed(2)}%</div>
-        </div></div>`;
-    }).join('');
-  }
-  // Note about holdings-level data
-  ['wl-month-winners','wl-month-losers'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el && !el.querySelector('.placeholder')) {
-      const note = document.createElement('div');
-      note.style = 'font-size:11px;color:var(--muted);margin-top:10px;font-style:italic';
-      note.textContent = 'Monatsdaten auf Fondsebene. Positionsgenaue Daten nach ~30 Tagen Laufzeit verfügbar.';
-      el.appendChild(note);
-    }
-  });
-}
-
-function renderWLDay() {
-  const filtered = _filterByFund(allDay);
-  const dayWinners = filtered.filter(x => x.pct >= 0);
-  const dayLosers  = filtered.filter(x => x.pct < 0).reverse();
-  if (!dayWinners.length && !dayLosers.length) {
-    ['wl-day-winners','wl-day-losers'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = '<div class="placeholder">Keine Vortags-Daten verfügbar (erster Lauf oder Wochenende)</div>';
-    });
-    return;
-  }
-  buildWLRows(dayWinners, 'wl-day-winners');
-  buildWLRows(dayLosers,  'wl-day-losers');
-}
-
-// Init W/L: render on load + re-render on tab click
-let _wlRendered = false;
-function initWL() {
-  if (_wlRendered) return;
-  _wlRendered = true;
-  renderWLPL();
-  renderWLMonth();
-  renderWLDay();
-}
-document.querySelectorAll('.tab').forEach(t => {
-  if (t.dataset.tab === 'winners') t.addEventListener('click', initWL);
-});
-setTimeout(initWL, 600);
 
 // ── Per-Fund Charts ────────────────────────────────────────────────────────
 FUNDS_DATA.forEach(fund => {
@@ -2135,156 +1917,79 @@ function sortAllTable(key) {
 setTimeout(renderAllTable, 200);
 
 // ── News ──────────────────────────────────────────────────────────────────
-// Build ALL unique companies sorted by combined market value
-(function() {
-  const cmap = {};
-  FUNDS_DATA.forEach(fund => {
-    const shortName = fund.name.replace('Standortfonds ','SF ').replace('Dividends and Interest','D&I');
-    (fund.holdings || []).forEach(h => {
-      if (!h.name || h.name === 'None') return;
-      const key = (h.isin && h.isin !== 'None') ? h.isin : h.name;
-      if (!cmap[key]) cmap[key] = { name: h.name, isin: h.isin||'', mv: 0, funds: [] };
-      cmap[key].mv += h.mv_eur || 0;
-      if (!cmap[key].funds.find(f => f.id === fund.id))
-        cmap[key].funds.push({ id: fund.id, color: fund.color, short: shortName });
+function _escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function _fmtD(s){
+  if (!s) return '';
+  try { const d=new Date(s); return d.toLocaleDateString('de-AT',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('de-AT',{hour:'2-digit',minute:'2-digit'}); }
+  catch(e){ return ''; }
+}
+
+function renderNewsPanel(fundFilter) {
+  const feed = document.getElementById('news-feed');
+  const status = document.getElementById('news-status');
+  if (!feed) return;
+
+  // Collect + filter entries
+  const entries = [];
+  Object.values(NEWS_DATA).forEach(co => {
+    if (fundFilter && fundFilter !== 'all' && !co.funds.includes(fundFilter)) return;
+    (co.articles || []).forEach(a => {
+      entries.push({ ...a, company: co.company, funds: co.funds });
     });
   });
-  window.TOP_COMPANIES = Object.values(cmap).sort((a,b) => b.mv - a.mv);
-})();
 
-function _cleanName(name) {
-  // Strip stock-type suffixes to get a clean search term
-  return name
-    .replace(/\s+(PLC|AG|SE|INC\.|INC|CORP|LTD|S\.A\.|SA|NV|BV|SPA|CO\.|CO|GRP|GROUP|HOLDING|HOLDINGS|INH\.|INH|NA|O\.N\.|ON|DL-?[\d,\.]+|EO[\s-][\d,\.]+|LS-?[\d,\.]+|SF\s*[\d,\.]+|CL\.[A-Z]|DL\s*[\d,\.]+)(\s.*)?$/gi, '')
-    .trim()
-    .split(/\s+/).slice(0, 3).join(' ');
-}
+  // Sort by date descending
+  entries.sort((a,b) => new Date(b.pubDate||0) - new Date(a.pubDate||0));
 
-function _escHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+  if (!entries.length) {
+    feed.innerHTML = '<div class="placeholder" style="padding:40px">Keine News verfügbar</div>';
+    if (status) status.textContent = 'Keine Daten';
+    return;
+  }
 
-function _fmtDate(s) {
-  if (!s) return '';
-  try {
-    const d = new Date(s);
-    return d.toLocaleDateString('de-AT',{day:'2-digit',month:'2-digit'}) + ' ' + d.toLocaleTimeString('de-AT',{hour:'2-digit',minute:'2-digit'});
-  } catch(e) { return ''; }
-}
+  // Build fund badge lookup
+  const fundMap = {};
+  FUNDS_DATA.forEach(f => {
+    fundMap[f.id] = { color: f.color, short: f.name.replace('Standortfonds ','SF ').replace('Dividends and Interest','D&I') };
+  });
 
-function _newsCard(item) {
-  const badges = item.funds.map(f =>
-    `<span style="background:${f.color}20;color:${f.color};border:1px solid ${f.color}40;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap">${_escHtml(f.short)}</span>`
-  ).join('');
-  return `<div class="card" style="padding:14px 16px">
+  feed.innerHTML = entries.map(item => {
+    const badges = (item.funds||[]).map(fid => {
+      const f = fundMap[fid];
+      if (!f) return '';
+      return `<span style="background:${f.color}20;color:${f.color};border:1px solid ${f.color}40;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">${_escH(f.short)}</span>`;
+    }).join('');
+    return `<div class="card" style="padding:14px 16px">
   <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
-    <span style="font-size:12px;font-weight:700;color:var(--text)">${_escHtml(item.company)}</span>
+    <span style="font-size:12px;font-weight:700;color:var(--text)">${_escH(item.company)}</span>
     ${badges}
-    <span style="font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap">${item.source ? _escHtml(item.source)+' · ' : ''}${_fmtDate(item.pubDate)}</span>
+    <span style="font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap">${item.source?_escH(item.source)+' · ':''}${_fmtD(item.pubDate)}</span>
   </div>
-  <a href="${_escHtml(item.link)}" target="_blank" rel="noopener noreferrer"
+  <a href="${_escH(item.link)}" target="_blank" rel="noopener noreferrer"
      style="font-size:14px;font-weight:500;color:var(--text);line-height:1.5;display:block;text-decoration:none"
-     onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">${_escHtml(item.title)}</a>
+     onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">${_escH(item.title)}</a>
 </div>`;
+  }).join('');
+
+  const total = Object.keys(NEWS_DATA).length;
+  if (status) status.textContent = `${entries.length} Artikel · ${total} Unternehmen · Stand: Letzter Workflow-Run`;
 }
 
-async function _fetchCompanyNews(company) {
-  const q = encodeURIComponent(_cleanName(company.name));
-  const rssUrl = `https://news.google.com/rss/search?q=${q}&hl=de&gl=AT&ceid=AT:de`;
-
-  // Try rss2json.com first (most reliable, returns structured JSON)
-  const proxies = [
-    `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=3`,
-    `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`,
-  ];
-
-  for (const url of proxies) {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 10000);
-    try {
-      const resp = await fetch(url, { signal: ctrl.signal });
-      clearTimeout(t);
-      if (!resp.ok) continue;
-      const json = await resp.json();
-
-      // rss2json format
-      if (json.items) {
-        return json.items.slice(0, 3).map(el => ({
-          title: (el.title || '').replace(/<[^>]+>/g,'').trim(),
-          link: el.link || '#',
-          pubDate: el.pubDate || '',
-          source: el.author || '',
-          company: company.name,
-          funds: company.funds,
-        })).filter(i => i.title);
-      }
-
-      // allorigins format (XML)
-      if (json.contents) {
-        const xml = new DOMParser().parseFromString(json.contents, 'text/xml');
-        return Array.from(xml.querySelectorAll('item')).slice(0, 3).map(el => ({
-          title: (el.querySelector('title')?.textContent || '').replace(/<[^>]+>/g,'').trim(),
-          link: el.querySelector('link')?.textContent?.trim() || '#',
-          pubDate: el.querySelector('pubDate')?.textContent || '',
-          source: el.querySelector('source')?.textContent?.trim() || '',
-          company: company.name,
-          funds: company.funds,
-        })).filter(i => i.title);
-      }
-    } catch(e) { clearTimeout(t); }
-  }
-  return [];
-}
-
-let _newsLoaded = false, _newsTimer = null, _newsRunning = false;
-async function loadNews(force) {
-  if (_newsRunning) return;
-  if (_newsLoaded && !force) return;
-  _newsRunning = true; _newsLoaded = true;
-  if (_newsTimer) { clearTimeout(_newsTimer); _newsTimer = null; }
-
-  const feed   = document.getElementById('news-feed');
-  const status = document.getElementById('news-status');
-  const bar    = document.getElementById('news-progress-bar');
-  const wrap   = document.getElementById('news-progress-wrap');
-  const btn    = document.getElementById('news-refresh-btn');
-  if (!feed) { _newsRunning = false; return; }
-
-  feed.innerHTML = '<div class="placeholder" style="padding:32px">Lade Nachrichten…</div>';
-  if (wrap) wrap.style.display = '';
-  if (bar)  bar.style.width = '0%';
-  if (btn)  btn.disabled = true;
-
-  const allItems = [];
-  const total = window.TOP_COMPANIES.length;
-
-  for (let i = 0; i < total; i++) {
-    const co = window.TOP_COMPANIES[i];
-    if (status) status.textContent = `Lade News: ${_cleanName(co.name)} (${i+1}/${total})…`;
-    if (bar) bar.style.width = ((i + 1) / total * 100).toFixed(0) + '%';
-
-    const items = await _fetchCompanyNews(co);
-    allItems.push(...items);
-
-    // Re-render sorted by date after each company
-    const sorted = [...allItems].sort((a,b) => new Date(b.pubDate||0) - new Date(a.pubDate||0));
-    feed.innerHTML = sorted.slice(0, 60).map(_newsCard).join('') ||
-      '<div class="placeholder">Keine Artikel gefunden</div>';
-
-    await new Promise(r => setTimeout(r, 250)); // throttle proxy
-  }
-
-  const n = allItems.length;
-  if (status) status.textContent = `${n} Artikel aus ${total} Unternehmen · Stand: ${new Date().toLocaleTimeString('de-AT')} · Auto-Update in 30 Min.`;
-  if (wrap) wrap.style.display = 'none';
-  if (btn)  btn.disabled = false;
-  _newsRunning = false;
-  _newsTimer = setTimeout(() => { _newsLoaded = false; loadNews(false); }, 30 * 60 * 1000);
+// Fund filter for news
+let _newsFundFilter = 'all';
+function setNewsFund(fid) {
+  _newsFundFilter = fid;
+  document.querySelectorAll('[id^="newsf-"]').forEach(b => {
+    const active = b.id === 'newsf-' + fid;
+    b.classList.toggle('active', active);
+  });
+  renderNewsPanel(_newsFundFilter);
 }
 
 document.querySelectorAll('.tab').forEach(t => {
-  if (t.dataset.tab === 'news') t.addEventListener('click', () => loadNews(false));
+  if (t.dataset.tab === 'news') t.addEventListener('click', () => renderNewsPanel(_newsFundFilter));
 });
+setTimeout(() => { if (document.getElementById('panel-news')?.classList.contains('active')) renderNewsPanel('all'); }, 300);
 </script>'''
     return html
 
@@ -2538,17 +2243,36 @@ def main():
             nav_history[fid].sort(key=lambda x: x["date"])
             print(f"  📈 {fid} NAV-Historie: {len(nav_history[fid])} Punkte")
 
-    # 5. Dashboard generieren
+    # 5. News fetchen
+    companies_for_news = {}
+    for fund in funds_data:
+        fid = fund["id"]
+        for h in fund.get("holdings", []):
+            isin = (h.get("isin") or "").strip()
+            name = (h.get("name") or "").strip()
+            if not name or name in ("None", ""):
+                continue
+            key = isin if (isin and isin not in ("None", "")) else name
+            if key not in companies_for_news:
+                companies_for_news[key] = {"name": name, "funds": [], "mv": 0}
+            companies_for_news[key]["mv"] += h.get("mv_eur") or 0
+            if fid not in companies_for_news[key]["funds"]:
+                companies_for_news[key]["funds"].append(fid)
+    # Sort by mv descending
+    companies_for_news = dict(sorted(companies_for_news.items(), key=lambda x: x[1]["mv"], reverse=True))
+    news_data = fetch_all_news(companies_for_news)
+
+    # 6. Dashboard generieren
     updated_at = datetime.now().strftime("%d.%m.%Y %H:%M UTC")
     print(f"\n🔨 Generiere Dashboard ({updated_at})…")
-    html = generate_html(funds_data, updated_at, nav_history=nav_history)
+    html = generate_html(funds_data, updated_at, nav_history=nav_history, news_data=news_data)
     data_json = json.dumps(
         [{k: v for k, v in f.items() if k != "holdings"} | {"holdings": f.get("holdings", [])}
          for f in funds_data],
         ensure_ascii=False, indent=2
     )
 
-    # 6. In GitHub pushen
+    # 7. In GitHub pushen
     if github_token and github_repo:
         print(f"\n📤 Push zu {github_repo}…")
         today_str = date.today().isoformat()
