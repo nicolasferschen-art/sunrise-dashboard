@@ -700,6 +700,42 @@ def build_price_history(nav_per_share, perf_ytd, perf_fy, nav_per_share_prev=Non
 
 
 # ─── News fetchen ─────────────────────────────────────────────────────────────
+def summarize_news(company_name, articles, anthropic_key):
+    """Fasst News-Schlagzeilen via Claude Haiku zu einem Fließtext zusammen."""
+    if not anthropic_key or not articles:
+        return None
+    headlines = "\n".join(
+        f"- {a['title']}" + (f" ({a['source']})" if a.get('source') else "")
+        for a in articles
+    )
+    prompt = (
+        f"Du schreibst für ein internes Fondsdashboard. "
+        f"Fasse die folgenden News über {company_name} in 2–6 Sätzen zusammen.\n"
+        f"Stil: locker, informativ, knackig. Fließtext auf Deutsch. Keine Aufzählungen.\n\n"
+        f"Schlagzeilen:\n{headlines}\n\nNur den Fließtext ausgeben, keine Überschrift."
+    )
+    body = json.dumps({
+        "model": "claude-haiku-4-5-20251001",
+        "max_tokens": 350,
+        "messages": [{"role": "user", "content": prompt}],
+    }).encode()
+    req = Request(
+        "https://api.anthropic.com/v1/messages", data=body, method="POST",
+        headers={
+            "x-api-key": anthropic_key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+    )
+    try:
+        with urlopen(req, timeout=20) as resp:
+            result = json.loads(resp.read())
+            return result["content"][0]["text"].strip()
+    except Exception as e:
+        print(f"    ⚠️  Haiku-Fehler für {company_name}: {e}")
+        return None
+
+
 def _clean_news_name(name):
     """Bereinigt Firmennamen für Google News Suche."""
     clean = re.sub(
@@ -711,8 +747,8 @@ def _clean_news_name(name):
     return ' '.join(clean.split()[:3])
 
 
-def fetch_all_news(companies, max_per_company=3, request_timeout=5):
-    """Fetcht News via Google News RSS für alle Unternehmen."""
+def fetch_all_news(companies, max_per_company=3, request_timeout=5, anthropic_key=None):
+    """Fetcht News via Google News RSS für alle Unternehmen, optional mit Haiku-Zusammenfassung."""
     import xml.etree.ElementTree as ET
     import time as _time
     from urllib.parse import quote as _quote
@@ -720,7 +756,8 @@ def fetch_all_news(companies, max_per_company=3, request_timeout=5):
     news_data = {}
     items_list = list(companies.items())
     total = len(items_list)
-    print(f"\n📰 Fetche News für {total} Unternehmen…")
+    summarize = bool(anthropic_key)
+    print(f"\n📰 Fetche News für {total} Unternehmen{' (mit KI-Zusammenfassung)' if summarize else ''}…")
 
     for i, (key, co) in enumerate(items_list):
         clean = _clean_news_name(co["name"])
@@ -744,7 +781,13 @@ def fetch_all_news(companies, max_per_company=3, request_timeout=5):
                 if title:
                     arts.append({"title": title, "link": link, "pubDate": pub, "source": src})
             if arts:
-                news_data[key] = {"company": co["name"], "funds": co["funds"], "articles": arts}
+                summary = summarize_news(co["name"], arts, anthropic_key) if summarize else None
+                news_data[key] = {
+                    "company": co["name"],
+                    "funds": co["funds"],
+                    "articles": arts,
+                    "summary": summary,
+                }
         except Exception:
             pass
         if (i + 1) % 20 == 0:
@@ -1929,50 +1972,72 @@ function renderNewsPanel(fundFilter) {
   const status = document.getElementById('news-status');
   if (!feed) return;
 
-  // Collect + filter entries
-  const entries = [];
-  Object.values(NEWS_DATA).forEach(co => {
-    if (fundFilter && fundFilter !== 'all' && !co.funds.includes(fundFilter)) return;
-    (co.articles || []).forEach(a => {
-      entries.push({ ...a, company: co.company, funds: co.funds });
-    });
-  });
-
-  // Sort by date descending
-  entries.sort((a,b) => new Date(b.pubDate||0) - new Date(a.pubDate||0));
-
-  if (!entries.length) {
-    feed.innerHTML = '<div class="placeholder" style="padding:40px">Keine News verfügbar</div>';
-    if (status) status.textContent = 'Keine Daten';
-    return;
-  }
-
   // Build fund badge lookup
   const fundMap = {};
   FUNDS_DATA.forEach(f => {
     fundMap[f.id] = { color: f.color, short: f.name.replace('Standortfonds ','SF ').replace('Dividends and Interest','D&I') };
   });
 
-  feed.innerHTML = entries.map(item => {
-    const badges = (item.funds||[]).map(fid => {
+  // Filter companies by fund
+  const companies = Object.values(NEWS_DATA).filter(co => {
+    if (fundFilter && fundFilter !== 'all' && !co.funds.includes(fundFilter)) return false;
+    return (co.articles || []).length > 0;
+  });
+
+  // Sort by newest article date descending
+  companies.sort((a, b) => {
+    const da = new Date((a.articles[0]?.pubDate) || 0);
+    const db = new Date((b.articles[0]?.pubDate) || 0);
+    return db - da;
+  });
+
+  if (!companies.length) {
+    feed.innerHTML = '<div class="placeholder" style="padding:40px">Keine News verfügbar</div>';
+    if (status) status.textContent = 'Keine Daten';
+    return;
+  }
+
+  feed.innerHTML = companies.map(co => {
+    const badges = (co.funds||[]).map(fid => {
       const f = fundMap[fid];
       if (!f) return '';
       return `<span style="background:${f.color}20;color:${f.color};border:1px solid ${f.color}40;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">${_escH(f.short)}</span>`;
     }).join('');
-    return `<div class="card" style="padding:14px 16px">
-  <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
-    <span style="font-size:12px;font-weight:700;color:var(--text)">${_escH(item.company)}</span>
+
+    const newestDate = _fmtD((co.articles[0]?.pubDate) || '');
+
+    const summaryHtml = co.summary
+      ? `<p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--text)">${_escH(co.summary)}</p>`
+      : (co.articles[0] ? `<p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--muted);font-style:italic">${_escH(co.articles[0].title)}</p>` : '');
+
+    const sources = (co.articles||[]).map(a => {
+      let label = a.source || '';
+      if (!label && a.link && a.link !== '#') {
+        try { label = new URL(a.link).hostname.replace(/^www\./,''); } catch(e) {}
+      }
+      label = label || 'Quelle';
+      const href = _escH(a.link || '#');
+      return `<a href="${href}" target="_blank" rel="noopener noreferrer"
+        title="${_escH(a.title)}"
+        style="color:var(--accent);font-size:12px;text-decoration:none"
+        onmouseover="this.style.textDecoration='underline'"
+        onmouseout="this.style.textDecoration='none'">${_escH(label)}</a>`;
+    }).join('<span style="color:var(--border);margin:0 4px">·</span>');
+
+    return `<div class="card" style="padding:16px 18px">
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <span style="font-size:13px;font-weight:700;color:var(--text)">${_escH(co.company)}</span>
     ${badges}
-    <span style="font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap">${item.source?_escH(item.source)+' · ':''}${_fmtD(item.pubDate)}</span>
+    <span style="font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap">${newestDate}</span>
   </div>
-  <a href="${_escH(item.link)}" target="_blank" rel="noopener noreferrer"
-     style="font-size:14px;font-weight:500;color:var(--text);line-height:1.5;display:block;text-decoration:none"
-     onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">${_escH(item.title)}</a>
+  ${summaryHtml}
+  <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border);display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+    <span style="font-size:11px;color:var(--muted);margin-right:2px">Quellen:</span>${sources}
+  </div>
 </div>`;
   }).join('');
 
-  const total = Object.keys(NEWS_DATA).length;
-  if (status) status.textContent = `${entries.length} Artikel · ${total} Unternehmen · Stand: Letzter Workflow-Run`;
+  if (status) status.textContent = `${companies.length} Unternehmen · Stand: Letzter Workflow-Run`;
 }
 
 // Fund filter for news
@@ -2260,7 +2325,8 @@ def main():
                 companies_for_news[key]["funds"].append(fid)
     # Sort by mv descending
     companies_for_news = dict(sorted(companies_for_news.items(), key=lambda x: x[1]["mv"], reverse=True))
-    news_data = fetch_all_news(companies_for_news)
+    anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    news_data = fetch_all_news(companies_for_news, anthropic_key=anthropic_key)
 
     # 6. Dashboard generieren
     updated_at = datetime.now().strftime("%d.%m.%Y %H:%M UTC")
