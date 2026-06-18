@@ -30,11 +30,11 @@ except ImportError:
 SENDER_EMAIL = "rbi-fondsreporting@rbinternational.com"
 FUNDS = [
     {"id": "3411", "isin": "AT0000A1QA38", "color": "#1a56db",
-     "name": "3411 – IQAM Standortfonds Österreich"},
+     "name": "Standortfonds AT"},
     {"id": "3431", "isin": "AT0000A1Z882", "color": "#d03801",
-     "name": "3431 – IQAM Standortfonds Deutschland"},
+     "name": "Standortfonds DE"},
     {"id": "3581", "isin": "AT0000A3EAW0", "color": "#046c4e",
-     "name": "3581 – IQAM Sunrise Dividends and Interest"},
+     "name": "Dividends and Interest"},
 ]
 
 # ─── Microsoft Graph: Token holen ─────────────────────────────────────────────
@@ -318,6 +318,7 @@ def _parse_positions(ws):
         header_idx = 2
 
     headers = [str(c).strip() if c else "" for c in rows[header_idx]]
+    print(f"    [LISTE] Header-Zeile {header_idx+1}: {[(j,h) for j,h in enumerate(headers) if h]}")
 
     # Spalten-Indices bestimmen
     col_map = {}
@@ -328,11 +329,12 @@ def _parse_positions(ws):
         elif "COUNTRY" in hu or "LAND" in hu:  col_map["country"] = j
         elif "SECTOR" in hu or "BRANCHE" in hu or "SEC.TYPE" in hu: col_map["sector"] = j
         elif "CURRENCY" in hu or "WÄHRUNG" in hu: col_map["currency"] = j
-        # Marktwert in Fondswährung (EUR) – Index 15 aus Erfahrung
+        # Marktwert in Fondswährung (EUR)
         elif "MKT VAL" in hu and ("EUR" in hu or "FNDCCY" in hu or "FUND" in hu):
             col_map["mv_eur"] = j
         elif any(k in hu for k in ["P&L", "G&V", "GEWINN", "UNREALIZED", "UNREAL", "GAIN/LOSS",
-                                     "GAIN LOSS", "BOOK PROFIT", "BUCHGEWINN", "G/V"]):
+                                     "GAIN LOSS", "BOOK PROFIT", "BUCHGEWINN", "G/V", "PROFIT",
+                                     "LOSS", "VERLUST"]):
             col_map["pl"] = j
         elif "WEIGHT" in hu or "ANTEIL" in hu or "%" in hu:
             col_map.setdefault("weight", j)
@@ -343,9 +345,12 @@ def _parse_positions(ws):
         elif "QUANTITY" in hu or "STÜCK" in hu or "NOMINAL" in hu:
             col_map["qty"] = j
 
+    print(f"    [LISTE] col_map: {col_map}")
+
     # Fallback für Marktwert: Spalte 15 (aus Analyse der echten Daten)
     if "mv_eur" not in col_map:
         col_map["mv_eur"] = 15
+        print(f"    [LISTE] mv_eur Fallback: Spalte 15")
 
     for row in rows[header_idx + 1:]:
         if not any(row):
