@@ -20,6 +20,12 @@ from urllib.error import HTTPError
 from urllib.parse import urlencode
 import traceback
 
+try:
+    import requests as _requests
+    _HAS_REQUESTS = True
+except ImportError:
+    _HAS_REQUESTS = False
+
 # ─── Konfiguration ────────────────────────────────────────────────────────────
 SENDER_EMAIL = "rbi-fondsreporting@rbinternational.com"
 FUNDS = [
@@ -62,26 +68,33 @@ def get_access_token():
 
 # ─── Graph API Helper ─────────────────────────────────────────────────────────
 def graph_get(access_token, path):
-    from urllib.parse import quote
-    # Encode spaces and special chars in the path (but keep / ? & = $ intact)
-    safe_path = quote(path, safe="/?&=.$,@'_-+:")
-    req = Request(
-        f"https://graph.microsoft.com/v1.0{safe_path}",
-        headers={"Authorization": f"Bearer {access_token}", "Accept": "application/json"},
-    )
-    with urlopen(req) as resp:
-        return json.loads(resp.read())
+    url = f"https://graph.microsoft.com/v1.0{path}"
+    headers = {"Authorization": f"Bearer {access_token}", "Accept": "application/json"}
+    if _HAS_REQUESTS:
+        resp = _requests.get(url, headers=headers)
+        resp.raise_for_status()
+        return resp.json()
+    else:
+        from urllib.parse import quote
+        safe_url = quote(url, safe="/:?&=.$,@'_-+%")
+        req = Request(safe_url, headers=headers)
+        with urlopen(req) as r:
+            return json.loads(r.read())
 
 
 def graph_get_bytes(access_token, path):
-    from urllib.parse import quote
-    safe_path = quote(path, safe="/?&=.$,@'_-+:")
-    req = Request(
-        f"https://graph.microsoft.com/v1.0{safe_path}",
-        headers={"Authorization": f"Bearer {access_token}"},
-    )
-    with urlopen(req) as resp:
-        return resp.read()
+    url = f"https://graph.microsoft.com/v1.0{path}"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    if _HAS_REQUESTS:
+        resp = _requests.get(url, headers=headers)
+        resp.raise_for_status()
+        return resp.content
+    else:
+        from urllib.parse import quote
+        safe_url = quote(url, safe="/:?&=.$,@'_-+%")
+        req = Request(safe_url, headers=headers)
+        with urlopen(req) as r:
+            return r.read()
 
 
 # ─── Mail + Attachment suchen ─────────────────────────────────────────────────
