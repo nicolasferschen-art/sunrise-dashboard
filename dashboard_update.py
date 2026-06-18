@@ -1354,10 +1354,17 @@ tr:hover td {{ background: var(--surface2); }}
     <div class="section-title" style="margin:0">📰 News — Alle Positionen</div>
     <div style="font-size:12px;color:var(--muted);margin-top:4px" id="news-status">Lade…</div>
   </div>
-  <button onclick="try{{sessionStorage.setItem('activeTab','news')}}catch(e){{}}; location.reload()"
-    style="background:none;border:1px solid var(--border);border-radius:6px;padding:6px 14px;font-size:12px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px"
-    onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
-    onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">↻ Aktualisieren</button>
+  <div style="display:flex;gap:8px;align-items:center">
+    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer">
+      <input type="checkbox" id="news-filter-summary" onchange="renderNewsPanel(_newsFundFilter)"
+        style="accent-color:var(--accent);cursor:pointer">
+      Nur ausformulierte
+    </label>
+    <button onclick="try{{sessionStorage.setItem('activeTab','news')}}catch(e){{}}; location.reload()"
+      style="background:none;border:1px solid var(--border);border-radius:6px;padding:6px 14px;font-size:12px;color:var(--muted);cursor:pointer"
+      onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
+      onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">↻ Aktualisieren</button>
+  </div>
 </div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px">
   {news_fund_btns}
@@ -2046,9 +2053,11 @@ function renderNewsPanel(fundFilter) {
     fundMap[f.id] = { color: f.color, short: f.name.replace('Standortfonds ','SF ').replace('Dividends and Interest','D&I') };
   });
 
-  // Filter companies by fund
+  // Filter companies by fund + optional summary-only filter
+  const onlySummary = document.getElementById('news-filter-summary')?.checked;
   const companies = Object.values(NEWS_DATA).filter(co => {
     if (fundFilter && fundFilter !== 'all' && !co.funds.includes(fundFilter)) return false;
+    if (onlySummary && !co.summary) return false;
     return (co.articles || []).length > 0;
   });
 
