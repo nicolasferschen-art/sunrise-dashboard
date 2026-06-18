@@ -1351,7 +1351,7 @@ tr:hover td {{ background: var(--surface2); }}
     <div class="section-title" style="margin:0">📰 News — Alle Positionen</div>
     <div style="font-size:12px;color:var(--muted);margin-top:4px" id="news-status">Lade…</div>
   </div>
-  <button onclick="try{sessionStorage.setItem('activeTab','news')}catch(e){}; location.reload()"
+  <button onclick="try{{sessionStorage.setItem('activeTab','news')}}catch(e){{}}; location.reload()"
     style="background:none;border:1px solid var(--border);border-radius:6px;padding:6px 14px;font-size:12px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px"
     onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
     onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">↻ Aktualisieren</button>
