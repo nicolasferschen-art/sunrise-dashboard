@@ -824,7 +824,10 @@ def fetch_all_news(companies, max_per_company=8, request_timeout=5, anthropic_ke
                     arts.append({"title": title, "link": link, "pubDate": pub, "source": src})
             if arts:
                 do_summary = summarize and summary_count < max_summaries
-                summary = summarize_news(co["name"], arts, anthropic_key) if do_summary else None
+                summary = None
+                if do_summary:
+                    _time.sleep(1.5)  # Rate-limit: max ~40 Requests/Min
+                    summary = summarize_news(co["name"], arts, anthropic_key)
                 if summary:
                     summary_count += 1
                 news_data[key] = {
