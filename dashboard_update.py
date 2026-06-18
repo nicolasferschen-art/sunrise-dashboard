@@ -218,9 +218,9 @@ def _parse_inventarblatt(ws):
     data = {}
     rows = list(ws.iter_rows(values_only=True))
 
-    # Debug: erste 30 Zeilen ausgeben
-    print(f"    [BLATT] Sheet '{ws.title}' — erste 30 Zeilen:")
-    for i, row in enumerate(rows[:30]):
+    # Debug: alle Zeilen mit Inhalt (max 80)
+    print(f"    [BLATT] Sheet '{ws.title}':")
+    for i, row in enumerate(rows[:80]):
         non_empty = [(j, str(c)) for j, c in enumerate(row) if c is not None]
         if non_empty:
             print(f"      Row {i+1}: {non_empty}")
