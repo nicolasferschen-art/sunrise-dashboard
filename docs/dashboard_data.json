@@ -5297,39 +5297,39 @@
     "isin": "AT0000A1Z882",
     "color": "#3B7DD8",
     "name": "Standortfonds DE",
-    "nav": 55433569.02,
-    "shares": 288812.129,
-    "nav_per_share": 191.52,
-    "perf_ytd": 10.833333,
-    "perf_fy": 15.013279,
+    "nav": 55316081.22,
+    "shares": 288887.774,
+    "nav_per_share": 191.07,
+    "perf_ytd": 10.572917,
+    "perf_fy": 14.743041,
     "countries": [
       {
         "label": "United States",
-        "value": 37.41
+        "value": 37.2
       },
       {
         "label": "Germany",
-        "value": 26.86
+        "value": 26.87
       },
       {
         "label": "France",
-        "value": 5.36
+        "value": 5.37
       },
       {
         "label": "United Kingdom",
-        "value": 4.28
+        "value": 4.29
       },
       {
         "label": "Austria",
-        "value": 3.38
+        "value": 3.41
       },
       {
         "label": "Taiwan",
-        "value": 3.11
+        "value": 3.17
       },
       {
         "label": "Switzerland",
-        "value": 3.02
+        "value": 3.05
       },
       {
         "label": "Japan",
@@ -5337,27 +5337,27 @@
       },
       {
         "label": "Ireland",
-        "value": 2.57
+        "value": 2.58
       },
       {
         "label": "Italy",
-        "value": 2.06
+        "value": 2.07
       },
       {
         "label": "Sweden",
-        "value": 1.48
+        "value": 1.49
       },
       {
         "label": "Spain",
-        "value": 1.28
+        "value": 1.31
       },
       {
         "label": "Netherlands",
-        "value": 1.27
+        "value": 1.28
       },
       {
         "label": "Republic of Korea",
-        "value": 0.95
+        "value": 0.98
       },
       {
         "label": "Finland",
@@ -5369,11 +5369,11 @@
       },
       {
         "label": "Canada",
-        "value": 0.77
+        "value": 0.76
       },
       {
         "label": "Bermuda",
-        "value": 0.5
+        "value": 0.49
       },
       {
         "label": "Denmark",
@@ -5393,7 +5393,7 @@
       },
       {
         "label": "Curacao",
-        "value": 0.12
+        "value": 0.11
       },
       {
         "label": "Russian Federation",
@@ -5403,11 +5403,11 @@
     "currencies": [
       {
         "label": "CAD",
-        "value": 0.75
+        "value": 0.74
       },
       {
         "label": "CHF",
-        "value": 2.86
+        "value": 2.88
       },
       {
         "label": "DKK",
@@ -5415,11 +5415,11 @@
       },
       {
         "label": "EUR",
-        "value": 42.81
+        "value": 42.89
       },
       {
         "label": "GBP",
-        "value": 2.33
+        "value": 2.36
       },
       {
         "label": "HKD",
@@ -5427,7 +5427,7 @@
       },
       {
         "label": "JPY",
-        "value": 2.65
+        "value": 2.64
       },
       {
         "label": "NOK",
@@ -5439,45 +5439,45 @@
       },
       {
         "label": "USD",
-        "value": 44.35
+        "value": 44.2
       }
     ],
     "sectors": [
       {
         "label": "Prod. of dev. f. el. prod.& dist.",
-        "value": 16.92
+        "value": 17.04
       },
       {
         "label": "Company-related services",
-        "value": 14.81
+        "value": 14.79
       },
       {
         "label": "Banking & insurance auxiliary activ",
-        "value": 13.0
+        "value": 13.04
       },
       {
         "label": "Prod. of chemicals & chem.products",
-        "value": 8.93
+        "value": 8.98
       },
       {
         "label": "Data proc.& databases",
-        "value": 6.94
+        "value": 6.78
       },
       {
         "label": "Retail trade (excl. automobiles)",
-        "value": 6.07
+        "value": 5.97
       },
       {
         "label": "Lending",
-        "value": 5.43
+        "value": 5.57
       },
       {
         "label": "Mechanical engineering",
-        "value": 4.85
+        "value": 4.95
       },
       {
         "label": "Sattelite comm.",
-        "value": 4.15
+        "value": 4.08
       },
       {
         "label": "Manufacture of food and beverages",
@@ -5485,27 +5485,27 @@
       },
       {
         "label": "Energy supply",
-        "value": 1.72
+        "value": 1.76
+      },
+      {
+        "label": "Building industry",
+        "value": 1.39
       },
       {
         "label": "Prod. of motor veh.& motor v. p.",
-        "value": 1.44
+        "value": 1.38
       },
       {
         "label": "Medical, electric measuring, optical",
         "value": 1.37
       },
       {
-        "label": "Building industry",
-        "value": 1.37
-      },
-      {
         "label": "Real estate business",
-        "value": 1.34
+        "value": 1.32
       },
       {
         "label": "Trad.ag. & wh. (wo. m. t.)",
-        "value": 1.32
+        "value": 1.31
       },
       {
         "label": "Insurance",
@@ -5513,11 +5513,11 @@
       },
       {
         "label": "Accomodation & Rest. bus.",
-        "value": 0.96
+        "value": 0.95
       },
       {
         "label": "Tobacco processing",
-        "value": 0.8
+        "value": 0.79
       },
       {
         "label": "TV, radio & tel.",
@@ -5529,19 +5529,19 @@
       },
       {
         "label": "Coking ,mineral oil processing",
-        "value": 0.59
+        "value": 0.6
       },
       {
         "label": "Extraction of petroleum & nat. gas",
-        "value": 0.56
+        "value": 0.55
       },
       {
         "label": "Leather production and processing",
-        "value": 0.49
+        "value": 0.48
       },
       {
         "label": "Shipping",
-        "value": 0.45
+        "value": 0.44
       },
       {
         "label": "Culture, sports and ent.",
@@ -5557,7 +5557,7 @@
       },
       {
         "label": "Misc. motor vehicle prod.",
-        "value": 0.21
+        "value": 0.22
       },
       {
         "label": "Paper and paperboard",
@@ -5565,7 +5565,7 @@
       },
       {
         "label": "Autom. trade&repair, petrol stations",
-        "value": 0.13
+        "value": 0.12
       },
       {
         "label": "Air traffic",
@@ -5604,15 +5604,317 @@
       {
         "date": "2026-06-18",
         "label": "18.06.2026",
-        "price": 191.52,
+        "price": 191.07,
         "note": "Heute (Inventarblatt)"
       }
     ],
     "changes": {
       "added": [],
       "removed": [],
-      "increased": [],
-      "decreased": [],
+      "increased": [
+        {
+          "isin": "US36828A1016",
+          "name": "GE VERNOVA INC.",
+          "country": "United States",
+          "sector": "Energy supply",
+          "currency": "EUR",
+          "mv_eur": 90500.88,
+          "pl": 84656.39,
+          "weight": 0.16,
+          "cost": null,
+          "price": 67.734773,
+          "change_pct": 6.94,
+          "prev_mv": 84630.63,
+          "curr_mv": 90500.88
+        },
+        {
+          "isin": "DE000CBK1001",
+          "name": "COMMERZBANK AG",
+          "country": "Germany",
+          "sector": "Lending",
+          "currency": "EUR",
+          "mv_eur": 466101.44,
+          "pl": 374447.85,
+          "weight": 0.84,
+          "cost": null,
+          "price": 7.507666,
+          "change_pct": 5.18,
+          "prev_mv": 443150.4,
+          "curr_mv": 466101.44
+        },
+        {
+          "isin": "DE000TKMS001",
+          "name": "TKMS AG + CO. KGAA O.N.",
+          "country": "Germany",
+          "sector": "Company-related services",
+          "currency": "EUR",
+          "mv_eur": 28956.0,
+          "pl": 6727.95,
+          "weight": 0.05,
+          "cost": null,
+          "price": 58.341339,
+          "change_pct": 4.97,
+          "prev_mv": 27584.4,
+          "curr_mv": 28956.0
+        },
+        {
+          "isin": "DE000BAY0017",
+          "name": "BAYER AG NA O.N.",
+          "country": "Germany",
+          "sector": "Prod. of chemicals & chem.products",
+          "currency": "EUR",
+          "mv_eur": 222477.3,
+          "pl": -71532.02,
+          "weight": 0.4,
+          "cost": null,
+          "price": 49.874355,
+          "change_pct": 4.8,
+          "prev_mv": 212278.95,
+          "curr_mv": 222477.3
+        },
+        {
+          "isin": "US0382221051",
+          "name": "APPLIED MATERIALS INC.",
+          "country": "United States",
+          "sector": "Mechanical engineering",
+          "currency": "EUR",
+          "mv_eur": 647686.89,
+          "pl": 452271.63,
+          "weight": 1.17,
+          "cost": null,
+          "price": 178.891405,
+          "change_pct": 4.51,
+          "prev_mv": 619753.76,
+          "curr_mv": 647686.89
+        },
+        {
+          "isin": "US11135F1012",
+          "name": "BROADCOM INC.     DL-,001",
+          "country": "United States",
+          "sector": "Prod. of dev. f. el. prod.& dist.",
+          "currency": "EUR",
+          "mv_eur": 389865.83,
+          "pl": 57639.5,
+          "weight": 0.71,
+          "cost": null,
+          "price": 334.811922,
+          "change_pct": 4.46,
+          "prev_mv": 373221.19,
+          "curr_mv": 389865.83
+        },
+        {
+          "isin": "US24703L2025",
+          "name": "DELL TECHS INC. C  DL-,01",
+          "country": "United States",
+          "sector": "Prod. of dev. f. el. prod.& dist.",
+          "currency": "EUR",
+          "mv_eur": 412463.7,
+          "pl": 360685.77,
+          "weight": 0.75,
+          "cost": null,
+          "price": 52.638623,
+          "change_pct": 3.93,
+          "prev_mv": 396856.52,
+          "curr_mv": 412463.7
+        },
+        {
+          "isin": "AT0000609607",
+          "name": "PORR AG /STM",
+          "country": "Austria",
+          "sector": "Building industry",
+          "currency": "EUR",
+          "mv_eur": 156266.8,
+          "pl": 106347.79,
+          "weight": 0.28,
+          "cost": null,
+          "price": 14.502908,
+          "change_pct": 3.89,
+          "prev_mv": 150415.4,
+          "curr_mv": 156266.8
+        },
+        {
+          "isin": "US4581401001",
+          "name": "INTEL CORP.       DL-,001",
+          "country": "United States",
+          "sector": "Prod. of dev. f. el. prod.& dist.",
+          "currency": "EUR",
+          "mv_eur": 289962.9,
+          "pl": 195209.19,
+          "weight": 0.53,
+          "cost": null,
+          "price": 39.572905,
+          "change_pct": 3.62,
+          "prev_mv": 279830.93,
+          "curr_mv": 289962.9
+        },
+        {
+          "isin": "DE000ENER6Y0",
+          "name": "SIEMENS ENERGY AG NA O.N.",
+          "country": "Germany",
+          "sector": "Energy supply",
+          "currency": "EUR",
+          "mv_eur": 481499.98,
+          "pl": 427512.48,
+          "weight": 0.87,
+          "cost": null,
+          "price": 18.134867,
+          "change_pct": 3.6,
+          "prev_mv": 464769.24,
+          "curr_mv": 481499.98
+        }
+      ],
+      "decreased": [
+        {
+          "isin": "DE0005190003",
+          "name": "BAY.MOTOREN WERKE AG ST",
+          "country": "Germany",
+          "sector": "Prod. of motor veh.& motor v. p.",
+          "currency": "EUR",
+          "mv_eur": 213234.24,
+          "pl": -68421.28,
+          "weight": 0.39,
+          "cost": null,
+          "price": 82.211185,
+          "change_pct": -8.34,
+          "prev_mv": 232625.4,
+          "curr_mv": 213234.24
+        },
+        {
+          "isin": "IE00B4BNMY34",
+          "name": "ACCENTURE A   DL-,0000225",
+          "country": "Ireland",
+          "sector": "Company-related services",
+          "currency": "EUR",
+          "mv_eur": 63402.83,
+          "pl": -57271.89,
+          "weight": 0.11,
+          "cost": null,
+          "price": 296.934122,
+          "change_pct": -5.6,
+          "prev_mv": 67163.4,
+          "curr_mv": 63402.83
+        },
+        {
+          "isin": "US30303M1027",
+          "name": "META PLATF.  A DL-,000006",
+          "country": "United States",
+          "sector": "Data proc.& databases",
+          "currency": "EUR",
+          "mv_eur": 80806.51,
+          "pl": -19165.97,
+          "weight": 0.15,
+          "cost": null,
+          "price": 702.200623,
+          "change_pct": -5.29,
+          "prev_mv": 85319.53,
+          "curr_mv": 80806.51
+        },
+        {
+          "isin": "US00724F1012",
+          "name": "ADOBE INC.",
+          "country": "United States",
+          "sector": "Data proc.& databases",
+          "currency": "EUR",
+          "mv_eur": 44541.73,
+          "pl": -42904.9,
+          "weight": 0.08,
+          "cost": null,
+          "price": 385.347031,
+          "change_pct": -5.18,
+          "prev_mv": 46974.08,
+          "curr_mv": 44541.73
+        },
+        {
+          "isin": "AN8068571086",
+          "name": "SLB LTD.           DL-,01",
+          "country": "Curacao",
+          "sector": "Extraction of petroleum & nat. gas",
+          "currency": "EUR",
+          "mv_eur": 59538.75,
+          "pl": 290.43,
+          "weight": 0.11,
+          "cost": null,
+          "price": 50.084489,
+          "change_pct": -5.02,
+          "prev_mv": 62682.72,
+          "curr_mv": 59538.75
+        },
+        {
+          "isin": "BMG611881019",
+          "name": "LIBERTY GLOBAL LTD CL.A",
+          "country": "Bermuda",
+          "sector": "Company-related services",
+          "currency": "EUR",
+          "mv_eur": 26188.02,
+          "pl": -180.84,
+          "weight": 0.05,
+          "cost": null,
+          "price": 11.488794,
+          "change_pct": -4.93,
+          "prev_mv": 27545.29,
+          "curr_mv": 26188.02
+        },
+        {
+          "isin": "FR0000121667",
+          "name": "ESSILORLUXO. INH. EO -,18",
+          "country": "France",
+          "sector": "Medical, electric measuring, optical",
+          "currency": "EUR",
+          "mv_eur": 27785.25,
+          "pl": 2594.25,
+          "weight": 0.05,
+          "cost": null,
+          "price": 158.433962,
+          "change_pct": -4.79,
+          "prev_mv": 29184.45,
+          "curr_mv": 27785.25
+        },
+        {
+          "isin": "DE0007100000",
+          "name": "MERCEDES-BENZ GRP NA O.N.",
+          "country": "Germany",
+          "sector": "Prod. of motor veh.& motor v. p.",
+          "currency": "EUR",
+          "mv_eur": 165401.5,
+          "pl": -37821.69,
+          "weight": 0.3,
+          "cost": null,
+          "price": 57.440133,
+          "change_pct": -4.36,
+          "prev_mv": 172937.44,
+          "curr_mv": 165401.5
+        },
+        {
+          "isin": "US9113121068",
+          "name": "UNITED PARCEL SE.B DL-01",
+          "country": "United States",
+          "sector": "Sattelite comm.",
+          "currency": "EUR",
+          "mv_eur": 46534.96,
+          "pl": -30511.28,
+          "weight": 0.08,
+          "cost": null,
+          "price": 174.059921,
+          "change_pct": -4.3,
+          "prev_mv": 48623.96,
+          "curr_mv": 46534.96
+        },
+        {
+          "isin": "US1924461023",
+          "name": "COGNIZANT TECH. SOL.A",
+          "country": "United States",
+          "sector": "Data proc.& databases",
+          "currency": "EUR",
+          "mv_eur": 61290.91,
+          "pl": -33322.49,
+          "weight": 0.11,
+          "cost": null,
+          "price": 75.362333,
+          "change_pct": -4.22,
+          "prev_mv": 63991.17,
+          "curr_mv": 61290.91
+        }
+      ],
       "date_prev": null
     },
     "prev_holdings": [
@@ -7369,13 +7671,13 @@
         "pl": -18353.25
       }
     ],
-    "total_pl": 19409777.03,
-    "pos_pl": 21254317.83,
-    "neg_pl": -1844540.8,
-    "equities_mv": 54151479.43,
-    "hhi": 100.3,
-    "top10_weight": 23.5,
-    "win_rate": 70.5,
+    "total_pl": 19248097.19,
+    "pos_pl": 21154773.48,
+    "neg_pl": -1906676.29,
+    "equities_mv": 54013515.8,
+    "hhi": 99.9,
+    "top10_weight": 23.3,
+    "win_rate": 69.5,
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -7383,8 +7685,8 @@
         "country": "Curacao",
         "sector": "Extraction of petroleum & nat. gas",
         "currency": "EUR",
-        "mv_eur": 62682.72,
-        "pl": 3526.28,
+        "mv_eur": 59538.75,
+        "pl": 290.43,
         "weight": 0.11,
         "cost": null,
         "price": 50.084489
@@ -7395,9 +7697,9 @@
         "country": "Austria",
         "sector": "Building industry",
         "currency": "EUR",
-        "mv_eur": 387337.5,
-        "pl": 231256.82,
-        "weight": 0.7,
+        "mv_eur": 381975.0,
+        "pl": 225894.32,
+        "weight": 0.69,
         "cost": null,
         "price": 37.837741
       },
@@ -7407,9 +7709,9 @@
         "country": "Austria",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 264180.0,
-        "pl": 138004.99,
-        "weight": 0.48,
+        "mv_eur": 269774.4,
+        "pl": 143599.39,
+        "weight": 0.49,
         "cost": null,
         "price": 8.11937
       },
@@ -7419,9 +7721,9 @@
         "country": "Austria",
         "sector": "Building industry",
         "currency": "EUR",
-        "mv_eur": 150415.4,
-        "pl": 100496.39,
-        "weight": 0.27,
+        "mv_eur": 156266.8,
+        "pl": 106347.79,
+        "weight": 0.28,
         "cost": null,
         "price": 14.502908
       },
@@ -7443,8 +7745,8 @@
         "country": "Austria",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 209608.0,
-        "pl": 65990.78,
+        "mv_eur": 210938.0,
+        "pl": 67320.78,
         "weight": 0.38,
         "cost": null,
         "price": 53.991436
@@ -7455,8 +7757,8 @@
         "country": "Austria",
         "sector": "Coking ,mineral oil processing",
         "currency": "EUR",
-        "mv_eur": 130195.65,
-        "pl": 51852.97,
+        "mv_eur": 132289.95,
+        "pl": 53947.27,
         "weight": 0.24,
         "cost": null,
         "price": 33.666816
@@ -7467,8 +7769,8 @@
         "country": "Austria",
         "sector": "Energy supply",
         "currency": "EUR",
-        "mv_eur": 109760.1,
-        "pl": -10467.97,
+        "mv_eur": 108988.5,
+        "pl": -11239.57,
         "weight": 0.2,
         "cost": null,
         "price": 62.32663
@@ -7479,8 +7781,8 @@
         "country": "Austria",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 37826.1,
-        "pl": 12219.14,
+        "mv_eur": 38155.5,
+        "pl": 12548.54,
         "weight": 0.07,
         "cost": null,
         "price": 23.321457
@@ -7491,8 +7793,8 @@
         "country": "Austria",
         "sector": "Real estate business",
         "currency": "EUR",
-        "mv_eur": 54283.2,
-        "pl": -18651.34,
+        "mv_eur": 54441.0,
+        "pl": -18493.54,
         "weight": 0.1,
         "cost": null,
         "price": 23.109804
@@ -7503,8 +7805,8 @@
         "country": "Austria",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 70579.0,
-        "pl": 45410.97,
+        "mv_eur": 70253.0,
+        "pl": 45084.97,
         "weight": 0.13,
         "cost": null,
         "price": 77.202546
@@ -7515,8 +7817,8 @@
         "country": "Austria",
         "sector": "Building industry",
         "currency": "EUR",
-        "mv_eur": 26237.28,
-        "pl": 1089.25,
+        "mv_eur": 26756.16,
+        "pl": 1608.13,
         "weight": 0.05,
         "cost": null,
         "price": 22.294353
@@ -7527,9 +7829,9 @@
         "country": "Austria",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 189854.4,
-        "pl": 60206.5,
-        "weight": 0.34,
+        "mv_eur": 193702.8,
+        "pl": 64054.9,
+        "weight": 0.35,
         "cost": null,
         "price": 40.426536
       },
@@ -7539,8 +7841,8 @@
         "country": "Austria",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 85040.56,
-        "pl": 32740.12,
+        "mv_eur": 83705.6,
+        "pl": 31405.16,
         "weight": 0.15,
         "cost": null,
         "price": 28.991375
@@ -7551,9 +7853,9 @@
         "country": "Belgium",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 282500.0,
-        "pl": 98578.95,
-        "weight": 0.51,
+        "mv_eur": 285212.0,
+        "pl": 101290.95,
+        "weight": 0.52,
         "cost": null,
         "price": 162.761991
       },
@@ -7563,8 +7865,8 @@
         "country": "Belgium",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 166845.92,
-        "pl": 30442.44,
+        "mv_eur": 165486.4,
+        "pl": 29082.92,
         "weight": 0.3,
         "cost": null,
         "price": 58.192611
@@ -7575,9 +7877,9 @@
         "country": "Bermuda",
         "sector": "Shipping",
         "currency": "EUR",
-        "mv_eur": 244963.86,
-        "pl": 24835.93,
-        "weight": 0.44,
+        "mv_eur": 237483.77,
+        "pl": 17013.95,
+        "weight": 0.43,
         "cost": null,
         "price": 27.767169
       },
@@ -7587,8 +7889,8 @@
         "country": "Bermuda",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 27545.29,
-        "pl": 1217.32,
+        "mv_eur": 26188.02,
+        "pl": -180.84,
         "weight": 0.05,
         "cost": null,
         "price": 11.488794
@@ -7599,9 +7901,9 @@
         "country": "Canada",
         "sector": "Real estate business",
         "currency": "EUR",
-        "mv_eur": 219718.57,
-        "pl": 38080.28,
-        "weight": 0.4,
+        "mv_eur": 217016.62,
+        "pl": 35540.41,
+        "weight": 0.39,
         "cost": null,
         "price": 52.866576
       },
@@ -7611,8 +7913,8 @@
         "country": "Canada",
         "sector": "Accomodation & Rest. bus.",
         "currency": "EUR",
-        "mv_eur": 37978.58,
-        "pl": 9510.32,
+        "mv_eur": 37252.27,
+        "pl": 8809.41,
         "weight": 0.07,
         "cost": null,
         "price": 80.100907
@@ -7623,9 +7925,9 @@
         "country": "Canada",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 159905.53,
-        "pl": 95249.16,
-        "weight": 0.29,
+        "mv_eur": 153936.42,
+        "pl": 89337.75,
+        "weight": 0.28,
         "cost": null,
         "price": 64.08401
       },
@@ -7635,8 +7937,8 @@
         "country": "Switzerland",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 39661.16,
-        "pl": -2063.24,
+        "mv_eur": 39425.59,
+        "pl": -2371.44,
         "weight": 0.07,
         "cost": null,
         "price": 9604.957119
@@ -7647,8 +7949,8 @@
         "country": "Switzerland",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 302556.91,
-        "pl": 84686.06,
+        "mv_eur": 302663.19,
+        "pl": 84413.11,
         "weight": 0.55,
         "cost": null,
         "price": 415.35295
@@ -7659,9 +7961,9 @@
         "country": "Switzerland",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 319919.31,
-        "pl": 84709.17,
-        "weight": 0.58,
+        "mv_eur": 323956.7,
+        "pl": 88337.15,
+        "weight": 0.59,
         "cost": null,
         "price": 88.005483
       },
@@ -7671,8 +7973,8 @@
         "country": "Switzerland",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 175832.47,
-        "pl": 119476.19,
+        "mv_eur": 178989.62,
+        "pl": 122535.25,
         "weight": 0.32,
         "cost": null,
         "price": 26.929351
@@ -7683,8 +7985,8 @@
         "country": "Switzerland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 18273.02,
-        "pl": -11724.63,
+        "mv_eur": 18721.28,
+        "pl": -11328.58,
         "weight": 0.03,
         "cost": null,
         "price": 317.492344
@@ -7695,8 +7997,8 @@
         "country": "Switzerland",
         "sector": "Insurance",
         "currency": "EUR",
-        "mv_eur": 65582.97,
-        "pl": 31582.16,
+        "mv_eur": 65682.11,
+        "pl": 31622.12,
         "weight": 0.12,
         "cost": null,
         "price": 453.738356
@@ -7707,8 +8009,8 @@
         "country": "Switzerland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 34978.28,
-        "pl": 1930.28,
+        "mv_eur": 35013.05,
+        "pl": 1907.53,
         "weight": 0.06,
         "cost": null,
         "price": 253.588285
@@ -7719,8 +8021,8 @@
         "country": "Switzerland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 97135.05,
-        "pl": -5290.96,
+        "mv_eur": 96833.17,
+        "pl": -5771.13,
         "weight": 0.18,
         "cost": null,
         "price": 196.078734
@@ -7731,8 +8033,8 @@
         "country": "Switzerland",
         "sector": "Glass,non-metallic mineral products",
         "currency": "EUR",
-        "mv_eur": 28823.2,
-        "pl": -5873.61,
+        "mv_eur": 28951.04,
+        "pl": -5806.16,
         "weight": 0.05,
         "cost": null,
         "price": 626.447503
@@ -7743,8 +8045,8 @@
         "country": "Switzerland",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 43387.6,
-        "pl": 14311.4,
+        "mv_eur": 43179.4,
+        "pl": 14052.58,
         "weight": 0.08,
         "cost": null,
         "price": 82.1269
@@ -7755,8 +8057,8 @@
         "country": "Switzerland",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 53136.63,
-        "pl": 27645.07,
+        "mv_eur": 53409.96,
+        "pl": 27943.44,
         "weight": 0.1,
         "cost": null,
         "price": 21.904754
@@ -7767,8 +8069,8 @@
         "country": "Switzerland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 198865.66,
-        "pl": 59135.65,
+        "mv_eur": 198285.25,
+        "pl": 58312.02,
         "weight": 0.36,
         "cost": null,
         "price": 128.40658
@@ -7779,8 +8081,8 @@
         "country": "Switzerland",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 99228.19,
-        "pl": 39552.01,
+        "mv_eur": 98955.61,
+        "pl": 39175.55,
         "weight": 0.18,
         "cost": null,
         "price": 24.164394
@@ -7791,9 +8093,9 @@
         "country": "Switzerland",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 24762.54,
-        "pl": -12604.19,
-        "weight": 0.04,
+        "mv_eur": 25015.67,
+        "pl": -12416.1,
+        "weight": 0.05,
         "cost": null,
         "price": 240.610394
       },
@@ -7803,9 +8105,9 @@
         "country": "Switzerland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 134413.55,
-        "pl": 20179.47,
-        "weight": 0.24,
+        "mv_eur": 136226.72,
+        "pl": 21793.8,
+        "weight": 0.25,
         "cost": null,
         "price": 275.357958
       },
@@ -7815,9 +8117,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 58767.54,
-        "pl": -1664.44,
-        "weight": 0.11,
+        "mv_eur": 56696.64,
+        "pl": -3735.34,
+        "weight": 0.1,
         "cost": null,
         "price": 26.263355
       },
@@ -7827,9 +8129,9 @@
         "country": "Germany",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 413015.2,
-        "pl": 254911.49,
-        "weight": 0.75,
+        "mv_eur": 423135.44,
+        "pl": 265031.73,
+        "weight": 0.77,
         "cost": null,
         "price": 11.560669
       },
@@ -7839,8 +8141,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 14512.28,
-        "pl": -11944.75,
+        "mv_eur": 14493.84,
+        "pl": -11963.19,
         "weight": 0.03,
         "cost": null,
         "price": 57.390521
@@ -7851,9 +8153,9 @@
         "country": "Germany",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 232625.4,
-        "pl": -49030.12,
-        "weight": 0.42,
+        "mv_eur": 213234.24,
+        "pl": -68421.28,
+        "weight": 0.39,
         "cost": null,
         "price": 82.211185
       },
@@ -7863,8 +8165,8 @@
         "country": "Germany",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 93172.8,
-        "pl": -33625.71,
+        "mv_eur": 94357.2,
+        "pl": -32441.31,
         "weight": 0.17,
         "cost": null,
         "price": 96.351451
@@ -7875,9 +8177,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 158553.22,
-        "pl": 45644.8,
-        "weight": 0.29,
+        "mv_eur": 156275.28,
+        "pl": 43366.86,
+        "weight": 0.28,
         "cost": null,
         "price": 52.539981
       },
@@ -7887,8 +8189,8 @@
         "country": "Germany",
         "sector": "Travel agcs, transp supptng activit.",
         "currency": "EUR",
-        "mv_eur": 88614.0,
-        "pl": -37083.55,
+        "mv_eur": 86751.0,
+        "pl": -38946.55,
         "weight": 0.16,
         "cost": null,
         "price": 77.59108
@@ -7899,8 +8201,8 @@
         "country": "Germany",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 259821.58,
-        "pl": 83766.63,
+        "mv_eur": 259132.92,
+        "pl": 83077.97,
         "weight": 0.47,
         "cost": null,
         "price": 35.790801
@@ -7911,9 +8213,9 @@
         "country": "Germany",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 1095935.4,
-        "pl": 334279.63,
-        "weight": 1.98,
+        "mv_eur": 1068586.56,
+        "pl": 306930.79,
+        "weight": 1.94,
         "cost": null,
         "price": 19.216262
       },
@@ -7923,8 +8225,8 @@
         "country": "Germany",
         "sector": "Travel agcs, transp supptng activit.",
         "currency": "EUR",
-        "mv_eur": 42353.85,
-        "pl": 13802.53,
+        "mv_eur": 41803.8,
+        "pl": 13252.48,
         "weight": 0.08,
         "cost": null,
         "price": 49.311434
@@ -7935,8 +8237,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 231224.28,
-        "pl": -2923.64,
+        "mv_eur": 232834.56,
+        "pl": -1313.36,
         "weight": 0.42,
         "cost": null,
         "price": 39.260215
@@ -7947,9 +8249,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 57606.12,
-        "pl": -5834.9,
-        "weight": 0.1,
+        "mv_eur": 58097.52,
+        "pl": -5343.5,
+        "weight": 0.11,
         "cost": null,
         "price": 45.185912
       },
@@ -7959,9 +8261,9 @@
         "country": "Germany",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 296520.0,
-        "pl": 116404.81,
-        "weight": 0.54,
+        "mv_eur": 295200.0,
+        "pl": 115084.81,
+        "weight": 0.53,
         "cost": null,
         "price": 150.095992
       },
@@ -7971,9 +8273,9 @@
         "country": "Germany",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 183504.8,
-        "pl": -29903.09,
-        "weight": 0.33,
+        "mv_eur": 185653.2,
+        "pl": -27754.69,
+        "weight": 0.34,
         "cost": null,
         "price": 81.453393
       },
@@ -7995,9 +8297,9 @@
         "country": "Germany",
         "sector": "Building industry",
         "currency": "EUR",
-        "mv_eur": 180131.2,
-        "pl": 154204.16,
-        "weight": 0.33,
+        "mv_eur": 185163.0,
+        "pl": 159235.96,
+        "weight": 0.34,
         "cost": null,
         "price": 71.621657
       },
@@ -8007,9 +8309,9 @@
         "country": "Germany",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 920202.96,
-        "pl": 546594.91,
-        "weight": 1.6600000000000001,
+        "mv_eur": 894435.42,
+        "pl": 520827.37,
+        "weight": 1.62,
         "cost": null,
         "price": 32.188167
       },
@@ -8019,8 +8321,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 85205.2,
-        "pl": -42090.17,
+        "mv_eur": 84359.3,
+        "pl": -42936.07,
         "weight": 0.15,
         "cost": null,
         "price": 82.766821
@@ -8031,9 +8333,9 @@
         "country": "Germany",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 528464.1,
-        "pl": -92028.92,
-        "weight": 0.96,
+        "mv_eur": 533866.8,
+        "pl": -86626.22,
+        "weight": 0.97,
         "cost": null,
         "price": 155.045732
       },
@@ -8043,8 +8345,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 43328.25,
-        "pl": 14188.29,
+        "mv_eur": 44100.0,
+        "pl": 14960.04,
         "weight": 0.08,
         "cost": null,
         "price": 39.646204
@@ -8055,8 +8357,8 @@
         "country": "Germany",
         "sector": "Metall - producers",
         "currency": "EUR",
-        "mv_eur": 402544.8,
-        "pl": 278834.43,
+        "mv_eur": 400980.0,
+        "pl": 277269.63,
         "weight": 0.73,
         "cost": null,
         "price": 63.24661
@@ -8067,8 +8369,8 @@
         "country": "Germany",
         "sector": "Leather production and processing",
         "currency": "EUR",
-        "mv_eur": 25980.5,
-        "pl": -29606.2,
+        "mv_eur": 25534.6,
+        "pl": -30052.1,
         "weight": 0.05,
         "cost": null,
         "price": 61.084286
@@ -8079,8 +8381,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 158092.8,
-        "pl": 147313.36,
+        "mv_eur": 161487.6,
+        "pl": 150708.16,
         "weight": 0.29,
         "cost": null,
         "price": 78.111884
@@ -8091,9 +8393,9 @@
         "country": "Germany",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 172937.44,
-        "pl": -30285.75,
-        "weight": 0.31,
+        "mv_eur": 165401.5,
+        "pl": -37821.69,
+        "weight": 0.3,
         "cost": null,
         "price": 57.440133
       },
@@ -8103,9 +8405,9 @@
         "country": "Germany",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 1010017.2,
-        "pl": 179374.71,
-        "weight": 1.83,
+        "mv_eur": 997860.24,
+        "pl": 167217.75,
+        "weight": 1.81,
         "cost": null,
         "price": 117.521575
       },
@@ -8115,9 +8417,9 @@
         "country": "Germany",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 880313.2,
-        "pl": 570686.73,
-        "weight": 1.5899999999999999,
+        "mv_eur": 880474.4,
+        "pl": 570847.93,
+        "weight": 1.6,
         "cost": null,
         "price": 96.037987
       },
@@ -8127,8 +8429,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 81374.34,
-        "pl": -52416.99,
+        "mv_eur": 82215.66,
+        "pl": -51575.67,
         "weight": 0.15,
         "cost": null,
         "price": 57.249178
@@ -8139,8 +8441,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 85191.6,
-        "pl": 41338.49,
+        "mv_eur": 84239.1,
+        "pl": 40385.99,
         "weight": 0.15,
         "cost": null,
         "price": 5.755001
@@ -8151,8 +8453,8 @@
         "country": "Germany",
         "sector": "Air traffic",
         "currency": "EUR",
-        "mv_eur": 54743.04,
-        "pl": -5161.69,
+        "mv_eur": 54595.58,
+        "pl": -5309.15,
         "weight": 0.1,
         "cost": null,
         "price": 9.750119
@@ -8163,8 +8465,8 @@
         "country": "Germany",
         "sector": "Insurance",
         "currency": "EUR",
-        "mv_eur": 84753.0,
-        "pl": 30839.09,
+        "mv_eur": 84315.0,
+        "pl": 30401.09,
         "weight": 0.15,
         "cost": null,
         "price": 147.709342
@@ -8175,9 +8477,9 @@
         "country": "Germany",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 1978242.0,
-        "pl": 867509.38,
-        "weight": 3.58,
+        "mv_eur": 1984191.6,
+        "pl": 873458.98,
+        "weight": 3.59,
         "cost": null,
         "price": 224.028362
       },
@@ -8187,9 +8489,9 @@
         "country": "Germany",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 816180.8,
-        "pl": 298569.81,
-        "weight": 1.48,
+        "mv_eur": 808868.6,
+        "pl": 291257.61,
+        "weight": 1.47,
         "cost": null,
         "price": 297.306715
       },
@@ -8199,8 +8501,8 @@
         "country": "Germany",
         "sector": "Misc. motor vehicle prod.",
         "currency": "EUR",
-        "mv_eur": 114336.7,
-        "pl": 24118.29,
+        "mv_eur": 116595.9,
+        "pl": 26377.49,
         "weight": 0.21,
         "cost": null,
         "price": 255.576232
@@ -8211,8 +8513,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 99047.2,
-        "pl": -22832.26,
+        "mv_eur": 96786.34,
+        "pl": -25093.12,
         "weight": 0.18,
         "cost": null,
         "price": 22.641549
@@ -8223,8 +8525,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 31513.45,
-        "pl": 4301.71,
+        "mv_eur": 31738.4,
+        "pl": 4526.66,
         "weight": 0.06,
         "cost": null,
         "price": 66.532372
@@ -8235,9 +8537,9 @@
         "country": "Germany",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 152718.6,
-        "pl": -14309.85,
-        "weight": 0.28,
+        "mv_eur": 151229.7,
+        "pl": -15798.75,
+        "weight": 0.27,
         "cost": null,
         "price": 78.527715
       },
@@ -8247,8 +8549,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 86168.9,
-        "pl": -22252.65,
+        "mv_eur": 86075.0,
+        "pl": -22346.55,
         "weight": 0.16,
         "cost": null,
         "price": 69.278946
@@ -8259,8 +8561,8 @@
         "country": "Germany",
         "sector": "Leather production and processing",
         "currency": "EUR",
-        "mv_eur": 215485.4,
-        "pl": -30272.65,
+        "mv_eur": 214124.7,
+        "pl": -31633.35,
         "weight": 0.39,
         "cost": null,
         "price": 198.672635
@@ -8271,8 +8573,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 32164.0,
-        "pl": -16954.65,
+        "mv_eur": 32968.1,
+        "pl": -16150.55,
         "weight": 0.06,
         "cost": null,
         "price": 3.054263
@@ -8283,9 +8585,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 418731.5,
-        "pl": -155790.31,
-        "weight": 0.76,
+        "mv_eur": 414123.45,
+        "pl": -160398.36,
+        "weight": 0.75,
         "cost": null,
         "price": 28.675908
       },
@@ -8295,8 +8597,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 134922.4,
-        "pl": 33012.32,
+        "mv_eur": 133862.8,
+        "pl": 31952.72,
         "weight": 0.24,
         "cost": null,
         "price": 28.853364
@@ -8307,8 +8609,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 44397.5,
-        "pl": 1747.14,
+        "mv_eur": 43967.5,
+        "pl": 1317.14,
         "weight": 0.08,
         "cost": null,
         "price": 39.674753
@@ -8319,9 +8621,9 @@
         "country": "Germany",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 144186.96,
-        "pl": 1574.88,
-        "weight": 0.26,
+        "mv_eur": 146462.36,
+        "pl": 3850.28,
+        "weight": 0.27,
         "cost": null,
         "price": 48.573597
       },
@@ -8331,9 +8633,9 @@
         "country": "Germany",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 212278.95,
-        "pl": -81730.37,
-        "weight": 0.38,
+        "mv_eur": 222477.3,
+        "pl": -71532.02,
+        "weight": 0.4,
         "cost": null,
         "price": 49.874355
       },
@@ -8343,9 +8645,9 @@
         "country": "Germany",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 443150.4,
-        "pl": 351496.81,
-        "weight": 0.8,
+        "mv_eur": 466101.44,
+        "pl": 374447.85,
+        "weight": 0.84,
         "cost": null,
         "price": 7.507666
       },
@@ -8355,8 +8657,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 182745.36,
-        "pl": 31927.13,
+        "mv_eur": 180462.12,
+        "pl": 29643.89,
         "weight": 0.33,
         "cost": null,
         "price": 35.008874
@@ -8367,8 +8669,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 441384.76,
-        "pl": 192012.65,
+        "mv_eur": 443563.84,
+        "pl": 194191.73,
         "weight": 0.8,
         "cost": null,
         "price": 10.299525
@@ -8379,9 +8681,9 @@
         "country": "Germany",
         "sector": "Energy supply",
         "currency": "EUR",
-        "mv_eur": 464769.24,
-        "pl": 410781.74,
-        "weight": 0.84,
+        "mv_eur": 481499.98,
+        "pl": 427512.48,
+        "weight": 0.87,
         "cost": null,
         "price": 18.134867
       },
@@ -8391,8 +8693,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 15672.44,
-        "pl": -13774.21,
+        "mv_eur": 15853.16,
+        "pl": -13593.49,
         "weight": 0.03,
         "cost": null,
         "price": 29.329333
@@ -8403,9 +8705,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 74496.3,
-        "pl": 23659.68,
-        "weight": 0.13,
+        "mv_eur": 74639.7,
+        "pl": 23803.08,
+        "weight": 0.14,
         "cost": null,
         "price": 70.901841
       },
@@ -8427,8 +8729,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 48079.2,
-        "pl": -1542.55,
+        "mv_eur": 47496.15,
+        "pl": -2125.6,
         "weight": 0.09,
         "cost": null,
         "price": 55.319677
@@ -8451,9 +8753,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 142400.2,
-        "pl": -72166.18,
-        "weight": 0.26,
+        "mv_eur": 139778.1,
+        "pl": -74788.28,
+        "weight": 0.25,
         "cost": null,
         "price": 53.189484
       },
@@ -8463,9 +8765,9 @@
         "country": "Germany",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 128316.88,
-        "pl": -59259.7,
-        "weight": 0.23,
+        "mv_eur": 130498.08,
+        "pl": -57078.5,
+        "weight": 0.24,
         "cost": null,
         "price": 120.395751
       },
@@ -8475,8 +8777,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 27584.4,
-        "pl": 5356.35,
+        "mv_eur": 28956.0,
+        "pl": 6727.95,
         "weight": 0.05,
         "cost": null,
         "price": 58.341339
@@ -8487,9 +8789,9 @@
         "country": "Germany",
         "sector": "Retail trade (excl. automobiles)",
         "currency": "EUR",
-        "mv_eur": 96173.42,
-        "pl": -19935.87,
-        "weight": 0.17,
+        "mv_eur": 98358.26,
+        "pl": -17751.03,
+        "weight": 0.18,
         "cost": null,
         "price": 28.697304
       },
@@ -8499,8 +8801,8 @@
         "country": "Denmark",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 92670.11,
-        "pl": -6090.25,
+        "mv_eur": 92938.75,
+        "pl": -5824.91,
         "weight": 0.17,
         "cost": null,
         "price": 892.646742
@@ -8511,9 +8813,9 @@
         "country": "Denmark",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 91869.4,
-        "pl": 19383.41,
-        "weight": 0.17,
+        "mv_eur": 90779.44,
+        "pl": 18291.03,
+        "weight": 0.16,
         "cost": null,
         "price": 12600.509458
       },
@@ -8523,8 +8825,8 @@
         "country": "Denmark",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 31049.24,
-        "pl": 6001.0,
+        "mv_eur": 31631.85,
+        "pl": 6582.77,
         "weight": 0.06,
         "cost": null,
         "price": 226.125447
@@ -8535,8 +8837,8 @@
         "country": "Spain",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 24700.06,
-        "pl": -3001.55,
+        "mv_eur": 24643.3,
+        "pl": -3058.31,
         "weight": 0.04,
         "cost": null,
         "price": 58.565772
@@ -8547,9 +8849,9 @@
         "country": "Spain",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 572078.68,
-        "pl": 441678.75,
-        "weight": 1.03,
+        "mv_eur": 584962.01,
+        "pl": 454562.08,
+        "weight": 1.06,
         "cost": null,
         "price": 2.65186
       },
@@ -8559,8 +8861,8 @@
         "country": "Spain",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 97321.74,
-        "pl": -3803.58,
+        "mv_eur": 97035.73,
+        "pl": -4089.59,
         "weight": 0.18,
         "cost": null,
         "price": 3.8892860000000002
@@ -8571,8 +8873,8 @@
         "country": "Finland",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 384868.3,
-        "pl": 258555.12,
+        "mv_eur": 385990.36,
+        "pl": 259677.18,
         "weight": 0.7,
         "cost": null,
         "price": 3.940022
@@ -8583,8 +8885,8 @@
         "country": "Finland",
         "sector": "Paper and paperboard",
         "currency": "EUR",
-        "mv_eur": 62401.63,
-        "pl": -18137.9,
+        "mv_eur": 61900.11,
+        "pl": -18639.42,
         "weight": 0.11,
         "cost": null,
         "price": 12.847269
@@ -8595,8 +8897,8 @@
         "country": "Finland",
         "sector": "Paper and paperboard",
         "currency": "EUR",
-        "mv_eur": 24601.2,
-        "pl": -6170.45,
+        "mv_eur": 24641.04,
+        "pl": -6130.61,
         "weight": 0.04,
         "cost": null,
         "price": 30.895231
@@ -8607,8 +8909,8 @@
         "country": "Finland",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 18311.3,
-        "pl": -6972.74,
+        "mv_eur": 18278.0,
+        "pl": -7006.04,
         "weight": 0.03,
         "cost": null,
         "price": 68.335243
@@ -8619,8 +8921,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 52485.0,
-        "pl": 27338.99,
+        "mv_eur": 51825.0,
+        "pl": 26678.99,
         "weight": 0.09,
         "cost": null,
         "price": 838.200333
@@ -8631,8 +8933,8 @@
         "country": "France",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 55235.4,
-        "pl": 22034.86,
+        "mv_eur": 55077.0,
+        "pl": 21876.46,
         "weight": 0.1,
         "cost": null,
         "price": 100.607697
@@ -8643,9 +8945,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 571324.05,
-        "pl": 148099.47,
-        "weight": 1.03,
+        "mv_eur": 564754.41,
+        "pl": 141529.83,
+        "weight": 1.02,
         "cost": null,
         "price": 54.11387
       },
@@ -8655,9 +8957,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 174925.95,
-        "pl": 1266.95,
-        "weight": 0.32,
+        "mv_eur": 173113.95,
+        "pl": -545.05,
+        "weight": 0.31,
         "cost": null,
         "price": 383.353201
       },
@@ -8667,8 +8969,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 109933.98,
-        "pl": -21529.64,
+        "mv_eur": 108800.64,
+        "pl": -22662.98,
         "weight": 0.2,
         "cost": null,
         "price": 90.477371
@@ -8679,8 +8981,8 @@
         "country": "France",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 546907.9,
-        "pl": 241129.59,
+        "mv_eur": 549232.42,
+        "pl": 243454.11,
         "weight": 0.99,
         "cost": null,
         "price": 23.678048
@@ -8691,8 +8993,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 34755.0,
-        "pl": 7057.86,
+        "mv_eur": 34545.0,
+        "pl": 6847.86,
         "weight": 0.06,
         "cost": null,
         "price": 52.756457
@@ -8703,8 +9005,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 28096.2,
-        "pl": -638.01,
+        "mv_eur": 27594.0,
+        "pl": -1140.21,
         "weight": 0.05,
         "cost": null,
         "price": 532.115
@@ -8715,8 +9017,8 @@
         "country": "France",
         "sector": "Accomodation & Rest. bus.",
         "currency": "EUR",
-        "mv_eur": 15402.5,
-        "pl": -2757.18,
+        "mv_eur": 15524.5,
+        "pl": -2635.18,
         "weight": 0.03,
         "cost": null,
         "price": 59.539934
@@ -8727,9 +9029,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 69114.3,
-        "pl": 42103.51,
-        "weight": 0.12,
+        "mv_eur": 69993.0,
+        "pl": 42982.21,
+        "weight": 0.13,
         "cost": null,
         "price": 89.144521
       },
@@ -8739,8 +9041,8 @@
         "country": "France",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 29184.45,
-        "pl": 3993.45,
+        "mv_eur": 27785.25,
+        "pl": 2594.25,
         "weight": 0.05,
         "cost": null,
         "price": 158.433962
@@ -8751,9 +9053,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 111887.8,
-        "pl": 50107.22,
-        "weight": 0.2,
+        "mv_eur": 114231.0,
+        "pl": 52450.42,
+        "weight": 0.21,
         "cost": null,
         "price": 152.922228
       },
@@ -8763,8 +9065,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 133186.56,
-        "pl": 25091.45,
+        "mv_eur": 133297.92,
+        "pl": 25202.81,
         "weight": 0.24,
         "cost": null,
         "price": 29.12045
@@ -8775,8 +9077,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 56127.5,
-        "pl": 18076.69,
+        "mv_eur": 56399.2,
+        "pl": 18348.39,
         "weight": 0.1,
         "cost": null,
         "price": 53.217916
@@ -8787,8 +9089,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 32041.6,
-        "pl": 10419.58,
+        "mv_eur": 32314.4,
+        "pl": 10692.38,
         "weight": 0.06,
         "cost": null,
         "price": 87.185565
@@ -8799,8 +9101,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 143246.6,
-        "pl": -6536.2,
+        "mv_eur": 142220.3,
+        "pl": -7562.5,
         "weight": 0.26,
         "cost": null,
         "price": 96.323344
@@ -8811,8 +9113,8 @@
         "country": "France",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 138615.28,
-        "pl": 98493.55,
+        "mv_eur": 139800.64,
+        "pl": 99678.91,
         "weight": 0.25,
         "cost": null,
         "price": 22.339493
@@ -8823,8 +9125,8 @@
         "country": "France",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 225309.84,
-        "pl": 89922.38,
+        "mv_eur": 228104.8,
+        "pl": 92717.34,
         "weight": 0.41,
         "cost": null,
         "price": 60.065421
@@ -8835,9 +9137,9 @@
         "country": "France",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 216965.4,
-        "pl": 40153.47,
-        "weight": 0.39,
+        "mv_eur": 219034.2,
+        "pl": 42222.27,
+        "weight": 0.4,
         "cost": null,
         "price": 68.372749
       },
@@ -8847,8 +9149,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 125111.9,
-        "pl": 60838.66,
+        "mv_eur": 125390.96,
+        "pl": 61117.72,
         "weight": 0.23,
         "cost": null,
         "price": 13.81923
@@ -8859,8 +9161,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 31715.6,
-        "pl": 1933.01,
+        "mv_eur": 31320.8,
+        "pl": 1538.21,
         "weight": 0.06,
         "cost": null,
         "price": 31.683606
@@ -8871,8 +9173,8 @@
         "country": "United Kingdom",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 70998.68,
-        "pl": -58979.6,
+        "mv_eur": 70928.94,
+        "pl": -58921.66,
         "weight": 0.13,
         "cost": null,
         "price": 27.579706
@@ -8883,8 +9185,8 @@
         "country": "United Kingdom",
         "sector": "Tobacco processing",
         "currency": "EUR",
-        "mv_eur": 44777.63,
-        "pl": 19687.74,
+        "mv_eur": 44255.89,
+        "pl": 19190.64,
         "weight": 0.08,
         "cost": null,
         "price": 15.739446000000001
@@ -8895,9 +9197,9 @@
         "country": "United Kingdom",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 239115.9,
-        "pl": 138046.83,
-        "weight": 0.43,
+        "mv_eur": 243524.42,
+        "pl": 142554.64,
+        "weight": 0.44,
         "cost": null,
         "price": 5.958071
       },
@@ -8907,9 +9209,9 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 74887.99,
-        "pl": -23727.07,
-        "weight": 0.14,
+        "mv_eur": 74478.67,
+        "pl": -24039.52,
+        "weight": 0.13,
         "cost": null,
         "price": 24.94084
       },
@@ -8919,8 +9221,8 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 149253.92,
-        "pl": 45512.67,
+        "mv_eur": 146609.6,
+        "pl": 42970.26,
         "weight": 0.27,
         "cost": null,
         "price": 3.568466
@@ -8931,8 +9233,8 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 56089.54,
-        "pl": 27730.13,
+        "mv_eur": 56827.46,
+        "pl": 28495.91,
         "weight": 0.1,
         "cost": null,
         "price": 67.16519
@@ -8943,9 +9245,9 @@
         "country": "United Kingdom",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 294124.67,
-        "pl": 160935.97,
-        "weight": 0.53,
+        "mv_eur": 303822.36,
+        "pl": 170764.49,
+        "weight": 0.55,
         "cost": null,
         "price": 2.205059
       },
@@ -8955,8 +9257,8 @@
         "country": "United Kingdom",
         "sector": "Accomodation & Rest. bus.",
         "currency": "EUR",
-        "mv_eur": 43258.12,
-        "pl": 15407.64,
+        "mv_eur": 42456.98,
+        "pl": 14563.24,
         "weight": 0.08,
         "cost": null,
         "price": 21.522933
@@ -8967,8 +9269,8 @@
         "country": "United Kingdom",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 56940.63,
-        "pl": 22894.79,
+        "mv_eur": 55810.79,
+        "pl": 21712.08,
         "weight": 0.1,
         "cost": null,
         "price": 59.337395
@@ -8979,9 +9281,9 @@
         "country": "United Kingdom",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 259271.62,
-        "pl": 60310.04,
-        "weight": 0.47,
+        "mv_eur": 256262.67,
+        "pl": 57301.09,
+        "weight": 0.46,
         "cost": null,
         "price": 0.991847
       },
@@ -8991,8 +9293,8 @@
         "country": "United Kingdom",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 108863.44,
-        "pl": 33315.48,
+        "mv_eur": 110011.38,
+        "pl": 34537.63,
         "weight": 0.2,
         "cost": null,
         "price": 13.532415
@@ -9003,9 +9305,9 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 706627.5,
-        "pl": 176913.2,
-        "weight": 1.28,
+        "mv_eur": 698864.55,
+        "pl": 169150.25,
+        "weight": 1.27,
         "cost": null,
         "price": 26.612123
       },
@@ -9015,8 +9317,8 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 132310.72,
-        "pl": -30450.79,
+        "mv_eur": 131069.74,
+        "pl": -31531.89,
         "weight": 0.24,
         "cost": null,
         "price": 57.078779
@@ -9027,8 +9329,8 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 82777.5,
-        "pl": 2335.21,
+        "mv_eur": 82062.5,
+        "pl": 1620.21,
         "weight": 0.15,
         "cost": null,
         "price": 49.502948
@@ -9039,8 +9341,8 @@
         "country": "Ireland",
         "sector": "Glass,non-metallic mineral products",
         "currency": "EUR",
-        "mv_eur": 79131.39,
-        "pl": 50880.29,
+        "mv_eur": 76845.2,
+        "pl": 48550.22,
         "weight": 0.14,
         "cost": null,
         "price": 40.285587
@@ -9051,8 +9353,8 @@
         "country": "Ireland",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 98967.6,
-        "pl": 70795.98,
+        "mv_eur": 99012.0,
+        "pl": 70840.38,
         "weight": 0.18,
         "cost": null,
         "price": 126.899189
@@ -9063,9 +9365,9 @@
         "country": "Ireland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 67163.4,
-        "pl": -53324.19,
-        "weight": 0.12,
+        "mv_eur": 63402.83,
+        "pl": -57271.89,
+        "weight": 0.11,
         "cost": null,
         "price": 296.934122
       },
@@ -9075,8 +9377,8 @@
         "country": "Ireland",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 282048.54,
-        "pl": 141479.83,
+        "mv_eur": 282548.85,
+        "pl": 141761.82,
         "weight": 0.51,
         "cost": null,
         "price": 113.073549
@@ -9087,9 +9389,9 @@
         "country": "Ireland",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 85704.28,
-        "pl": 56385.3,
-        "weight": 0.15,
+        "mv_eur": 86243.72,
+        "pl": 56879.2,
+        "weight": 0.16,
         "cost": null,
         "price": 139.475436
       },
@@ -9099,9 +9401,9 @@
         "country": "Ireland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 313644.64,
-        "pl": 247625.39,
-        "weight": 0.57,
+        "mv_eur": 324710.05,
+        "pl": 258588.26,
+        "weight": 0.59,
         "cost": null,
         "price": 217.087392
       },
@@ -9111,8 +9413,8 @@
         "country": "Ireland",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 41404.48,
-        "pl": 15116.47,
+        "mv_eur": 40873.25,
+        "pl": 14544.41,
         "weight": 0.07,
         "cost": null,
         "price": 210.440029
@@ -9123,8 +9425,8 @@
         "country": "Ireland",
         "sector": "Health and social security services",
         "currency": "EUR",
-        "mv_eur": 21157.56,
-        "pl": -9439.88,
+        "mv_eur": 20361.78,
+        "pl": -10283.18,
         "weight": 0.04,
         "cost": null,
         "price": 117.602576
@@ -9135,8 +9437,8 @@
         "country": "Ireland",
         "sector": "Trad.ag. & wh. (wo. m. t.)",
         "currency": "EUR",
-        "mv_eur": 388454.03,
-        "pl": 204809.54,
+        "mv_eur": 384903.33,
+        "pl": 200973.62,
         "weight": 0.7,
         "cost": null,
         "price": 68.630179
@@ -9147,8 +9449,8 @@
         "country": "Italy",
         "sector": "Insurance",
         "currency": "EUR",
-        "mv_eur": 427353.0,
-        "pl": 256352.46,
+        "mv_eur": 425950.2,
+        "pl": 254949.66,
         "weight": 0.77,
         "cost": null,
         "price": 17.065922
@@ -9159,8 +9461,8 @@
         "country": "Italy",
         "sector": "Energy supply",
         "currency": "EUR",
-        "mv_eur": 271036.74,
-        "pl": 85718.29,
+        "mv_eur": 269618.12,
+        "pl": 84299.67,
         "weight": 0.49,
         "cost": null,
         "price": 6.792949
@@ -9171,8 +9473,8 @@
         "country": "Italy",
         "sector": "Coking ,mineral oil processing",
         "currency": "EUR",
-        "mv_eur": 145045.9,
-        "pl": 64292.71,
+        "mv_eur": 143859.7,
+        "pl": 63106.51,
         "weight": 0.26,
         "cost": null,
         "price": 12.253898
@@ -9183,9 +9485,9 @@
         "country": "Italy",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 272501.44,
-        "pl": 229188.37,
-        "weight": 0.49,
+        "mv_eur": 279131.56,
+        "pl": 235818.49,
+        "weight": 0.51,
         "cost": null,
         "price": 12.346941
       },
@@ -9195,8 +9497,8 @@
         "country": "Japan",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 260722.78,
-        "pl": 165393.74,
+        "mv_eur": 258846.94,
+        "pl": 163322.2,
         "weight": 0.47,
         "cost": null,
         "price": 11093.3272
@@ -9207,8 +9509,8 @@
         "country": "Japan",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 12612.95,
-        "pl": -4973.22,
+        "mv_eur": 12258.61,
+        "pl": -5363.66,
         "weight": 0.02,
         "cost": null,
         "price": 2317.318035
@@ -9219,8 +9521,8 @@
         "country": "Japan",
         "sector": "TV, radio & tel.",
         "currency": "EUR",
-        "mv_eur": 43270.43,
-        "pl": 25694.19,
+        "mv_eur": 44023.85,
+        "pl": 26411.53,
         "weight": 0.08,
         "cost": null,
         "price": 1749.075934
@@ -9231,8 +9533,8 @@
         "country": "Japan",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 40571.44,
-        "pl": 24185.76,
+        "mv_eur": 40331.81,
+        "pl": 23912.49,
         "weight": 0.07,
         "cost": null,
         "price": 1525.426
@@ -9243,8 +9545,8 @@
         "country": "Japan",
         "sector": "TV, radio & tel.",
         "currency": "EUR",
-        "mv_eur": 102371.18,
-        "pl": 41537.0,
+        "mv_eur": 102925.89,
+        "pl": 41966.82,
         "weight": 0.19,
         "cost": null,
         "price": 1946.172133
@@ -9255,8 +9557,8 @@
         "country": "Japan",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 4394.93,
-        "pl": 1896.12,
+        "mv_eur": 4403.95,
+        "pl": 1900.01,
         "weight": 0.01,
         "cost": null,
         "price": 79.940611
@@ -9267,8 +9569,8 @@
         "country": "Japan",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 167832.77,
-        "pl": 106258.57,
+        "mv_eur": 162920.29,
+        "pl": 101219.68,
         "weight": 0.3,
         "cost": null,
         "price": 2605.569773
@@ -9279,8 +9581,8 @@
         "country": "Japan",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 111486.59,
-        "pl": 18037.49,
+        "mv_eur": 109890.63,
+        "pl": 16249.69,
         "weight": 0.2,
         "cost": null,
         "price": 4207.810749
@@ -9291,8 +9593,8 @@
         "country": "Japan",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 19511.56,
-        "pl": 2011.57,
+        "mv_eur": 19626.21,
+        "pl": 2090.29,
         "weight": 0.04,
         "cost": null,
         "price": 21157.952788
@@ -9303,8 +9605,8 @@
         "country": "Japan",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 100937.16,
-        "pl": 39026.51,
+        "mv_eur": 99812.36,
+        "pl": 37774.62,
         "weight": 0.18,
         "cost": null,
         "price": 1746.537798
@@ -9315,8 +9617,8 @@
         "country": "Japan",
         "sector": "TV, radio & tel.",
         "currency": "EUR",
-        "mv_eur": 100406.09,
-        "pl": -22237.71,
+        "mv_eur": 101406.74,
+        "pl": -21488.84,
         "weight": 0.18,
         "cost": null,
         "price": 8816.626071
@@ -9327,8 +9629,8 @@
         "country": "Japan",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 119828.61,
-        "pl": 32902.66,
+        "mv_eur": 118911.04,
+        "pl": 31806.64,
         "weight": 0.22,
         "cost": null,
         "price": 3443.564057
@@ -9339,8 +9641,8 @@
         "country": "Japan",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 22267.74,
-        "pl": 4691.41,
+        "mv_eur": 22300.25,
+        "pl": 4687.84,
         "weight": 0.04,
         "cost": null,
         "price": 2667.105949
@@ -9351,8 +9653,8 @@
         "country": "Japan",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 87974.6,
-        "pl": 39011.28,
+        "mv_eur": 87617.02,
+        "pl": 38553.18,
         "weight": 0.16,
         "cost": null,
         "price": 1823.2972
@@ -9363,8 +9665,8 @@
         "country": "Japan",
         "sector": "Prod. of latex & PVC products",
         "currency": "EUR",
-        "mv_eur": 27795.59,
-        "pl": 10106.52,
+        "mv_eur": 28060.87,
+        "pl": 10335.48,
         "weight": 0.05,
         "cost": null,
         "price": 2213.393817
@@ -9375,8 +9677,8 @@
         "country": "Japan",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 22954.12,
-        "pl": 5254.09,
+        "mv_eur": 22625.62,
+        "pl": 4889.25,
         "weight": 0.04,
         "cost": null,
         "price": 1109.619865
@@ -9387,8 +9689,8 @@
         "country": "Japan",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 219158.27,
-        "pl": 201791.54,
+        "mv_eur": 222490.18,
+        "pl": 205087.79,
         "weight": 0.4,
         "cost": null,
         "price": 301.915406
@@ -9399,8 +9701,8 @@
         "country": "Cayman Islands",
         "sector": "TV, radio & tel.",
         "currency": "EUR",
-        "mv_eur": 23531.86,
-        "pl": -1704.89,
+        "mv_eur": 23343.73,
+        "pl": -1927.62,
         "weight": 0.04,
         "cost": null,
         "price": 27.519075
@@ -9411,8 +9713,8 @@
         "country": "Netherlands",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 77787.84,
-        "pl": -18111.78,
+        "mv_eur": 77567.04,
+        "pl": -18332.58,
         "weight": 0.14,
         "cost": null,
         "price": 86.865598
@@ -9423,9 +9725,9 @@
         "country": "Netherlands",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 211079.48,
-        "pl": 81183.18,
-        "weight": 0.38,
+        "mv_eur": 213015.78,
+        "pl": 83119.48,
+        "weight": 0.39,
         "cost": null,
         "price": 114.044162
       },
@@ -9435,8 +9737,8 @@
         "country": "Netherlands",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 32795.84,
-        "pl": -36509.74,
+        "mv_eur": 33079.2,
+        "pl": -36226.38,
         "weight": 0.06,
         "cost": null,
         "price": 56.254529
@@ -9447,8 +9749,8 @@
         "country": "Netherlands",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 35227.35,
-        "pl": 9957.71,
+        "mv_eur": 34735.75,
+        "pl": 9426.86,
         "weight": 0.06,
         "cost": null,
         "price": 217.272126
@@ -9459,8 +9761,8 @@
         "country": "Netherlands",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 74237.77,
-        "pl": 1923.3,
+        "mv_eur": 72725.93,
+        "pl": 299.15,
         "weight": 0.13,
         "cost": null,
         "price": 10.237714
@@ -9471,8 +9773,8 @@
         "country": "Netherlands",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 45269.6,
-        "pl": 20092.47,
+        "mv_eur": 44119.4,
+        "pl": 18942.27,
         "weight": 0.08,
         "cost": null,
         "price": 177.303732
@@ -9483,9 +9785,9 @@
         "country": "Netherlands",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 134437.95,
-        "pl": 104918.43,
-        "weight": 0.24,
+        "mv_eur": 137642.43,
+        "pl": 108122.91,
+        "weight": 0.25,
         "cost": null,
         "price": 5.89565
       },
@@ -9495,8 +9797,8 @@
         "country": "Austria",
         "sector": "Glass,non-metallic mineral products",
         "currency": "EUR",
-        "mv_eur": 67065.07,
-        "pl": 18905.13,
+        "mv_eur": 66548.02,
+        "pl": 18435.39,
         "weight": 0.12,
         "cost": null,
         "price": 21.327798
@@ -9507,8 +9809,8 @@
         "country": "Netherlands",
         "sector": "Culture, sports and ent.",
         "currency": "EUR",
-        "mv_eur": 18244.8,
-        "pl": -1850.46,
+        "mv_eur": 18779.04,
+        "pl": -1316.22,
         "weight": 0.03,
         "cost": null,
         "price": 19.935774
@@ -9519,8 +9821,8 @@
         "country": "Netherlands",
         "sector": "Culture, sports and ent.",
         "currency": "EUR",
-        "mv_eur": 53333.92,
-        "pl": -2695.05,
+        "mv_eur": 53684.34,
+        "pl": -2344.63,
         "weight": 0.1,
         "cost": null,
         "price": 3.197818
@@ -9531,8 +9833,8 @@
         "country": "Netherlands",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 5521.48,
-        "pl": 893.05,
+        "mv_eur": 5454.86,
+        "pl": 826.43,
         "weight": 0.01,
         "cost": null,
         "price": 12.645984
@@ -9543,8 +9845,8 @@
         "country": "Norway",
         "sector": "Extraction of petroleum & nat. gas",
         "currency": "EUR",
-        "mv_eur": 123687.3,
-        "pl": 5895.34,
+        "mv_eur": 123080.64,
+        "pl": 5539.72,
         "weight": 0.22,
         "cost": null,
         "price": 308.366631
@@ -9567,8 +9869,8 @@
         "country": "Sweden",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 100670.8,
-        "pl": 21491.44,
+        "mv_eur": 100098.25,
+        "pl": 21061.3,
         "weight": 0.18,
         "cost": null,
         "price": 131.230476
@@ -9579,8 +9881,8 @@
         "country": "Sweden",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 114812.51,
-        "pl": 19497.31,
+        "mv_eur": 114136.88,
+        "pl": 18993.12,
         "weight": 0.21,
         "cost": null,
         "price": 202.813297
@@ -9591,8 +9893,8 @@
         "country": "Sweden",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 144000.59,
-        "pl": 64855.22,
+        "mv_eur": 143610.61,
+        "pl": 64607.59,
         "weight": 0.26,
         "cost": null,
         "price": 60.320618
@@ -9603,8 +9905,8 @@
         "country": "Sweden",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 38348.91,
-        "pl": 15246.89,
+        "mv_eur": 38231.99,
+        "pl": 15171.53,
         "weight": 0.07,
         "cost": null,
         "price": 192.411837
@@ -9615,8 +9917,8 @@
         "country": "Sweden",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 148451.2,
-        "pl": 71554.06,
+        "mv_eur": 150687.43,
+        "pl": 73928.61,
         "weight": 0.27,
         "cost": null,
         "price": 202.381058
@@ -9627,8 +9929,8 @@
         "country": "Sweden",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 155553.62,
-        "pl": 8305.2,
+        "mv_eur": 153961.03,
+        "pl": 6977.46,
         "weight": 0.28,
         "cost": null,
         "price": 324.686788
@@ -9639,8 +9941,8 @@
         "country": "Sweden",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 70818.49,
-        "pl": -17710.57,
+        "mv_eur": 73370.67,
+        "pl": -14999.16,
         "weight": 0.13,
         "cost": null,
         "price": 100.256741
@@ -9651,8 +9953,8 @@
         "country": "Sweden",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 29241.9,
-        "pl": 9517.74,
+        "mv_eur": 29378.67,
+        "pl": 9689.99,
         "weight": 0.05,
         "cost": null,
         "price": 114.364376
@@ -9663,8 +9965,8 @@
         "country": "Ireland",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 14279.88,
-        "pl": -959.38,
+        "mv_eur": 13919.43,
+        "pl": -1292.42,
         "weight": 0.03,
         "cost": null,
         "price": 172.670292
@@ -9675,9 +9977,9 @@
         "country": "United States",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 292425.55,
-        "pl": 20057.65,
-        "weight": 0.53,
+        "mv_eur": 283774.66,
+        "pl": 10983.73,
+        "weight": 0.51,
         "cost": null,
         "price": 21.571441
       },
@@ -9687,9 +9989,9 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 152471.13,
-        "pl": -56202.51,
-        "weight": 0.28,
+        "mv_eur": 149135.42,
+        "pl": -59862.32,
+        "weight": 0.27,
         "cost": null,
         "price": 124.023515
       },
@@ -9699,8 +10001,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 334256.02,
-        "pl": 78461.73,
+        "mv_eur": 332909.2,
+        "pl": 76717.63,
         "weight": 0.6,
         "cost": null,
         "price": 170.248407
@@ -9711,8 +10013,8 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 46974.08,
-        "pl": -40336.94,
+        "mv_eur": 44541.73,
+        "pl": -42904.9,
         "weight": 0.08,
         "cost": null,
         "price": 385.347031
@@ -9723,9 +10025,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 331710.63,
-        "pl": 280915.88,
-        "weight": 0.6,
+        "mv_eur": 335624.76,
+        "pl": 284751.12,
+        "weight": 0.61,
         "cost": null,
         "price": 77.681162
       },
@@ -9735,8 +10037,8 @@
         "country": "Cayman Islands",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 79923.26,
-        "pl": -12766.19,
+        "mv_eur": 77501.05,
+        "pl": -15332.36,
         "weight": 0.14,
         "cost": null,
         "price": 128.695306
@@ -9747,9 +10049,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 626625.89,
-        "pl": 448620.31,
-        "weight": 1.13,
+        "mv_eur": 612378.45,
+        "pl": 434096.4,
+        "weight": 1.11,
         "cost": null,
         "price": 105.418357
       },
@@ -9759,8 +10061,8 @@
         "country": "United States",
         "sector": "Tobacco processing",
         "currency": "EUR",
-        "mv_eur": 82419.96,
-        "pl": 15082.54,
+        "mv_eur": 81089.65,
+        "pl": 13647.65,
         "weight": 0.15,
         "cost": null,
         "price": 57.345496
@@ -9771,9 +10073,9 @@
         "country": "United States",
         "sector": "Retail trade (excl. automobiles)",
         "currency": "EUR",
-        "mv_eur": 1484159.38,
-        "pl": 352377.63,
-        "weight": 2.68,
+        "mv_eur": 1435102.89,
+        "pl": 301563.33,
+        "weight": 2.6,
         "cost": null,
         "price": 187.59327
       },
@@ -9783,9 +10085,9 @@
         "country": "United States",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 168205.06,
-        "pl": 84639.61,
-        "weight": 0.3,
+        "mv_eur": 168367.42,
+        "pl": 84672.19,
+        "weight": 0.31,
         "cost": null,
         "price": 169.282011
       },
@@ -9795,8 +10097,8 @@
         "country": "United States",
         "sector": "Insurance",
         "currency": "EUR",
-        "mv_eur": 48919.71,
-        "pl": 9172.72,
+        "mv_eur": 48709.05,
+        "pl": 8900.33,
         "weight": 0.09,
         "cost": null,
         "price": 61.107701
@@ -9807,8 +10109,8 @@
         "country": "United States",
         "sector": "Trad.ag. & wh. (wo. m. t.)",
         "currency": "EUR",
-        "mv_eur": 221627.78,
-        "pl": 41702.4,
+        "mv_eur": 218525.61,
+        "pl": 38320.78,
         "weight": 0.4,
         "cost": null,
         "price": 228.499333
@@ -9819,8 +10121,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 51243.28,
-        "pl": 21694.4,
+        "mv_eur": 50411.03,
+        "pl": 20816.26,
         "weight": 0.09,
         "cost": null,
         "price": 200.57813
@@ -9831,9 +10133,9 @@
         "country": "United States",
         "sector": "Retail trade (excl. automobiles)",
         "currency": "EUR",
-        "mv_eur": 1631866.64,
-        "pl": 553870.91,
-        "weight": 2.95,
+        "mv_eur": 1616431.68,
+        "pl": 536761.68,
+        "weight": 2.93,
         "cost": null,
         "price": 197.675125
       },
@@ -9843,9 +10145,9 @@
         "country": "United States",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 619753.76,
-        "pl": 424641.53,
-        "weight": 1.12,
+        "mv_eur": 647686.89,
+        "pl": 452271.63,
+        "weight": 1.17,
         "cost": null,
         "price": 178.891405
       },
@@ -9855,8 +10157,8 @@
         "country": "United States",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 189681.19,
-        "pl": 60788.16,
+        "mv_eur": 186274.65,
+        "pl": 57181.43,
         "weight": 0.34,
         "cost": null,
         "price": 53.016508
@@ -9867,8 +10169,8 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 77724.09,
-        "pl": -6629.37,
+        "mv_eur": 74632.52,
+        "pl": -9851.95,
         "weight": 0.14,
         "cost": null,
         "price": 218.556414
@@ -9879,8 +10181,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 542814.0,
-        "pl": 137002.51,
+        "mv_eur": 539625.9,
+        "pl": 133184.13,
         "weight": 0.98,
         "cost": null,
         "price": 370.028037
@@ -9891,8 +10193,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 58645.08,
-        "pl": -19569.55,
+        "mv_eur": 59655.0,
+        "pl": -18681.11,
         "weight": 0.11,
         "cost": null,
         "price": 260.884007
@@ -9903,8 +10205,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 79756.95,
-        "pl": 28708.0,
+        "mv_eur": 78094.17,
+        "pl": 26965.94,
         "weight": 0.14,
         "cost": null,
         "price": 81.844011
@@ -9915,8 +10217,8 @@
         "country": "United States",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 148667.43,
-        "pl": 40199.79,
+        "mv_eur": 149627.09,
+        "pl": 40990.99,
         "weight": 0.27,
         "cost": null,
         "price": 767.706159
@@ -9927,9 +10229,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 64338.57,
-        "pl": 33732.38,
-        "weight": 0.12,
+        "mv_eur": 62938.65,
+        "pl": 32284.93,
+        "weight": 0.11,
         "cost": null,
         "price": 83.590894
       },
@@ -9939,8 +10241,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 176323.24,
-        "pl": 33068.63,
+        "mv_eur": 174575.95,
+        "pl": 31098.85,
         "weight": 0.32,
         "cost": null,
         "price": 45.432455
@@ -9951,9 +10253,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 373221.19,
-        "pl": 41510.05,
-        "weight": 0.67,
+        "mv_eur": 389865.83,
+        "pl": 57639.5,
+        "weight": 0.71,
         "cost": null,
         "price": 334.811922
       },
@@ -9963,9 +10265,9 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 104355.12,
-        "pl": -15998.58,
-        "weight": 0.19,
+        "mv_eur": 102085.81,
+        "pl": -18454.81,
+        "weight": 0.18,
         "cost": null,
         "price": 336.627838
       },
@@ -9975,9 +10277,9 @@
         "country": "United States",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 161275.97,
-        "pl": 128909.45,
-        "weight": 0.29,
+        "mv_eur": 163313.48,
+        "pl": 130896.69,
+        "weight": 0.3,
         "cost": null,
         "price": 189.744644
       },
@@ -9987,9 +10289,9 @@
         "country": "United States",
         "sector": "Extraction of petroleum & nat. gas",
         "currency": "EUR",
-        "mv_eur": 113427.02,
-        "pl": 18732.47,
-        "weight": 0.21,
+        "mv_eur": 112007.4,
+        "pl": 17165.77,
+        "weight": 0.2,
         "cost": null,
         "price": 150.364846
       },
@@ -9999,9 +10301,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 449848.97,
-        "pl": 273557.53,
-        "weight": 0.81,
+        "mv_eur": 442107.17,
+        "pl": 265541.93,
+        "weight": 0.8,
         "cost": null,
         "price": 46.858321
       },
@@ -10011,9 +10313,9 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 649198.62,
-        "pl": 297230.04,
-        "weight": 1.17,
+        "mv_eur": 653799.21,
+        "pl": 301283.98,
+        "weight": 1.18,
         "cost": null,
         "price": 77.52325
       },
@@ -10023,8 +10325,8 @@
         "country": "United States",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 182657.32,
-        "pl": 47862.69,
+        "mv_eur": 182143.43,
+        "pl": 47139.45,
         "weight": 0.33,
         "cost": null,
         "price": 59.243795
@@ -10035,9 +10337,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 63991.17,
-        "pl": -30475.51,
-        "weight": 0.12,
+        "mv_eur": 61290.91,
+        "pl": -33322.49,
+        "weight": 0.11,
         "cost": null,
         "price": 75.362333
       },
@@ -10047,8 +10349,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 73105.97,
-        "pl": -1727.57,
+        "mv_eur": 73154.91,
+        "pl": -1794.86,
         "weight": 0.13,
         "cost": null,
         "price": 92.802385
@@ -10059,8 +10361,8 @@
         "country": "United States",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 11944.66,
-        "pl": -12774.5,
+        "mv_eur": 11472.75,
+        "pl": -13284.8,
         "weight": 0.02,
         "cost": null,
         "price": 48.963762
@@ -10071,8 +10373,8 @@
         "country": "United States",
         "sector": "Coking ,mineral oil processing",
         "currency": "EUR",
-        "mv_eur": 46425.64,
-        "pl": -294.29,
+        "mv_eur": 46443.45,
+        "pl": -349.05,
         "weight": 0.08,
         "cost": null,
         "price": 112.045791
@@ -10083,8 +10385,8 @@
         "country": "United States",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 63587.72,
-        "pl": -30566.14,
+        "mv_eur": 62425.75,
+        "pl": -31874.34,
         "weight": 0.11,
         "cost": null,
         "price": 268.523574
@@ -10095,8 +10397,8 @@
         "country": "United States",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 60003.89,
-        "pl": 42919.93,
+        "mv_eur": 60423.6,
+        "pl": 43313.11,
         "weight": 0.11,
         "cost": null,
         "price": 166.640382
@@ -10107,9 +10409,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 396856.52,
-        "pl": 345158.89,
-        "weight": 0.72,
+        "mv_eur": 412463.7,
+        "pl": 360685.77,
+        "weight": 0.75,
         "cost": null,
         "price": 52.638623
       },
@@ -10119,8 +10421,8 @@
         "country": "United States",
         "sector": "Culture, sports and ent.",
         "currency": "EUR",
-        "mv_eur": 20679.18,
-        "pl": -11670.91,
+        "mv_eur": 20625.41,
+        "pl": -11774.92,
         "weight": 0.04,
         "cost": null,
         "price": 158.440351
@@ -10131,8 +10433,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 18789.71,
-        "pl": 6331.98,
+        "mv_eur": 18783.64,
+        "pl": 6306.56,
         "weight": 0.03,
         "cost": null,
         "price": 31.850908
@@ -10143,8 +10445,8 @@
         "country": "United States",
         "sector": "Retail trade (excl. automobiles)",
         "currency": "EUR",
-        "mv_eur": 76474.56,
-        "pl": 38669.75,
+        "mv_eur": 75591.42,
+        "pl": 37727.89,
         "weight": 0.14,
         "cost": null,
         "price": 54.041794
@@ -10155,9 +10457,9 @@
         "country": "United States",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 36335.11,
-        "pl": 8714.13,
-        "weight": 0.07,
+        "mv_eur": 35752.4,
+        "pl": 8088.53,
+        "weight": 0.06,
         "cost": null,
         "price": 208.188622
       },
@@ -10167,8 +10469,8 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 66288.68,
-        "pl": 20265.46,
+        "mv_eur": 66391.63,
+        "pl": 20296.93,
         "weight": 0.12,
         "cost": null,
         "price": 140.9537
@@ -10179,8 +10481,8 @@
         "country": "United States",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 69662.03,
-        "pl": 14483.39,
+        "mv_eur": 69219.38,
+        "pl": 13955.04,
         "weight": 0.13,
         "cost": null,
         "price": 112.365986
@@ -10191,8 +10493,8 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 85319.53,
-        "pl": -14497.92,
+        "mv_eur": 80806.51,
+        "pl": -19165.97,
         "weight": 0.15,
         "cost": null,
         "price": 702.200623
@@ -10203,8 +10505,8 @@
         "country": "United States",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 39337.19,
-        "pl": 15538.19,
+        "mv_eur": 38247.1,
+        "pl": 14411.14,
         "weight": 0.07,
         "cost": null,
         "price": 203.122681
@@ -10215,8 +10517,8 @@
         "country": "United States",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 9598.21,
-        "pl": 4318.06,
+        "mv_eur": 9499.29,
+        "pl": 4210.94,
         "weight": 0.02,
         "cost": null,
         "price": 90.131397
@@ -10227,8 +10529,8 @@
         "country": "United States",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 118768.44,
-        "pl": 11977.64,
+        "mv_eur": 115238.21,
+        "pl": 8281.55,
         "weight": 0.21,
         "cost": null,
         "price": 12.95677
@@ -10239,8 +10541,8 @@
         "country": "Russian Federation",
         "sector": "Extraction of petroleum & nat. gas",
         "currency": "EUR",
-        "mv_eur": 2787.92,
-        "pl": -23580.71,
+        "mv_eur": 2792.25,
+        "pl": -23617.33,
         "weight": 0.01,
         "cost": null,
         "price": 5.498991
@@ -10251,9 +10553,9 @@
         "country": "United States",
         "sector": "Energy supply",
         "currency": "EUR",
-        "mv_eur": 84630.63,
-        "pl": 78795.2,
-        "weight": 0.15,
+        "mv_eur": 90500.88,
+        "pl": 84656.39,
+        "weight": 0.16,
         "cost": null,
         "price": 67.734773
       },
@@ -10263,9 +10565,9 @@
         "country": "United States",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 437863.32,
-        "pl": 244088.16,
-        "weight": 0.79,
+        "mv_eur": 445151.52,
+        "pl": 251075.4,
+        "weight": 0.81,
         "cost": null,
         "price": 155.657103
       },
@@ -10275,8 +10577,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 106321.86,
-        "pl": 11845.81,
+        "mv_eur": 104997.2,
+        "pl": 10374.42,
         "weight": 0.19,
         "cost": null,
         "price": 113.054717
@@ -10287,9 +10589,9 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 206717.55,
-        "pl": 111592.63,
-        "weight": 0.37,
+        "mv_eur": 208646.45,
+        "pl": 113373.79,
+        "weight": 0.38,
         "cost": null,
         "price": 501.892046
       },
@@ -10299,8 +10601,8 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 121455.37,
-        "pl": 91119.26,
+        "mv_eur": 121191.42,
+        "pl": 90808.19,
         "weight": 0.22,
         "cost": null,
         "price": 12.083955
@@ -10311,8 +10613,8 @@
         "country": "United States",
         "sector": "Accomodation & Rest. bus.",
         "currency": "EUR",
-        "mv_eur": 71205.62,
-        "pl": 45038.26,
+        "mv_eur": 71128.87,
+        "pl": 44920.87,
         "weight": 0.13,
         "cost": null,
         "price": 128.702397
@@ -10323,8 +10625,8 @@
         "country": "United States",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 28272.3,
-        "pl": 10457.65,
+        "mv_eur": 28207.63,
+        "pl": 10365.32,
         "weight": 0.05,
         "cost": null,
         "price": 144.603843
@@ -10335,9 +10637,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 279830.93,
-        "pl": 185224.16,
-        "weight": 0.51,
+        "mv_eur": 289962.9,
+        "pl": 195209.19,
+        "weight": 0.53,
         "cost": null,
         "price": 39.572905
       },
@@ -10347,9 +10649,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 556668.24,
-        "pl": 128109.39,
-        "weight": 1.01,
+        "mv_eur": 540115.71,
+        "pl": 110891.25,
+        "weight": 0.98,
         "cost": null,
         "price": 208.486875
       },
@@ -10359,9 +10661,9 @@
         "country": "United States",
         "sector": "Real estate business",
         "currency": "EUR",
-        "mv_eur": 449770.51,
-        "pl": 70367.35,
-        "weight": 0.81,
+        "mv_eur": 440736.6,
+        "pl": 60744.18,
+        "weight": 0.8,
         "cost": null,
         "price": 108.151329
       },
@@ -10371,8 +10673,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 427710.51,
-        "pl": 138236.34,
+        "mv_eur": 426589.76,
+        "pl": 136666.0,
         "weight": 0.77,
         "cost": null,
         "price": 159.169658
@@ -10383,8 +10685,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 73838.48,
-        "pl": -28179.79,
+        "mv_eur": 72608.15,
+        "pl": -29568.57,
         "weight": 0.13,
         "cost": null,
         "price": 136.741003
@@ -10395,8 +10697,8 @@
         "country": "United States",
         "sector": "Paper and paperboard",
         "currency": "EUR",
-        "mv_eur": 19309.71,
-        "pl": -6449.96,
+        "mv_eur": 18826.76,
+        "pl": -6972.91,
         "weight": 0.03,
         "cost": null,
         "price": 139.07224
@@ -10407,9 +10709,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 894116.22,
-        "pl": 718382.99,
-        "weight": 1.62,
+        "mv_eur": 907240.0,
+        "pl": 731233.83,
+        "weight": 1.6400000000000001,
         "cost": null,
         "price": 72.591584
       },
@@ -10419,8 +10721,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 348136.98,
-        "pl": 280000.86,
+        "mv_eur": 345416.11,
+        "pl": 277174.16,
         "weight": 0.63,
         "cost": null,
         "price": 219.691675
@@ -10431,8 +10733,8 @@
         "country": "United States",
         "sector": "Accomodation & Rest. bus.",
         "currency": "EUR",
-        "mv_eur": 73235.67,
-        "pl": 47490.27,
+        "mv_eur": 72524.21,
+        "pl": 46738.83,
         "weight": 0.13,
         "cost": null,
         "price": 140.300319
@@ -10443,9 +10745,9 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 169737.4,
-        "pl": 44360.11,
-        "weight": 0.31,
+        "mv_eur": 167172.93,
+        "pl": 41600.91,
+        "weight": 0.3,
         "cost": null,
         "price": 370.309656
       },
@@ -10455,9 +10757,9 @@
         "country": "United States",
         "sector": "Accomodation & Rest. bus.",
         "currency": "EUR",
-        "mv_eur": 280302.3,
-        "pl": 55934.06,
-        "weight": 0.51,
+        "mv_eur": 276730.32,
+        "pl": 52013.61,
+        "weight": 0.5,
         "cost": null,
         "price": 230.473836
       },
@@ -10467,8 +10769,8 @@
         "country": "United States",
         "sector": "Trad.ag. & wh. (wo. m. t.)",
         "currency": "EUR",
-        "mv_eur": 105558.54,
-        "pl": 8896.23,
+        "mv_eur": 104964.67,
+        "pl": 8152.23,
         "weight": 0.19,
         "cost": null,
         "price": 719.235738
@@ -10479,8 +10781,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 62508.81,
-        "pl": 27199.53,
+        "mv_eur": 62752.66,
+        "pl": 27388.54,
         "weight": 0.11,
         "cost": null,
         "price": 65.055947
@@ -10491,9 +10793,9 @@
         "country": "United States",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 58533.39,
-        "pl": 256.08,
-        "weight": 0.11,
+        "mv_eur": 57502.28,
+        "pl": -865.55,
+        "weight": 0.1,
         "cost": null,
         "price": 1146.532086
       },
@@ -10503,9 +10805,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 1201083.95,
-        "pl": 400956.76,
-        "weight": 2.17,
+        "mv_eur": 1157376.42,
+        "pl": 356006.52,
+        "weight": 2.1,
         "cost": null,
         "price": 262.358091
       },
@@ -10515,9 +10817,9 @@
         "country": "United States",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 64412.19,
-        "pl": 3352.08,
-        "weight": 0.12,
+        "mv_eur": 63173.2,
+        "pl": 2018.26,
+        "weight": 0.11,
         "cost": null,
         "price": 58.915644
       },
@@ -10527,8 +10829,8 @@
         "country": "United States",
         "sector": "TV, radio & tel.",
         "currency": "EUR",
-        "mv_eur": 102213.65,
-        "pl": -13534.32,
+        "mv_eur": 101302.99,
+        "pl": -14624.75,
         "weight": 0.18,
         "cost": null,
         "price": 458.547617
@@ -10539,9 +10841,9 @@
         "country": "United States",
         "sector": "Culture, sports and ent.",
         "currency": "EUR",
-        "mv_eur": 113934.61,
-        "pl": 63151.69,
-        "weight": 0.21,
+        "mv_eur": 111560.29,
+        "pl": 60698.5,
+        "weight": 0.2,
         "cost": null,
         "price": 35.087065
       },
@@ -10551,8 +10853,8 @@
         "country": "United States",
         "sector": "Leather production and processing",
         "currency": "EUR",
-        "mv_eur": 22544.25,
-        "pl": -41966.26,
+        "mv_eur": 22153.15,
+        "pl": -42457.55,
         "weight": 0.04,
         "cost": null,
         "price": 128.882224
@@ -10563,9 +10865,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 1147165.37,
-        "pl": 1025811.93,
-        "weight": 2.07,
+        "mv_eur": 1133658.05,
+        "pl": 1012116.14,
+        "weight": 2.05,
         "cost": null,
         "price": 21.940966
       },
@@ -10575,9 +10877,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 143752.21,
-        "pl": 83185.63,
-        "weight": 0.26,
+        "mv_eur": 140305.95,
+        "pl": 79645.3,
+        "weight": 0.25,
         "cost": null,
         "price": 79.348373
       },
@@ -10587,8 +10889,8 @@
         "country": "United States",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 31221.56,
-        "pl": 3244.75,
+        "mv_eur": 30934.0,
+        "pl": 2913.74,
         "weight": 0.06,
         "cost": null,
         "price": 65.87035
@@ -10599,8 +10901,8 @@
         "country": "United States",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 92981.82,
-        "pl": 65296.29,
+        "mv_eur": 93866.47,
+        "pl": 66137.94,
         "weight": 0.17,
         "cost": null,
         "price": 279.443285
@@ -10611,8 +10913,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 23277.49,
-        "pl": -34470.09,
+        "mv_eur": 22475.1,
+        "pl": -35362.17,
         "weight": 0.04,
         "cost": null,
         "price": 108.288375
@@ -10623,8 +10925,8 @@
         "country": "United States",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 33988.71,
-        "pl": 1597.41,
+        "mv_eur": 32986.15,
+        "pl": 544.54,
         "weight": 0.06,
         "cost": null,
         "price": 139.252598
@@ -10635,8 +10937,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 126257.26,
-        "pl": -14803.86,
+        "mv_eur": 125870.62,
+        "pl": -15409.58,
         "weight": 0.23,
         "cost": null,
         "price": 29.093229
@@ -10647,9 +10949,9 @@
         "country": "United States",
         "sector": "Tobacco processing",
         "currency": "EUR",
-        "mv_eur": 307149.88,
-        "pl": 41280.03,
-        "weight": 0.56,
+        "mv_eur": 299905.33,
+        "pl": 33622.55,
+        "weight": 0.54,
         "cost": null,
         "price": 159.322887
       },
@@ -10659,8 +10961,8 @@
         "country": "United States",
         "sector": "Autom. trade&repair, petrol stations",
         "currency": "EUR",
-        "mv_eur": 68903.73,
-        "pl": 36655.29,
+        "mv_eur": 67072.82,
+        "pl": 34774.3,
         "weight": 0.12,
         "cost": null,
         "price": 80.499723
@@ -10671,8 +10973,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 244745.96,
-        "pl": 36106.32,
+        "mv_eur": 242023.62,
+        "pl": 33059.94,
         "weight": 0.44,
         "cost": null,
         "price": 129.993806
@@ -10683,9 +10985,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 29772.54,
-        "pl": 11546.28,
-        "weight": 0.05,
+        "mv_eur": 30696.27,
+        "pl": 12441.71,
+        "weight": 0.06,
         "cost": null,
         "price": 93.198794
       },
@@ -10695,8 +10997,8 @@
         "country": "United States",
         "sector": "TV, radio & tel.",
         "currency": "EUR",
-        "mv_eur": 42786.34,
-        "pl": 16861.04,
+        "mv_eur": 42632.59,
+        "pl": 16667.02,
         "weight": 0.08,
         "cost": null,
         "price": 129.710322
@@ -10707,8 +11009,8 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 49038.91,
-        "pl": -5155.69,
+        "mv_eur": 47083.17,
+        "pl": -7195.6,
         "weight": 0.09,
         "cost": null,
         "price": 178.711306
@@ -10719,9 +11021,9 @@
         "country": "Republic of Korea",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 513633.43,
-        "pl": 405529.36,
-        "weight": 0.93,
+        "mv_eur": 531515.6,
+        "pl": 423243.63,
+        "weight": 0.96,
         "cost": null,
         "price": 1140.743615
       },
@@ -10731,8 +11033,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 2591.57,
-        "pl": 1502.0,
+        "mv_eur": 2644.67,
+        "pl": 1553.41,
         "weight": 0.0,
         "cost": null,
         "price": 35.13109
@@ -10743,8 +11045,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 252932.21,
-        "pl": 132771.45,
+        "mv_eur": 253044.05,
+        "pl": 132696.67,
         "weight": 0.46,
         "cost": null,
         "price": 81.374911
@@ -10755,8 +11057,8 @@
         "country": "United States",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 34248.75,
-        "pl": 8132.53,
+        "mv_eur": 33259.35,
+        "pl": 7102.57,
         "weight": 0.06,
         "cost": null,
         "price": 236.831282
@@ -10767,9 +11069,9 @@
         "country": "Taiwan",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 1686811.41,
-        "pl": 913667.33,
-        "weight": 3.05,
+        "mv_eur": 1714505.11,
+        "pl": 940160.24,
+        "weight": 3.11,
         "cost": null,
         "price": 195.177684
       },
@@ -10779,8 +11081,8 @@
         "country": "United States",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 95173.1,
-        "pl": 28357.49,
+        "mv_eur": 93370.5,
+        "pl": 26451.12,
         "weight": 0.17,
         "cost": null,
         "price": 284.088718
@@ -10791,9 +11093,9 @@
         "country": "Israel",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 169858.98,
-        "pl": 75771.31,
-        "weight": 0.31,
+        "mv_eur": 168313.53,
+        "pl": 74079.73,
+        "weight": 0.3,
         "cost": null,
         "price": 18.229388
       },
@@ -10803,9 +11105,9 @@
         "country": "United States",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 58633.4,
-        "pl": -1367.48,
-        "weight": 0.11,
+        "mv_eur": 57365.17,
+        "pl": -2728.9,
+        "weight": 0.1,
         "cost": null,
         "price": 483.652937
       },
@@ -10815,8 +11117,8 @@
         "country": "United States",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 115435.08,
-        "pl": 41531.95,
+        "mv_eur": 113897.64,
+        "pl": 39879.73,
         "weight": 0.21,
         "cost": null,
         "price": 103.477751
@@ -10827,8 +11129,8 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 37737.24,
-        "pl": -12628.61,
+        "mv_eur": 36588.45,
+        "pl": -13855.62,
         "weight": 0.07,
         "cost": null,
         "price": 97.762803
@@ -10839,9 +11141,9 @@
         "country": "United States",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 48623.96,
-        "pl": -28302.8,
-        "weight": 0.09,
+        "mv_eur": 46534.96,
+        "pl": -30511.28,
+        "weight": 0.08,
         "cost": null,
         "price": 174.059921
       },
@@ -10851,8 +11153,8 @@
         "country": "United States",
         "sector": "Culture, sports and ent.",
         "currency": "EUR",
-        "mv_eur": 765.35,
-        "pl": -643.04,
+        "mv_eur": 756.71,
+        "pl": -653.87,
         "weight": 0.0,
         "cost": null,
         "price": 71.077846
@@ -10863,8 +11165,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 153250.98,
-        "pl": 62031.8,
+        "mv_eur": 152226.52,
+        "pl": 60865.67,
         "weight": 0.28,
         "cost": null,
         "price": 198.282135
@@ -10875,8 +11177,8 @@
         "country": "United States",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 35324.12,
-        "pl": -18353.25,
+        "mv_eur": 34519.56,
+        "pl": -19241.18,
         "weight": 0.06,
         "cost": null,
         "price": 135.742937
@@ -10888,31 +11190,31 @@
     "isin": "AT0000A3EAW0",
     "color": "#16A34A",
     "name": "Dividends and Interest",
-    "nav": 26786317.91,
-    "shares": 236978.871,
-    "nav_per_share": 112.91,
-    "perf_ytd": 5.849817,
-    "perf_fy": 8.898999,
+    "nav": 26759519.4,
+    "shares": 237136.795,
+    "nav_per_share": 113.18,
+    "perf_ytd": 6.102934,
+    "perf_fy": 9.159407999999999,
     "countries": [
       {
         "label": "United States",
-        "value": 19.3
+        "value": 19.12
       },
       {
         "label": "Germany",
-        "value": 15.2
+        "value": 15.23
       },
       {
         "label": "France",
-        "value": 13.9
+        "value": 13.82
       },
       {
         "label": "United Kingdom",
-        "value": 10.35
+        "value": 10.26
       },
       {
         "label": "Netherlands",
-        "value": 9.75
+        "value": 9.97
       },
       {
         "label": "Japan",
@@ -10920,11 +11222,11 @@
       },
       {
         "label": "Taiwan",
-        "value": 5.18
+        "value": 5.25
       },
       {
         "label": "Spain",
-        "value": 4.55
+        "value": 4.58
       },
       {
         "label": "Italy",
@@ -10932,35 +11234,35 @@
       },
       {
         "label": "Finland",
-        "value": 3.35
+        "value": 3.36
       },
       {
         "label": "Switzerland",
-        "value": 2.27
+        "value": 2.29
       },
       {
         "label": "Austria",
-        "value": 1.64
+        "value": 1.67
       },
       {
         "label": "Ireland",
-        "value": 1.56
+        "value": 1.53
       },
       {
         "label": "Belgium",
-        "value": 0.97
+        "value": 0.96
       },
       {
         "label": "Republic of Korea",
-        "value": 0.83
+        "value": 0.85
       },
       {
         "label": "Jersey",
-        "value": 0.73
+        "value": 0.72
       },
       {
         "label": "Canada",
-        "value": 0.56
+        "value": 0.53
       },
       {
         "label": "Australia",
@@ -10974,77 +11276,77 @@
     "currencies": [
       {
         "label": "CAD",
-        "value": 0.35
+        "value": 0.34
       },
       {
         "label": "CHF",
-        "value": 1.44
+        "value": 1.45
       },
       {
         "label": "DKK",
-        "value": 0.05
+        "value": 0.06
       },
       {
         "label": "EUR",
-        "value": 68.99
+        "value": 69.04
       },
       {
         "label": "GBP",
-        "value": 6.32
+        "value": 6.28
       },
       {
         "label": "JPY",
-        "value": 3.49
+        "value": 3.5
       },
       {
         "label": "USD",
-        "value": 17.51
+        "value": 17.44
       }
     ],
     "sectors": [
       {
         "label": "Company-related services",
-        "value": 22.86
+        "value": 22.82
       },
       {
         "label": "Prod. of dev. f. el. prod.& dist.",
-        "value": 17.32
+        "value": 17.43
       },
       {
         "label": "Banking & insurance auxiliary activ",
-        "value": 14.04
+        "value": 14.19
       },
       {
         "label": "Lending",
-        "value": 10.49
+        "value": 10.68
       },
       {
         "label": "Data proc.& databases",
-        "value": 6.87
+        "value": 6.66
       },
       {
         "label": "Prod. of chemicals & chem.products",
-        "value": 5.72
+        "value": 5.7
       },
       {
         "label": "Energy supply",
-        "value": 3.95
+        "value": 4.0
       },
       {
         "label": "Medical, electric measuring, optical",
-        "value": 3.6
+        "value": 3.54
       },
       {
         "label": "Sattelite comm.",
-        "value": 3.32
+        "value": 3.25
       },
       {
         "label": "Mechanical engineering",
-        "value": 2.59
+        "value": 2.6
       },
       {
         "label": "Retail trade (excl. automobiles)",
-        "value": 2.06
+        "value": 2.01
       },
       {
         "label": "Trad.ag. & wh. (wo. m. t.)",
@@ -11052,11 +11354,11 @@
       },
       {
         "label": "Manufacture of food and beverages",
-        "value": 0.97
+        "value": 0.96
       },
       {
         "label": "Prod. of motor veh.& motor v. p.",
-        "value": 0.95
+        "value": 0.91
       },
       {
         "label": "Insurance",
@@ -11064,11 +11366,11 @@
       },
       {
         "label": "Coking ,mineral oil processing",
-        "value": 0.78
+        "value": 0.77
       },
       {
         "label": "Other mining & quarrying",
-        "value": 0.76
+        "value": 0.75
       },
       {
         "label": "TV, radio & tel.",
@@ -11080,7 +11382,7 @@
       },
       {
         "label": "Health and social security services",
-        "value": 0.26
+        "value": 0.25
       },
       {
         "label": "Real estate business",
@@ -11115,15 +11417,317 @@
       {
         "date": "2026-06-18",
         "label": "18.06.2026",
-        "price": 112.91,
+        "price": 113.18,
         "note": "Heute (Inventarblatt)"
       }
     ],
     "changes": {
       "added": [],
       "removed": [],
-      "increased": [],
-      "decreased": [],
+      "increased": [
+        {
+          "isin": "DE000CBK1001",
+          "name": "COMMERZBANK AG",
+          "country": "Germany",
+          "sector": "Lending",
+          "currency": "EUR",
+          "mv_eur": 200483.18,
+          "pl": 19347.92,
+          "weight": 0.75,
+          "cost": null,
+          "price": 34.495384,
+          "change_pct": 5.18,
+          "prev_mv": 190611.3,
+          "curr_mv": 200483.18
+        },
+        {
+          "isin": "US11135F1012",
+          "name": "BROADCOM INC.     DL-,001",
+          "country": "United States",
+          "sector": "Prod. of dev. f. el. prod.& dist.",
+          "currency": "EUR",
+          "mv_eur": 497672.2,
+          "pl": 118596.75,
+          "weight": 1.85,
+          "cost": null,
+          "price": 299.270774,
+          "change_pct": 4.46,
+          "prev_mv": 476424.97,
+          "curr_mv": 497672.2
+        },
+        {
+          "isin": "NL0010273215",
+          "name": "ASML HOLDING    EO -,09",
+          "country": "Netherlands",
+          "sector": "Company-related services",
+          "currency": "EUR",
+          "mv_eur": 725503.2,
+          "pl": 134268.7,
+          "weight": 2.7,
+          "cost": null,
+          "price": 1349.850457,
+          "change_pct": 4.1,
+          "prev_mv": 696945.6,
+          "curr_mv": 725503.2
+        },
+        {
+          "isin": "DE000ENER6Y0",
+          "name": "SIEMENS ENERGY AG NA O.N.",
+          "country": "Germany",
+          "sector": "Energy supply",
+          "currency": "EUR",
+          "mv_eur": 326391.32,
+          "pl": 105114.2,
+          "weight": 1.22,
+          "cost": null,
+          "price": 109.651695,
+          "change_pct": 3.6,
+          "prev_mv": 315050.16,
+          "curr_mv": 326391.32
+        },
+        {
+          "isin": "US7960508882",
+          "name": "SAMS.EL.0,5SP.GDRS144A/95",
+          "country": "Republic of Korea",
+          "sector": "Prod. of dev. f. el. prod.& dist.",
+          "currency": "EUR",
+          "mv_eur": 144958.8,
+          "pl": 115802.99,
+          "weight": 0.54,
+          "cost": null,
+          "price": 1126.33768,
+          "change_pct": 3.48,
+          "prev_mv": 140081.84,
+          "curr_mv": 144958.8
+        },
+        {
+          "isin": "NL0015000IY2",
+          "name": "UNIVERSAL MUSIC GROUP EO1",
+          "country": "Netherlands",
+          "sector": "Culture, sports and ent.",
+          "currency": "EUR",
+          "mv_eur": 27497.88,
+          "pl": -7593.11,
+          "weight": 0.1,
+          "cost": null,
+          "price": 23.774383,
+          "change_pct": 2.93,
+          "prev_mv": 26715.6,
+          "curr_mv": 27497.88
+        },
+        {
+          "isin": "JP3571400005",
+          "name": "TOKYO ELECTRON LTD",
+          "country": "Japan",
+          "sector": "Mechanical engineering",
+          "currency": "EUR",
+          "mv_eur": 176313.86,
+          "pl": 57222.6,
+          "weight": 0.66,
+          "cost": null,
+          "price": 49064.714063,
+          "change_pct": 2.72,
+          "prev_mv": 171641.03,
+          "curr_mv": 176313.86
+        },
+        {
+          "isin": "DE0005140008",
+          "name": "DEUTSCHE BANK AG NA O.N.",
+          "country": "Germany",
+          "sector": "Lending",
+          "currency": "EUR",
+          "mv_eur": 246653.68,
+          "pl": 48201.34,
+          "weight": 0.92,
+          "cost": null,
+          "price": 24.89367,
+          "change_pct": 2.45,
+          "prev_mv": 240754.4,
+          "curr_mv": 246653.68
+        },
+        {
+          "isin": "IT0005239360",
+          "name": "UNICREDIT",
+          "country": "Italy",
+          "sector": "Lending",
+          "currency": "EUR",
+          "mv_eur": 197890.59,
+          "pl": 60461.67,
+          "weight": 0.74,
+          "cost": null,
+          "price": 55.258914,
+          "change_pct": 2.43,
+          "prev_mv": 193190.16,
+          "curr_mv": 197890.59
+        },
+        {
+          "isin": "NL0011821202",
+          "name": "ING GROEP NV      EO -,01",
+          "country": "Netherlands",
+          "sector": "Banking & insurance auxiliary activ",
+          "currency": "EUR",
+          "mv_eur": 689641.63,
+          "pl": 149185.21,
+          "weight": 2.57,
+          "cost": null,
+          "price": 21.543286,
+          "change_pct": 2.38,
+          "prev_mv": 673585.95,
+          "curr_mv": 689641.63
+        }
+      ],
+      "decreased": [
+        {
+          "isin": "DE0005190003",
+          "name": "BAY.MOTOREN WERKE AG ST",
+          "country": "Germany",
+          "sector": "Prod. of motor veh.& motor v. p.",
+          "currency": "EUR",
+          "mv_eur": 28256.96,
+          "pl": -6430.47,
+          "weight": 0.11,
+          "cost": null,
+          "price": 76.404031,
+          "change_pct": -8.34,
+          "prev_mv": 30826.6,
+          "curr_mv": 28256.96
+        },
+        {
+          "isin": "IE00B4BNMY34",
+          "name": "ACCENTURE A   DL-,0000225",
+          "country": "Ireland",
+          "sector": "Company-related services",
+          "currency": "EUR",
+          "mv_eur": 29345.68,
+          "pl": -38462.61,
+          "weight": 0.11,
+          "cost": null,
+          "price": 360.488144,
+          "change_pct": -5.6,
+          "prev_mv": 31086.25,
+          "curr_mv": 29345.68
+        },
+        {
+          "isin": "US30303M1027",
+          "name": "META PLATF.  A DL-,000006",
+          "country": "United States",
+          "sector": "Data proc.& databases",
+          "currency": "EUR",
+          "mv_eur": 95008.86,
+          "pl": -16739.01,
+          "weight": 0.35,
+          "cost": null,
+          "price": 667.578296,
+          "change_pct": -5.29,
+          "prev_mv": 100315.09,
+          "curr_mv": 95008.86
+        },
+        {
+          "isin": "FR0000121667",
+          "name": "ESSILORLUXO. INH. EO -,18",
+          "country": "France",
+          "sector": "Medical, electric measuring, optical",
+          "currency": "EUR",
+          "mv_eur": 166536.75,
+          "pl": -97123.01,
+          "weight": 0.62,
+          "cost": null,
+          "price": 276.662917,
+          "change_pct": -4.79,
+          "prev_mv": 174923.15,
+          "curr_mv": 166536.75
+        },
+        {
+          "isin": "DE0007100000",
+          "name": "MERCEDES-BENZ GRP NA O.N.",
+          "country": "Germany",
+          "sector": "Prod. of motor veh.& motor v. p.",
+          "currency": "EUR",
+          "mv_eur": 31042.0,
+          "pl": -6500.4,
+          "weight": 0.12,
+          "cost": null,
+          "price": 56.539759,
+          "change_pct": -4.36,
+          "prev_mv": 32456.32,
+          "curr_mv": 31042.0
+        },
+        {
+          "isin": "IE00BTN1Y115",
+          "name": "MEDTRONIC PLC    DL-,0001",
+          "country": "Ireland",
+          "sector": "Health and social security services",
+          "currency": "EUR",
+          "mv_eur": 42881.09,
+          "pl": -5502.24,
+          "weight": 0.16,
+          "cost": null,
+          "price": 88.166455,
+          "change_pct": -3.76,
+          "prev_mv": 44556.98,
+          "curr_mv": 42881.09
+        },
+        {
+          "isin": "CA82509L1076",
+          "name": "SHOPIFY A SUB.VTG",
+          "country": "Canada",
+          "sector": "Data proc.& databases",
+          "currency": "EUR",
+          "mv_eur": 90501.08,
+          "pl": 12471.05,
+          "weight": 0.34,
+          "cost": null,
+          "price": 131.666558,
+          "change_pct": -3.73,
+          "prev_mv": 94010.39,
+          "curr_mv": 90501.08
+        },
+        {
+          "isin": "US5949181045",
+          "name": "MICROSOFT    DL-,00000625",
+          "country": "United States",
+          "sector": "Data proc.& databases",
+          "currency": "EUR",
+          "mv_eur": 79773.97,
+          "pl": -7563.36,
+          "weight": 0.3,
+          "cost": null,
+          "price": 414.834419,
+          "change_pct": -3.64,
+          "prev_mv": 82786.58,
+          "curr_mv": 79773.97
+        },
+        {
+          "isin": "DE0007664039",
+          "name": "VOLKSWAGEN AG VZO O.N.",
+          "country": "Germany",
+          "sector": "Prod. of motor veh.& motor v. p.",
+          "currency": "EUR",
+          "mv_eur": 32712.12,
+          "pl": -2310.81,
+          "weight": 0.12,
+          "cost": null,
+          "price": 92.653254,
+          "change_pct": -3.48,
+          "prev_mv": 33891.48,
+          "curr_mv": 32712.12
+        },
+        {
+          "isin": "US0231351067",
+          "name": "AMAZON.COM INC.    DL-,01",
+          "country": "United States",
+          "sector": "Retail trade (excl. automobiles)",
+          "currency": "EUR",
+          "mv_eur": 161482.38,
+          "pl": -2261.91,
+          "weight": 0.6,
+          "cost": null,
+          "price": 240.826713,
+          "change_pct": -3.31,
+          "prev_mv": 167002.37,
+          "curr_mv": 161482.38
+        }
+      ],
       "date_prev": null
     },
     "prev_holdings": [
@@ -11764,13 +12368,13 @@
         "pl": 317282.09
       }
     ],
-    "total_pl": 2742229.15,
-    "pos_pl": 3257624.56,
-    "neg_pl": -515395.41,
-    "equities_mv": 16937288.44,
-    "hhi": 75.2,
-    "top10_weight": 21.4,
-    "win_rate": 68.9,
+    "total_pl": 2800503.59,
+    "pos_pl": 3357944.61,
+    "neg_pl": -557441.02,
+    "equities_mv": 17002021.38,
+    "hhi": 76.1,
+    "top10_weight": 21.7,
+    "win_rate": 67.0,
     "holdings": [
       {
         "isin": "AT0000652011",
@@ -11778,9 +12382,9 @@
         "country": "Austria",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 278188.5,
-        "pl": 101526.46,
-        "weight": 1.04,
+        "mv_eur": 284070.9,
+        "pl": 107408.86,
+        "weight": 1.06,
         "cost": null,
         "price": 72.077536
       },
@@ -11790,8 +12394,8 @@
         "country": "Australia",
         "sector": "Coal and peat mining",
         "currency": "EUR",
-        "mv_eur": 56336.26,
-        "pl": 20014.7,
+        "mv_eur": 56786.78,
+        "pl": 20500.9,
         "weight": 0.21,
         "cost": null,
         "price": 22.236668
@@ -11802,9 +12406,9 @@
         "country": "Belgium",
         "sector": "Manufacture of food and beverages",
         "currency": "EUR",
-        "mv_eur": 164781.7,
-        "pl": 6693.6,
-        "weight": 0.62,
+        "mv_eur": 163439.0,
+        "pl": 5350.9,
+        "weight": 0.61,
         "cost": null,
         "price": 68.288596
       },
@@ -11814,9 +12418,9 @@
         "country": "Canada",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 94010.39,
-        "pl": 15910.67,
-        "weight": 0.35,
+        "mv_eur": 90501.08,
+        "pl": 12471.05,
+        "weight": 0.34,
         "cost": null,
         "price": 131.666558
       },
@@ -11826,8 +12430,8 @@
         "country": "Switzerland",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 32573.41,
-        "pl": 3888.0,
+        "mv_eur": 32584.86,
+        "pl": 3849.52,
         "weight": 0.12,
         "cost": null,
         "price": 507.95234
@@ -11838,9 +12442,9 @@
         "country": "Switzerland",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 150664.97,
-        "pl": 9166.9,
-        "weight": 0.56,
+        "mv_eur": 152566.36,
+        "pl": 10821.99,
+        "weight": 0.57,
         "cost": null,
         "price": 112.417102
       },
@@ -11850,8 +12454,8 @@
         "country": "Switzerland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 35607.04,
-        "pl": -1693.55,
+        "mv_eur": 35449.39,
+        "pl": -1916.12,
         "weight": 0.13,
         "cost": null,
         "price": 83.364998
@@ -11862,9 +12466,9 @@
         "country": "Switzerland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 166081.67,
-        "pl": 25115.3,
-        "weight": 0.62,
+        "mv_eur": 168322.02,
+        "pl": 27110.28,
+        "weight": 0.63,
         "cost": null,
         "price": 275.003877
       },
@@ -11874,9 +12478,9 @@
         "country": "Germany",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 240754.4,
-        "pl": 42302.06,
-        "weight": 0.9,
+        "mv_eur": 246653.68,
+        "pl": 48201.34,
+        "weight": 0.92,
         "cost": null,
         "price": 24.89367
       },
@@ -11886,9 +12490,9 @@
         "country": "Germany",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 30826.6,
-        "pl": -3860.83,
-        "weight": 0.12,
+        "mv_eur": 28256.96,
+        "pl": -6430.47,
+        "weight": 0.11,
         "cost": null,
         "price": 76.404031
       },
@@ -11898,8 +12502,8 @@
         "country": "Germany",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 163213.8,
-        "pl": 23960.38,
+        "mv_eur": 162781.2,
+        "pl": 23527.78,
         "weight": 0.61,
         "cost": null,
         "price": 45.065832
@@ -11910,9 +12514,9 @@
         "country": "Germany",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 123180.75,
-        "pl": -50.16,
-        "weight": 0.46,
+        "mv_eur": 120106.8,
+        "pl": -3124.11,
+        "weight": 0.45,
         "cost": null,
         "price": 27.661259
       },
@@ -11922,9 +12526,9 @@
         "country": "Germany",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 172037.6,
-        "pl": 62061.34,
-        "weight": 0.64,
+        "mv_eur": 167220.2,
+        "pl": 57243.94,
+        "weight": 0.62,
         "cost": null,
         "price": 50.680304
       },
@@ -11934,9 +12538,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 88211.2,
-        "pl": -29188.49,
-        "weight": 0.33,
+        "mv_eur": 90105.4,
+        "pl": -27294.29,
+        "weight": 0.34,
         "cost": null,
         "price": 1524.671299
       },
@@ -11946,8 +12550,8 @@
         "country": "Germany",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 32456.32,
-        "pl": -5086.08,
+        "mv_eur": 31042.0,
+        "pl": -6500.4,
         "weight": 0.12,
         "cost": null,
         "price": 56.539759
@@ -11958,9 +12562,9 @@
         "country": "Germany",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 142614.2,
-        "pl": -91462.08,
-        "weight": 0.53,
+        "mv_eur": 140897.64,
+        "pl": -93178.64,
+        "weight": 0.52,
         "cost": null,
         "price": 234.545371
       },
@@ -11970,8 +12574,8 @@
         "country": "Germany",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 291344.35,
-        "pl": 84817.43,
+        "mv_eur": 291397.7,
+        "pl": 84870.78,
         "weight": 1.09,
         "cost": null,
         "price": 193.5585
@@ -11982,9 +12586,9 @@
         "country": "Germany",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 33891.48,
-        "pl": -1131.45,
-        "weight": 0.13,
+        "mv_eur": 32712.12,
+        "pl": -2310.81,
+        "weight": 0.12,
         "cost": null,
         "price": 92.653254
       },
@@ -11994,8 +12598,8 @@
         "country": "Germany",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 228228.0,
-        "pl": 28293.14,
+        "mv_eur": 228914.4,
+        "pl": 28979.54,
         "weight": 0.85,
         "cost": null,
         "price": 349.536469
@@ -12006,9 +12610,9 @@
         "country": "Germany",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 84384.0,
-        "pl": -3294.56,
-        "weight": 0.32,
+        "mv_eur": 83628.0,
+        "pl": -4050.56,
+        "weight": 0.31,
         "cost": null,
         "price": 487.103111
       },
@@ -12018,8 +12622,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 27190.9,
-        "pl": -14248.31,
+        "mv_eur": 26891.67,
+        "pl": -14547.54,
         "weight": 0.1,
         "cost": null,
         "price": 31.851814
@@ -12030,9 +12634,9 @@
         "country": "Germany",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 149441.73,
-        "pl": -4583.32,
-        "weight": 0.56,
+        "mv_eur": 151800.06,
+        "pl": -2224.99,
+        "weight": 0.57,
         "cost": null,
         "price": 50.616185
       },
@@ -12042,9 +12646,9 @@
         "country": "Germany",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 190611.3,
-        "pl": 9476.04,
-        "weight": 0.71,
+        "mv_eur": 200483.18,
+        "pl": 19347.92,
+        "weight": 0.75,
         "cost": null,
         "price": 34.495384
       },
@@ -12054,8 +12658,8 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 124333.02,
-        "pl": 12023.39,
+        "mv_eur": 122779.59,
+        "pl": 10469.96,
         "weight": 0.46,
         "cost": null,
         "price": 38.317854
@@ -12066,9 +12670,9 @@
         "country": "Germany",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 113718.74,
-        "pl": 10856.78,
-        "weight": 0.42,
+        "mv_eur": 114280.16,
+        "pl": 11418.2,
+        "weight": 0.43,
         "cost": null,
         "price": 16.489574
       },
@@ -12078,9 +12682,9 @@
         "country": "Germany",
         "sector": "Energy supply",
         "currency": "EUR",
-        "mv_eur": 315050.16,
-        "pl": 93773.04,
-        "weight": 1.18,
+        "mv_eur": 326391.32,
+        "pl": 105114.2,
+        "weight": 1.22,
         "cost": null,
         "price": 109.651695
       },
@@ -12090,8 +12694,8 @@
         "country": "Germany",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 22981.0,
-        "pl": -9069.4,
+        "mv_eur": 22995.07,
+        "pl": -9055.33,
         "weight": 0.09,
         "cost": null,
         "price": 68.33774
@@ -12102,9 +12706,9 @@
         "country": "Denmark",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 14512.14,
-        "pl": -26768.99,
-        "weight": 0.05,
+        "mv_eur": 14784.45,
+        "pl": -26498.06,
+        "weight": 0.06,
         "cost": null,
         "price": 797.339122
       },
@@ -12114,9 +12718,9 @@
         "country": "Spain",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 260613.23,
-        "pl": 106055.34,
-        "weight": 0.97,
+        "mv_eur": 266482.3,
+        "pl": 111924.41,
+        "weight": 0.99,
         "cost": null,
         "price": 6.899598
       },
@@ -12126,8 +12730,8 @@
         "country": "Spain",
         "sector": "Energy supply",
         "currency": "EUR",
-        "mv_eur": 152950.56,
-        "pl": 6140.42,
+        "mv_eur": 153842.4,
+        "pl": 7032.26,
         "weight": 0.57,
         "cost": null,
         "price": 19.753786
@@ -12138,9 +12742,9 @@
         "country": "Spain",
         "sector": "Trad.ag. & wh. (wo. m. t.)",
         "currency": "EUR",
-        "mv_eur": 238248.46,
-        "pl": 21277.46,
-        "weight": 0.89,
+        "mv_eur": 240377.96,
+        "pl": 23406.96,
+        "weight": 0.9,
         "cost": null,
         "price": 50.944118
       },
@@ -12150,8 +12754,8 @@
         "country": "Spain",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 118615.67,
-        "pl": -13381.22,
+        "mv_eur": 118267.08,
+        "pl": -13729.81,
         "weight": 0.44,
         "cost": null,
         "price": 4.165254
@@ -12162,8 +12766,8 @@
         "country": "Finland",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 434653.03,
-        "pl": 280076.35,
+        "mv_eur": 435920.24,
+        "pl": 281343.56,
         "weight": 1.62,
         "cost": null,
         "price": 4.269366
@@ -12174,8 +12778,8 @@
         "country": "Finland",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 133155.17,
-        "pl": 1628.02,
+        "mv_eur": 134572.14,
+        "pl": 3044.99,
         "weight": 0.5,
         "cost": null,
         "price": 16.243936
@@ -12186,9 +12790,9 @@
         "country": "France",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 121576.48,
-        "pl": 11178.31,
-        "weight": 0.45,
+        "mv_eur": 123515.78,
+        "pl": 13117.61,
+        "weight": 0.46,
         "cost": null,
         "price": 15.654874
       },
@@ -12198,8 +12802,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 33240.5,
-        "pl": -7780.24,
+        "mv_eur": 32822.5,
+        "pl": -8198.24,
         "weight": 0.12,
         "cost": null,
         "price": 2158.986316
@@ -12210,9 +12814,9 @@
         "country": "France",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 237010.08,
-        "pl": 6681.0,
-        "weight": 0.89,
+        "mv_eur": 236330.4,
+        "pl": 6001.32,
+        "weight": 0.88,
         "cost": null,
         "price": 162.66178
       },
@@ -12222,9 +12826,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 219296.1,
-        "pl": 998.32,
-        "weight": 0.82,
+        "mv_eur": 216774.42,
+        "pl": -1523.36,
+        "weight": 0.81,
         "cost": null,
         "price": 72.717448
       },
@@ -12234,8 +12838,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 46338.0,
-        "pl": -298.21,
+        "mv_eur": 45858.0,
+        "pl": -778.21,
         "weight": 0.17,
         "cost": null,
         "price": 388.635083
@@ -12246,9 +12850,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 44488.08,
-        "pl": -14749.74,
-        "weight": 0.17,
+        "mv_eur": 44029.44,
+        "pl": -15208.38,
+        "weight": 0.16,
         "cost": null,
         "price": 100.744592
       },
@@ -12258,8 +12862,8 @@
         "country": "France",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 190447.95,
-        "pl": 17401.24,
+        "mv_eur": 191257.41,
+        "pl": 18210.7,
         "weight": 0.71,
         "cost": null,
         "price": 38.480478
@@ -12270,8 +12874,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 32438.0,
-        "pl": 703.2,
+        "mv_eur": 32242.0,
+        "pl": 507.2,
         "weight": 0.12,
         "cost": null,
         "price": 64.764898
@@ -12282,8 +12886,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 41103.7,
-        "pl": -10906.69,
+        "mv_eur": 40369.0,
+        "pl": -11641.39,
         "weight": 0.15,
         "cost": null,
         "price": 658.359367
@@ -12294,9 +12898,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 46532.4,
-        "pl": 15755.95,
-        "weight": 0.17,
+        "mv_eur": 47124.0,
+        "pl": 16347.55,
+        "weight": 0.18,
         "cost": null,
         "price": 150.864951
       },
@@ -12306,9 +12910,9 @@
         "country": "France",
         "sector": "Medical, electric measuring, optical",
         "currency": "EUR",
-        "mv_eur": 174923.15,
-        "pl": -88736.61,
-        "weight": 0.65,
+        "mv_eur": 166536.75,
+        "pl": -97123.01,
+        "weight": 0.62,
         "cost": null,
         "price": 276.662917
       },
@@ -12318,9 +12922,9 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 140136.7,
-        "pl": 19690.56,
-        "weight": 0.52,
+        "mv_eur": 143071.5,
+        "pl": 22625.36,
+        "weight": 0.53,
         "cost": null,
         "price": 238.03585
       },
@@ -12330,8 +12934,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 130624.0,
-        "pl": -22428.78,
+        "mv_eur": 131256.32,
+        "pl": -21796.46,
         "weight": 0.49,
         "cost": null,
         "price": 91.978834
@@ -12342,8 +12946,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 14640.0,
-        "pl": -13015.78,
+        "mv_eur": 14649.0,
+        "pl": -13006.78,
         "weight": 0.05,
         "cost": null,
         "price": 184.371867
@@ -12354,8 +12958,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 181526.0,
-        "pl": 14140.89,
+        "mv_eur": 183071.5,
+        "pl": 15686.39,
         "weight": 0.68,
         "cost": null,
         "price": 119.13531
@@ -12366,8 +12970,8 @@
         "country": "France",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 146950.72,
-        "pl": 15706.59,
+        "mv_eur": 148207.36,
+        "pl": 16963.23,
         "weight": 0.55,
         "cost": null,
         "price": 68.930741
@@ -12378,9 +12982,9 @@
         "country": "France",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 210915.6,
-        "pl": 64045.9,
-        "weight": 0.79,
+        "mv_eur": 213532.0,
+        "pl": 66662.3,
+        "weight": 0.8,
         "cost": null,
         "price": 69.606493
       },
@@ -12390,9 +12994,9 @@
         "country": "France",
         "sector": "Sattelite comm.",
         "currency": "EUR",
-        "mv_eur": 156652.25,
-        "pl": -8079.43,
-        "weight": 0.59,
+        "mv_eur": 151551.32,
+        "pl": -13180.36,
+        "weight": 0.56,
         "cost": null,
         "price": 18.407831
       },
@@ -12402,8 +13006,8 @@
         "country": "France",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 148810.8,
-        "pl": 56515.68,
+        "mv_eur": 149142.72,
+        "pl": 56847.6,
         "weight": 0.56,
         "cost": null,
         "price": 16.683861
@@ -12414,8 +13018,8 @@
         "country": "France",
         "sector": "Real estate business",
         "currency": "EUR",
-        "mv_eur": 37312.5,
-        "pl": 9190.18,
+        "mv_eur": 37650.0,
+        "pl": 9527.68,
         "weight": 0.14,
         "cost": null,
         "price": 74.992853
@@ -12426,9 +13030,9 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 635669.8,
-        "pl": 84795.6,
-        "weight": 2.38,
+        "mv_eur": 618850.88,
+        "pl": 68517.81,
+        "weight": 2.31,
         "cost": null,
         "price": 39.759806
       },
@@ -12438,9 +13042,9 @@
         "country": "United Kingdom",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 683104.44,
-        "pl": 198221.06,
-        "weight": 2.55,
+        "mv_eur": 695698.65,
+        "pl": 211291.58,
+        "weight": 2.59,
         "cost": null,
         "price": 10.005668
       },
@@ -12450,9 +13054,9 @@
         "country": "United Kingdom",
         "sector": "Other mining & quarrying",
         "currency": "EUR",
-        "mv_eur": 127904.36,
-        "pl": 18938.07,
-        "weight": 0.48,
+        "mv_eur": 126677.73,
+        "pl": 17818.48,
+        "weight": 0.47,
         "cost": null,
         "price": 67.234768
       },
@@ -12462,8 +13066,8 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 34292.0,
-        "pl": 6998.53,
+        "mv_eur": 33684.45,
+        "pl": 6417.79,
         "weight": 0.13,
         "cost": null,
         "price": 4.086221
@@ -12474,8 +13078,8 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 30887.66,
-        "pl": 3589.12,
+        "mv_eur": 31294.03,
+        "pl": 4022.31,
         "weight": 0.12,
         "cost": null,
         "price": 117.404098
@@ -12486,8 +13090,8 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 126522.0,
-        "pl": -246.37,
+        "mv_eur": 125132.04,
+        "pl": -1636.33,
         "weight": 0.47,
         "cost": null,
         "price": 35.569127
@@ -12498,9 +13102,9 @@
         "country": "United Kingdom",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 114054.66,
-        "pl": -9143.91,
-        "weight": 0.43,
+        "mv_eur": 113069.5,
+        "pl": -10129.07,
+        "weight": 0.42,
         "cost": null,
         "price": 55.023926
       },
@@ -12510,8 +13114,8 @@
         "country": "Ireland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 43745.85,
-        "pl": 14306.34,
+        "mv_eur": 42844.64,
+        "pl": 13359.41,
         "weight": 0.16,
         "cost": null,
         "price": 146.033808
@@ -12522,9 +13126,9 @@
         "country": "Ireland",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 31086.25,
-        "pl": -36616.89,
-        "weight": 0.12,
+        "mv_eur": 29345.68,
+        "pl": -38462.61,
+        "weight": 0.11,
         "cost": null,
         "price": 360.488144
       },
@@ -12534,8 +13138,8 @@
         "country": "Ireland",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 144011.29,
-        "pl": 9088.6,
+        "mv_eur": 144917.73,
+        "pl": 9785.49,
         "weight": 0.54,
         "cost": null,
         "price": 381.979288
@@ -12546,9 +13150,9 @@
         "country": "Ireland",
         "sector": "Health and social security services",
         "currency": "EUR",
-        "mv_eur": 44556.98,
-        "pl": -3751.33,
-        "weight": 0.17,
+        "mv_eur": 42881.09,
+        "pl": -5502.24,
+        "weight": 0.16,
         "cost": null,
         "price": 88.166455
       },
@@ -12558,8 +13162,8 @@
         "country": "Italy",
         "sector": "Insurance",
         "currency": "EUR",
-        "mv_eur": 139081.65,
-        "pl": 53322.8,
+        "mv_eur": 138625.11,
+        "pl": 52866.26,
         "weight": 0.52,
         "cost": null,
         "price": 26.298329
@@ -12570,9 +13174,9 @@
         "country": "Italy",
         "sector": "Energy supply",
         "currency": "EUR",
-        "mv_eur": 200985.05,
-        "pl": 48550.87,
-        "weight": 0.75,
+        "mv_eur": 199933.09,
+        "pl": 47498.91,
+        "weight": 0.74,
         "cost": null,
         "price": 7.535056
       },
@@ -12582,9 +13186,9 @@
         "country": "Italy",
         "sector": "Coking ,mineral oil processing",
         "currency": "EUR",
-        "mv_eur": 132588.24,
-        "pl": 15061.12,
-        "weight": 0.5,
+        "mv_eur": 131503.92,
+        "pl": 13976.8,
+        "weight": 0.49,
         "cost": null,
         "price": 19.509814
       },
@@ -12594,9 +13198,9 @@
         "country": "Italy",
         "sector": "Lending",
         "currency": "EUR",
-        "mv_eur": 193190.16,
-        "pl": 55761.24,
-        "weight": 0.72,
+        "mv_eur": 197890.59,
+        "pl": 60461.67,
+        "weight": 0.74,
         "cost": null,
         "price": 55.258914
       },
@@ -12606,9 +13210,9 @@
         "country": "Jersey",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 123408.04,
-        "pl": 3349.18,
-        "weight": 0.46,
+        "mv_eur": 121742.07,
+        "pl": 1801.15,
+        "weight": 0.45,
         "cost": null,
         "price": 5.745717
       },
@@ -12618,9 +13222,9 @@
         "country": "Japan",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 267077.9,
-        "pl": 107276.77,
-        "weight": 1.0,
+        "mv_eur": 265156.33,
+        "pl": 105027.14,
+        "weight": 0.99,
         "cost": null,
         "price": 18153.378769
       },
@@ -12630,8 +13234,8 @@
         "country": "Japan",
         "sector": "Trad.ag. & wh. (wo. m. t.)",
         "currency": "EUR",
-        "mv_eur": 30310.86,
-        "pl": 5148.72,
+        "mv_eur": 30389.42,
+        "pl": 5175.63,
         "weight": 0.11,
         "cost": null,
         "price": 1543.637891
@@ -12642,8 +13246,8 @@
         "country": "Japan",
         "sector": "TV, radio & tel.",
         "currency": "EUR",
-        "mv_eur": 58950.47,
-        "pl": -11487.93,
+        "mv_eur": 59976.91,
+        "pl": -10606.1,
         "weight": 0.22,
         "cost": null,
         "price": 5145.128817
@@ -12654,8 +13258,8 @@
         "country": "Japan",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 67895.98,
-        "pl": 22799.77,
+        "mv_eur": 65908.66,
+        "pl": 20719.88,
         "weight": 0.25,
         "cost": null,
         "price": 4717.116292
@@ -12666,9 +13270,9 @@
         "country": "Japan",
         "sector": "Mechanical engineering",
         "currency": "EUR",
-        "mv_eur": 171641.03,
-        "pl": 52793.75,
-        "weight": 0.64,
+        "mv_eur": 176313.86,
+        "pl": 57222.6,
+        "weight": 0.66,
         "cost": null,
         "price": 49064.714063
       },
@@ -12678,8 +13282,8 @@
         "country": "Japan",
         "sector": "Prod. of motor veh.& motor v. p.",
         "currency": "EUR",
-        "mv_eur": 40956.02,
-        "pl": 4062.23,
+        "mv_eur": 40499.62,
+        "pl": 3530.09,
         "weight": 0.15,
         "cost": null,
         "price": 2565.070214
@@ -12690,8 +13294,8 @@
         "country": "Japan",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 75777.39,
-        "pl": 26619.32,
+        "mv_eur": 76191.29,
+        "pl": 26932.31,
         "weight": 0.28,
         "cost": null,
         "price": 3050.915061
@@ -12702,8 +13306,8 @@
         "country": "Japan",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 97433.0,
-        "pl": -17337.0,
+        "mv_eur": 97951.74,
+        "pl": -17053.87,
         "weight": 0.36,
         "cost": null,
         "price": 5412.623368
@@ -12714,8 +13318,8 @@
         "country": "Japan",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 124619.21,
-        "pl": 4982.86,
+        "mv_eur": 126577.19,
+        "pl": 6695.23,
         "weight": 0.47,
         "cost": null,
         "price": 3098.929373
@@ -12726,8 +13330,8 @@
         "country": "Netherlands",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 28818.14,
-        "pl": -2714.76,
+        "mv_eur": 28736.34,
+        "pl": -2796.56,
         "weight": 0.11,
         "cost": null,
         "price": 77.097555
@@ -12738,8 +13342,8 @@
         "country": "Netherlands",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 53928.12,
-        "pl": 17097.15,
+        "mv_eur": 54422.82,
+        "pl": 17591.85,
         "weight": 0.2,
         "cost": null,
         "price": 126.566907
@@ -12750,9 +13354,9 @@
         "country": "Netherlands",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 135429.6,
-        "pl": 9272.84,
-        "weight": 0.51,
+        "mv_eur": 133539.67,
+        "pl": 7186.98,
+        "weight": 0.5,
         "cost": null,
         "price": 282.151167
       },
@@ -12762,9 +13366,9 @@
         "country": "Netherlands",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 696945.6,
-        "pl": 105711.1,
-        "weight": 2.6,
+        "mv_eur": 725503.2,
+        "pl": 134268.7,
+        "weight": 2.7,
         "cost": null,
         "price": 1349.850457
       },
@@ -12774,9 +13378,9 @@
         "country": "Netherlands",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 673585.95,
-        "pl": 133129.53,
-        "weight": 2.52,
+        "mv_eur": 689641.63,
+        "pl": 149185.21,
+        "weight": 2.57,
         "cost": null,
         "price": 21.543286
       },
@@ -12786,8 +13390,8 @@
         "country": "Netherlands",
         "sector": "Culture, sports and ent.",
         "currency": "EUR",
-        "mv_eur": 26715.6,
-        "pl": -8375.39,
+        "mv_eur": 27497.88,
+        "pl": -7593.11,
         "weight": 0.1,
         "cost": null,
         "price": 23.774383
@@ -12798,8 +13402,8 @@
         "country": "Netherlands",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 35437.01,
-        "pl": 2439.32,
+        "mv_eur": 35009.5,
+        "pl": 2011.81,
         "weight": 0.13,
         "cost": null,
         "price": 14.047548
@@ -12810,9 +13414,9 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 176519.38,
-        "pl": 19739.04,
-        "weight": 0.66,
+        "mv_eur": 175808.13,
+        "pl": 18784.29,
+        "weight": 0.65,
         "cost": null,
         "price": 197.592589
       },
@@ -12822,9 +13426,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 643890.07,
-        "pl": 139451.68,
-        "weight": 2.41,
+        "mv_eur": 629250.1,
+        "pl": 124028.25,
+        "weight": 2.34,
         "cost": null,
         "price": 290.728333
       },
@@ -12834,9 +13438,9 @@
         "country": "United States",
         "sector": "Retail trade (excl. automobiles)",
         "currency": "EUR",
-        "mv_eur": 167002.37,
-        "pl": 3512.0,
-        "weight": 0.62,
+        "mv_eur": 161482.38,
+        "pl": -2261.91,
+        "weight": 0.6,
         "cost": null,
         "price": 240.826713
       },
@@ -12846,9 +13450,9 @@
         "country": "United States",
         "sector": "Retail trade (excl. automobiles)",
         "currency": "EUR",
-        "mv_eur": 182005.98,
-        "pl": 43623.56,
-        "weight": 0.68,
+        "mv_eur": 180284.48,
+        "pl": 41687.13,
+        "weight": 0.67,
         "cost": null,
         "price": 227.517562
       },
@@ -12858,8 +13462,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 54550.73,
-        "pl": 9353.36,
+        "mv_eur": 54337.48,
+        "pl": 9069.91,
         "weight": 0.2,
         "cost": null,
         "price": 47.094118
@@ -12870,9 +13474,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 476424.97,
-        "pl": 97937.36,
-        "weight": 1.78,
+        "mv_eur": 497672.2,
+        "pl": 118596.75,
+        "weight": 1.85,
         "cost": null,
         "price": 299.270774
       },
@@ -12882,9 +13486,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 155340.56,
-        "pl": 83091.95,
-        "weight": 0.58,
+        "mv_eur": 152667.19,
+        "pl": 80306.37,
+        "weight": 0.57,
         "cost": null,
         "price": 55.611784
       },
@@ -12894,8 +13498,8 @@
         "country": "United States",
         "sector": "Company-related services",
         "currency": "EUR",
-        "mv_eur": 96304.7,
-        "pl": 20855.11,
+        "mv_eur": 95692.76,
+        "pl": 20125.99,
         "weight": 0.36,
         "cost": null,
         "price": 111.139728
@@ -12906,9 +13510,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 100315.09,
-        "pl": -11259.49,
-        "weight": 0.37,
+        "mv_eur": 95008.86,
+        "pl": -16739.01,
+        "weight": 0.35,
         "cost": null,
         "price": 667.578296
       },
@@ -12918,9 +13522,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 87256.46,
-        "pl": 14438.86,
-        "weight": 0.33,
+        "mv_eur": 84661.89,
+        "pl": 11731.19,
+        "weight": 0.32,
         "cost": null,
         "price": 225.997412
       },
@@ -12930,8 +13534,8 @@
         "country": "United States",
         "sector": "Banking & insurance auxiliary activ",
         "currency": "EUR",
-        "mv_eur": 253329.59,
-        "pl": 37288.76,
+        "mv_eur": 255500.65,
+        "pl": 39124.28,
         "weight": 0.95,
         "cost": null,
         "price": 282.397969
@@ -12942,8 +13546,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 129265.42,
-        "pl": 15218.23,
+        "mv_eur": 128926.7,
+        "pl": 14702.38,
         "weight": 0.48,
         "cost": null,
         "price": 207.492587
@@ -12954,8 +13558,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 35780.75,
-        "pl": 6646.33,
+        "mv_eur": 35501.1,
+        "pl": 6321.43,
         "weight": 0.13,
         "cost": null,
         "price": 913.994091
@@ -12966,9 +13570,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 82786.58,
-        "pl": -4415.31,
-        "weight": 0.31,
+        "mv_eur": 79773.97,
+        "pl": -7563.36,
+        "weight": 0.3,
         "cost": null,
         "price": 414.834419
       },
@@ -12978,9 +13582,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 156532.66,
-        "pl": 41774.88,
-        "weight": 0.58,
+        "mv_eur": 160220.73,
+        "pl": 45284.72,
+        "weight": 0.6,
         "cost": null,
         "price": 748.3432
       },
@@ -12990,9 +13594,9 @@
         "country": "United States",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 296797.77,
-        "pl": 96059.58,
-        "weight": 1.11,
+        "mv_eur": 293303.12,
+        "pl": 92253.15,
+        "weight": 1.09,
         "cost": null,
         "price": 140.281071
       },
@@ -13002,9 +13606,9 @@
         "country": "United States",
         "sector": "Data proc.& databases",
         "currency": "EUR",
-        "mv_eur": 99296.11,
-        "pl": -32176.75,
-        "weight": 0.37,
+        "mv_eur": 96915.62,
+        "pl": -34761.43,
+        "weight": 0.36,
         "cost": null,
         "price": 249.358042
       },
@@ -13014,8 +13618,8 @@
         "country": "United States",
         "sector": "Prod. of chemicals & chem.products",
         "currency": "EUR",
-        "mv_eur": 74882.02,
-        "pl": -8056.36,
+        "mv_eur": 74049.1,
+        "pl": -9018.1,
         "weight": 0.28,
         "cost": null,
         "price": 168.896014
@@ -13026,9 +13630,9 @@
         "country": "Republic of Korea",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 140081.84,
-        "pl": 110971.24,
-        "weight": 0.52,
+        "mv_eur": 144958.8,
+        "pl": 115802.99,
+        "weight": 0.54,
         "cost": null,
         "price": 1126.33768
       },
@@ -13038,9 +13642,9 @@
         "country": "Taiwan",
         "sector": "Prod. of dev. f. el. prod.& dist.",
         "currency": "EUR",
-        "mv_eur": 877890.32,
-        "pl": 317282.09,
-        "weight": 3.2800000000000002,
+        "mv_eur": 892303.33,
+        "pl": 330824.41,
+        "weight": 3.32,
         "cost": null,
         "price": 271.928959
       }
