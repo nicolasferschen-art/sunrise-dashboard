@@ -362,17 +362,19 @@ def _parse_positions(ws):
         # Marktwert in Fondswährung (EUR)
         elif "MKT VAL" in hu and ("EUR" in hu or "FNDCCY" in hu or "FUND" in hu):
             col_map["mv_eur"] = j
-        elif any(k in hu for k in ["P&L", "G&V", "GEWINN", "UNREALIZED", "UNREAL", "GAIN/LOSS",
-                                     "GAIN LOSS", "BOOK PROFIT", "BUCHGEWINN", "G/V", "PROFIT",
-                                     "LOSS", "VERLUST"]):
-            col_map["pl"] = j
+        elif any(k in hu for k in [
+                "P&L", "P/L", "G&V", "G/V", "GEWINN", "UNREALIZED", "UNREAL",
+                "GAIN/LOSS", "GAIN LOSS", "BOOK PROFIT", "BUCHGEWINN", "BUCHGEWINN/-VERLUST",
+                "BUCHGEWINN/-V", "PROFIT", "VERLUST", "BWG", "BW-GEWINN",
+                "UNREALISED", "UNREALIZ", "GAIN", "ACCRU"]):
+            col_map.setdefault("pl", j)
         elif "WEIGHT" in hu or "ANTEIL" in hu or "%" in hu:
             col_map.setdefault("weight", j)
-        elif "COST" in hu or "EINSTAND" in hu or "KAUFPREIS" in hu:
-            col_map["cost"] = j
+        elif "COST" in hu or "EINSTAND" in hu or "KAUFPREIS" in hu or "BOOK VALUE" in hu or "BUCHWERT" in hu:
+            col_map.setdefault("cost", j)
         elif "PRICE" in hu or "KURS" in hu:
             col_map.setdefault("price", j)
-        elif "QUANTITY" in hu or "STÜCK" in hu or "NOMINAL" in hu:
+        elif "QUANTITY" in hu or "STÜCK" in hu or "NOMINAL" in hu or "QTY" in hu:
             col_map["qty"] = j
 
     print(f"    [LISTE] col_map: {col_map}")
@@ -381,6 +383,26 @@ def _parse_positions(ws):
     if "mv_eur" not in col_map:
         col_map["mv_eur"] = 15
         print(f"    [LISTE] mv_eur Fallback: Spalte 15")
+
+    # Fallback für P&L: Spalte nach mv_eur suchen die pos+neg Werte hat
+    if "pl" not in col_map and "mv_eur" in col_map:
+        mv_idx = col_map["mv_eur"]
+        data_rows = [r for r in rows[header_idx + 1:] if any(r)][:30]
+        for try_idx in range(mv_idx + 1, min(mv_idx + 8, len(headers))):
+            vals = []
+            for r in data_rows:
+                if try_idx < len(r) and r[try_idx] is not None:
+                    try:
+                        v = float(r[try_idx])
+                        vals.append(v)
+                    except (TypeError, ValueError):
+                        pass
+            has_pos = any(v > 0 for v in vals)
+            has_neg = any(v < 0 for v in vals)
+            if has_pos and has_neg and len(vals) >= 3:
+                col_map["pl"] = try_idx
+                print(f"    [LISTE] P&L Fallback: Spalte {try_idx} (pos+neg Werte)")
+                break
 
     for row in rows[header_idx + 1:]:
         if not any(row):
