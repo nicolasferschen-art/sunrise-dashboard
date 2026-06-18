@@ -799,7 +799,7 @@ def fetch_all_news(companies, max_per_company=3, request_timeout=5, anthropic_ke
 
 
 # ─── Dashboard HTML generieren ────────────────────────────────────────────────
-def generate_html(funds_data, updated_at, nav_history=None, news_data=None):
+def generate_html(funds_data, updated_at, nav_history=None, news_data=None, run_log=None):
     """Generiert das vollständige Dashboard-HTML."""
     data_json = json.dumps(funds_data, ensure_ascii=False, separators=(',', ':'))
     nav_history_json = json.dumps(nav_history or {}, ensure_ascii=False, separators=(',', ':'))
@@ -969,7 +969,13 @@ tr:hover td {{ background: var(--surface2); }}
 <div class="sticky-header">
   <div>
     <h1>☀️ Sunrise.app Dashboard</h1>
-    <div class="updated">Stand: {updated_at}</div>
+    <div class="updated" style="display:flex;align-items:center;gap:8px">
+      <span>Stand: {updated_at}</span>
+      <button onclick="toggleRunLog()" title="Run-Historie anzeigen"
+        style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 7px;font-size:11px;color:var(--muted);cursor:pointer;line-height:1.6"
+        onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
+        onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">Runs</button>
+    </div>
   </div>
   <div class="header-kpis">
     <div class="hkpi">
@@ -1368,6 +1374,8 @@ tr:hover td {{ background: var(--surface2); }}
     html += f'const NAV_HISTORY = {nav_history_json};\n'
     news_data_json = json.dumps(news_data or {}, ensure_ascii=False, separators=(',', ':'))
     html += f'const NEWS_DATA = {news_data_json};\n'
+    run_log_json = json.dumps(run_log or [], ensure_ascii=False, separators=(',', ':'))
+    html += f'const RUN_LOG = {run_log_json};\n'
     html += '''
 const PAGE_SIZE = 25;
 const tableState = {};
@@ -2055,6 +2063,70 @@ document.querySelectorAll('.tab').forEach(t => {
   if (t.dataset.tab === 'news') t.addEventListener('click', () => renderNewsPanel(_newsFundFilter));
 });
 setTimeout(() => { if (document.getElementById('panel-news')?.classList.contains('active')) renderNewsPanel('all'); }, 300);
+
+// ── Run-Log Modal ─────────────────────────────────────────────────────────────
+function toggleRunLog() {
+  let el = document.getElementById('run-log-modal');
+  if (el) { el.remove(); return; }
+
+  const fmt = ts => {
+    try {
+      const d = new Date(ts);
+      return d.toLocaleDateString('de-AT',{day:'2-digit',month:'2-digit',year:'numeric'}) + ' ' +
+             d.toLocaleTimeString('de-AT',{hour:'2-digit',minute:'2-digit'}) + ' UTC';
+    } catch(e) { return ts || '—'; }
+  };
+  const fmtAum = v => {
+    if (!v) return '—';
+    return (v/1e6).toLocaleString('de-AT',{minimumFractionDigits:1,maximumFractionDigits:1}) + ' Mio.';
+  };
+
+  const rows = RUN_LOG.length ? RUN_LOG.map(r => `
+    <tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:7px 12px;font-size:12px;white-space:nowrap">${fmt(r.ts)}</td>
+      <td style="padding:7px 12px;text-align:center;font-size:13px">${r.status==='success'?'✅':'❌'}</td>
+      <td style="padding:7px 12px;text-align:right;font-size:12px">${r.funds ?? '—'}</td>
+      <td style="padding:7px 12px;text-align:right;font-size:12px">${r.holdings ?? '—'}</td>
+      <td style="padding:7px 12px;text-align:right;font-size:12px">${r.news ?? '—'}</td>
+      <td style="padding:7px 12px;text-align:right;font-size:12px">${r.summaries ?? '—'}</td>
+      <td style="padding:7px 12px;text-align:right;font-size:12px">${fmtAum(r.aum)}</td>
+    </tr>`).join('') : '<tr><td colspan="7" style="padding:20px;text-align:center;color:var(--muted)">Keine Einträge</td></tr>';
+
+  el = document.createElement('div');
+  el.id = 'run-log-modal';
+  el.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px #0002;min-width:700px;max-width:95vw;max-height:80vh;overflow:auto';
+  el.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)">
+      <span style="font-weight:700;font-size:14px">📋 Workflow Run-Historie</span>
+      <button onclick="document.getElementById('run-log-modal').remove()"
+        style="background:none;border:none;font-size:18px;cursor:pointer;color:var(--muted);line-height:1">×</button>
+    </div>
+    <table style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr style="background:var(--surface2);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">
+          <th style="padding:8px 12px;text-align:left;font-weight:600">Zeitpunkt</th>
+          <th style="padding:8px 12px;font-weight:600">Status</th>
+          <th style="padding:8px 12px;text-align:right;font-weight:600">Fonds</th>
+          <th style="padding:8px 12px;text-align:right;font-weight:600">Positionen</th>
+          <th style="padding:8px 12px;text-align:right;font-weight:600">News</th>
+          <th style="padding:8px 12px;text-align:right;font-weight:600">KI-Summary</th>
+          <th style="padding:8px 12px;text-align:right;font-weight:600">Gesamt-AuM</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+  document.body.appendChild(el);
+
+  // Close on outside click
+  setTimeout(() => {
+    document.addEventListener('click', function handler(e) {
+      if (!el.contains(e.target) && !e.target.closest('button[onclick="toggleRunLog()"]')) {
+        el.remove();
+        document.removeEventListener('click', handler);
+      }
+    });
+  }, 100);
+}
 </script>'''
     return html
 
@@ -2155,6 +2227,21 @@ def load_prev_data(token, repo, branch="main"):
         return {}
 
 
+def load_run_log(token, repo, branch="main"):
+    """Liest den Run-Log aus docs/run_log.json (letzte N Runs)."""
+    try:
+        req = Request(
+            f"https://api.github.com/repos/{repo}/contents/docs/run_log.json?ref={branch}",
+            headers={"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"},
+        )
+        with urlopen(req) as resp:
+            meta = json.loads(resp.read())
+            content = base64.b64decode(meta["content"]).decode()
+            return json.loads(content)
+    except Exception:
+        return []
+
+
 def load_nav_history(token, repo, branch="main"):
     """Liest akkumulierte NAV-Historie aus docs/nav_history.json."""
     try:
@@ -2183,12 +2270,14 @@ def main():
     # 1. Token holen
     access_token = get_access_token()
 
-    # 2. Prev data + NAV-Historie laden
+    # 2. Prev data + NAV-Historie + Run-Log laden
     prev_data = {}
     nav_history = {}
+    run_log = []
     if github_token and github_repo:
         prev_data = load_prev_data(github_token, github_repo)
         nav_history = load_nav_history(github_token, github_repo)
+        run_log = load_run_log(github_token, github_repo)
 
     # 3. Mails finden
     fund_mails = find_latest_emails(access_token)
@@ -2328,10 +2417,23 @@ def main():
     anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
     news_data = fetch_all_news(companies_for_news, anthropic_key=anthropic_key)
 
+    # 5b. Run-Log Eintrag erstellen
+    run_entry = {
+        "ts": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "status": "success",
+        "funds": len(funds_data),
+        "holdings": sum(len(f.get("holdings", [])) for f in funds_data),
+        "news": len(news_data),
+        "summaries": sum(1 for v in news_data.values() if v.get("summary")),
+        "aum": sum(f.get("nav", 0) for f in funds_data),
+    }
+    run_log.insert(0, run_entry)
+    run_log = run_log[:30]  # max 30 Einträge
+
     # 6. Dashboard generieren
     updated_at = datetime.now().strftime("%d.%m.%Y %H:%M UTC")
     print(f"\n🔨 Generiere Dashboard ({updated_at})…")
-    html = generate_html(funds_data, updated_at, nav_history=nav_history, news_data=news_data)
+    html = generate_html(funds_data, updated_at, nav_history=nav_history, news_data=news_data, run_log=run_log)
     data_json = json.dumps(
         [{k: v for k, v in f.items() if k != "holdings"} | {"holdings": f.get("holdings", [])}
          for f in funds_data],
@@ -2357,6 +2459,9 @@ def main():
         git_push_file(github_token, github_repo, "docs/nav_history.json",
                      json.dumps(nav_history, ensure_ascii=False).encode("utf-8"),
                      f"NAV history {today_str}")
+        git_push_file(github_token, github_repo, "docs/run_log.json",
+                     json.dumps(run_log, ensure_ascii=False).encode("utf-8"),
+                     f"Run log {today_str}")
         # GitHub Pages aktivieren (idempotent)
         pages_url = get_or_create_gh_pages(github_token, github_repo)
         if pages_url:
