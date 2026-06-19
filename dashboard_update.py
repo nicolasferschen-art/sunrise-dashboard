@@ -2120,7 +2120,8 @@ function renderNewsPanel(fundFilter) {
 </div>`;
   }).join('');
 
-  if (status) status.textContent = `${companies.length} Unternehmen · Stand: Letzter Workflow-Run`;
+  const lastRun = RUN_LOG[0]?.ts ? new Date(RUN_LOG[0].ts).toLocaleString('de-AT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) + ' Uhr' : '—';
+  if (status) status.textContent = `${companies.length} Unternehmen · Stand: ${lastRun}`;
 }
 
 // Fund filter for news
