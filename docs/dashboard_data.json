@@ -311,14 +311,14 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-06-18",
-        "label": "18.06.2026",
+        "date": "2026-06-19",
+        "label": "19.06.2026",
         "price": 227.28,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-06-19",
-        "label": "19.06.2026",
+        "date": "2026-06-20",
+        "label": "20.06.2026",
         "price": 227.28,
         "note": "Heute (Inventarblatt)"
       }
@@ -5871,14 +5871,14 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-06-18",
-        "label": "18.06.2026",
+        "date": "2026-06-19",
+        "label": "19.06.2026",
         "price": 192.62,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-06-19",
-        "label": "19.06.2026",
+        "date": "2026-06-20",
+        "label": "20.06.2026",
         "price": 192.62,
         "note": "Heute (Inventarblatt)"
       }
@@ -11674,14 +11674,14 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-06-18",
-        "label": "18.06.2026",
+        "date": "2026-06-19",
+        "label": "19.06.2026",
         "price": 113.89,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-06-19",
-        "label": "19.06.2026",
+        "date": "2026-06-20",
+        "label": "20.06.2026",
         "price": 113.89,
         "note": "Heute (Inventarblatt)"
       }
