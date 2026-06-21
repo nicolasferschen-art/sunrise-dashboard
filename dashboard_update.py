@@ -1734,6 +1734,14 @@ function renderTable(fid) {
   const pages = Math.ceil(total / PAGE_SIZE);
   const start = (st.page - 1) * PAGE_SIZE;
 
+  // Reorder DOM so sort actually takes effect
+  const visSet = new Set(visible);
+  const hiddenRows = rows.filter(r => !visSet.has(r));
+  const frag = document.createDocumentFragment();
+  visible.forEach(r => frag.appendChild(r));
+  hiddenRows.forEach(r => frag.appendChild(r));
+  tbody.appendChild(frag);
+
   rows.forEach(r => r.style.display = 'none');
   visible.slice(start, start + PAGE_SIZE).forEach(r => r.style.display = '');
 
@@ -2016,6 +2024,15 @@ function renderAllTable() {
   });
 
   const total = visible.length, pages = Math.ceil(total/25), start = (_allState.page-1)*25;
+
+  // Reorder DOM so sort takes effect
+  const _visSet = new Set(visible);
+  const _hidden = rows.filter(r => !_visSet.has(r));
+  const _frag = document.createDocumentFragment();
+  visible.forEach(r => _frag.appendChild(r));
+  _hidden.forEach(r => _frag.appendChild(r));
+  tbody.appendChild(_frag);
+
   rows.forEach(r => r.style.display='none');
   visible.slice(start, start+25).forEach(r => r.style.display='');
 
