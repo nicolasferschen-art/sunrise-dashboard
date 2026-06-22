@@ -888,6 +888,7 @@ def generate_html(funds_data, updated_at, nav_history=None, news_data=None, run_
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunrise.app Dashboard</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <style>
 :root {{
   --bg: #FAFAF8;
@@ -902,6 +903,15 @@ def generate_html(funds_data, updated_at, nav_history=None, news_data=None, run_
   --green: #16A34A;
   --red: #DC2626;
   --orange: #EA580C;
+}}
+body.dark {{
+  --bg: #1C1917;
+  --surface: #292524;
+  --surface2: #3B2A18;
+  --border: #44403C;
+  --text: #F5F5F4;
+  --muted: #A8A29E;
+  --accent-light: #431407;
 }}
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
 body {{ background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; }}
@@ -1031,6 +1041,10 @@ tr:hover td {{ background: var(--surface2); }}
         style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 7px;font-size:11px;color:var(--muted);cursor:pointer;line-height:1.6"
         onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
         onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">Runs</button>
+      <button id="dark-toggle" onclick="toggleDark()" title="Dark Mode"
+        style="background:none;border:1px solid var(--border);border-radius:4px;padding:1px 7px;font-size:13px;cursor:pointer;line-height:1.6"
+        onmouseover="this.style.borderColor='var(--accent)'"
+        onmouseout="this.style.borderColor='var(--border)'">🌙</button>
     </div>
   </div>
   <div class="header-kpis">
@@ -2225,6 +2239,121 @@ function toggleRunLog() {
     });
   }, 100);
 }
+
+// ── Dark Mode ──────────────────────────────────────────────────────────────────
+(function() {
+  if (localStorage.getItem('darkMode') === '1') {
+    document.body.classList.add('dark');
+    const btn = document.getElementById('dark-toggle');
+    if (btn) btn.textContent = '☀️';
+  }
+})();
+function toggleDark() {
+  const dark = document.body.classList.toggle('dark');
+  localStorage.setItem('darkMode', dark ? '1' : '0');
+  const btn = document.getElementById('dark-toggle');
+  if (btn) btn.textContent = dark ? '☀️' : '🌙';
+  // Redraw all charts so colors update
+  Object.values(Chart.instances).forEach(c => {
+    const style = getComputedStyle(document.body);
+    if (c.options.plugins?.legend?.labels) {
+      c.options.plugins.legend.labels.color = style.getPropertyValue('--text').trim();
+    }
+    c.update();
+  });
+}
+
+// ── Donut Charts (Sektor, Länder, Währung) ─────────────────────────────────────
+const DONUT_PALETTE = ['#F97316','#3B7DD8','#16A34A','#DC2626','#8B5CF6','#06B6D4','#D97706','#EC4899','#6B7280','#14B8A6','#F59E0B','#10B981'];
+
+function _aggregate(holdings, key, topN) {
+  const map = {};
+  const total = holdings.reduce((s, h) => s + (h.mv_eur || 0), 0);
+  holdings.forEach(h => {
+    const k = h[key] || 'Sonstige';
+    map[k] = (map[k] || 0) + (h.mv_eur || 0);
+  });
+  let entries = Object.entries(map).sort((a,b) => b[1]-a[1]);
+  if (topN && entries.length > topN) {
+    const rest = entries.slice(topN).reduce((s,e) => s+e[1], 0);
+    entries = entries.slice(0, topN);
+    if (rest > 0) entries.push(['Sonstige', rest]);
+  }
+  return { labels: entries.map(e => e[0]), data: entries.map(e => e[1]), total };
+}
+
+function _makeDonut(canvasId, agg) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx) return;
+  const style = getComputedStyle(document.body);
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: agg.labels,
+      datasets: [{
+        data: agg.data,
+        backgroundColor: DONUT_PALETTE.slice(0, agg.labels.length),
+        borderWidth: 2,
+        borderColor: style.getPropertyValue('--surface').trim() || '#fff'
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { size: 10 }, padding: 6, color: style.getPropertyValue('--text').trim(), boxWidth: 10 }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const pct = agg.total > 0 ? (ctx.raw / agg.total * 100).toFixed(1) : '0';
+              return ` ${ctx.label}: ${pct}%`;
+            }
+          }
+        }
+      },
+      cutout: '60%'
+    }
+  });
+}
+
+function initDonutCharts() {
+  FUNDS_DATA.forEach(fund => {
+    const panel = document.getElementById('panel-' + fund.id);
+    if (!panel || !fund.holdings?.length) return;
+
+    const wrap = document.createElement('div');
+    wrap.innerHTML = `
+      <div class="section-title">📊 Analyse</div>
+      <div class="grid-3" style="margin-bottom:28px">
+        <div class="card"><h3>Sektoren</h3><div class="chart-wrap" style="height:240px"><canvas id="cs-${fund.id}"></canvas></div></div>
+        <div class="card"><h3>Länder (Top 8)</h3><div class="chart-wrap" style="height:240px"><canvas id="cl-${fund.id}"></canvas></div></div>
+        <div class="card"><h3>Währungsrisiko</h3><div class="chart-wrap" style="height:240px"><canvas id="cw-${fund.id}"></canvas></div></div>
+      </div>`;
+    panel.appendChild(wrap);
+
+    _makeDonut('cs-' + fund.id, _aggregate(fund.holdings, 'sector', null));
+    _makeDonut('cl-' + fund.id, _aggregate(fund.holdings, 'country', 8));
+    _makeDonut('cw-' + fund.id, _aggregate(fund.holdings, 'currency', null));
+  });
+}
+setTimeout(initDonutCharts, 150);
+
+// ── Konfetti 🎉 ────────────────────────────────────────────────────────────────
+(function() {
+  if (typeof confetti === 'undefined') return;
+  const allPositive = FUNDS_DATA.every(f => {
+    return (f.holdings || []).reduce((s, h) => s + (h.pl || 0), 0) > 0;
+  });
+  if (allPositive) {
+    setTimeout(() => {
+      confetti({ particleCount: 120, spread: 80, origin: { y: 0.5 }, colors: ['#F97316','#16A34A','#3B7DD8','#FBBF24'] });
+      setTimeout(() => confetti({ particleCount: 80, spread: 100, origin: { x: 0.2, y: 0.6 }, colors: ['#F97316','#16A34A'] }), 400);
+      setTimeout(() => confetti({ particleCount: 80, spread: 100, origin: { x: 0.8, y: 0.6 }, colors: ['#3B7DD8','#FBBF24'] }), 700);
+    }, 1200);
+  }
+})();
 </script>'''
     return html
 
