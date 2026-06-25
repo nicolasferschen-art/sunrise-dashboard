@@ -98,6 +98,106 @@ def graph_get_bytes(access_token, path):
 
 
 # ─── Mail + Attachment suchen ─────────────────────────────────────────────────
+def graph_get_url(access_token, url):
+    """Holt eine vollständige URL (für Pagination mit @odata.nextLink)."""
+    headers = {"Authorization": f"Bearer {access_token}", "Accept": "application/json"}
+    if _HAS_REQUESTS:
+        resp = _requests.get(url, headers=headers)
+        resp.raise_for_status()
+        return resp.json()
+    else:
+        from urllib.parse import quote
+        safe_url = quote(url, safe="/:?&=.$,@'_-+%")
+        req = Request(safe_url, headers=headers)
+        with urlopen(req) as r:
+            return json.loads(r.read())
+
+
+def find_all_historical_emails(access_token):
+    """Holt ALLE historischen Mails vom Fonds-Sender (mit Pagination)."""
+    url = (
+        "https://graph.microsoft.com/v1.0/me/messages"
+        f"?$top=100"
+        f"&$orderby=receivedDateTime desc"
+        f"&$select=id,subject,receivedDateTime,hasAttachments,from"
+        f"&$filter=from/emailAddress/address eq '{SENDER_EMAIL}'"
+    )
+    all_messages = []
+    page = 0
+    while url:
+        page += 1
+        print(f"  📧 Seite {page}: {len(all_messages)} Mails bisher…")
+        try:
+            data = graph_get_url(access_token, url)
+        except Exception as e:
+            print(f"  ⚠️  Fehler bei Seite {page}: {e}")
+            break
+        msgs = data.get("value", [])
+        all_messages.extend(msgs)
+        url = data.get("@odata.nextLink")
+    print(f"  ✅ {len(all_messages)} Mails gesamt gefunden")
+    return all_messages
+
+
+def backfill_holdings_history(access_token, existing_history):
+    """Liest alle historischen INVENTARLISTE-Mails und befüllt holdings_history."""
+    messages = find_all_historical_emails(access_token)
+    holdings_history = {k: dict(v) for k, v in existing_history.items()}  # deep copy
+
+    # Gruppiere Mails nach Fund + Datum
+    mail_map = {}  # {(fid, date_str): msg_id}
+    for msg in messages:
+        subj   = msg.get("subject", "")
+        subj_up = subj.upper()
+        if "INVENTARLISTE" not in subj_up:
+            continue
+        recv_date = msg.get("receivedDateTime", "")[:10]  # YYYY-MM-DD
+        for fund in FUNDS:
+            fid = fund["id"]
+            if fid not in subj:
+                continue
+            key = (fid, recv_date)
+            if key not in mail_map:
+                mail_map[key] = msg["id"]
+
+    total = len(mail_map)
+    print(f"\n📋 {total} historische INVENTARLISTE-Mails gefunden")
+
+    done = 0
+    for (fid, recv_date), msg_id in sorted(mail_map.items(), key=lambda x: x[0][1]):
+        # Überspringe bereits vorhandene Snapshots
+        if fid in holdings_history and recv_date in holdings_history[fid]:
+            done += 1
+            print(f"  ♻️  {fid} {recv_date} bereits vorhanden, überspringe")
+            continue
+
+        done += 1
+        print(f"  [{done}/{total}] Lade {fid} {recv_date}…")
+        try:
+            xlsx_bytes, filename = download_attachment(access_token, msg_id, ".xlsx")
+            if not xlsx_bytes:
+                print(f"    ⚠️  Kein Anhang")
+                continue
+            parsed = parse_excel(xlsx_bytes, fid)
+            holdings = parsed.get("holdings", [])
+            if not holdings:
+                print(f"    ⚠️  Keine Holdings geparst")
+                continue
+            snap = [
+                {"isin": h.get("isin",""), "name": h.get("name",""),
+                 "qty": h.get("qty"), "mv_eur": h.get("mv_eur"), "weight": h.get("weight")}
+                for h in holdings if h.get("isin") and h["isin"] not in ("None","")
+            ]
+            if fid not in holdings_history:
+                holdings_history[fid] = {}
+            holdings_history[fid][recv_date] = snap
+            print(f"    ✅ {len(snap)} Positionen gespeichert")
+        except Exception as e:
+            print(f"    ❌ Fehler: {e}")
+
+    return holdings_history
+
+
 def find_latest_emails(access_token):
     """Holt die neuesten Mails je Fond — INVENTARBLATT (NAV) + INVENTARLISTE (Holdings)."""
     path = (
@@ -2552,10 +2652,58 @@ def main():
     nav_history = {}
     run_log = []
     changes_history = {}
+    holdings_history = {}
     if github_token and github_repo:
         nav_history = load_nav_history(github_token, github_repo)
         run_log = load_run_log(github_token, github_repo)
         changes_history = load_json_from_github(github_token, github_repo, "docs/changes_history.json") or {}
+        holdings_history = load_json_from_github(github_token, github_repo, "docs/holdings_history.json") or {}
+
+    if RUN_MODE == "backfill":
+        # ── Backfill: Alle historischen Holdings aus Outlook-Mails laden ───────
+        print("\n🔄 BACKFILL-Modus: Lade alle historischen INVENTARLISTE-Mails…")
+        access_token = get_access_token()
+        holdings_history = backfill_holdings_history(access_token, holdings_history)
+
+        # Changes-History aus vollständiger holdings_history neu aufbauen
+        print("\n🔁 Baue Transaktionshistorie aus Holdings-History auf…")
+        changes_history = {}
+        for fid, snaps in holdings_history.items():
+            changes_history[fid] = []
+            existing_keys = set()
+            sorted_dates = sorted(snaps.keys())
+            for i in range(1, len(sorted_dates)):
+                d_curr = sorted_dates[i]
+                d_prev = sorted_dates[i - 1]
+                curr_snap = {h["isin"]: h for h in snaps[d_curr] if h.get("isin")}
+                prev_snap = {h["isin"]: h for h in snaps[d_prev] if h.get("isin")}
+                for isin, h in curr_snap.items():
+                    if isin not in prev_snap:
+                        key = (isin, d_curr, "added")
+                        if key not in existing_keys:
+                            changes_history[fid].append({"date": d_curr, "type": "added", "isin": isin, "name": h.get("name",""), "mv_eur": h.get("mv_eur")})
+                            existing_keys.add(key)
+                for isin, h in prev_snap.items():
+                    if isin not in curr_snap:
+                        key = (isin, d_curr, "removed")
+                        if key not in existing_keys:
+                            changes_history[fid].append({"date": d_curr, "type": "removed", "isin": isin, "name": h.get("name",""), "mv_eur": h.get("mv_eur")})
+                            existing_keys.add(key)
+            total_ch = len(changes_history[fid])
+            print(f"  📊 {fid}: {len(sorted_dates)} Tage, {total_ch} Transaktionen erkannt")
+
+        # Pushen
+        today_str = date.today().isoformat()
+        if github_token and github_repo:
+            print("\n📤 Pushe holdings_history.json und changes_history.json…")
+            git_push_file(github_token, github_repo, "docs/holdings_history.json",
+                         json.dumps(holdings_history, ensure_ascii=False).encode("utf-8"),
+                         f"Backfill holdings history {today_str}")
+            git_push_file(github_token, github_repo, "docs/changes_history.json",
+                         json.dumps(changes_history, ensure_ascii=False).encode("utf-8"),
+                         f"Backfill changes history {today_str}")
+        print("\n✅ Backfill abgeschlossen!")
+        return
 
     if RUN_MODE == "news":
         # ── News-only Run: Fondsdaten aus Cache laden ──────────────────────────
@@ -2651,19 +2799,38 @@ def main():
             changes["date_prev"] = prev_fund.get("report_date") if prev_fund else None
             fund_parsed["changes"] = changes
 
-            # Transaktionshistorie kumulativ aufbauen
+            # Heutigen Holdings-Snapshot speichern
             today_str = date.today().isoformat()
+            if fid not in holdings_history:
+                holdings_history[fid] = {}
+            holdings_history[fid][today_str] = [
+                {"isin": h.get("isin",""), "name": h.get("name",""),
+                 "qty": h.get("qty"), "mv_eur": h.get("mv_eur"), "weight": h.get("weight")}
+                for h in fund_parsed.get("holdings", []) if h.get("isin") and h["isin"] not in ("None","")
+            ]
+
+            # Transaktionshistorie kumulativ aus holdings_history aufbauen
             if fid not in changes_history:
                 changes_history[fid] = []
             existing_keys = {(e["isin"], e["date"], e["type"]) for e in changes_history[fid]}
-            for h in changes.get("added", []):
-                key = (h.get("isin",""), today_str, "added")
-                if key not in existing_keys:
-                    changes_history[fid].append({"date": today_str, "type": "added", "isin": h.get("isin",""), "name": h.get("name",""), "mv_eur": h.get("mv_eur")})
-            for h in changes.get("removed", []):
-                key = (h.get("isin",""), today_str, "removed")
-                if key not in existing_keys:
-                    changes_history[fid].append({"date": today_str, "type": "removed", "isin": h.get("isin",""), "name": h.get("name",""), "mv_eur": h.get("mv_eur")})
+            sorted_dates = sorted(holdings_history[fid].keys())
+            for i in range(1, len(sorted_dates)):
+                d_curr = sorted_dates[i]
+                d_prev = sorted_dates[i - 1]
+                curr_snap = {h["isin"]: h for h in holdings_history[fid][d_curr] if h.get("isin")}
+                prev_snap = {h["isin"]: h for h in holdings_history[fid][d_prev] if h.get("isin")}
+                for isin, h in curr_snap.items():
+                    if isin not in prev_snap:
+                        key = (isin, d_curr, "added")
+                        if key not in existing_keys:
+                            changes_history[fid].append({"date": d_curr, "type": "added", "isin": isin, "name": h.get("name",""), "mv_eur": h.get("mv_eur")})
+                            existing_keys.add(key)
+                for isin, h in prev_snap.items():
+                    if isin not in curr_snap:
+                        key = (isin, d_curr, "removed")
+                        if key not in existing_keys:
+                            changes_history[fid].append({"date": d_curr, "type": "removed", "isin": isin, "name": h.get("name",""), "mv_eur": h.get("mv_eur")})
+                            existing_keys.add(key)
     
             # Vortags-Holdings für Tagesvergleich (lean – nur nötige Felder)
             fund_parsed["prev_holdings"] = [
@@ -2784,6 +2951,9 @@ def main():
             git_push_file(github_token, github_repo, "docs/changes_history.json",
                          json.dumps(changes_history, ensure_ascii=False).encode("utf-8"),
                          f"Changes history {today_str}")
+            git_push_file(github_token, github_repo, "docs/holdings_history.json",
+                         json.dumps(holdings_history, ensure_ascii=False).encode("utf-8"),
+                         f"Holdings history {today_str}")
         git_push_file(github_token, github_repo, "docs/run_log.json",
                      json.dumps(run_log, ensure_ascii=False).encode("utf-8"),
                      f"Run log {today_str}")
