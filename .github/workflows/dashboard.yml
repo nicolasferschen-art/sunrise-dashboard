@@ -8,11 +8,11 @@ on:
   workflow_dispatch:
     inputs:
       run_mode:
-        description: 'Run mode: full (Fondsdaten+News) oder news (nur News)'
+        description: 'Run mode: full (Fondsdaten+News), news (nur News), backfill (Historische Holdings)'
         required: false
         default: 'full'
         type: choice
-        options: [full, news]
+        options: [full, news, backfill]
 
 permissions:
   contents: write
