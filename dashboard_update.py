@@ -114,28 +114,31 @@ def graph_get_url(access_token, url):
 
 
 def find_all_historical_emails(access_token):
-    """Holt ALLE historischen Mails vom Fonds-Sender (mit Pagination)."""
+    """Holt ALLE historischen Mails vom Fonds-Sender (mit Pagination, manueller Filterung)."""
     url = (
         "https://graph.microsoft.com/v1.0/me/messages"
-        f"?$top=100"
-        f"&$orderby=receivedDateTime desc"
-        f"&$select=id,subject,receivedDateTime,hasAttachments,from"
-        f"&$filter=from/emailAddress/address eq '{SENDER_EMAIL}'"
+        "?$top=100"
+        "&$orderby=receivedDateTime desc"
+        "&$select=id,subject,receivedDateTime,hasAttachments,from"
     )
     all_messages = []
     page = 0
     while url:
         page += 1
-        print(f"  📧 Seite {page}: {len(all_messages)} Mails bisher…")
+        print(f"  📧 Seite {page}: {len(all_messages)} Sender-Mails bisher…")
         try:
             data = graph_get_url(access_token, url)
         except Exception as e:
             print(f"  ⚠️  Fehler bei Seite {page}: {e}")
             break
         msgs = data.get("value", [])
-        all_messages.extend(msgs)
+        # Manuell nach Sender filtern
+        for msg in msgs:
+            sender = msg.get("from", {}).get("emailAddress", {}).get("address", "").lower()
+            if sender == SENDER_EMAIL.lower():
+                all_messages.append(msg)
         url = data.get("@odata.nextLink")
-    print(f"  ✅ {len(all_messages)} Mails gesamt gefunden")
+    print(f"  ✅ {len(all_messages)} Mails vom Fonds-Sender gefunden")
     return all_messages
 
 
