@@ -477,8 +477,10 @@ def _parse_positions(ws):
             col_map.setdefault("cost", j)
         elif "PRICE" in hu or "KURS" in hu:
             col_map.setdefault("price", j)
-        elif "QUANTITY" in hu or "STÜCK" in hu or "NOMINAL" in hu or "QTY" in hu:
-            col_map["qty"] = j
+        elif any(k in hu for k in ["QUANTITY", "STÜCK", "STUCKZAHL", "NOMINAL", "QTY",
+                                    "ANZAHL", "BESTAND", "ANTEILE", "NENN", "UNITS",
+                                    "SHARES", "VOLUME", "VOLUMEN", "AMOUNT"]):
+            col_map.setdefault("qty", j)
 
     print(f"    [LISTE] col_map: {col_map}")
 
@@ -1992,35 +1994,42 @@ function showModal(row) {
     html += '<thead><tr style="border-bottom:1px solid var(--border)">'
           + '<th style="text-align:left;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Datum</th>'
           + '<th style="text-align:left;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Typ</th>'
-          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Gehandelt</th>'
-          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Bestand</th>'
+          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Stück (Δ)</th>'
           + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Kurs</th>'
+          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Marktwert</th>'
           + '</tr></thead><tbody>';
     allTx.forEach(e => {
       const cfg = TX_CONFIG[e.type] || {label:e.type, color:'#6b7280', icon:'•'};
       const badge = `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600;color:${cfg.color};background:${cfg.color}18">${cfg.icon} ${cfg.label}</span>`;
-      // Gehandelte Stückzahl (Differenz)
-      let gehandelt = '—';
-      let bestand = '—';
+      // Stückzahl: Differenz wenn qty+prev_qty vorhanden, sonst "n.v." mit Tooltip
+      let stueckCell = '—';
       if (e.qty != null && e.prev_qty != null) {
         const diff = e.qty - e.prev_qty;
         const sign = diff > 0 ? '+' : '';
         const diffColor = diff > 0 ? '#16a34a' : '#dc2626';
-        gehandelt = `<span style="color:${diffColor};font-weight:600">${sign}${Number(diff.toFixed(4)).toLocaleString('de-AT')} Stk.</span>`;
-        bestand = `${Number(e.qty).toLocaleString('de-AT')} Stk.`;
+        stueckCell = `<span style="color:${diffColor};font-weight:600">${sign}${Number(diff.toFixed(2)).toLocaleString('de-AT')} Stk.</span>`
+                   + `<br><span style="font-size:11px;color:var(--muted)">${Number(e.qty).toLocaleString('de-AT')} gesamt</span>`;
       } else if (e.qty != null) {
-        bestand = `${Number(e.qty).toLocaleString('de-AT')} Stk.`;
+        stueckCell = `${Number(e.qty).toLocaleString('de-AT')} Stk.`;
+      } else if (e.mv_proxy) {
+        stueckCell = `<span style="color:var(--muted);font-size:11px" title="Stückzahl nicht im Excel — Erkennung via Marktwert">n.v.*</span>`;
       }
-      // Kurs je Anteil
+      // Kurs je Anteil (nur wenn qty bekannt)
       const kurs = e.price_per_share ? fmtEur(e.price_per_share) + ' €' : '—';
+      // Marktwert
+      const mv = e.mv_eur ? (e.mv_eur >= 1e6 ? (e.mv_eur/1e6).toFixed(2)+' Mio. €' : fmtEur(e.mv_eur)+' €') : '—';
       html += `<tr style="border-bottom:1px solid var(--border)">
         <td style="padding:8px;white-space:nowrap;color:var(--muted)">${e.date}</td>
         <td style="padding:8px">${badge}</td>
-        <td style="padding:8px;text-align:right;white-space:nowrap">${gehandelt}</td>
-        <td style="padding:8px;text-align:right;white-space:nowrap;color:var(--muted);font-size:12px">${bestand}</td>
+        <td style="padding:8px;text-align:right">${stueckCell}</td>
         <td style="padding:8px;text-align:right;white-space:nowrap">${kurs}</td>
+        <td style="padding:8px;text-align:right;white-space:nowrap">${mv}</td>
       </tr>`;
     });
+    // Legende wenn mv_proxy-Einträge vorhanden
+    if (allTx.some(e => e.mv_proxy)) {
+      html += `<tr><td colspan="5" style="padding:8px 8px 2px;font-size:11px;color:var(--muted)">* Stückzahl nicht im Excel — Erkennung basiert auf Marktwertveränderung (&gt;10%)</td></tr>`;
+    }
     html += '</tbody></table>';
     txEl.innerHTML = html;
   } else {
@@ -2778,7 +2787,17 @@ def main():
                                     price_per_share = round(h.get("mv_eur") / curr_qty, 4) if (h.get("mv_eur") and curr_qty) else None
                                     changes_history[fid].append({"date": d_curr, "type": typ, "isin": isin, "name": h.get("name",""), "mv_eur": h.get("mv_eur"), "qty": curr_qty, "prev_qty": prev_qty, "change_pct": round(diff_pct, 1), "price_per_share": price_per_share})
                                     existing_keys.add(key)
-                        # kein mv_proxy-Fallback: Marktwertänderung ≠ Handelssignal (könnte Kursbewegung sein)
+                        else:
+                            # Fallback: mv_eur-Proxy wenn qty nicht im Excel (>10% Schwelle)
+                            prev_mv = prev_h.get("mv_eur") or 0
+                            curr_mv = h.get("mv_eur") or 0
+                            if prev_mv and curr_mv and abs(curr_mv - prev_mv) / max(abs(prev_mv), 1) > 0.10:
+                                diff_pct = (curr_mv - prev_mv) / abs(prev_mv) * 100
+                                typ = "increased" if curr_mv > prev_mv else "decreased"
+                                key = (isin, d_curr, typ)
+                                if key not in existing_keys:
+                                    changes_history[fid].append({"date": d_curr, "type": typ, "isin": isin, "name": h.get("name",""), "mv_eur": curr_mv, "change_pct": round(diff_pct, 1), "mv_proxy": True})
+                                    existing_keys.add(key)
                 for isin, h in prev_snap.items():
                     if isin not in curr_snap:
                         key = (isin, d_curr, "removed")
@@ -2943,6 +2962,7 @@ def main():
                         prev_qty = prev_info.get("qty") or 0
                         curr_qty = h.get("qty") or 0
                         if prev_qty and curr_qty:
+                            # Qty-basierte Erkennung (präzise)
                             if abs(curr_qty - prev_qty) / max(abs(prev_qty), 1) > 0.005:
                                 diff_pct = (curr_qty - prev_qty) / abs(prev_qty) * 100
                                 typ = "increased" if curr_qty > prev_qty else "decreased"
@@ -2951,7 +2971,17 @@ def main():
                                     price_per_share = round(h.get("mv_eur") / curr_qty, 4) if (h.get("mv_eur") and curr_qty) else None
                                     changes_history[fid].append({"date": today_str, "type": typ, "isin": isin, "name": h.get("name",""), "mv_eur": h.get("mv_eur"), "qty": curr_qty, "prev_qty": prev_qty, "change_pct": round(diff_pct, 1), "price_per_share": price_per_share})
                                     existing_keys.add(key)
-                        # kein mv_proxy-Fallback: Marktwertänderung = Kursveränderung, kein Handelssignal
+                        else:
+                            # Fallback: mv_eur-Proxy wenn qty nicht im Excel vorhanden (>10% Schwelle)
+                            prev_mv = prev_info.get("mv_eur") or 0
+                            curr_mv = h.get("mv_eur") or 0
+                            if prev_mv and curr_mv and abs(curr_mv - prev_mv) / max(abs(prev_mv), 1) > 0.10:
+                                diff_pct = (curr_mv - prev_mv) / abs(prev_mv) * 100
+                                typ = "increased" if curr_mv > prev_mv else "decreased"
+                                key = (isin, today_str, typ)
+                                if key not in existing_keys:
+                                    changes_history[fid].append({"date": today_str, "type": typ, "isin": isin, "name": h.get("name",""), "mv_eur": curr_mv, "change_pct": round(diff_pct, 1), "mv_proxy": True})
+                                    existing_keys.add(key)
                 for isin, info in prev_isin_map.items():
                     if isin not in curr_map:
                         # Komplettverkauf
