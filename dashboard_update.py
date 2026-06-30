@@ -1992,29 +1992,33 @@ function showModal(row) {
     html += '<thead><tr style="border-bottom:1px solid var(--border)">'
           + '<th style="text-align:left;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Datum</th>'
           + '<th style="text-align:left;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Typ</th>'
-          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Stück</th>'
+          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Gehandelt</th>'
+          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Bestand</th>'
           + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Kurs</th>'
-          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Änderung</th>'
           + '</tr></thead><tbody>';
     allTx.forEach(e => {
       const cfg = TX_CONFIG[e.type] || {label:e.type, color:'#6b7280', icon:'•'};
       const badge = `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600;color:${cfg.color};background:${cfg.color}18">${cfg.icon} ${cfg.label}</span>`;
-      const chg = e.change_pct != null ? `<span style="color:${e.change_pct>0?'#16a34a':'#dc2626'};font-weight:600">${e.change_pct>0?'+':''}${e.change_pct.toFixed(1)}%</span>` : '—';
-      // Stückzahl: bei Auf/Abbau "alt → neu", sonst einfach qty
-      let stueck = '—';
+      // Gehandelte Stückzahl (Differenz)
+      let gehandelt = '—';
+      let bestand = '—';
       if (e.qty != null && e.prev_qty != null) {
-        stueck = `${Number(e.prev_qty).toLocaleString('de-AT')} → ${Number(e.qty).toLocaleString('de-AT')}`;
+        const diff = e.qty - e.prev_qty;
+        const sign = diff > 0 ? '+' : '';
+        const diffColor = diff > 0 ? '#16a34a' : '#dc2626';
+        gehandelt = `<span style="color:${diffColor};font-weight:600">${sign}${Number(diff.toFixed(4)).toLocaleString('de-AT')} Stk.</span>`;
+        bestand = `${Number(e.qty).toLocaleString('de-AT')} Stk.`;
       } else if (e.qty != null) {
-        stueck = Number(e.qty).toLocaleString('de-AT');
+        bestand = `${Number(e.qty).toLocaleString('de-AT')} Stk.`;
       }
-      // Kurs je Anteil (Marktwert ÷ Stück)
+      // Kurs je Anteil
       const kurs = e.price_per_share ? fmtEur(e.price_per_share) + ' €' : '—';
       html += `<tr style="border-bottom:1px solid var(--border)">
         <td style="padding:8px;white-space:nowrap;color:var(--muted)">${e.date}</td>
         <td style="padding:8px">${badge}</td>
-        <td style="padding:8px;text-align:right;font-variant-numeric:tabular-nums">${stueck}</td>
+        <td style="padding:8px;text-align:right;white-space:nowrap">${gehandelt}</td>
+        <td style="padding:8px;text-align:right;white-space:nowrap;color:var(--muted);font-size:12px">${bestand}</td>
         <td style="padding:8px;text-align:right;white-space:nowrap">${kurs}</td>
-        <td style="padding:8px;text-align:right">${chg}</td>
       </tr>`;
     });
     html += '</tbody></table>';
@@ -2881,12 +2885,21 @@ def main():
                         print(f"   ❌ LISTE Parse-Fehler: {e}")
                         traceback.print_exc()
     
-            # Vortags-Preis: immer aus nav_history (letzter Punkt vor heute)
-            # → robust gegen mehrfache Tagesruns, da nav_history pro Tag nur einen Punkt speichert
+            # Vortags-Preis: aus prev_data wenn run_date vor heute gesetzt, sonst nav_history
+            # run_date wird von uns gesetzt (nicht aus Excel) → zuverlässig unabhängig von NAV-Datum
             prev_fund = prev_data.get(fid, {})
             today_iso = date.today().isoformat()
-            hist_entries = [h for h in nav_history.get(fid, []) if h["date"] < today_iso]
-            nav_ps_prev = hist_entries[-1]["price"] if hist_entries else prev_fund.get("nav_per_share")
+            prev_run_date = prev_fund.get("run_date", "")
+            if prev_fund and prev_run_date and prev_run_date < today_iso:
+                # Vorheriger Run war gestern (oder früher) → direkt als Baseline
+                nav_ps_prev = prev_fund.get("nav_per_share")
+            else:
+                # Kein valides prev_data → nav_history als Fallback (nur real gemessene Punkte)
+                hist_entries = [h for h in nav_history.get(fid, []) if h["date"] < today_iso and h.get("source") == "measured"]
+                if not hist_entries:
+                    # Alle Punkte (auch Seed-Punkte) falls keine gemessenen vorhanden
+                    hist_entries = [h for h in nav_history.get(fid, []) if h["date"] < today_iso]
+                nav_ps_prev = hist_entries[-1]["price"] if hist_entries else None
             fund_parsed["nav_per_share_prev"] = nav_ps_prev
             fund_parsed["nav_prev"] = prev_fund.get("nav") if prev_fund else None
     
@@ -2988,12 +3001,13 @@ def main():
                 for ph_point in fund.get("price_history", []):
                     if not any(h["date"] == ph_point["date"] for h in nav_history[fid]):
                         nav_history[fid].append({"date": ph_point["date"], "price": ph_point["price"]})
-                # Heutigen Datenpunkt hinzufügen
+                # Heutigen Datenpunkt hinzufügen (als "measured" markiert, für zuverlässige Baseline)
                 if not any(h["date"] == today_str for h in nav_history[fid]):
                     nav_history[fid].append({
                         "date": today_str,
                         "price": round(price, 4),
                         "nav": round(nav, 2) if nav else None,
+                        "source": "measured",
                     })
                 nav_history[fid].sort(key=lambda x: x["date"])
                 print(f"  📈 {fid} NAV-Historie: {len(nav_history[fid])} Punkte")
@@ -3069,7 +3083,7 @@ def main():
                      f"News update {today_str}")
         # Nur beim Full-Run: Prev-Data, NAV-Historie speichern
         if RUN_MODE != "news":
-            prev_save = {f["id"]: {k: v for k, v in f.items() if k not in ("changes",)}
+            prev_save = {f["id"]: {**{k: v for k, v in f.items() if k not in ("changes",)}, "run_date": today_str}
                          for f in funds_data}
             git_push_file(github_token, github_repo, "docs/prev_data.json",
                          json.dumps(prev_save, ensure_ascii=False).encode("utf-8"),
