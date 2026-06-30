@@ -1604,6 +1604,7 @@ tr:hover td {{ background: var(--surface2); }}
   <div id="modal-isin" style="font-size:12px;color:var(--muted);margin-bottom:12px"></div>
   <div class="modal-kpis" id="modal-kpis"></div>
   <div id="modal-pl-section"></div>
+  <div id="modal-transactions" style="margin-top:16px"></div>
   <div class="modal-links" id="modal-links"></div>
 </div>
 </div>
@@ -1611,10 +1612,12 @@ tr:hover td {{ background: var(--surface2); }}
 '''
 
     # ── Scripts ─────────────────────────────────────────────────────────────
+    changes_history_json = json.dumps(changes_history or {}, ensure_ascii=False, separators=(',', ':'))
     html += f'<script>\nconst FUNDS_DATA = {data_json};\n'
     html += f'const NAV_HISTORY = {nav_history_json};\n'
     news_data_json = json.dumps(news_data or {}, ensure_ascii=False, separators=(',', ':'))
     html += f'const NEWS_DATA = {news_data_json};\n'
+    html += f'const CHANGES_HISTORY = {changes_history_json};\n'
     run_log_json = json.dumps(run_log or [], ensure_ascii=False, separators=(',', ':'))
     html += f'const RUN_LOG = {run_log_json};\n'
     html += '''
@@ -1965,6 +1968,49 @@ function showModal(row) {
     <a href="https://www.finanzen.net/suche/?_search=${isin}" target="_blank">Finanzen.net</a>
     <a href="https://www.onvista.de/suche/?searchValue=${isin}" target="_blank">Onvista</a>
   ` : '';
+
+  // Transaktionshistorie für diese ISIN
+  const isinSearch = (d.isin || '').trim();
+  const txEl = document.getElementById('modal-transactions');
+  const TX_CONFIG = {
+    added:     {label:'Neukauf',        color:'#16a34a', icon:'▲'},
+    removed:   {label:'Komplettverkauf',color:'#dc2626', icon:'✕'},
+    increased: {label:'Aufstockung',    color:'#2563eb', icon:'↑'},
+    decreased: {label:'Teilverkauf',    color:'#ea580c', icon:'↓'},
+  };
+  const allTx = [];
+  if (isinSearch) {
+    Object.entries(CHANGES_HISTORY).forEach(([fid, entries]) => {
+      entries.forEach(e => { if (e.isin === isinSearch) allTx.push({...e, fid}); });
+    });
+  }
+  allTx.sort((a,b) => b.date.localeCompare(a.date));
+  if (allTx.length > 0) {
+    let html = '<div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Transaktionshistorie</div>';
+    html += '<table style="width:100%;border-collapse:collapse;font-size:13px">';
+    html += '<thead><tr style="border-bottom:1px solid var(--border)">'
+          + '<th style="text-align:left;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Datum</th>'
+          + '<th style="text-align:left;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Typ</th>'
+          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Änderung</th>'
+          + '<th style="text-align:right;padding:6px 8px;font-size:11px;color:var(--muted);font-weight:600">Marktwert</th>'
+          + '</tr></thead><tbody>';
+    allTx.forEach(e => {
+      const cfg = TX_CONFIG[e.type] || {label:e.type, color:'#6b7280', icon:'•'};
+      const badge = `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600;color:${cfg.color};background:${cfg.color}18">${cfg.icon} ${cfg.label}</span>`;
+      const chg = e.change_pct != null ? `<span style="color:${e.change_pct>0?'#16a34a':'#dc2626'};font-weight:600">${e.change_pct>0?'+':''}${e.change_pct.toFixed(1)}%</span>` : '—';
+      const mv = e.mv_eur ? (e.mv_eur>=1e6 ? (e.mv_eur/1e6).toFixed(2)+' Mio. €' : e.mv_eur.toLocaleString('de-AT')+'  €') : '—';
+      html += `<tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:8px;white-space:nowrap;color:var(--muted)">${e.date}</td>
+        <td style="padding:8px">${badge}</td>
+        <td style="padding:8px;text-align:right">${chg}</td>
+        <td style="padding:8px;text-align:right">${mv}</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+    txEl.innerHTML = html;
+  } else {
+    txEl.innerHTML = isinSearch ? '<div style="font-size:12px;color:var(--muted);margin-top:4px">Keine Transaktionen erfasst</div>' : '';
+  }
 
   document.getElementById('modal-overlay').classList.add('open');
 }
