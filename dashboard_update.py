@@ -1503,7 +1503,7 @@ tr:hover td {{ background: var(--surface2); }}
             pl_sign_s = "+" if pl_val > 0 else ""
             isin_s  = h.get("isin","") or ""
             yf_url  = f"https://finance.yahoo.com/quote/{isin_s}.DE" if isin_s else "#"
-            html += f'''<tr onclick="showModal(this)" data-isin="{isin_s}" data-name="{h['name']}" data-country="{h.get('country','')}" data-sector="{h.get('sector','')}" data-currency="{h.get('currency','')}" data-mv="{h['mv_eur']:.2f}" data-pl="{pl_val:.2f}" data-nav-pct="{nav_pct:.3f}" data-cost="{h.get('cost') or ''}" data-price="{h.get('price') or ''}">
+            html += f'''<tr onclick="showModal(this)" data-fid="{fid}" data-isin="{isin_s}" data-name="{h['name']}" data-country="{h.get('country','')}" data-sector="{h.get('sector','')}" data-currency="{h.get('currency','')}" data-mv="{h['mv_eur']:.2f}" data-pl="{pl_val:.2f}" data-nav-pct="{nav_pct:.3f}" data-cost="{h.get('cost') or ''}" data-price="{h.get('price') or ''}">
 <td>{h['name'][:40]}</td>
 <td style="font-size:11px;color:var(--muted)">{isin_s}</td>
 <td>{h.get('country','')}</td>
@@ -1978,11 +1978,12 @@ function showModal(row) {
     increased: {label:'Aufstockung',    color:'#2563eb', icon:'↑'},
     decreased: {label:'Teilverkauf',    color:'#ea580c', icon:'↓'},
   };
+  const rowFid = d.fid || '';
   const allTx = [];
-  if (isinSearch) {
-    Object.entries(CHANGES_HISTORY).forEach(([fid, entries]) => {
-      entries.forEach(e => { if (e.isin === isinSearch) allTx.push({...e, fid}); });
-    });
+  if (isinSearch && rowFid) {
+    // Nur Transaktionen aus dem Fonds des angeklickten Unternehmens
+    const fundEntries = CHANGES_HISTORY[rowFid] || [];
+    fundEntries.forEach(e => { if (e.isin === isinSearch) allTx.push({...e, fid: rowFid}); });
   }
   allTx.sort((a,b) => b.date.localeCompare(a.date));
   if (allTx.length > 0) {
@@ -1998,7 +1999,7 @@ function showModal(row) {
       const cfg = TX_CONFIG[e.type] || {label:e.type, color:'#6b7280', icon:'•'};
       const badge = `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:600;color:${cfg.color};background:${cfg.color}18">${cfg.icon} ${cfg.label}</span>`;
       const chg = e.change_pct != null ? `<span style="color:${e.change_pct>0?'#16a34a':'#dc2626'};font-weight:600">${e.change_pct>0?'+':''}${e.change_pct.toFixed(1)}%</span>` : '—';
-      const mv = e.mv_eur ? (e.mv_eur>=1e6 ? (e.mv_eur/1e6).toFixed(2)+' Mio. €' : e.mv_eur.toLocaleString('de-AT')+'  €') : '—';
+      const mv = e.mv_eur ? (e.mv_eur>=1e6 ? (e.mv_eur/1e6).toFixed(2)+' Mio. €' : e.mv_eur.toLocaleString('de-AT')+' €') : '—';
       html += `<tr style="border-bottom:1px solid var(--border)">
         <td style="padding:8px;white-space:nowrap;color:var(--muted)">${e.date}</td>
         <td style="padding:8px">${badge}</td>
