@@ -2666,7 +2666,7 @@ def main():
         # ── Backfill: Alle historischen Holdings aus Outlook-Mails laden ───────
         print("\n🔄 BACKFILL-Modus: Lade alle historischen INVENTARLISTE-Mails…")
         access_token = get_access_token()
-        holdings_history = backfill_holdings_history(access_token, holdings_history)
+        holdings_history = backfill_holdings_history(access_token, {})
 
         # Changes-History aus vollständiger holdings_history neu aufbauen
         print("\n🔁 Baue Transaktionshistorie aus Holdings-History auf…")
