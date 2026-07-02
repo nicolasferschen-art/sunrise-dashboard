@@ -1808,31 +1808,29 @@ new Chart(document.getElementById('cov-aum'), {
 // ── Monatsreporting ────────────────────────────────────────────────────────
 (function renderMonthlyTable() {
   const FUND_DEFS = [
-    {id: 3411, short: 'Standortfonds AT'},
-    {id: 3431, short: 'Standortfonds DE'},
-    {id: 3581, short: 'Dividends & Interest'},
+    {id: 3411, short: 'Standortfonds AT',      color: '#F97316'},
+    {id: 3431, short: 'Standortfonds DE',      color: '#3B7DD8'},
+    {id: 3581, short: 'Dividends & Interest',  color: '#16A34A'},
   ];
 
-  // Für jeden Fonds: letzten Preis je Monat aus NAV_HISTORY
-  function lastPricePerMonth(fid) {
+  // Letzter Eintrag je Monat aus NAV_HISTORY (enthält price = Fondspreis, nav = Nettovermögen)
+  function lastEntryPerMonth(fid) {
     const hist = NAV_HISTORY[fid] || [];
     const byMonth = {};
     hist.forEach(h => {
-      const m = h.date.substring(0, 7); // YYYY-MM
+      const m = h.date.substring(0, 7);
       if (!byMonth[m] || h.date > byMonth[m].date) byMonth[m] = h;
     });
     return byMonth; // {YYYY-MM: {date, price, nav}}
   }
 
-  // Alle Monate sammeln (über alle Fonds)
   const allMonths = new Set();
   const fundMonthly = {};
   FUND_DEFS.forEach(f => {
-    fundMonthly[f.id] = lastPricePerMonth(f.id);
+    fundMonthly[f.id] = lastEntryPerMonth(f.id);
     Object.keys(fundMonthly[f.id]).forEach(m => allMonths.add(m));
   });
 
-  // Nur vollständig vergangene Monate (nicht der laufende Monat)
   const today = new Date();
   const currentMonth = today.toISOString().substring(0, 7);
   const months = [...allMonths].filter(m => m < currentMonth).sort().reverse(); // neueste zuerst
@@ -1843,40 +1841,39 @@ new Chart(document.getElementById('cov-aum'), {
     return;
   }
 
-  // YTD-Basis: letzter Preis des Vorjahres (Dez) pro Fonds
-  function getYtdBase(fid, year) {
+  // YTD-Basis: letzter FONDSPREIS (price) des Vorjahres — für Performance-Berechnung
+  function getYtdPriceBase(fid, year) {
     const m = fundMonthly[fid];
-    // Suche letzten Preis des Vorjahres
     const prevYearMonths = Object.keys(m).filter(mo => mo.startsWith((year-1)+'-')).sort();
     if (prevYearMonths.length === 0) {
-      // Fallback: frühester Preis im aktuellen Jahr
       const curYearMonths = Object.keys(m).filter(mo => mo.startsWith(year+'-')).sort();
       return curYearMonths.length > 0 ? m[curYearMonths[0]]?.price : null;
     }
     return m[prevYearMonths[prevYearMonths.length - 1]]?.price || null;
   }
 
-  const fmtP = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + ' €';
-  const fmtPct = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
-  const fmtNav = v => v == null ? '—' : v.toFixed(4) + ' €';
-  const colorPct = v => v == null ? '' : (v >= 0 ? 'color:#16a34a' : 'color:#dc2626');
+  const fmtMio  = v => v == null ? '—' : (v / 1e6).toFixed(2) + ' Mio. €';
+  const fmtDMio = v => v == null ? '—' : (v >= 0 ? '+' : '') + (v / 1e6).toFixed(2) + ' Mio.';
+  const fmtPct  = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+  const clrPct  = v => v == null ? '' : (v >= 0 ? 'color:#16a34a' : 'color:#dc2626');
 
-  // Tabelle bauen
-  let t = '<table style="width:100%;border-collapse:collapse;font-size:13px;min-width:720px">';
-  // Header
-  t += '<thead><tr style="border-bottom:2px solid var(--border)">';
+  // ── Tabelle ──
+  let t = '<div style="overflow-x:auto">';
+  t += '<table style="width:100%;border-collapse:collapse;font-size:13px;min-width:720px">';
+  t += '<thead>';
+  t += '<tr style="border-bottom:2px solid var(--border)">';
   t += '<th style="text-align:left;padding:8px 10px;font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap">Monat</th>';
   FUND_DEFS.forEach(f => {
-    t += `<th colspan="4" style="text-align:center;padding:8px 10px;font-size:11px;color:var(--muted);font-weight:600;border-left:1px solid var(--border)">${f.short}</th>`;
+    t += `<th colspan="4" style="text-align:center;padding:8px 10px;font-size:11px;color:var(--muted);font-weight:700;border-left:2px solid var(--border)">${f.short.toUpperCase()}</th>`;
   });
   t += '</tr>';
   t += '<tr style="border-bottom:1px solid var(--border)">';
   t += '<th></th>';
   FUND_DEFS.forEach(() => {
-    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600;border-left:1px solid var(--border)">NAV</th>';
-    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600">Δ (€)</th>';
-    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600">Δ (%)</th>';
-    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600">YTD</th>';
+    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600;border-left:2px solid var(--border)" title="Gesamtes Nettovermögen des Fonds (in Mio. €)">Nettovermögen</th>';
+    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600" title="Veränderung des Nettovermögens zum Vormonat (absolut)">Δ (Mio. €)</th>';
+    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600" title="Veränderung des Nettovermögens zum Vormonat (prozentual)">Δ (%)</th>';
+    t += '<th style="text-align:right;padding:4px 8px;font-size:10px;color:var(--muted);font-weight:600" title="YTD-Performance auf Basis des Fondspreises (Rücknahmepreis) seit Jahresbeginn">YTD *</th>';
   });
   t += '</tr></thead><tbody>';
 
@@ -1885,30 +1882,85 @@ new Chart(document.getElementById('cov-aum'), {
     const label = new Date(yr, mo-1, 1).toLocaleString('de-AT', {month: 'long', year: 'numeric'});
     const rowBg = idx % 2 === 0 ? '' : 'background:var(--bg)';
     t += `<tr style="border-bottom:1px solid var(--border);${rowBg}">`;
-    t += `<td style="padding:8px 10px;white-space:nowrap;font-weight:500">${label}</td>`;
+    t += `<td style="padding:8px 10px;white-space:nowrap;font-weight:600">${label}</td>`;
 
     FUND_DEFS.forEach(f => {
-      const cur = fundMonthly[f.id][month]?.price ?? null;
-      // Vorherigen VORHANDENEN Monat für diesen Fonds suchen (nicht zwingend der Kalendervormonat)
+      const entry    = fundMonthly[f.id][month] ?? null;
+      const curNav   = entry?.nav   ?? null;   // Nettovermögen (gesamt)
+      const curPrice = entry?.price ?? null;   // Fondspreis (für YTD)
+
+      // Vorherigen VORHANDENEN Monat (nicht zwingend Kalendervormonat)
       const fundMonthKeys = Object.keys(fundMonthly[f.id]).filter(m => m < month).sort();
-      const prevMonthKey = fundMonthKeys.length > 0 ? fundMonthKeys[fundMonthKeys.length - 1] : null;
-      const prev = prevMonthKey ? (fundMonthly[f.id][prevMonthKey]?.price ?? null) : null;
-      const ytdBase = getYtdBase(f.id, yr);
+      const prevKey  = fundMonthKeys.length > 0 ? fundMonthKeys[fundMonthKeys.length - 1] : null;
+      const prevNav  = prevKey ? (fundMonthly[f.id][prevKey]?.nav ?? null) : null;
+      const ytdBase  = getYtdPriceBase(f.id, yr);
 
-      const deltaAbs = (cur != null && prev != null) ? cur - prev : null;
-      const deltaPct = (cur != null && prev != null && prev !== 0) ? (cur - prev) / prev * 100 : null;
-      const ytd = (cur != null && ytdBase != null && ytdBase !== 0) ? (cur - ytdBase) / ytdBase * 100 : null;
+      const deltaAbs = (curNav  != null && prevNav  != null)              ? curNav  - prevNav  : null;
+      const deltaPct = (curNav  != null && prevNav  != null && prevNav)   ? (curNav  - prevNav)  / prevNav  * 100 : null;
+      const ytd      = (curPrice != null && ytdBase != null && ytdBase)   ? (curPrice - ytdBase) / ytdBase  * 100 : null;
 
-      t += `<td style="text-align:right;padding:8px;border-left:1px solid var(--border);white-space:nowrap">${fmtNav(cur)}</td>`;
-      t += `<td style="text-align:right;padding:8px;white-space:nowrap;${colorPct(deltaAbs)}">${fmtP(deltaAbs)}</td>`;
-      t += `<td style="text-align:right;padding:8px;white-space:nowrap;font-weight:600;${colorPct(deltaPct)}">${fmtPct(deltaPct)}</td>`;
-      t += `<td style="text-align:right;padding:8px;white-space:nowrap;font-weight:600;${colorPct(ytd)}">${fmtPct(ytd)}</td>`;
+      t += `<td style="text-align:right;padding:8px;border-left:2px solid var(--border);white-space:nowrap;font-weight:500">${fmtMio(curNav)}</td>`;
+      t += `<td style="text-align:right;padding:8px;white-space:nowrap;${clrPct(deltaAbs)}">${fmtDMio(deltaAbs)}</td>`;
+      t += `<td style="text-align:right;padding:8px;white-space:nowrap;font-weight:600;${clrPct(deltaPct)}">${fmtPct(deltaPct)}</td>`;
+      t += `<td style="text-align:right;padding:8px;white-space:nowrap;font-weight:600;${clrPct(ytd)}">${fmtPct(ytd)}</td>`;
     });
     t += '</tr>';
   });
 
   t += '</tbody></table>';
+  t += '<div style="font-size:11px;color:var(--muted);padding:6px 10px 2px">* YTD-Performance auf Basis des Fondspreises (Rücknahmepreis) seit dem letzten verfügbaren Dezember-Preis des Vorjahres.</div>';
+  t += '</div>';
+
+  // ── Balkendiagramm: Nettovermögen je Monat ──
+  t += '<div style="margin-top:20px"><canvas id="monthly-nav-chart" height="180"></canvas></div>';
+
   document.getElementById('monthly-table-wrap').innerHTML = t;
+
+  // Chart aufbauen (chronologisch)
+  const chartMonths = [...months].reverse();
+  const chartLabels = chartMonths.map(m => {
+    const [yr, mo] = m.split('-').map(Number);
+    return new Date(yr, mo-1, 1).toLocaleString('de-AT', {month: 'short', year: '2-digit'});
+  });
+  const ctx = document.getElementById('monthly-nav-chart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: chartLabels,
+        datasets: FUND_DEFS.map(f => ({
+          label: f.short,
+          data: chartMonths.map(m => {
+            const v = fundMonthly[f.id][m]?.nav;
+            return v != null ? parseFloat((v / 1e6).toFixed(2)) : null;
+          }),
+          backgroundColor: f.color + 'bb',
+          borderColor: f.color,
+          borderWidth: 1,
+          borderRadius: 3,
+        })),
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {position: 'bottom', labels: {font: {size: 11}}},
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.dataset.label}: ${ctx.raw != null ? ctx.raw.toFixed(2) + ' Mio. €' : '—'}`,
+            }
+          }
+        },
+        scales: {
+          x: {grid: {display: false}},
+          y: {
+            title: {display: true, text: 'Nettovermögen (Mio. €)', font: {size: 11}},
+            ticks: {callback: v => v.toFixed(0) + ' Mio.'},
+          }
+        }
+      }
+    });
+  }
 })();
 
 // ── Per-Fund Charts ────────────────────────────────────────────────────────
