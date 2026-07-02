@@ -165,11 +165,15 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
     total = len(mail_map)
     print(f"\n📋 {total} historische INVENTARBLATT-Mails gefunden")
 
+    # Alle Emails chronologisch verarbeiten — keine Skip-Logik.
+    # Die finale Deduplizierung (letzter Eintrag pro Datum gewinnt) sorgt dafür,
+    # dass spätere Emails (mit den offiziellen Closing-Werten) frühere überschreiben.
+    # Beispiel: 01.07-Email enthält den offiziellen 30.06-Closing (164.16M) und
+    # überschreibt den vorläufigen Wert der 30.06-Email (163.86M).
     done = 0
-    for (fid, recv_date), msg_id in sorted(mail_map.items()):
-        # Prüfe ob dieses Datum (oder report_date) schon vorhanden
-        existing_dates = {e["date"] for e in nav_history.get(fid, [])}
+    new_entries = []  # alle neu geparseten Einträge (inkl. Überschreibungen)
 
+    for (fid, recv_date), msg_id in sorted(mail_map.items()):
         done += 1
         print(f"  [{done}/{total}] Lade {fid} {recv_date}…")
         try:
@@ -195,41 +199,34 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                 nav = float(price) * float(shares)
                 print(f"    ℹ️  Nettoverm. berechnet: {price:.4f} × {shares:,.0f} = {nav/1e6:.2f} Mio. €")
 
-            # Echtes Bewertungsdatum: asset_date aus "Asset (by DD.MM.YYYY)"-Zeile (= Vortags-Closing).
-            # Jedes Email berichtet den Closing-NAV des Vortags → entry_date = Vortag.
+            # Echtes Bewertungsdatum: asset_date aus "Asset (by DD.MM.YYYY)"-Zeile (= offizieller Closing-Tag).
             # Beispiel: Email vom 01.07 enthält "Asset (by 30.06.2026)" → entry_date = "2026-06-30"
             entry_date = asset_date or report_date or recv_date
-            print(f"    ℹ️  entry_date={entry_date} (asset={asset_date}, report={report_date}, recv={recv_date})")
+            print(f"    ✅ {entry_date} | Preis={price:.4f} | NAV={nav/1e6:.2f}M" if nav else f"    ✅ {entry_date} | Preis={price:.4f}")
 
-            if entry_date in existing_dates:
-                # Überspringe nur wenn NAV + YTD schon vollständig vorhanden
-                existing_entry = next((e for e in nav_history.get(fid, []) if e.get("date") == entry_date), None)
-                if existing_entry and existing_entry.get("nav") is not None and existing_entry.get("perf_ytd") is not None:
-                    print(f"    ♻️  {entry_date} bereits vollständig, überspringe")
-                    continue
-                print(f"    🔄  {entry_date} vorhanden aber unvollständig, aktualisiere…")
-
-            if fid not in nav_history:
-                nav_history[fid] = []
-
-            nav_history[fid].append({
+            new_entries.append((fid, {
                 "date": entry_date,
                 "price": round(float(price), 4),
                 "nav": round(float(nav), 2) if nav else None,
                 "perf_ytd": round(float(perf_ytd), 4) if perf_ytd is not None else None,
                 "source": "measured",
-            })
-            existing_dates.add(entry_date)
-            print(f"    ✅ Preis {price:.4f} @ {entry_date}")
+            }))
         except Exception as e:
             print(f"    ❌ Fehler: {e}")
             traceback.print_exc()
 
-    # Deduplizieren + sortieren pro Fonds
+    # Bestehende + neue Einträge zusammenführen, deduplizieren.
+    # Chronologische Sortierung der new_entries stellt sicher, dass spätere Emails
+    # (mit offiziellen Closing-Werten) frühere vorläufige Werte überschreiben.
+    for fid, entry in new_entries:
+        if fid not in nav_history:
+            nav_history[fid] = []
+        nav_history[fid].append(entry)
+
     for fid in nav_history:
         by_date = {}
-        for e in nav_history[fid]:
-            by_date[e["date"]] = e  # letzter Wert gewinnt bei Duplikaten
+        for e in sorted(nav_history[fid], key=lambda x: x["date"]):
+            by_date[e["date"]] = e  # spätere (chronologisch) überschreiben frühere
         nav_history[fid] = sorted(by_date.values(), key=lambda x: x["date"])
 
     total_entries = sum(len(v) for v in nav_history.values())
@@ -1877,8 +1874,9 @@ new Chart(document.getElementById('cov-aum'), {
     return m[prevYearMonths[prevYearMonths.length - 1]]?.price || null;
   }
 
-  const fmtMio  = v => v == null ? '—' : (v / 1e6).toFixed(2) + ' Mio. €';
-  const fmtDMio = v => v == null ? '—' : (v >= 0 ? '+' : '') + (v / 1e6).toFixed(2) + ' Mio.';
+  const _fmt = new Intl.NumberFormat('de-AT', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtMio  = v => v == null ? '—' : _fmt.format(v) + ' €';
+  const fmtDMio = v => v == null ? '—' : (v >= 0 ? '+' : '') + _fmt.format(v) + ' €';
   const fmtPct  = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
   const clrPct  = v => v == null ? '' : (v >= 0 ? 'color:#16a34a' : 'color:#dc2626');
 
@@ -1978,7 +1976,7 @@ new Chart(document.getElementById('cov-aum'), {
           legend: {position: 'bottom', labels: {font: {size: 11}}},
           tooltip: {
             callbacks: {
-              label: ctx => `${ctx.dataset.label}: ${ctx.raw != null ? ctx.raw.toFixed(2) + ' Mio. €' : '—'}`,
+              label: ctx => `${ctx.dataset.label}: ${ctx.raw != null ? new Intl.NumberFormat('de-AT',{minimumFractionDigits:2,maximumFractionDigits:2}).format(ctx.raw * 1e6) + ' €' : '—'}`,
             }
           }
         },
