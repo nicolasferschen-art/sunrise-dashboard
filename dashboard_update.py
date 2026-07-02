@@ -179,10 +179,11 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                 continue
 
             blatt_data = parse_excel(xlsx_bytes, fid)
-            price    = blatt_data.get("nav_per_share")
-            nav      = blatt_data.get("nav")
-            shares   = blatt_data.get("shares")
-            perf_ytd = blatt_data.get("perf_ytd")
+            price       = blatt_data.get("nav_per_share")
+            nav         = blatt_data.get("nav")
+            shares      = blatt_data.get("shares")
+            perf_ytd    = blatt_data.get("perf_ytd")
+            asset_date  = blatt_data.get("asset_date")   # Datum aus "Asset (by DD.MM.YYYY)"-Zeile
             report_date = blatt_data.get("report_date", recv_date)
 
             if not price:
@@ -194,8 +195,11 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                 nav = float(price) * float(shares)
                 print(f"    ℹ️  Nettoverm. berechnet: {price:.4f} × {shares:,.0f} = {nav/1e6:.2f} Mio. €")
 
-            # NAV-Datum aus Excel (report_date) ist der offizielle Bewertungstag
-            entry_date = report_date or recv_date
+            # Echtes Bewertungsdatum: asset_date aus "Asset (by DD.MM.YYYY)"-Zeile (= Vortags-Closing).
+            # Jedes Email berichtet den Closing-NAV des Vortags → entry_date = Vortag.
+            # Beispiel: Email vom 01.07 enthält "Asset (by 30.06.2026)" → entry_date = "2026-06-30"
+            entry_date = asset_date or report_date or recv_date
+            print(f"    ℹ️  entry_date={entry_date} (asset={asset_date}, report={report_date}, recv={recv_date})")
 
             if entry_date in existing_dates:
                 # Überspringe nur wenn NAV + YTD schon vollständig vorhanden
@@ -435,6 +439,15 @@ def _parse_inventarblatt(ws):
         # Rücknahmepreis / NAV per share
         # Direkter Match auf "Asset (by DD.MM.YYYY)" — Spalte 2 = Anteile, Spalte 7 = Redemption price
         if "ASSET (BY" in row_str or "ASSET(BY" in row_str:
+            # Bewertungsdatum aus der "Asset (by DD.MM.YYYY)"-Zeile extrahieren.
+            # Erste Fundstelle = Vortag (= offizieller Closing-Tag). Dieses Datum ist
+            # der tatsächliche NAV-Stichtag — wichtiger als das Email-Empfangsdatum.
+            if not data.get("asset_date"):
+                date_m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', row_str)
+                if date_m:
+                    day, mon, yr = date_m.groups()
+                    data["asset_date"] = f"{yr}-{mon.zfill(2)}-{day.zfill(2)}"
+                    print(f"    → Bewertungsdatum (Asset-Zeile {i+1}): {data['asset_date']}")
             # Spalte 2 = Issued/Anteile
             if len(row) > 2 and row[2] is not None:
                 try:
