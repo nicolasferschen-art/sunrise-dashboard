@@ -3437,7 +3437,7 @@ def main():
     if github_token and github_repo:
         prev_news_data = load_json_from_github(github_token, github_repo, "docs/news_data.json") or {}
 
-    if news_runs_today >= 2:
+    if news_runs_today >= 2 and prev_news_data:
         print(f"\n⏭️  News bereits {news_runs_today}× heute aktualisiert – überspringe News-Fetch.")
         news_data = prev_news_data
     else:
