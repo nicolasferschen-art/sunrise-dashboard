@@ -1134,8 +1134,9 @@ def fetch_all_news(companies, max_per_company=8, request_timeout=5, anthropic_ke
                     "articles": arts,
                     "summary": summary,
                 }
-        except Exception:
-            pass
+        except Exception as _ne:
+            if i < 3 or (i + 1) % 20 == 0:
+                print(f"  ⚠️  News-Fehler {co['name'][:30]}: {type(_ne).__name__}: {_ne}")
         if (i + 1) % 20 == 0:
             print(f"  {i+1}/{total}…")
         _time.sleep(0.2)
@@ -3457,6 +3458,10 @@ def main():
         companies_for_news = dict(sorted(companies_for_news.items(), key=lambda x: x[1]["mv"], reverse=True))
         anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
         news_data = fetch_all_news(companies_for_news, anthropic_key=anthropic_key, prev_news_data=prev_news_data, max_summaries=50)
+        # Fallback: wenn Fetch nichts liefert (z.B. Google blockiert GitHub IPs) → Altdaten behalten
+        if not news_data and prev_news_data:
+            print("  ↩️  News-Fetch lieferte nichts – verwende gecachte Altdaten.")
+            news_data = prev_news_data
 
     # 5b. Run-Log Eintrag erstellen
     run_entry = {
@@ -3491,10 +3496,11 @@ def main():
         git_push_file(github_token, github_repo, "docs/dashboard_data.json",
                      data_json.encode("utf-8"),
                      f"Data update {today_str}")
-        # News-Daten speichern (immer, für Caching)
-        git_push_file(github_token, github_repo, "docs/news_data.json",
-                     json.dumps(news_data, ensure_ascii=False).encode("utf-8"),
-                     f"News update {today_str}")
+        # News-Daten speichern — nur wenn vorhanden (verhindert Überschreiben mit leerem Dict)
+        if news_data:
+            git_push_file(github_token, github_repo, "docs/news_data.json",
+                         json.dumps(news_data, ensure_ascii=False).encode("utf-8"),
+                         f"News update {today_str}")
         # Nur beim Full-Run: Prev-Data, NAV-Historie speichern
         if RUN_MODE != "news":
             prev_save = {f["id"]: {**{k: v for k, v in f.items() if k not in ("changes",)}, "run_date": today_str}
