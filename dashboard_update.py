@@ -3493,6 +3493,10 @@ def main():
         git_push_file(github_token, github_repo, "docs/index.html",
                      html.encode("utf-8"),
                      f"Dashboard update {today_str}")
+        # Jekyll-Verarbeitung deaktivieren (verhindert Build-Fehler durch {{ }} in JSON-Daten)
+        git_push_file(github_token, github_repo, "docs/.nojekyll",
+                     b"",
+                     "Disable Jekyll")
         git_push_file(github_token, github_repo, "docs/dashboard_data.json",
                      data_json.encode("utf-8"),
                      f"Data update {today_str}")
