@@ -310,7 +310,7 @@
         "value": 0.0
       }
     ],
-    "nav_per_share_prev": 225.75,
+    "nav_per_share_prev": 226.88,
     "nav_prev": 166659893.83,
     "price_history": [
       {
@@ -326,18 +326,25 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-07-02",
-        "label": "02.07.2026",
-        "price": 225.75,
+        "date": "2026-07-03",
+        "label": "03.07.2026",
+        "price": 226.88,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-07-03",
-        "label": "03.07.2026",
+        "date": "2026-07-06",
+        "label": "06.07.2026",
         "price": 226.88,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2279,7 +2286,6 @@
     "hhi": 127.2,
     "top10_weight": 27.7,
     "win_rate": 73.2,
-    "run_date": "2026-07-03",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -5894,7 +5900,7 @@
         "value": 0.04
       }
     ],
-    "nav_per_share_prev": 192.77,
+    "nav_per_share_prev": 193.68,
     "nav_prev": 55727285.35,
     "price_history": [
       {
@@ -5910,18 +5916,25 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-07-02",
-        "label": "02.07.2026",
-        "price": 192.77,
+        "date": "2026-07-03",
+        "label": "03.07.2026",
+        "price": 193.68,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-07-03",
-        "label": "03.07.2026",
+        "date": "2026-07-06",
+        "label": "06.07.2026",
         "price": 193.68,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -7982,7 +7995,6 @@
     "hhi": 101.4,
     "top10_weight": 23.5,
     "win_rate": 72.0,
-    "run_date": "2026-07-03",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -11721,7 +11733,7 @@
         "value": 0.17
       }
     ],
-    "nav_per_share_prev": 113.14,
+    "nav_per_share_prev": 113.31,
     "nav_prev": 27041258.37,
     "price_history": [
       {
@@ -11737,18 +11749,25 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-07-02",
-        "label": "02.07.2026",
-        "price": 113.14,
+        "date": "2026-07-03",
+        "label": "03.07.2026",
+        "price": 113.31,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-07-03",
-        "label": "03.07.2026",
+        "date": "2026-07-06",
+        "label": "06.07.2026",
         "price": 113.31,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -12500,7 +12519,6 @@
     "hhi": 75.4,
     "top10_weight": 21.3,
     "win_rate": 67.9,
-    "run_date": "2026-07-03",
     "holdings": [
       {
         "isin": "AT0000652011",
