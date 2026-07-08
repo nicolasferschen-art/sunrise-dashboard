@@ -334,13 +334,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2282,6 +2275,7 @@
     "hhi": 126.9,
     "top10_weight": 27.6,
     "win_rate": 73.2,
+    "run_date": "2026-07-08",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -5924,171 +5918,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "US30233Q1085",
-          "name": "EXX.HO.COR. O.N.",
-          "country": "United States",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 68115.44,
-          "pl": 12018.56,
-          "weight": 0.12,
-          "cost": null,
-          "price": 112.365982
-        }
-      ],
-      "removed": [
-        {
-          "isin": "DE000LEG1300",
-          "name": "LEG IMMOBILIEN DIV.CASH",
-          "country": "Germany",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 0.0,
-          "pl": 0.0,
-          "weight": 0.0,
-          "cost": null,
-          "price": 0.0
-        },
-        {
-          "isin": "ES0109067019",
-          "name": "AMADEUS IT GRP SA EO 0,01",
-          "country": "Spain",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 24170.3,
-          "pl": -3531.31,
-          "weight": 0.04,
-          "cost": null,
-          "price": 58.565772
-        },
-        {
-          "isin": "FI0009013403",
-          "name": "KONE OYJ           B O.N.",
-          "country": "Finland",
-          "sector": "Mechanical engineering",
-          "currency": "EUR",
-          "mv_eur": 18847.8,
-          "pl": -6436.24,
-          "weight": 0.03,
-          "cost": null,
-          "price": 68.335243
-        },
-        {
-          "isin": "JP3201200007",
-          "name": "OLYMPUS CORP.",
-          "country": "Japan",
-          "sector": "Prod. of dev. f. el. prod.& dist.",
-          "currency": "EUR",
-          "mv_eur": 13536.6,
-          "pl": -4205.82,
-          "weight": 0.02,
-          "cost": null,
-          "price": 2317.318035
-        },
-        {
-          "isin": "JP3756600007",
-          "name": "NINTENDO CO. LTD",
-          "country": "Japan",
-          "sector": "TV, radio & tel.",
-          "currency": "EUR",
-          "mv_eur": 100091.28,
-          "pl": -23642.22,
-          "weight": 0.18,
-          "cost": null,
-          "price": 8816.626071
-        },
-        {
-          "isin": "KYG9830T1067",
-          "name": "XIAOMI CORP. CL.B",
-          "country": "Cayman Islands",
-          "sector": "TV, radio & tel.",
-          "currency": "EUR",
-          "mv_eur": 21333.69,
-          "pl": -4236.14,
-          "weight": 0.04,
-          "cost": null,
-          "price": 27.519075
-        },
-        {
-          "isin": "SE0015961909",
-          "name": "HEXAGON AB B FRIA O.N.",
-          "country": "Sweden",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 72072.23,
-          "pl": -15237.18,
-          "weight": 0.13,
-          "cost": null,
-          "price": 100.256741
-        },
-        {
-          "isin": "US0527691069",
-          "name": "AUTODESK INC.",
-          "country": "United States",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 81233.16,
-          "pl": -4336.67,
-          "weight": 0.15,
-          "cost": null,
-          "price": 218.556414
-        },
-        {
-          "isin": "US1924461023",
-          "name": "COGNIZANT TECH. SOL.A",
-          "country": "United States",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 53393.45,
-          "pl": -42435.43,
-          "weight": 0.1,
-          "cost": null,
-          "price": 75.362333
-        },
-        {
-          "isin": "US30231G1022",
-          "name": "EXXON MOBIL CORP.",
-          "country": "United States",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 68340.22,
-          "pl": 12365.9,
-          "weight": 0.12,
-          "cost": null,
-          "price": 112.365986
-        },
-        {
-          "isin": "US48251W1045",
-          "name": "KKR + CO. INC.       O.N.",
-          "country": "United States",
-          "sector": "Banking & insurance auxiliary activ",
-          "currency": "EUR",
-          "mv_eur": 71020.7,
-          "pl": -32468.67,
-          "weight": 0.13,
-          "cost": null,
-          "price": 136.741003
-        },
-        {
-          "isin": "US90353T1007",
-          "name": "UBER TECH.      DL-,00001",
-          "country": "United States",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 38898.09,
-          "pl": -12194.03,
-          "weight": 0.07,
-          "cost": null,
-          "price": 97.762803
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8149,6 +7978,7 @@
     "hhi": 105.4,
     "top10_weight": 23.9,
     "win_rate": 73.8,
+    "run_date": "2026-07-08",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -11783,39 +11613,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "US30233Q1085",
-          "name": "EXX.HO.COR. O.N.",
-          "country": "United States",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 94166.6,
-          "pl": 17461.45,
-          "weight": 0.35,
-          "cost": null,
-          "price": 111.139734
-        }
-      ],
-      "removed": [
-        {
-          "isin": "US30231G1022",
-          "name": "EXXON MOBIL CORP.",
-          "country": "United States",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 94477.36,
-          "pl": 17939.8,
-          "weight": 0.35,
-          "cost": null,
-          "price": 111.139728
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -12567,6 +12364,7 @@
     "hhi": 77.0,
     "top10_weight": 21.7,
     "win_rate": 67.9,
+    "run_date": "2026-07-08",
     "holdings": [
       {
         "isin": "AT0000652011",
