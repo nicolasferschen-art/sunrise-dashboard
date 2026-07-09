@@ -334,26 +334,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [
-        {
-          "isin": "DE0006070006",
-          "name": "HOCHTIEF AG",
-          "country": "Germany",
-          "sector": "Building industry",
-          "currency": "EUR",
-          "mv_eur": 0.0,
-          "pl": 0.0,
-          "weight": 0.0,
-          "cost": null,
-          "price": 55.410277
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2295,6 +2275,7 @@
     "hhi": 126.4,
     "top10_weight": 27.6,
     "win_rate": 73.5,
+    "run_date": "2026-07-09",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -5925,13 +5906,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -7915,6 +7889,7 @@
     "hhi": 103.8,
     "top10_weight": 23.9,
     "win_rate": 74.5,
+    "run_date": "2026-07-09",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -11549,13 +11524,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -12307,6 +12275,7 @@
     "hhi": 74.8,
     "top10_weight": 21.2,
     "win_rate": 68.9,
+    "run_date": "2026-07-09",
     "holdings": [
       {
         "isin": "AT0000652011",
