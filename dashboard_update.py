@@ -2959,41 +2959,65 @@ setTimeout(initDonutCharts, 150);
 
 # ─── GitHub Commit ────────────────────────────────────────────────────────────
 def git_push_file(token, repo, path, content_bytes, message, branch="main"):
-    """Committed eine Datei direkt per GitHub API."""
+    """Committed eine Datei direkt per GitHub API. Retry bei 5xx-Fehlern."""
     import base64
+    import time as _time
     b64_content = base64.b64encode(content_bytes).decode()
 
-    # Bestehende SHA holen (falls Datei existiert)
+    def _api(req, retries=3):
+        for attempt in range(retries):
+            try:
+                with urlopen(req, timeout=30) as resp:
+                    return json.loads(resp.read())
+            except HTTPError as e:
+                if e.code in (502, 503, 504) and attempt < retries - 1:
+                    _time.sleep(3 * (attempt + 1))
+                    continue
+                raise
+        raise RuntimeError("Unreachable")
+
+    # Bestehende SHA holen (falls Datei existiert) — 5xx → Datei als neu behandeln
     sha = None
     try:
-        req = Request(
+        sha_req = Request(
             f"https://api.github.com/repos/{repo}/contents/{path}?ref={branch}",
             headers={"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"},
         )
-        with urlopen(req) as resp:
-            existing = json.loads(resp.read())
-            sha = existing.get("sha")
+        existing = _api(sha_req)
+        sha = existing.get("sha")
     except HTTPError as e:
         if e.code != 404:
-            print(f"  ⚠️  Konnte SHA für {path} nicht lesen: {e}")
+            print(f"  ⚠️  SHA-Abfrage {path}: HTTP {e.code} – fahre ohne SHA fort")
+    except Exception as e:
+        print(f"  ⚠️  SHA-Abfrage {path}: {e} – fahre ohne SHA fort")
 
-    # Commit vorbereiten
-    body = {"message": message, "content": b64_content, "branch": branch}
-    if sha:
-        body["sha"] = sha
-
-    req = Request(
-        f"https://api.github.com/repos/{repo}/contents/{path}",
-        data=json.dumps(body).encode(),
-        method="PUT",
-        headers={
-            "Authorization": f"token {token}",
-            "Accept":        "application/vnd.github.v3+json",
-            "Content-Type":  "application/json",
-        },
-    )
-    with urlopen(req) as resp:
-        result = json.loads(resp.read())
+    # Commit — bei 422 ohne SHA nochmal versuchen (SHA-Konflikt)
+    for attempt in range(2):
+        body = {"message": message, "content": b64_content, "branch": branch}
+        if sha:
+            body["sha"] = sha
+        put_req = Request(
+            f"https://api.github.com/repos/{repo}/contents/{path}",
+            data=json.dumps(body).encode(),
+            method="PUT",
+            headers={
+                "Authorization": f"token {token}",
+                "Accept":        "application/vnd.github.v3+json",
+                "Content-Type":  "application/json",
+            },
+        )
+        try:
+            result = _api(put_req)
+            break
+        except HTTPError as e:
+            if e.code == 422 and sha and attempt == 0:
+                # SHA veraltet → SHA weglassen (Datei neu anlegen)
+                print(f"  ⚠️  SHA-Konflikt {path} – versuche ohne SHA")
+                sha = None
+                continue
+            raise
+    else:
+        raise RuntimeError(f"Push fehlgeschlagen: {path}")
 
     commit_sha = result.get("commit", {}).get("sha", "")[:8]
     print(f"  ✅ Committed {path} → {commit_sha}")
