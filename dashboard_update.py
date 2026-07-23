@@ -1075,7 +1075,7 @@ def _is_finance_relevant(title, source):
     return True
 
 
-def fetch_all_news(companies, max_per_company=8, request_timeout=5, anthropic_key=None, max_summaries=80, prev_news_data=None):
+def fetch_all_news(companies, max_per_company=8, request_timeout=5, anthropic_key=None, max_summaries=80, prev_news_data=None, max_wall_seconds=300):
     """Fetcht Finanz-News via Google News RSS für alle Unternehmen, optional mit Haiku-Zusammenfassung."""
     import xml.etree.ElementTree as ET
     import time as _time
@@ -1086,9 +1086,13 @@ def fetch_all_news(companies, max_per_company=8, request_timeout=5, anthropic_ke
     total = len(items_list)
     summarize = bool(anthropic_key)
     summary_count = 0
-    print(f"\n📰 Fetche News für {total} Unternehmen{f' (KI-Summary für Top {max_summaries})' if summarize else ''}…")
+    deadline = _time.monotonic() + max_wall_seconds
+    print(f"\n📰 Fetche News für {total} Unternehmen{f' (KI-Summary für Top {max_summaries})' if summarize else ''} (max {max_wall_seconds}s)…")
 
     for i, (key, co) in enumerate(items_list):
+        if _time.monotonic() > deadline:
+            print(f"  ⏱️  Zeitlimit erreicht nach {i} Unternehmen – stoppe News-Fetch.")
+            break
         clean = _clean_news_name(co["name"])
         if not clean or len(clean) < 3:
             continue
@@ -3481,7 +3485,7 @@ def main():
                     companies_for_news[key]["funds"].append(fid)
         companies_for_news = dict(sorted(companies_for_news.items(), key=lambda x: x[1]["mv"], reverse=True))
         anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
-        news_data = fetch_all_news(companies_for_news, anthropic_key=anthropic_key, prev_news_data=prev_news_data, max_summaries=50)
+        news_data = fetch_all_news(companies_for_news, anthropic_key=anthropic_key, prev_news_data=prev_news_data, max_summaries=10, max_wall_seconds=240)
         # Fallback: wenn Fetch nichts liefert (z.B. Google blockiert GitHub IPs) → Altdaten behalten
         if not news_data and prev_news_data:
             print("  ↩️  News-Fetch lieferte nichts – verwende gecachte Altdaten.")
