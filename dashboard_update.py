@@ -1568,8 +1568,8 @@ function renderOverview(){{
       data:{{
         labels:filtered.map(function(h){{return h.date;}}),
         datasets:[{{
-          label:'Nettoverm\u00f6gen',
-          data:filtered.map(function(h){{return h.nav;}}),
+          label:'Fondspreis',
+          data:filtered.map(function(h){{return h.price;}}),
           borderColor:color,backgroundColor:color+'20',fill:true,tension:0.3,pointRadius:0,borderWidth:2
         }}]
       }},
@@ -1577,11 +1577,11 @@ function renderOverview(){{
         responsive:true,maintainAspectRatio:false,
         plugins:{{
           legend:{{display:false}},
-          tooltip:{{mode:'index',intersect:false,callbacks:{{label:function(ctx){{return fmtNav(ctx.parsed.y);}}}}}}
+          tooltip:{{mode:'index',intersect:false,callbacks:{{label:function(ctx){{return fmtPrice(ctx.parsed.y);}}}}}}
         }},
         scales:{{
           x:{{grid:{{display:false}},ticks:{{maxTicksLimit:8,maxRotation:0}}}},
-          y:{{grid:{{color:'#e8e8e6'}},ticks:{{callback:function(v){{return fmtInt.format(Math.round(v))+' \u20ac';}}}}}}
+          y:{{grid:{{color:'#e8e8e6'}},ticks:{{callback:function(v){{return fmtEur.format(v)+' \u20ac';}}}}}}
         }}
       }}
     }});
@@ -1603,21 +1603,45 @@ function renderPerfTable(history){{
 }}
 function renderGV(){{
   var f=FUNDS_DATA[currentFundIdx];
-  var holdings=(f.holdings||[]).filter(function(h){{return h.pl!=null;}});
-  var sorted=holdings.slice().sort(function(a,b){{return(b.pl||0)-(a.pl||0);}});
-  var winners=sorted.slice(0,5),losers=sorted.slice().reverse().slice(0,5);
+  var allH=(f.holdings||[]);
+  var sorted,getVal,fmtVal;
+  if(gvMode==='month'){{
+    /* Rendite % = pl / Einstandswert (mv_eur - pl) */
+    sorted=allH.filter(function(h){{return h.pl!=null&&h.mv_eur!=null;}}).slice();
+    sorted.sort(function(a,b){{
+      var ra=(a.pl||0)/Math.max(Math.abs((a.mv_eur||0)-(a.pl||0)),1)*100;
+      var rb=(b.pl||0)/Math.max(Math.abs((b.mv_eur||0)-(b.pl||0)),1)*100;
+      return rb-ra;
+    }});
+    getVal=function(h){{return(h.pl||0)/Math.max(Math.abs((h.mv_eur||0)-(h.pl||0)),1)*100;}};
+    fmtVal=function(v,isW){{return(v>=0?'+':'')+fmtEur.format(v)+' %';}};
+  }}else if(gvMode==='day'){{
+    /* Tagesrendite nicht direkt verf\u00fcgbar \u2013 zeige Gewichtung im Fonds */
+    sorted=allH.filter(function(h){{return h.pct_nav!=null;}}).slice();
+    sorted.sort(function(a,b){{return(b.pct_nav||0)-(a.pct_nav||0);}});
+    getVal=function(h){{return h.pct_nav||0;}};
+    fmtVal=function(v,isW){{return fmtEur.format(v)+' % NAV';}};
+  }}else{{
+    /* P&L gesamt in EUR */
+    sorted=allH.filter(function(h){{return h.pl!=null;}}).slice();
+    sorted.sort(function(a,b){{return(b.pl||0)-(a.pl||0);}});
+    getVal=function(h){{return h.pl||0;}};
+    fmtVal=function(v,isW){{return(v>=0?'+':'')+fmtInt.format(Math.round(v))+' \u20ac';}};
+  }}
+  var winners=sorted.slice(0,5);
+  var losers=sorted.slice().reverse().slice(0,5);
   function makeRows(arr,isWinner){{
     if(!arr.length)return '<div style="color:#aaa;font-size:12px;padding:8px 0">Keine Daten</div>';
     return arr.map(function(h,i){{
-      var nm=(h.name||'').substring(0,35),plVal=h.pl||0;
+      var nm=(h.name||'').substring(0,35),v=getVal(h);
       var plColor=isWinner?'#1a7c4a':'#c0392b';
-      var plTxt=isWinner?'+'+fmtInt.format(Math.round(plVal)):fmtInt.format(Math.round(plVal));
-      return'<div class="gv-row"><span class="gv-rank">'+(i+1)+'</span><span class="gv-name">'+esc(nm)+'</span><span class="gv-pl" style="color:'+plColor+'">'+plTxt+' \u20ac</span></div>';
+      return'<div class="gv-row"><span class="gv-rank">'+(i+1)+'</span><span class="gv-name">'+esc(nm)+'</span><span class="gv-pl" style="color:'+plColor+'">'+fmtVal(v,isWinner)+'</span></div>';
     }}).join('');
   }}
+  var dayNote=gvMode==='day'?'<div style="font-size:11px;color:#aaa;margin-bottom:10px">Tagesdaten nicht verf\u00fcgbar \u2014 zeigt gr\u00f6\u00dfte Positionen</div>':'';
   document.getElementById('gv-container').innerHTML=
-    '<div><div class="gv-header winners">Gewinner</div>'+makeRows(winners,true)+'</div>'+
-    '<div><div class="gv-header losers">Verlierer</div>'+makeRows(losers,false)+'</div>';
+    '<div><div class="gv-header winners">Gewinner</div>'+dayNote+makeRows(winners,true)+'</div>'+
+    '<div><div class="gv-header losers">Verlierer</div>'+dayNote+makeRows(losers,false)+'</div>';
 }}
 document.getElementById('gv-tabs').addEventListener('click',function(e){{
   var btn=e.target.closest('.gv-tab');if(!btn)return;
@@ -1741,28 +1765,35 @@ function renderRisk(){{
 }}
 function renderMonthly(){{
   var history=getHistory();
-  if(!history.length){{document.getElementById('monthly-body').innerHTML='<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';return;}}
-  var currentYear=new Date().getFullYear(),monthMap={{}};
+  var now=new Date(),currentYear=now.getFullYear(),currentMonth=now.getMonth();
+  var monthMap={{}};
   history.forEach(function(h){{
-    if(new Date(h.date).getFullYear()===currentYear){{
+    var d=new Date(h.date+'T12:00:00');
+    if(d.getFullYear()===currentYear){{
       var ym=h.date.slice(0,7);
       if(!monthMap[ym]||h.date>monthMap[ym].date)monthMap[ym]=h;
     }}
   }});
-  var months=Object.keys(monthMap).sort();
+  /* Generate all months Jan \u2192 current month of current year */
+  var allMonths=[];
+  for(var m=0;m<=currentMonth;m++){{
+    allMonths.push(currentYear+'-'+(m<9?'0':'')+(m+1));
+  }}
   var mn=['Januar','Februar','M\u00e4rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
   var rows='';
-  months.forEach(function(m,i){{
-    var e=monthMap[m],prev=i>0?monthMap[months[i-1]]:null;
-    var delta=(prev&&prev.nav!=null&&e.nav!=null)?e.nav-prev.nav:null;
+  allMonths.forEach(function(ym,i){{
+    var e=monthMap[ym]||null;
+    var prevYm=i>0?allMonths[i-1]:null;
+    var prev=prevYm?monthMap[prevYm]||null:null;
+    var delta=(e&&prev&&prev.nav!=null&&e.nav!=null)?e.nav-prev.nav:null;
     var dcls=delta!=null?(delta>=0?' pos':' neg'):'';
     var dtxt=delta!=null?(delta>=0?'+':'')+ fmtInt.format(Math.round(Math.abs(delta)))+' \u20ac':'\u2014';
-    var ytd=e.perf_ytd,ycls=ytd!=null?(ytd>=0?' pos':' neg'):'';
-    var ytxt=ytd!=null?(ytd>=0?'+':'')+ fmtEur.format(ytd)+' %':'\u2014';
+    var ytd=e?e.perf_ytd:null,ycls=ytd!=null?(ytd>=0?' pos':' neg'):'';
+    var ytxt=ytd!=null?(ytd>=0?'+':'')+fmtEur.format(ytd)+' %':'\u2014';
     rows+='<tr>'+
-      '<td>'+(mn[parseInt(m.slice(5,7),10)-1]||m)+'</td>'+
-      '<td class="num">'+(e.nav!=null?fmtInt.format(Math.round(e.nav))+' \u20ac':'\u2014')+'</td>'+
-      '<td class="num">'+(e.price!=null?fmtEur.format(e.price)+' \u20ac':'\u2014')+'</td>'+
+      '<td>'+(mn[parseInt(ym.slice(5,7),10)-1]||ym)+'</td>'+
+      '<td class="num">'+(e&&e.nav!=null?fmtInt.format(Math.round(e.nav))+' \u20ac':'\u2014')+'</td>'+
+      '<td class="num">'+(e&&e.price!=null?fmtEur.format(e.price)+' \u20ac':'\u2014')+'</td>'+
       '<td class="num'+ycls+'">'+ytxt+'</td>'+
       '<td class="num'+dcls+'">'+dtxt+'</td>'+
       '</tr>';
@@ -1777,7 +1808,9 @@ function buildNewsHtml(){{
     var articles=(nd.articles||[]).slice(0,5);
     if(!articles.length&&!nd.summary)return;
     var co=esc(nd.company||key);
-    var sum=nd.summary?'<div class="news-summary">'+esc(nd.summary)+'</div>':'';
+    var sumRaw=nd.summary;
+    var sumText=typeof sumRaw==='string'?sumRaw:(sumRaw&&sumRaw.text?sumRaw.text:(sumRaw&&typeof sumRaw==='object'?Object.values(sumRaw).join(' '):''));
+    var sum=sumText?'<div class="news-summary">'+esc(sumText)+'</div>':'';
     var ah=articles.map(function(a){{
       var meta=esc((a.source||'')+(a.pubDate?' \u00b7 '+a.pubDate.slice(0,10):''));
       return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener"><span class="article-title">'+esc(a.title||'')+'</span><span class="article-meta">'+meta+'</span></a>';
