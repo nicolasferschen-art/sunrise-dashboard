@@ -1157,7 +1157,6 @@ def generate_html(funds_data, updated_at, nav_history=None, news_data=None, run_
     news_data_json = json.dumps(news_data or {}, ensure_ascii=False, separators=(',',':'))
     changes_history_json = json.dumps(changes_history or {}, ensure_ascii=False, separators=(',',':'))
     run_log_json = json.dumps(run_log or [], ensure_ascii=False, separators=(',',':'))
-
     html = f'''<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -1165,18 +1164,25 @@ def generate_html(funds_data, updated_at, nav_history=None, news_data=None, run_
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Sunrise Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f3;color:#1a1a1a;min-height:100vh;font-size:14px}}
+body{{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f3;color:#1a1a1a;min-height:100vh;font-size:14px}}
 a{{color:inherit;text-decoration:none}}
-.header{{background:#fff;border-bottom:1px solid #e5e5e3;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}}
+.header{{background:#fff;border-bottom:1px solid #e8e8e6;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}}
 .header-title{{font-size:16px;font-weight:700;letter-spacing:-0.3px}}
 .header-updated{{font-size:12px;color:#888}}
+.summary-bar{{background:#f0f0ee;border-bottom:1px solid #e8e8e6;padding:0 24px;display:flex;gap:32px;align-items:center;height:52px}}
+.summary-tile{{display:flex;flex-direction:column}}
+.summary-label{{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:#888;font-weight:600}}
+.summary-value{{font-size:15px;font-weight:700;color:#1a1a1a;letter-spacing:-0.3px}}
+.summary-value.pos{{color:#1a7c4a}}
+.summary-value.neg{{color:#c0392b}}
 .fund-selector-wrap{{padding:20px 24px 0}}
 .fund-selector{{display:flex;gap:8px;flex-wrap:wrap}}
 .pill{{padding:8px 18px;border-radius:100px;border:1.5px solid #d8d8d6;background:#fff;cursor:pointer;font-size:13px;font-weight:500;color:#555;transition:all .15s}}
 .pill:hover{{border-color:#aaa;background:#f8f8f6}}
-.pill.active{{background:var(--fund-color,#3B7DD8);border-color:var(--fund-color,#3B7DD8);color:#fff}}
+.pill.active{{border-color:var(--fund-color,#3B7DD8);background:var(--fund-color,#3B7DD8);color:#fff}}
 .fund-header{{padding:16px 24px 0}}
 .fund-name{{font-size:24px;font-weight:700;letter-spacing:-0.5px}}
 .fund-isin{{font-size:12px;color:#888;margin-top:2px;font-family:monospace}}
@@ -1193,15 +1199,16 @@ a{{color:inherit;text-decoration:none}}
 .tab-nav::-webkit-scrollbar{{display:none}}
 .tab-btn{{padding:10px 18px;font-size:13px;font-weight:500;color:#888;background:none;border:none;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}}
 .tab-btn:hover{{color:#1a1a1a}}
-.tab-btn.active{{color:#1a1a1a;border-bottom-color:#1a1a1a;font-weight:600}}
-.tab-panel{{display:none;padding:24px 24px 40px}}
+.tab-btn.active{{font-weight:600}}
+.tab-panel{{display:none;padding:24px 0 40px}}
 .tab-panel.active{{display:block}}
-.chart-card{{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e8e6;margin-bottom:20px}}
-.chart-title{{font-size:13px;font-weight:600;color:#888;margin-bottom:16px}}
+.card{{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e8e6;margin-bottom:20px}}
+.card-title{{font-size:13px;font-weight:600;color:#888;margin-bottom:16px}}
 .chart-wrap{{height:260px;position:relative}}
 .section-title{{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#888;margin-bottom:12px;margin-top:20px}}
 .perf-table,.data-table,.monthly-table{{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e8e8e6}}
-.perf-table th,.data-table th,.monthly-table th{{background:#f8f8f6;padding:10px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#888;font-weight:600}}
+.perf-table th,.data-table th,.monthly-table th{{background:#f8f8f6;padding:10px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#888;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}}
+.perf-table th:hover,.data-table th:hover{{background:#f0f0ee}}
 .perf-table td,.data-table td,.monthly-table td{{padding:11px 16px;border-top:1px solid #f0f0ee;font-size:13px;vertical-align:middle}}
 td.pos{{color:#1a7c4a;font-weight:600}}
 td.neg{{color:#c0392b;font-weight:600}}
@@ -1210,14 +1217,29 @@ td.rank{{font-size:12px;color:#aaa;width:36px;text-align:center}}
 td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
 .h-name{{font-weight:500}}
 .h-isin{{font-size:11px;color:#aaa;margin-top:2px;font-family:monospace}}
-.bar-container{{height:6px;background:#f0f0ee;border-radius:3px;min-width:80px;max-width:160px}}
-.bar-fill{{height:100%;border-radius:3px}}
 .badge{{display:inline-block;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600}}
 .risk-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:8px}}
 .risk-tile{{background:#fff;border-radius:12px;padding:20px 24px;border:1px solid #e8e8e6}}
 .risk-label{{font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#888;font-weight:600;margin-bottom:6px}}
 .risk-value{{font-size:22px;font-weight:700;color:#1a1a1a;letter-spacing:-0.5px}}
 .risk-note{{font-size:11px;color:#aaa;margin-top:4px;line-height:1.4}}
+.analyse-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}}
+.donut-legend{{margin-top:12px;display:flex;flex-direction:column;gap:6px}}
+.legend-item{{display:flex;align-items:center;gap:8px;font-size:12px}}
+.legend-dot{{width:10px;height:10px;border-radius:50%;flex-shrink:0}}
+.legend-label{{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#555}}
+.legend-pct{{color:#888;font-variant-numeric:tabular-nums}}
+.gv-tabs{{display:flex;gap:8px;margin-bottom:16px}}
+.gv-tab{{padding:6px 14px;border-radius:100px;border:1px solid #d8d8d6;background:#fff;cursor:pointer;font-size:12px;font-weight:500;color:#666;transition:all .15s}}
+.gv-tab.active{{background:#1a1a1a;border-color:#1a1a1a;color:#fff}}
+.gv-grid{{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+.gv-header{{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:6px 10px;border-radius:6px;margin-bottom:8px}}
+.gv-header.winners{{background:#dcfce7;color:#1a7c4a}}
+.gv-header.losers{{background:#fee2e2;color:#c0392b}}
+.gv-row{{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #f0f0ee;gap:8px}}
+.gv-rank{{font-size:11px;color:#aaa;width:20px;flex-shrink:0}}
+.gv-name{{font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+.gv-pl{{font-size:12px;font-weight:600;text-align:right;flex-shrink:0}}
 .news-grid{{display:grid;gap:16px}}
 .news-card{{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e8e6}}
 .news-company{{font-size:15px;font-weight:700;margin-bottom:10px}}
@@ -1227,14 +1249,58 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
 .article-link:hover{{background:#f8f8f6}}
 .article-title{{font-size:13px;font-weight:500;line-height:1.4}}
 .article-meta{{font-size:11px;color:#aaa}}
+.run-log-wrap{{padding:24px 24px 40px;margin-top:8px}}
+details{{background:#fff;border-radius:12px;border:1px solid #e8e8e6;overflow:hidden}}
+summary{{padding:14px 20px;cursor:pointer;font-size:12px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:0.5px;list-style:none;display:flex;align-items:center;gap:8px}}
+summary::-webkit-details-marker{{display:none}}
+summary::before{{content:"\25B6";font-size:10px;transition:transform .15s}}
+details[open] summary::before{{transform:rotate(90deg)}}
 .empty{{color:#888;font-size:13px;padding:20px 0}}
+.news-btn{{padding:7px 16px;border-radius:100px;border:1.5px solid #e8e8e6;background:#fff;cursor:pointer;font-size:13px;font-weight:500;color:#555;transition:all .15s;display:flex;align-items:center;gap:6px}}
+.news-btn:hover{{border-color:#3B7DD8;color:#3B7DD8;background:#f0f5ff}}
+.news-overlay{{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.45);backdrop-filter:blur(2px)}}
+.news-overlay.open{{display:flex;align-items:flex-start;justify-content:flex-end}}
+.news-drawer{{background:#f5f5f3;width:min(600px,100vw);height:100vh;overflow-y:auto;box-shadow:-4px 0 24px rgba(0,0,0,0.15);display:flex;flex-direction:column}}
+.news-drawer-header{{background:#fff;border-bottom:1px solid #e8e8e6;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}}
+.news-drawer-title{{font-size:16px;font-weight:700}}
+.news-drawer-close{{padding:6px 12px;border-radius:8px;border:1px solid #e8e8e6;background:#fff;cursor:pointer;font-size:13px;color:#555}}
+.news-drawer-close:hover{{background:#f0f0ee}}
+.news-drawer-body{{padding:20px;flex:1}}
 </style>
 </head>
 <body>
 <header class="header">
   <span class="header-title">Sunrise Dashboard</span>
-  <span class="header-updated">Stand: {updated_at}</span>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="news-btn" id="news-btn" onclick="openNewsOverlay()">&#128240; News</button>
+    <span class="header-updated">Stand: {updated_at}</span>
+  </div>
 </header>
+<div class="news-overlay" id="news-overlay" onclick="overlayBgClick(event)">
+  <div class="news-drawer">
+    <div class="news-drawer-header">
+      <span class="news-drawer-title">&#128240; News &amp; Updates</span>
+      <button class="news-drawer-close" onclick="closeNewsOverlay()">&#10005; Schlie&#223;en</button>
+    </div>
+    <div class="news-drawer-body">
+      <div id="news-drawer-content" class="news-grid"></div>
+    </div>
+  </div>
+</div>
+<div class="summary-bar">
+  <div class="summary-tile">
+    <span class="summary-label">Gesamt AUM</span>
+    <span class="summary-value" id="sum-aum">&#8212;</span>
+  </div>
+  <div class="summary-tile">
+    <span class="summary-label">Gesamt P&amp;L</span>
+    <span class="summary-value" id="sum-pl">&#8212;</span>
+  </div>
+  <div class="summary-tile">
+    <span class="summary-label">Stand</span>
+    <span class="summary-value">{updated_at}</span>
+  </div>
+</div>
 <div class="fund-selector-wrap">
   <div class="fund-selector" id="fund-selector"></div>
 </div>
@@ -1242,13 +1308,13 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
   <div class="fund-name" id="fund-name"></div>
   <div class="fund-isin" id="fund-isin"></div>
   <div class="fund-tags">
-    <span class="fund-tag">Sondervermögen</span>
+    <span class="fund-tag">Sonderverm&#246;gen</span>
     <span class="fund-tag">Institutionell</span>
   </div>
 </div>
 <div class="metrics-grid">
   <div class="metric-tile">
-    <div class="metric-label">Nettovermögen</div>
+    <div class="metric-label">Nettoverm&#246;gen</div>
     <div class="metric-value" id="metric-nav"></div>
   </div>
   <div class="metric-tile">
@@ -1265,17 +1331,18 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
   </div>
 </div>
 <div class="tabs-wrap">
-  <nav class="tab-nav">
-    <button class="tab-btn active" data-tab="overview">Übersicht</button>
+  <nav class="tab-nav" id="tab-nav">
+    <button class="tab-btn active" data-tab="overview">&#220;bersicht</button>
     <button class="tab-btn" data-tab="holdings">Holdings</button>
+    <button class="tab-btn" data-tab="analyse">Analyse</button>
     <button class="tab-btn" data-tab="transactions">Transaktionen</button>
     <button class="tab-btn" data-tab="risk">Risiko</button>
     <button class="tab-btn" data-tab="monthly">Monatsreporting</button>
     <button class="tab-btn" data-tab="news">News</button>
   </nav>
   <div class="tab-panel active" id="tab-overview">
-    <div class="chart-card">
-      <div class="chart-title">Fondspreis — letzte 12 Monate</div>
+    <div class="card">
+      <div class="card-title">Fondspreis &#8212; letzte 12 Monate</div>
       <div class="chart-wrap"><canvas id="nav-chart"></canvas></div>
     </div>
     <div class="section-title">Performance</div>
@@ -1283,41 +1350,86 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
       <thead><tr><th>Zeitraum</th><th style="text-align:right">Rendite</th></tr></thead>
       <tbody id="perf-table-body"></tbody>
     </table>
+    <div class="section-title" style="margin-top:24px">Gewinner &amp; Verlierer</div>
+    <div class="card">
+      <div class="gv-tabs" id="gv-tabs">
+        <button class="gv-tab active" data-gv="total">P&amp;L gesamt</button>
+        <button class="gv-tab" data-gv="month">Monat</button>
+        <button class="gv-tab" data-gv="day">Tag</button>
+      </div>
+      <div class="gv-grid" id="gv-container"></div>
+    </div>
   </div>
   <div class="tab-panel" id="tab-holdings">
-    <table class="data-table">
-      <thead><tr><th>#</th><th>Position</th><th>Anteil</th><th style="text-align:right">Marktwert</th><th style="text-align:right">% NAV</th></tr></thead>
+    <table class="data-table" id="holdings-table">
+      <thead>
+        <tr>
+          <th data-col="rank">#</th>
+          <th data-col="name">Position</th>
+          <th data-col="mv" style="text-align:right">Marktwert</th>
+          <th data-col="pct" style="text-align:right">% NAV</th>
+          <th data-col="pl" style="text-align:right">P&amp;L</th>
+          <th data-col="sector">Sektor</th>
+        </tr>
+      </thead>
       <tbody id="holdings-body"></tbody>
     </table>
   </div>
+  <div class="tab-panel" id="tab-analyse">
+    <div class="analyse-grid">
+      <div class="card">
+        <div class="card-title">Sektoren</div>
+        <div class="chart-wrap" style="height:200px"><canvas id="chart-sector"></canvas></div>
+        <div class="donut-legend" id="legend-sector"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">L&#228;nder</div>
+        <div class="chart-wrap" style="height:200px"><canvas id="chart-country"></canvas></div>
+        <div class="donut-legend" id="legend-country"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">W&#228;hrungen</div>
+        <div class="chart-wrap" style="height:200px"><canvas id="chart-currency"></canvas></div>
+        <div class="donut-legend" id="legend-currency"></div>
+      </div>
+    </div>
+  </div>
   <div class="tab-panel" id="tab-transactions">
     <table class="data-table">
-      <thead><tr><th>Datum</th><th>Typ</th><th>Name</th><th style="text-align:right">Δ MV</th><th style="text-align:right">Nach Trade</th></tr></thead>
+      <thead><tr><th>Datum</th><th>Typ</th><th>Name</th><th style="text-align:right">&#916; %</th><th style="text-align:right">Marktwert</th></tr></thead>
       <tbody id="transactions-body"></tbody>
     </table>
   </div>
   <div class="tab-panel" id="tab-risk">
     <div class="risk-grid">
       <div class="risk-tile">
-        <div class="risk-label">Volatilität p.a.</div>
-        <div class="risk-value" id="risk-vol">—</div>
-        <div class="risk-note">Standardabweichung täglicher Renditen × √252</div>
+        <div class="risk-label">Volatilit&#228;t p.a.</div>
+        <div class="risk-value" id="risk-vol">&#8212;</div>
+        <div class="risk-note">Standardabweichung der t&#228;glichen Log-Renditen, annualisiert mit Faktor &#8730;252.</div>
       </div>
       <div class="risk-tile">
         <div class="risk-label">Max. Drawdown</div>
-        <div class="risk-value" id="risk-drawdown">—</div>
-        <div class="risk-note">Peak-to-Trough (letzte 252 Handelstage)</div>
+        <div class="risk-value" id="risk-drawdown">&#8212;</div>
+        <div class="risk-note">Gr&#246;&#223;ter Verlust vom H&#246;chststand zum Tiefpunkt (letzte 252 Handelstage).</div>
       </div>
       <div class="risk-tile">
         <div class="risk-label">Sharpe Ratio</div>
-        <div class="risk-value" id="risk-sharpe">—</div>
-        <div class="risk-note">Rendite / Volatilität (risikoloser Zinssatz 0)</div>
+        <div class="risk-value" id="risk-sharpe">&#8212;</div>
+        <div class="risk-note">Verh&#228;ltnis von annualisierter Rendite zu Volatilit&#228;t (risikoloser Zins: 0 %).</div>
       </div>
     </div>
   </div>
   <div class="tab-panel" id="tab-monthly">
     <table class="monthly-table">
-      <thead><tr><th>Monat</th><th style="text-align:right">Nettovermögen</th><th style="text-align:right">Fondspreis</th><th style="text-align:right">YTD</th><th style="text-align:right">Δ Vormonat</th></tr></thead>
+      <thead>
+        <tr>
+          <th>Monat</th>
+          <th style="text-align:right">Nettoverm&#246;gen</th>
+          <th style="text-align:right">Fondspreis</th>
+          <th style="text-align:right">YTD %</th>
+          <th style="text-align:right">&#916; Vormonat</th>
+        </tr>
+      </thead>
       <tbody id="monthly-body"></tbody>
     </table>
   </div>
@@ -1325,323 +1437,394 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
     <div class="news-grid" id="news-container"></div>
   </div>
 </div>
+<div class="run-log-wrap">
+  <details>
+    <summary>Run Log</summary>
+    <div style="padding:0 20px 16px">
+      <table class="data-table" style="margin-top:12px">
+        <thead><tr><th>Zeitstempel</th><th>Status</th><th>Fonds</th><th>Positionen</th><th>News</th><th>Summaries</th></tr></thead>
+        <tbody id="run-log-body"></tbody>
+      </table>
+    </div>
+  </details>
+</div>
 <script>
 const FUNDS_DATA={data_json};
 const NAV_HISTORY={nav_history_json};
 const NEWS_DATA={news_data_json};
 const CHANGES_HISTORY={changes_history_json};
 const RUN_LOG={run_log_json};
-let currentFundIdx = 0;
-let navChart = null;
-const fmtEur = new Intl.NumberFormat('de-AT', {{minimumFractionDigits:2,maximumFractionDigits:2}});
-const fmtInt = new Intl.NumberFormat('de-AT');
-function fundName(name) {{
-  return (name || '').replace(/^IQAM\s+/i, '');
+let currentFundIdx=0,navChart=null,chartSector=null,chartCountry=null,chartCurrency=null,holdingsSortCol='pct',holdingsSortDir=-1,gvMode='total';
+const fmtEur=new Intl.NumberFormat('de-AT',{{minimumFractionDigits:2,maximumFractionDigits:2}});
+const fmtInt=new Intl.NumberFormat('de-AT',{{maximumFractionDigits:0}});
+const fundName=n=>(n||'').replace(/^IQAM\s+/i,'');
+const fmtNav=n=>n==null?'\u2014':fmtInt.format(Math.round(n))+' \u20ac';
+const fmtPrice=n=>n==null?'\u2014':fmtEur.format(n)+' \u20ac';
+const fmtPerf=n=>n==null?'\u2014':(n>=0?'+':'')+ fmtEur.format(n)+' %';
+const fmtDelta=n=>n==null?'\u2014':(n>=0?'+':'')+ fmtInt.format(Math.round(Math.abs(n)))+' \u20ac';
+const colorVal=n=>n==null?'':(n>=0?'color:#1a7c4a':'color:#c0392b');
+const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const DONUT_COLORS=['#3B7DD8','#F4B942','#1a7c4a','#c0392b','#9B59B6','#E67E22','#1ABC9C','#E91E63','#607D8B','#795548','#FF5722','#00BCD4','#8BC34A','#FF9800'];
+function renderSummaryBar(){{
+  var totalNav=0,totalPl=0;
+  FUNDS_DATA.forEach(function(f){{totalNav+=(f.nav||0);totalPl+=(f.total_pl||0);}});
+  document.getElementById('sum-aum').textContent=fmtInt.format(Math.round(totalNav))+' \u20ac';
+  var el=document.getElementById('sum-pl');
+  el.textContent=(totalPl>=0?'+':'')+ fmtInt.format(Math.round(Math.abs(totalPl)))+' \u20ac';
+  el.className='summary-value'+(totalPl>=0?' pos':' neg');
 }}
-function fmtNav(n) {{
-  if (n == null) return '—';
-  return fmtInt.format(Math.round(n)) + ' €';
-}}
-function fmtPrice(n) {{
-  if (n == null) return '—';
-  return fmtEur.format(n) + ' €';
-}}
-function fmtPerf(n) {{
-  if (n == null) return '—';
-  return (n >= 0 ? '+' : '') + fmtEur.format(n) + ' %';
-}}
-function renderFundSelector() {{
-  var container = document.getElementById('fund-selector');
-  container.innerHTML = '';
-  FUNDS_DATA.forEach(function(f, i) {{
-    var btn = document.createElement('button');
-    btn.className = 'pill' + (i === currentFundIdx ? ' active' : '');
-    btn.textContent = fundName(f.name);
-    btn.style.setProperty('--fund-color', f.color || '#3B7DD8');
-    btn.onclick = function() {{ switchFund(i); }};
-    container.appendChild(btn);
+function renderFundSelector(){{
+  var c=document.getElementById('fund-selector');c.innerHTML='';
+  FUNDS_DATA.forEach(function(f,i){{
+    var b=document.createElement('button');
+    b.className='pill'+(i===currentFundIdx?' active':'');
+    b.textContent=fundName(f.name);
+    b.style.setProperty('--fund-color',f.color||'#3B7DD8');
+    b.onclick=function(){{switchFund(i);}};
+    c.appendChild(b);
   }});
 }}
-function switchFund(idx) {{
-  currentFundIdx = idx;
-  if (navChart) {{ navChart.destroy(); navChart = null; }}
-  renderFundSelector();
-  renderFundHeader();
-  renderMetrics();
-  var active = document.querySelector('.tab-btn.active');
-  switchTab(active ? active.dataset.tab : 'overview');
+function destroyCharts(){{
+  if(navChart){{navChart.destroy();navChart=null;}}
+  if(chartSector){{chartSector.destroy();chartSector=null;}}
+  if(chartCountry){{chartCountry.destroy();chartCountry=null;}}
+  if(chartCurrency){{chartCurrency.destroy();chartCurrency=null;}}
 }}
-function renderFundHeader() {{
-  var f = FUNDS_DATA[currentFundIdx];
-  document.getElementById('fund-name').textContent = fundName(f.name);
-  document.getElementById('fund-isin').textContent = f.isin || '';
+function switchFund(idx){{
+  currentFundIdx=idx;destroyCharts();renderFundSelector();renderFundHeader();renderMetrics();
+  var a=document.querySelector('.tab-btn.active');switchTab(a?a.dataset.tab:'overview');
 }}
-function renderMetrics() {{
-  var f = FUNDS_DATA[currentFundIdx];
-  document.getElementById('metric-nav').textContent = fmtNav(f.nav);
-  document.getElementById('metric-price').textContent = fmtPrice(f.nav_per_share);
-  var ytd = f.perf_ytd;
-  var ytdEl = document.getElementById('metric-ytd');
-  ytdEl.textContent = fmtPerf(ytd);
-  ytdEl.className = 'metric-value' + (ytd == null ? '' : ytd >= 0 ? ' pos' : ' neg');
-  document.getElementById('metric-positions').textContent = (f.holdings || []).length;
+function renderFundHeader(){{
+  var f=FUNDS_DATA[currentFundIdx];
+  document.getElementById('fund-name').textContent=fundName(f.name);
+  document.getElementById('fund-isin').textContent=f.isin||'';
 }}
-function switchTab(tabId) {{
-  document.querySelectorAll('.tab-btn').forEach(function(b) {{
-    b.classList.toggle('active', b.dataset.tab === tabId);
+function renderMetrics(){{
+  var f=FUNDS_DATA[currentFundIdx];
+  document.getElementById('metric-nav').textContent=fmtNav(f.nav);
+  document.getElementById('metric-price').textContent=fmtPrice(f.nav_per_share);
+  var ytd=f.perf_ytd,el=document.getElementById('metric-ytd');
+  el.textContent=fmtPerf(ytd);
+  el.className='metric-value'+(ytd==null?'':(ytd>=0?' pos':' neg'));
+  document.getElementById('metric-positions').textContent=(f.holdings||[]).length;
+}}
+function updateTabColor(){{
+  var color=(FUNDS_DATA[currentFundIdx].color)||'#3B7DD8';
+  document.querySelectorAll('.tab-btn').forEach(function(b){{
+    if(b.classList.contains('active')){{b.style.borderBottomColor=color;b.style.color=color;}}
+    else{{b.style.borderBottomColor='';b.style.color='';}}
   }});
-  document.querySelectorAll('.tab-panel').forEach(function(p) {{
-    p.classList.toggle('active', p.id === 'tab-' + tabId);
+}}
+function switchTab(tabId){{
+  var color=(FUNDS_DATA[currentFundIdx].color)||'#3B7DD8';
+  document.querySelectorAll('.tab-btn').forEach(function(b){{
+    var a=b.dataset.tab===tabId;b.classList.toggle('active',a);
+    b.style.borderBottomColor=a?color:'';b.style.color=a?color:'';
   }});
-  if (tabId === 'overview') renderOverview();
-  else if (tabId === 'holdings') renderHoldings();
-  else if (tabId === 'transactions') renderTransactions();
-  else if (tabId === 'risk') renderRisk();
-  else if (tabId === 'monthly') renderMonthly();
-  else if (tabId === 'news') renderNews();
+  document.querySelectorAll('.tab-panel').forEach(function(p){{
+    p.classList.toggle('active',p.id==='tab-'+tabId);
+  }});
+  if(tabId==='overview')renderOverview();
+  else if(tabId==='holdings')renderHoldings();
+  else if(tabId==='analyse')renderAnalyse();
+  else if(tabId==='transactions')renderTransactions();
+  else if(tabId==='risk')renderRisk();
+  else if(tabId==='monthly')renderMonthly();
+  else if(tabId==='news')renderNews();
 }}
-function getHistory() {{
-  var f = FUNDS_DATA[currentFundIdx];
-  return (NAV_HISTORY[f.id] || []);
+function getHistory(){{return NAV_HISTORY[FUNDS_DATA[currentFundIdx].id]||[];}}
+function calcPerf(history,days){{
+  if(!history||history.length<2)return null;
+  var latest=history[history.length-1];
+  var cutoff=new Date(latest.date);cutoff.setDate(cutoff.getDate()-days);
+  var baseline=null;
+  for(var i=0;i<history.length;i++){{if(new Date(history[i].date)>=cutoff){{baseline=history[i];break;}}}}
+  if(!baseline||baseline.date===latest.date||!baseline.price)return null;
+  return((latest.price-baseline.price)/baseline.price)*100;
 }}
-function renderOverview() {{
-  var history = getHistory();
-  var cutoff = new Date();
-  cutoff.setMonth(cutoff.getMonth() - 12);
-  var filtered = history.filter(function(h) {{ return new Date(h.date) >= cutoff; }});
-  var labels = filtered.map(function(h) {{ return h.date; }});
-  var prices = filtered.map(function(h) {{ return h.price; }});
-  var canvas = document.getElementById('nav-chart');
-  if (navChart) navChart.destroy();
-  var f = FUNDS_DATA[currentFundIdx];
-  var color = f.color || '#3B7DD8';
-  if (labels.length > 0) {{
-    navChart = new Chart(canvas, {{
-      type: 'line',
-      data: {{
-        labels: labels,
-        datasets: [{{
-          label: 'Fondspreis',
-          data: prices,
-          borderColor: color,
-          backgroundColor: color + '20',
-          fill: true,
-          tension: 0.3,
-          pointRadius: 0,
-          borderWidth: 2
+function calcYTD(history){{
+  if(!history||history.length<2)return null;
+  var latest=history[history.length-1];
+  if(latest.perf_ytd!=null)return latest.perf_ytd;
+  var year=new Date(latest.date).getFullYear();
+  for(var i=0;i<history.length;i++){{
+    if(new Date(history[i].date).getFullYear()===year){{
+      var b=history[i];if(!b.price)return null;
+      return((latest.price-b.price)/b.price)*100;
+    }}
+  }}
+  return null;
+}}
+function renderOverview(){{
+  var history=getHistory();
+  var cutoff=new Date();cutoff.setMonth(cutoff.getMonth()-12);
+  var filtered=history.filter(function(h){{return new Date(h.date)>=cutoff;}});
+  var f=FUNDS_DATA[currentFundIdx],color=f.color||'#3B7DD8';
+  var canvas=document.getElementById('nav-chart');
+  if(navChart){{navChart.destroy();navChart=null;}}
+  if(filtered.length>0){{
+    navChart=new Chart(canvas,{{
+      type:'line',
+      data:{{
+        labels:filtered.map(function(h){{return h.date;}}),
+        datasets:[{{
+          label:'Nettoverm\u00f6gen',
+          data:filtered.map(function(h){{return h.nav;}}),
+          borderColor:color,backgroundColor:color+'20',fill:true,tension:0.3,pointRadius:0,borderWidth:2
         }}]
       }},
-      options: {{
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {{
-          legend: {{ display: false }},
-          tooltip: {{
-            mode: 'index',
-            intersect: false,
-            callbacks: {{
-              label: function(ctx) {{ return fmtEur.format(ctx.parsed.y) + ' €'; }}
-            }}
-          }}
+      options:{{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{{
+          legend:{{display:false}},
+          tooltip:{{mode:'index',intersect:false,callbacks:{{label:function(ctx){{return fmtNav(ctx.parsed.y);}}}}}}
         }},
-        scales: {{
-          x: {{ grid: {{ display: false }}, ticks: {{ maxTicksLimit: 8, maxRotation: 0 }} }},
-          y: {{
-            grid: {{ color: '#e8e8e6' }},
-            ticks: {{ callback: function(v) {{ return fmtEur.format(v) + ' €'; }} }}
-          }}
+        scales:{{
+          x:{{grid:{{display:false}},ticks:{{maxTicksLimit:8,maxRotation:0}}}},
+          y:{{grid:{{color:'#e8e8e6'}},ticks:{{callback:function(v){{return fmtInt.format(Math.round(v))+' \u20ac';}}}}}}
         }}
       }}
     }});
   }}
-  renderPerfTable(history);
+  renderPerfTable(history);renderGV();
 }}
-function calcPerf(history, days) {{
-  if (!history || history.length < 2) return null;
-  var latest = history[history.length - 1];
-  var cutoff = new Date(latest.date);
-  cutoff.setDate(cutoff.getDate() - days);
-  var baseline = null;
-  for (var i = 0; i < history.length; i++) {{
-    if (new Date(history[i].date) >= cutoff) {{ baseline = history[i]; break; }}
-  }}
-  if (!baseline || baseline.date === latest.date || !baseline.price) return null;
-  return ((latest.price - baseline.price) / baseline.price) * 100;
-}}
-function calcYTD(history) {{
-  if (!history || history.length < 2) return null;
-  var latest = history[history.length - 1];
-  if (latest.perf_ytd != null) return latest.perf_ytd;
-  var year = new Date(latest.date).getFullYear();
-  var baseline = null;
-  for (var i = 0; i < history.length; i++) {{
-    if (new Date(history[i].date).getFullYear() === year) {{ baseline = history[i]; break; }}
-  }}
-  if (!baseline || baseline.date === latest.date || !baseline.price) return null;
-  return ((latest.price - baseline.price) / baseline.price) * 100;
-}}
-function renderPerfTable(history) {{
-  var periods = [
-    {{ label: '1 Woche', days: 7 }},
-    {{ label: '1 Monat', days: 30 }},
-    {{ label: '3 Monate', days: 90 }},
-    {{ label: '6 Monate', days: 180 }},
-    {{ label: 'YTD', ytd: true }},
-    {{ label: '1 Jahr', days: 365 }}
+function renderPerfTable(history){{
+  var periods=[
+    {{label:'1 Woche',days:7}},{{label:'1 Monat',days:30}},{{label:'3 Monate',days:90}},
+    {{label:'6 Monate',days:180}},{{label:'YTD',ytd:true}},{{label:'1 Jahr',days:365}}
   ];
-  var rows = '';
-  periods.forEach(function(p) {{
-    var val = p.ytd ? calcYTD(history) : calcPerf(history, p.days);
-    var cls = val == null ? '' : (val >= 0 ? ' pos' : ' neg');
-    var txt = val == null ? '—' : fmtPerf(val);
-    rows += '<tr><td>' + p.label + '</td><td class="num' + cls + '">' + txt + '</td></tr>';
+  var rows='';
+  periods.forEach(function(p){{
+    var val=p.ytd?calcYTD(history):calcPerf(history,p.days);
+    var cls=val==null?'':(val>=0?' pos':' neg');
+    rows+='<tr><td>'+p.label+'</td><td class="num'+cls+'">'+( val==null?'\u2014':fmtPerf(val))+'</td></tr>';
   }});
-  document.getElementById('perf-table-body').innerHTML = rows;
+  document.getElementById('perf-table-body').innerHTML=rows;
 }}
-function renderHoldings() {{
-  var f = FUNDS_DATA[currentFundIdx];
-  var holdings = (f.holdings || []).slice().sort(function(a, b) {{
-    return (b.mv_eur || 0) - (a.mv_eur || 0);
-  }}).slice(0, 10);
-  var maxMv = holdings.length ? Math.max.apply(null, holdings.map(function(h) {{ return h.mv_eur || 0; }})) : 1;
-  var rows = '';
-  holdings.forEach(function(h, i) {{
-    var pct = maxMv ? ((h.mv_eur || 0) / maxMv * 100).toFixed(1) : 0;
-    rows += '<tr>' +
-      '<td class="rank">' + (i + 1) + '</td>' +
-      '<td><div class="h-name">' + (h.name || '—') + '</div><div class="h-isin">' + (h.isin || '') + '</div></td>' +
-      '<td><div class="bar-container"><div class="bar-fill" style="width:' + pct + '%;background:' + (f.color || '#3B7DD8') + '"></div></div></td>' +
-      '<td class="num">' + (h.mv_eur != null ? fmtEur.format(h.mv_eur) + ' €' : '—') + '</td>' +
-      '<td class="num">' + (h.pct_nav != null ? fmtEur.format(h.pct_nav) + ' %' : '—') + '</td>' +
+function renderGV(){{
+  var f=FUNDS_DATA[currentFundIdx];
+  var holdings=(f.holdings||[]).filter(function(h){{return h.pl!=null;}});
+  var sorted=holdings.slice().sort(function(a,b){{return(b.pl||0)-(a.pl||0);}});
+  var winners=sorted.slice(0,5),losers=sorted.slice().reverse().slice(0,5);
+  function makeRows(arr,isWinner){{
+    if(!arr.length)return '<div style="color:#aaa;font-size:12px;padding:8px 0">Keine Daten</div>';
+    return arr.map(function(h,i){{
+      var nm=(h.name||'').substring(0,35),plVal=h.pl||0;
+      var plColor=isWinner?'#1a7c4a':'#c0392b';
+      var plTxt=isWinner?'+'+fmtInt.format(Math.round(plVal)):fmtInt.format(Math.round(plVal));
+      return'<div class="gv-row"><span class="gv-rank">'+(i+1)+'</span><span class="gv-name">'+esc(nm)+'</span><span class="gv-pl" style="color:'+plColor+'">'+plTxt+' \u20ac</span></div>';
+    }}).join('');
+  }}
+  document.getElementById('gv-container').innerHTML=
+    '<div><div class="gv-header winners">Gewinner</div>'+makeRows(winners,true)+'</div>'+
+    '<div><div class="gv-header losers">Verlierer</div>'+makeRows(losers,false)+'</div>';
+}}
+document.getElementById('gv-tabs').addEventListener('click',function(e){{
+  var btn=e.target.closest('.gv-tab');if(!btn)return;
+  document.querySelectorAll('.gv-tab').forEach(function(b){{b.classList.remove('active');}});
+  btn.classList.add('active');gvMode=btn.dataset.gv;renderGV();
+}});
+function renderHoldings(){{
+  var f=FUNDS_DATA[currentFundIdx],holdings=(f.holdings||[]).slice();
+  holdings.sort(function(a,b){{
+    if(holdingsSortCol==='name'){{var va=(a.name||'').toLowerCase(),vb=(b.name||'').toLowerCase();return holdingsSortDir*(va<vb?-1:va>vb?1:0);}}
+    if(holdingsSortCol==='sector'){{var va=(a.sector||'').toLowerCase(),vb=(b.sector||'').toLowerCase();return holdingsSortDir*(va<vb?-1:va>vb?1:0);}}
+    var va=holdingsSortCol==='mv'?(a.mv_eur||0):holdingsSortCol==='pct'?(a.pct_nav||0):(a.pl||0);
+    var vb=holdingsSortCol==='mv'?(b.mv_eur||0):holdingsSortCol==='pct'?(b.pct_nav||0):(b.pl||0);
+    return holdingsSortDir*(vb-va);
+  }});
+  var rows='';
+  holdings.forEach(function(h,i){{
+    var plCls=h.pl==null?'':(h.pl>=0?' pos':' neg');
+    rows+='<tr>'+
+      '<td class="rank">'+(i+1)+'</td>'+
+      '<td><div class="h-name">'+esc(h.name||'\u2014')+'</div><div class="h-isin">'+esc(h.isin||'')+'</div></td>'+
+      '<td class="num">'+(h.mv_eur!=null?fmtInt.format(Math.round(h.mv_eur))+' \u20ac':'\u2014')+'</td>'+
+      '<td class="num">'+(h.pct_nav!=null?fmtEur.format(h.pct_nav)+' %':'\u2014')+'</td>'+
+      '<td class="num'+plCls+'">'+( h.pl!=null?(h.pl>=0?'+':'')+ fmtInt.format(Math.round(h.pl))+' \u20ac':'\u2014')+'</td>'+
+      '<td>'+esc(h.sector||'\u2014')+'</td>'+
       '</tr>';
   }});
-  document.getElementById('holdings-body').innerHTML = rows || '<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
+  document.getElementById('holdings-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
-function renderTransactions() {{
-  var f = FUNDS_DATA[currentFundIdx];
-  var changes = (CHANGES_HISTORY[f.id] || []).slice().sort(function(a, b) {{
-    return (b.date || '').localeCompare(a.date || '');
-  }}).slice(0, 20);
-  var typeColors = {{
-    'Neukauf': '#1a7c4a',
-    'Aufstockung': '#2563eb',
-    'Teilverkauf': '#d97706',
-    'Komplettverkauf': '#c0392b'
-  }};
-  var rows = '';
-  changes.forEach(function(c) {{
-    var col = typeColors[c.type] || '#666';
-    var deltaTxt = c.delta_mv != null ? (c.delta_mv >= 0 ? '+' : '') + fmtEur.format(c.delta_mv) + ' €' : '—';
-    var afterTxt = c.after_mv != null ? fmtEur.format(c.after_mv) + ' €' : '—';
-    var deltaCls = c.delta_mv != null ? (c.delta_mv >= 0 ? ' pos' : ' neg') : '';
-    rows += '<tr>' +
-      '<td class="date-cell">' + (c.date || '—') + '</td>' +
-      '<td><span class="badge" style="background:' + col + '20;color:' + col + '">' + (c.type || '—') + '</span></td>' +
-      '<td>' + (c.name || '—') + '</td>' +
-      '<td class="num' + deltaCls + '">' + deltaTxt + '</td>' +
-      '<td class="num">' + afterTxt + '</td>' +
-      '</tr>';
-  }});
-  document.getElementById('transactions-body').innerHTML = rows || '<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Transaktionen</td></tr>';
+document.getElementById('holdings-table').querySelector('thead').addEventListener('click',function(e){{
+  var th=e.target.closest('th[data-col]');if(!th)return;
+  var col=th.dataset.col;if(col==='rank')return;
+  if(holdingsSortCol===col){{holdingsSortDir*=-1;}}else{{holdingsSortCol=col;holdingsSortDir=(col==='name'||col==='sector')?1:-1;}}
+  renderHoldings();
+}});
+function groupBy(holdings,key,maxSlices){{
+  var map={{}};
+  holdings.forEach(function(h){{var k=h[key]||'Unbekannt';map[k]=(map[k]||0)+(h.mv_eur||0);}});
+  var arr=Object.keys(map).map(function(k){{return {{label:k,value:map[k]}};}}); 
+  arr.sort(function(a,b){{return b.value-a.value;}});
+  if(arr.length>maxSlices){{var o=arr.splice(maxSlices),s=o.reduce(function(t,x){{return t+x.value;}},0);arr.push({{label:'Sonstige',value:s}});}}
+  return arr;
 }}
-function renderRisk() {{
-  var history = getHistory();
-  var entries = history.slice(-252);
-  function setRisk(v, d, s) {{
-    document.getElementById('risk-vol').textContent = v;
-    document.getElementById('risk-drawdown').textContent = d;
-    document.getElementById('risk-sharpe').textContent = s;
-  }}
-  if (entries.length < 20) {{ setRisk('—', '—', '—'); return; }}
-  var returns = [];
-  for (var i = 1; i < entries.length; i++) {{
-    if (entries[i-1].price) {{ returns.push((entries[i].price - entries[i-1].price) / entries[i-1].price); }}
-  }}
-  if (returns.length < 5) {{ setRisk('—', '—', '—'); return; }}
-  var mean = returns.reduce(function(s, r) {{ return s + r; }}, 0) / returns.length;
-  var variance = returns.reduce(function(s, r) {{ return s + Math.pow(r - mean, 2); }}, 0) / (returns.length - 1);
-  var vol = Math.sqrt(variance * 252) * 100;
-  var peak = entries[0].price, maxDD = 0;
-  entries.forEach(function(e) {{
-    if (e.price > peak) peak = e.price;
-    var dd = peak > 0 ? (peak - e.price) / peak : 0;
-    if (dd > maxDD) maxDD = dd;
-  }});
-  var annualReturn = mean * 252 * 100;
-  var sharpe = vol > 0 ? annualReturn / vol : null;
-  setRisk(
-    fmtEur.format(vol) + ' %',
-    '-' + fmtEur.format(maxDD * 100) + ' %',
-    sharpe != null ? fmtEur.format(sharpe) : '—'
-  );
-}}
-function renderMonthly() {{
-  var history = getHistory();
-  if (!history.length) {{
-    document.getElementById('monthly-body').innerHTML = '<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
-    return;
-  }}
-  var currentYear = new Date(history[history.length - 1].date).getFullYear();
-  var monthMap = {{}};
-  history.forEach(function(h) {{
-    if (new Date(h.date).getFullYear() === currentYear) {{
-      monthMap[h.date.slice(0, 7)] = h;
+function buildDonut(canvasId,legendId,data,colors){{
+  var ctx=document.getElementById(canvasId);if(!ctx)return null;
+  var total=data.reduce(function(s,d){{return s+d.value;}},0);
+  var chart=new Chart(ctx,{{
+    type:'doughnut',
+    data:{{
+      labels:data.map(function(d){{return d.label;}}),
+      datasets:[{{data:data.map(function(d){{return d.value;}}),backgroundColor:colors.slice(0,data.length),borderWidth:2,borderColor:'#fff'}}]
+    }},
+    options:{{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{{
+        legend:{{display:false}},
+        tooltip:{{callbacks:{{label:function(ctx){{var pct=total>0?(ctx.parsed/total*100).toFixed(1):0;return ctx.label+': '+fmtInt.format(Math.round(ctx.parsed))+' \u20ac ('+pct+' %)';}}}}}}
+      }}
     }}
   }});
-  var months = Object.keys(monthMap).sort();
-  var rows = '';
-  months.forEach(function(m, i) {{
-    var entry = monthMap[m];
-    var prev = i > 0 ? monthMap[months[i - 1]] : null;
-    var delta = (prev && prev.nav != null && entry.nav != null) ? entry.nav - prev.nav : null;
-    var deltaTxt = delta != null ? (delta >= 0 ? '+' : '') + fmtEur.format(delta) + ' €' : '—';
-    var deltaCls = delta != null ? (delta >= 0 ? ' pos' : ' neg') : '';
-    var ytdVal = entry.perf_ytd;
-    var ytdTxt = ytdVal != null ? (ytdVal >= 0 ? '+' : '') + fmtEur.format(ytdVal) + ' %' : '—';
-    var ytdCls = ytdVal != null ? (ytdVal >= 0 ? ' pos' : ' neg') : '';
-    rows += '<tr>' +
-      '<td>' + m + '</td>' +
-      '<td class="num">' + (entry.nav != null ? fmtInt.format(Math.round(entry.nav)) + ' €' : '—') + '</td>' +
-      '<td class="num">' + (entry.price != null ? fmtEur.format(entry.price) + ' €' : '—') + '</td>' +
-      '<td class="num' + ytdCls + '">' + ytdTxt + '</td>' +
-      '<td class="num' + deltaCls + '">' + deltaTxt + '</td>' +
+  var lh='';
+  data.forEach(function(d,i){{
+    var pct=total>0?(d.value/total*100).toFixed(1):0;
+    lh+='<div class="legend-item"><div class="legend-dot" style="background:'+(colors[i]||'#ccc')+'"></div><span class="legend-label">'+esc(d.label)+'</span><span class="legend-pct">'+pct+' %</span></div>';
+  }});
+  document.getElementById(legendId).innerHTML=lh;
+  return chart;
+}}
+function renderAnalyse(){{
+  if(chartSector){{chartSector.destroy();chartSector=null;}}
+  if(chartCountry){{chartCountry.destroy();chartCountry=null;}}
+  if(chartCurrency){{chartCurrency.destroy();chartCurrency=null;}}
+  var h=FUNDS_DATA[currentFundIdx].holdings||[];
+  chartSector=buildDonut('chart-sector','legend-sector',groupBy(h,'sector',8),DONUT_COLORS);
+  chartCountry=buildDonut('chart-country','legend-country',groupBy(h,'country',8),DONUT_COLORS.slice(3).concat(DONUT_COLORS.slice(0,3)));
+  chartCurrency=buildDonut('chart-currency','legend-currency',groupBy(h,'currency',6),DONUT_COLORS.slice(6).concat(DONUT_COLORS.slice(0,6)));
+}}
+function renderTransactions(){{
+  var f=FUNDS_DATA[currentFundIdx];
+  var changes=(CHANGES_HISTORY[f.id]||[]).slice().sort(function(a,b){{return(b.date||'').localeCompare(a.date||'');}});
+  var typeMap={{'added':'Neukauf','removed':'Komplettverkauf','increased':'Aufstockung','decreased':'Teilverkauf'}};
+  var typeColors={{'Neukauf':'#1a7c4a','Aufstockung':'#2563eb','Teilverkauf':'#d97706','Komplettverkauf':'#c0392b'}};
+  var rows='';
+  changes.forEach(function(c){{
+    var label=typeMap[c.type]||c.type||'\u2014';
+    var col=typeColors[label]||'#666';
+    var mv=c.mv_eur!=null?fmtInt.format(Math.round(c.mv_eur))+' \u20ac':'\u2014';
+    var pct=c.change_pct!=null?(c.change_pct>=0?'+':'')+fmtEur.format(c.change_pct)+' %':'\u2014';
+    var pctCls=c.change_pct!=null?(c.change_pct>=0?' pos':' neg'):'';
+    rows+='<tr>'+
+      '<td class="date-cell">'+esc(c.date||'\u2014')+'</td>'+
+      '<td><span class="badge" style="background:'+col+'20;color:'+col+'">'+esc(label)+'</span></td>'+
+      '<td>'+esc(c.name||'\u2014')+'</td>'+
+      '<td class="num'+pctCls+'">'+pct+'</td>'+
+      '<td class="num">'+mv+'</td>'+
       '</tr>';
   }});
-  document.getElementById('monthly-body').innerHTML = rows || '<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
+  document.getElementById('transactions-body').innerHTML=rows||'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Transaktionen</td></tr>';
 }}
-function renderNews() {{
-  var f = FUNDS_DATA[currentFundIdx];
-  var holdingNames = new Set((f.holdings || []).map(function(h) {{ return (h.name || '').toLowerCase(); }}));
-  var fundId = f.id;
-  var container = document.getElementById('news-container');
-  var html = '';
-  Object.keys(NEWS_DATA).forEach(function(key) {{
-    var nd = NEWS_DATA[key];
-    var inFund = (nd.funds || []).some(function(fid) {{ return fid === fundId; }}) ||
-                 holdingNames.has((nd.company || '').toLowerCase());
-    if (!inFund) return;
-    var articles = (nd.articles || []).slice(0, 5);
-    if (!articles.length) return;
-    var artHtml = articles.map(function(a) {{
-      var t = (a.title || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      var meta = (a.source || '') + (a.pubDate ? ' · ' + a.pubDate.slice(0, 10) : '');
-      return '<a class="article-link" href="' + (a.link || '#') + '" target="_blank" rel="noopener">' +
-             '<span class="article-title">' + t + '</span>' +
-             '<span class="article-meta">' + meta + '</span></a>';
-    }}).join('');
-    var sum = nd.summary ? '<div class="news-summary">' + (nd.summary || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</div>' : '';
-    var co = (nd.company || key).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    html += '<div class="news-card"><h3 class="news-company">' + co + '</h3>' + sum + '<div class="articles-list">' + artHtml + '</div></div>';
+function renderRisk(){{
+  var history=getHistory(),entries=history.slice(-252);
+  function setRisk(v,d,s){{
+    document.getElementById('risk-vol').textContent=v;
+    document.getElementById('risk-drawdown').textContent=d;
+    document.getElementById('risk-sharpe').textContent=s;
+  }}
+  if(entries.length<20){{setRisk('\u2014','\u2014','\u2014');return;}}
+  var lr=[];
+  for(var i=1;i<entries.length;i++){{if(entries[i-1].price&&entries[i].price)lr.push(Math.log(entries[i].price/entries[i-1].price));}}
+  if(lr.length<5){{setRisk('\u2014','\u2014','\u2014');return;}}
+  var mean=lr.reduce(function(s,r){{return s+r;}},0)/lr.length;
+  var variance=lr.reduce(function(s,r){{return s+(r-mean)*(r-mean);}},0)/(lr.length-1);
+  var vol=Math.sqrt(variance*252)*100;
+  var peak=entries[0].price,maxDD=0;
+  entries.forEach(function(e){{
+    if(e.price>peak)peak=e.price;
+    if(peak>0){{var dd=(peak-e.price)/peak;if(dd>maxDD)maxDD=dd;}}
   }});
-  container.innerHTML = html || '<p class="empty">Keine News für diesen Fonds verfügbar.</p>';
+  var annRet=mean*252*100,sharpe=vol>0?annRet/vol:null;
+  setRisk(fmtEur.format(vol)+' %','-'+fmtEur.format(maxDD*100)+' %',sharpe!=null?fmtEur.format(sharpe):'\u2014');
 }}
-document.querySelectorAll('.tab-btn').forEach(function(btn) {{
-  btn.addEventListener('click', function() {{ switchTab(btn.dataset.tab); }});
+function renderMonthly(){{
+  var history=getHistory();
+  if(!history.length){{document.getElementById('monthly-body').innerHTML='<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';return;}}
+  var currentYear=new Date().getFullYear(),monthMap={{}};
+  history.forEach(function(h){{
+    if(new Date(h.date).getFullYear()===currentYear){{
+      var ym=h.date.slice(0,7);
+      if(!monthMap[ym]||h.date>monthMap[ym].date)monthMap[ym]=h;
+    }}
+  }});
+  var months=Object.keys(monthMap).sort();
+  var mn=['Januar','Februar','M\u00e4rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  var rows='';
+  months.forEach(function(m,i){{
+    var e=monthMap[m],prev=i>0?monthMap[months[i-1]]:null;
+    var delta=(prev&&prev.nav!=null&&e.nav!=null)?e.nav-prev.nav:null;
+    var dcls=delta!=null?(delta>=0?' pos':' neg'):'';
+    var dtxt=delta!=null?(delta>=0?'+':'')+ fmtInt.format(Math.round(Math.abs(delta)))+' \u20ac':'\u2014';
+    var ytd=e.perf_ytd,ycls=ytd!=null?(ytd>=0?' pos':' neg'):'';
+    var ytxt=ytd!=null?(ytd>=0?'+':'')+ fmtEur.format(ytd)+' %':'\u2014';
+    rows+='<tr>'+
+      '<td>'+(mn[parseInt(m.slice(5,7),10)-1]||m)+'</td>'+
+      '<td class="num">'+(e.nav!=null?fmtInt.format(Math.round(e.nav))+' \u20ac':'\u2014')+'</td>'+
+      '<td class="num">'+(e.price!=null?fmtEur.format(e.price)+' \u20ac':'\u2014')+'</td>'+
+      '<td class="num'+ycls+'">'+ytxt+'</td>'+
+      '<td class="num'+dcls+'">'+dtxt+'</td>'+
+      '</tr>';
+  }});
+  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
+}}
+function buildNewsHtml(){{
+  var html='';
+  var keys=Object.keys(NEWS_DATA);
+  keys.forEach(function(key){{
+    var nd=NEWS_DATA[key];
+    var articles=(nd.articles||[]).slice(0,5);
+    if(!articles.length&&!nd.summary)return;
+    var co=esc(nd.company||key);
+    var sum=nd.summary?'<div class="news-summary">'+esc(nd.summary)+'</div>':'';
+    var ah=articles.map(function(a){{
+      var meta=esc((a.source||'')+(a.pubDate?' \u00b7 '+a.pubDate.slice(0,10):''));
+      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener"><span class="article-title">'+esc(a.title||'')+'</span><span class="article-meta">'+meta+'</span></a>';
+    }}).join('');
+    html+='<div class="news-card"><h3 class="news-company">'+co+'</h3>'+sum+'<div class="articles-list">'+ah+'</div></div>';
+  }});
+  return html||'<p class="empty">Keine News verf\u00fcgbar.</p>';
+}}
+function renderNews(){{
+  document.getElementById('news-container').innerHTML=buildNewsHtml();
+}}
+function openNewsOverlay(){{
+  document.getElementById('news-drawer-content').innerHTML=buildNewsHtml();
+  document.getElementById('news-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}}
+function closeNewsOverlay(){{
+  document.getElementById('news-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}}
+function overlayBgClick(e){{
+  if(e.target===document.getElementById('news-overlay'))closeNewsOverlay();
+}}
+function renderRunLog(){{
+  var rows='';
+  RUN_LOG.slice(-5).reverse().forEach(function(e){{
+    var sc=e.status==='ok'?'#1a7c4a':'#c0392b';
+    rows+='<tr>'+
+      '<td class="date-cell">'+esc(e.ts||'\u2014')+'</td>'+
+      '<td><span class="badge" style="background:'+sc+'20;color:'+sc+'">'+esc(e.status||'\u2014')+'</span></td>'+
+      '<td class="num">'+(e.funds!=null?e.funds:'\u2014')+'</td>'+
+      '<td class="num">'+(e.holdings!=null?e.holdings:'\u2014')+'</td>'+
+      '<td class="num">'+(e.news!=null?e.news:'\u2014')+'</td>'+
+      '<td class="num">'+(e.summaries!=null?e.summaries:'\u2014')+'</td>'+
+      '</tr>';
+  }});
+  document.getElementById('run-log-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:16px">Keine Eintr\u00e4ge</td></tr>';
+}}
+document.querySelectorAll('.tab-btn').forEach(function(btn){{
+  btn.addEventListener('click',function(){{switchTab(btn.dataset.tab);}});
 }});
-renderFundSelector();
-renderFundHeader();
-renderMetrics();
-renderOverview();
+function maybeConfetti(){{
+  var totalPl=FUNDS_DATA.reduce(function(s,f){{return s+(f.total_pl||0);}},0);
+  if(totalPl>0&&typeof confetti!=='undefined'){{confetti({{particleCount:120,spread:70,origin:{{y:0.6}}}});}}
+}}
+renderSummaryBar();renderFundSelector();renderFundHeader();renderMetrics();renderOverview();updateTabColor();renderRunLog();
+setTimeout(maybeConfetti,1200);
 </script>
 </body>
 </html>'''
