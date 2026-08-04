@@ -1042,13 +1042,14 @@ def summarize_news(company_name, articles, anthropic_key):
 
 def _clean_news_name(name):
     """Bereinigt Firmennamen für Google News Suche."""
+    # Nur echte Finanz-Suffixe entfernen – GROUP/GRP/HOLDINGS bleiben als Namensteil
     clean = re.sub(
-        r'\s+(PLC|AG|SE|INC\.?|CORP\.?|LTD\.?|S\.A\.|SA|NV|BV|SPA|CO\.?|GRP|GROUP|'
-        r'HOLDINGS?|INH\.?|O\.N\.|DL-?[\d,\.]+|EO[\s\-]?[\d,\.]+|LS-?[\d,\.]+|'
-        r'SF\s*[\d,\.]+|CL\.[A-Z]|BNK)(\s.*)?$',
+        r'\s+(PLC|AG|SE|INC\.?|CORP\.?|LTD\.?|S\.A\.|SA|NV|BV|SPA|CO\.?|'
+        r'INH\.?|O\.N\.|BK|BNK|ST\.AKT\.ON|DL-?[\d,\.]+|EO[\s\-]?[\d,\.]+|'
+        r'LS-?[\d,\.]+|SF\s*[\d,\.]+|CL\.[A-Z])(\s.*)?$',
         '', name.strip(), flags=re.IGNORECASE
     ).strip()
-    return ' '.join(clean.split()[:3])
+    return ' '.join(clean.split()[:4])
 
 
     # Domains die keine Finanz-News liefern → werden herausgefiltert
@@ -1338,7 +1339,6 @@ details[open] summary::before{{transform:rotate(90deg)}}
     <button class="tab-btn" data-tab="transactions">Transaktionen</button>
     <button class="tab-btn" data-tab="risk">Risiko</button>
     <button class="tab-btn" data-tab="monthly">Monatsreporting</button>
-    <button class="tab-btn" data-tab="news">News</button>
   </nav>
   <div class="tab-panel active" id="tab-overview">
     <div class="card">
@@ -1432,9 +1432,6 @@ details[open] summary::before{{transform:rotate(90deg)}}
       </thead>
       <tbody id="monthly-body"></tbody>
     </table>
-  </div>
-  <div class="tab-panel" id="tab-news">
-    <div class="news-grid" id="news-container"></div>
   </div>
 </div>
 <div class="run-log-wrap">
