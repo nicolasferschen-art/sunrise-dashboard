@@ -1279,7 +1279,7 @@ details[open] summary::before{{transform:rotate(90deg)}}
 <div class="news-overlay" id="news-overlay" onclick="overlayBgClick(event)">
   <div class="news-drawer">
     <div class="news-drawer-header">
-      <span class="news-drawer-title">&#128240; News &amp; Updates</span>
+      <span class="news-drawer-title">&#128240; News<span id="news-drawer-title-fund" style="font-weight:400;color:#888"></span></span>
       <button class="news-drawer-close" onclick="closeNewsOverlay()">&#10005; Schlie&#223;en</button>
     </div>
     <div class="news-drawer-body">
@@ -1800,19 +1800,22 @@ function renderMonthly(){{
   }});
   document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
-function buildNewsHtml(){{
+function buildNewsHtml(fundFilter){{
   var html='';
-  var keys=Object.keys(NEWS_DATA);
-  keys.forEach(function(key){{
+  Object.keys(NEWS_DATA).forEach(function(key){{
     var nd=NEWS_DATA[key];
-    var articles=(nd.articles||[]).slice(0,5);
+    if(fundFilter&&nd.funds&&!nd.funds.includes(fundFilter))return;
+    /* Sort articles newest-first */
+    var articles=(nd.articles||[]).slice().sort(function(a,b){{
+      return(b.pubDate||'').localeCompare(a.pubDate||'');
+    }});
     if(!articles.length&&!nd.summary)return;
     var co=esc(nd.company||key);
     var sumRaw=nd.summary;
     var sumText=typeof sumRaw==='string'?sumRaw:(sumRaw&&sumRaw.text?sumRaw.text:(sumRaw&&typeof sumRaw==='object'?Object.values(sumRaw).join(' '):''));
     var sum=sumText?'<div class="news-summary">'+esc(sumText)+'</div>':'';
     var ah=articles.map(function(a){{
-      var meta=esc((a.source||'')+(a.pubDate?' \u00b7 '+a.pubDate.slice(0,10):''));
+      var meta=esc((a.source||'')+(a.pubDate?' \u00b7 '+a.pubDate.slice(0,16):''));
       return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener"><span class="article-title">'+esc(a.title||'')+'</span><span class="article-meta">'+meta+'</span></a>';
     }}).join('');
     html+='<div class="news-card"><h3 class="news-company">'+co+'</h3>'+sum+'<div class="articles-list">'+ah+'</div></div>';
@@ -1820,10 +1823,11 @@ function buildNewsHtml(){{
   return html||'<p class="empty">Keine News verf\u00fcgbar.</p>';
 }}
 function renderNews(){{
-  document.getElementById('news-container').innerHTML=buildNewsHtml();
+  var f=FUNDS_DATA[currentFundIdx];
+  document.getElementById('news-container').innerHTML=buildNewsHtml(f.id);
 }}
 function openNewsOverlay(){{
-  document.getElementById('news-drawer-content').innerHTML=buildNewsHtml();
+  document.getElementById('news-drawer-content').innerHTML=buildNewsHtml(null);
   document.getElementById('news-overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }}
