@@ -8,6 +8,7 @@
     "shares": 714534.223,
     "nav_per_share": 227.77,
     "perf_ytd": 18.144095,
+    "perf_ytd_prev": 17.148192,
     "perf_fy": 24.474207,
     "nav_data_points": [
       {
@@ -5587,6 +5588,7 @@
     "shares": 290752.167,
     "nav_per_share": 196.28,
     "perf_ytd": 13.587963,
+    "perf_ytd_prev": 12.552083,
     "perf_fy": 17.871797,
     "nav_data_points": [
       {
@@ -11291,6 +11293,7 @@
     "shares": 240087.781,
     "nav_per_share": 113.8,
     "perf_ytd": 6.684166,
+    "perf_ytd_prev": 6.121684,
     "perf_fy": 9.757383,
     "nav_data_points": [
       {
