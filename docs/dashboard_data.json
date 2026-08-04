@@ -306,7 +306,7 @@
         "value": 0.0
       }
     ],
-    "nav_per_share_prev": 225.75,
+    "nav_per_share_prev": 225.85,
     "nav_prev": 161328739.71,
     "price_history": [
       {
@@ -324,7 +324,7 @@
       {
         "date": "2026-08-03",
         "label": "03.08.2026",
-        "price": 225.75,
+        "price": 225.85,
         "note": "Vortag (Inventarblatt)"
       },
       {
@@ -5877,7 +5877,7 @@
         "value": 0.04
       }
     ],
-    "nav_per_share_prev": 192.77,
+    "nav_per_share_prev": 194.49,
     "nav_prev": 56539298.28,
     "price_history": [
       {
@@ -5895,7 +5895,7 @@
       {
         "date": "2026-08-03",
         "label": "03.08.2026",
-        "price": 192.77,
+        "price": 194.49,
         "note": "Vortag (Inventarblatt)"
       },
       {
@@ -11497,7 +11497,7 @@
         "value": 0.13
       }
     ],
-    "nav_per_share_prev": 113.14,
+    "nav_per_share_prev": 113.2,
     "nav_prev": 27176885.29,
     "price_history": [
       {
@@ -11515,7 +11515,7 @@
       {
         "date": "2026-08-03",
         "label": "03.08.2026",
-        "price": 113.14,
+        "price": 113.2,
         "note": "Vortag (Inventarblatt)"
       },
       {
