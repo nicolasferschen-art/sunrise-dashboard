@@ -1233,7 +1233,7 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
 .gv-rank{{font-size:11px;color:#aaa;width:20px;flex-shrink:0}}
 .gv-name{{font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 .gv-pl{{font-size:12px;font-weight:600;text-align:right;flex-shrink:0}}
-.news-grid{{display:grid;gap:16px}}
+.news-grid{{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}}
 .news-card{{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e8e6}}
 .news-company{{font-size:15px;font-weight:700;margin-bottom:10px}}
 .news-headline{{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px;line-height:1.4}}
@@ -1252,24 +1252,52 @@ details[open] summary::before{{transform:rotate(90deg)}}
 .empty{{color:#888;font-size:13px;padding:20px 0}}
 .news-btn{{padding:7px 16px;border-radius:100px;border:1.5px solid #e8e8e6;background:#fff;cursor:pointer;font-size:13px;font-weight:500;color:#555;transition:all .15s;display:flex;align-items:center;gap:6px}}
 .news-btn:hover{{border-color:#3B7DD8;color:#3B7DD8;background:#f0f5ff}}
-.news-overlay{{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.45);backdrop-filter:blur(2px)}}
-.news-overlay.open{{display:flex;align-items:flex-start;justify-content:flex-end}}
-.news-drawer{{background:#f5f5f3;width:min(600px,100vw);height:100vh;overflow-y:auto;box-shadow:-4px 0 24px rgba(0,0,0,0.15);display:flex;flex-direction:column}}
+.news-overlay{{display:none;position:fixed;inset:0;z-index:200;background:#f5f5f3}}
+.news-overlay.open{{display:flex;flex-direction:column}}
+.news-drawer{{background:#f5f5f3;width:100%;height:100%;overflow-y:auto;display:flex;flex-direction:column}}
 .news-drawer-header{{background:#fff;border-bottom:1px solid #e8e8e6;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}}
 .news-drawer-title{{font-size:16px;font-weight:700}}
 .news-drawer-close{{padding:6px 12px;border-radius:8px;border:1px solid #e8e8e6;background:#fff;cursor:pointer;font-size:13px;color:#555}}
 .news-drawer-close:hover{{background:#f0f0ee}}
-.news-drawer-body{{padding:20px;flex:1}}
+.news-drawer-body{{padding:20px 40px;flex:1;max-width:1400px;margin:0 auto;width:100%}}
+.search-overlay{{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px)}}
+.search-overlay.open{{display:flex;align-items:flex-start;justify-content:center;padding-top:80px}}
+.search-modal{{background:#fff;border-radius:16px;width:min(700px,95vw);max-height:80vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.2)}}
+.search-modal-header{{padding:20px 24px 12px;border-bottom:1px solid #e8e8e6}}
+.search-input{{width:100%;border:1.5px solid #e0e0dd;border-radius:10px;padding:10px 14px;font-size:15px;outline:none;box-sizing:border-box}}
+.search-input:focus{{border-color:#3B7DD8}}
+.search-modal-body{{overflow-y:auto;padding:16px 24px 24px;flex:1}}
+.search-result-company{{font-size:15px;font-weight:700;margin-bottom:6px;margin-top:16px}}
+.search-result-company:first-child{{margin-top:0}}
+.search-result-row{{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;border-radius:8px;background:#f8f8f6;margin-bottom:4px;font-size:13px}}
+.search-result-fund{{font-weight:600;color:#3B7DD8}}
+.search-result-vals{{color:#555;display:flex;gap:16px}}
+.search-empty{{color:#aaa;text-align:center;padding:40px 0;font-size:14px}}
 </style>
 </head>
 <body>
 <header class="header">
   <span class="header-title">Sunrise Dashboard</span>
   <div style="display:flex;align-items:center;gap:12px">
+    <button class="news-btn" id="search-btn" onclick="openSearchOverlay()">&#128269; Unternehmenssuche</button>
     <button class="news-btn" id="news-btn" onclick="openNewsOverlay()">&#128240; News</button>
     <span class="header-updated">Stand: {updated_at}</span>
   </div>
 </header>
+<div class="search-overlay" id="search-overlay" onclick="searchOverlayBgClick(event)">
+  <div class="search-modal">
+    <div class="search-modal-header">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span style="font-size:16px;font-weight:700">&#128269; Unternehmenssuche</span>
+        <button class="news-drawer-close" onclick="closeSearchOverlay()">&#10005; Schlie&#223;en</button>
+      </div>
+      <input class="search-input" id="search-input" type="text" placeholder="Unternehmensname oder ISIN eingeben…" oninput="doCompanySearch(this.value)">
+    </div>
+    <div class="search-modal-body" id="search-results">
+      <div class="search-empty">Suchbegriff eingeben um Unternehmen fondsübergreifend zu finden.</div>
+    </div>
+  </div>
+</div>
 <div class="news-overlay" id="news-overlay" onclick="overlayBgClick(event)">
   <div class="news-drawer">
     <div class="news-drawer-header">
@@ -1419,6 +1447,7 @@ details[open] summary::before{{transform:rotate(90deg)}}
           <th>Monat</th>
           <th style="text-align:right">Stand</th>
           <th style="text-align:right">Nettoverm&#246;gen</th>
+          <th style="text-align:right">Fondspreis</th>
           <th style="text-align:right">&#916; Vormonat</th>
           <th style="text-align:right">&#916; %</th>
           <th style="text-align:right">YTD %</th>
@@ -1793,12 +1822,13 @@ function renderMonthly(){{
       '<td>'+(mn[parseInt(ym.slice(5,7),10)-1]||ym)+'</td>'+
       '<td class="num" style="color:#888;font-size:12px">'+standTxt+'</td>'+
       '<td class="num">'+(e&&e.nav!=null?fmtInt.format(Math.round(e.nav))+' \u20ac':'\u2014')+'</td>'+
+      '<td class="num">'+(e&&e.price!=null?fmtEur.format(e.price)+' \u20ac':'\u2014')+'</td>'+
       '<td class="num'+dcls+'">'+dtxt+'</td>'+
       '<td class="num'+dcls+'">'+dptxt+'</td>'+
       '<td class="num'+ycls+'">'+ytxt+'</td>'+
       '</tr>';
   }});
-  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
+  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="7" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
 function buildNewsHtml(fundFilter){{
   var html='';
@@ -1828,6 +1858,57 @@ function buildNewsHtml(fundFilter){{
 function renderNews(){{
   var f=FUNDS_DATA[currentFundIdx];
   document.getElementById('news-container').innerHTML=buildNewsHtml(f.id);
+}}
+function openSearchOverlay(){{
+  document.getElementById('search-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){{document.getElementById('search-input').focus();}},50);
+}}
+function closeSearchOverlay(){{
+  document.getElementById('search-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}}
+function searchOverlayBgClick(e){{
+  if(e.target===document.getElementById('search-overlay'))closeSearchOverlay();
+}}
+function doCompanySearch(q){{
+  var container=document.getElementById('search-results');
+  q=q.trim().toLowerCase();
+  if(q.length<2){{container.innerHTML='<div class="search-empty">Suchbegriff eingeben um Unternehmen fondsübergreifend zu finden.</div>';return;}}
+  /* Collect matches across all funds */
+  var matches={{}};
+  FUNDS_DATA.forEach(function(f){{
+    (f.holdings||[]).forEach(function(h){{
+      var name=(h.name||'').toLowerCase();
+      var isin=(h.isin||'').toLowerCase();
+      if(name.includes(q)||isin.includes(q)){{
+        var key=(h.isin||h.name||'').toUpperCase();
+        if(!matches[key])matches[key]={{name:h.name||'',isin:h.isin||'',funds:[]}};
+        matches[key].funds.push({{fund:f.name,mv:h.mv_eur,pct:h.pct,qty:h.qty}});
+      }}
+    }});
+  }});
+  var keys=Object.keys(matches);
+  if(!keys.length){{container.innerHTML='<div class="search-empty">Keine Treffer.</div>';return;}}
+  var html='';
+  keys.forEach(function(k){{
+    var m=matches[k];
+    html+='<div class="search-result-company">'+esc(m.name)+(m.isin?'<span style="font-weight:400;color:#888;font-size:12px;margin-left:8px">'+esc(m.isin)+'</span>':'')+'</div>';
+    m.funds.forEach(function(f){{
+      var mvTxt=f.mv!=null?fmtInt.format(Math.round(f.mv))+' €':'—';
+      var pctTxt=f.pct!=null?fmtEur.format(f.pct)+' %':'—';
+      var qtyTxt=f.qty!=null?'Stück: '+fmtInt.format(f.qty):'';
+      html+='<div class="search-result-row">'+
+        '<span class="search-result-fund">'+esc(f.fund)+'</span>'+
+        '<span class="search-result-vals">'+
+          (qtyTxt?'<span>'+esc(qtyTxt)+'</span>':'')+
+          '<span>'+pctTxt+'</span>'+
+          '<span>'+mvTxt+'</span>'+
+        '</span>'+
+      '</div>';
+    }});
+  }});
+  container.innerHTML=html;
 }}
 function openNewsOverlay(){{
   document.getElementById('news-drawer-content').innerHTML=buildNewsHtml(null);
