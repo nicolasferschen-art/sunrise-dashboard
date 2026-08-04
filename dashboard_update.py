@@ -1244,6 +1244,7 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
 .news-grid{{display:grid;gap:16px}}
 .news-card{{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e8e6}}
 .news-company{{font-size:15px;font-weight:700;margin-bottom:10px}}
+.news-headline{{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px;line-height:1.4}}
 .news-summary{{font-size:12px;color:#666;line-height:1.6;margin-bottom:12px;padding:10px;background:#f8f8f6;border-radius:8px}}
 .articles-list{{display:flex;flex-direction:column;gap:8px}}
 .article-link{{display:flex;flex-direction:column;gap:2px;padding:8px;border-radius:6px;border:1px solid #f0f0ee;transition:background .15s;color:inherit;text-decoration:none}}
@@ -1768,7 +1769,13 @@ function renderMonthly(){{
     var d=new Date(h.date+'T12:00:00');
     if(d.getFullYear()===currentYear){{
       var ym=h.date.slice(0,7);
-      if(!monthMap[ym]||h.date>monthMap[ym].date)monthMap[ym]=h;
+      var ex=monthMap[ym];
+      if(!ex){{monthMap[ym]=h;return;}}
+      var hFull=(h.nav!=null&&h.perf_ytd!=null);
+      var exFull=(ex.nav!=null&&ex.perf_ytd!=null);
+      /* Prefer entries with complete data; among equal, take latest date */
+      if(hFull&&!exFull){{monthMap[ym]=h;}}
+      else if(hFull===exFull&&h.date>ex.date){{monthMap[ym]=h;}}
     }}
   }});
   /* Generate all months Jan \u2192 current month of current year */
@@ -1809,13 +1816,16 @@ function buildNewsHtml(fundFilter){{
     if(!articles.length&&!nd.summary)return;
     var co=esc(nd.company||key);
     var sumRaw=nd.summary;
-    var sumText=typeof sumRaw==='string'?sumRaw:(sumRaw&&sumRaw.text?sumRaw.text:(sumRaw&&typeof sumRaw==='object'?Object.values(sumRaw).join(' '):''));
-    var sum=sumText?'<div class="news-summary">'+esc(sumText)+'</div>':'';
+    var sumHeadline='',sumText='';
+    if(typeof sumRaw==='string'){{sumText=sumRaw;}}
+    else if(sumRaw&&typeof sumRaw==='object'){{sumHeadline=sumRaw.headline||'';sumText=sumRaw.text||'';}}
+    var sumHtml='';
+    if(sumHeadline)sumHtml+='<div class="news-headline">'+esc(sumHeadline)+'</div>';
+    if(sumText)sumHtml+='<div class="news-summary">'+esc(sumText)+'</div>';
     var ah=articles.map(function(a){{
-      var meta=esc((a.source||'')+(a.pubDate?' \u00b7 '+a.pubDate.slice(0,16):''));
-      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener"><span class="article-title">'+esc(a.title||'')+'</span><span class="article-meta">'+meta+'</span></a>';
+      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener">'+esc(a.title||'')+'</a>';
     }}).join('');
-    html+='<div class="news-card"><h3 class="news-company">'+co+'</h3>'+sum+'<div class="articles-list">'+ah+'</div></div>';
+    html+='<div class="news-card"><h3 class="news-company">'+co+'</h3>'+sumHtml+'<div class="articles-list">'+ah+'</div></div>';
   }});
   return html||'<p class="empty">Keine News verf\u00fcgbar.</p>';
 }}
