@@ -203,29 +203,23 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                 # perf_ytd auf alle Punkte schreiben — wird später bei Duplikaten gemergt.
                 pt_ytd = round(float(perf_ytd), 4) if perf_ytd is not None else None
                 sorted_pts = sorted(nav_data_points, key=lambda x: x["date"])
-                # nav_prev = älterer Punkt = Vormonat wie im aktuellen Report ausgewiesen
-                # Wird auf dem neuesten Eintrag gespeichert, damit das Monatsreporting
-                # dieselben Vergleichswerte nutzt wie die Karten.
-                nav_prev_reported = round(sorted_pts[-2]["nav"], 2) if len(sorted_pts) >= 2 else None
+                # Monatlicher Abschluss-Report hat 2+ NAV-Zeilen → "blatt" (offiziell, perf_ytd geschützt)
+                # Tägliches INVENTARBLATT hat 1 NAV-Zeile → "inventarblatt" (wird von blatt-Werten überschrieben)
+                is_official_blatt = len(sorted_pts) >= 2
+                entry_source = "blatt" if is_official_blatt else "inventarblatt"
                 for idx, point in enumerate(sorted_pts):
                     pt_nav  = point["nav"]
                     pt_date = point["date"]
-                    is_latest = (idx == len(sorted_pts) - 1)
-                    entry = {
+                    print(f"    ✅ NAV-Paar [{entry_source}]: {pt_date} = {pt_nav/1e6:.2f} Mio. € | YTD={pt_ytd}")
+                    new_entries.append((fid, {
                         "date": pt_date,
                         "price": round(float(price), 4),
                         "nav": round(float(pt_nav), 2),
                         "perf_ytd": pt_ytd,
-                        "source": "measured",
-                    }
-                    if is_latest and nav_prev_reported:
-                        entry["nav_prev"] = nav_prev_reported
-                        print(f"    ✅ NAV-Paar: {pt_date} = {pt_nav/1e6:.2f} Mio. € | YTD={pt_ytd} | nav_prev={nav_prev_reported/1e6:.2f} Mio. €")
-                    else:
-                        print(f"    ✅ NAV-Paar: {pt_date} = {pt_nav/1e6:.2f} Mio. € | YTD={pt_ytd}")
-                    new_entries.append((fid, entry))
+                        "source": entry_source,
+                    }))
             else:
-                # Fallback: einzelner Eintrag mit asset_date oder report_date
+                # Fallback: einzelner Eintrag mit asset_date oder report_date → tägliches INVENTARBLATT
                 if nav is None and price and shares:
                     nav = float(price) * float(shares)
                     print(f"    ℹ️  Nettoverm. berechnet: {price:.4f} × {shares:,.0f} = {nav/1e6:.2f} Mio. €")
@@ -236,7 +230,7 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                     "price": round(float(price), 4),
                     "nav": round(float(nav), 2) if nav else None,
                     "perf_ytd": round(float(perf_ytd), 4) if perf_ytd is not None else None,
-                    "source": "measured",
+                    "source": "inventarblatt",
                 }))
         except Exception as e:
             print(f"    ❌ Fehler: {e}")
@@ -260,6 +254,21 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                 for k in ("nav", "price", "perf_ytd", "nav_prev"):
                     if merged.get(k) is None and existing.get(k) is not None:
                         merged[k] = existing[k]
+                # Offizieller Monatsabschluss (blatt) schützt perf_ytd vor täglichen INVENTARBLATT-Werten.
+                # Wenn einer der beiden Einträge "blatt" ist, gewinnt sein perf_ytd immer.
+                existing_is_blatt = existing.get("source") == "blatt"
+                new_is_blatt = e.get("source") == "blatt"
+                if existing_is_blatt and not new_is_blatt:
+                    # Tägliches Email überschreibt nicht den offiziellen YTD-Wert
+                    for k in ("perf_ytd",):
+                        if existing.get(k) is not None:
+                            merged[k] = existing[k]
+                    merged["source"] = "blatt"  # blatt-Status erhalten
+                elif new_is_blatt and not existing_is_blatt:
+                    # Offizieller Report kommt später → sein perf_ytd gewinnt (bereits durch {**e} gesetzt)
+                    merged["source"] = "blatt"
+                elif existing_is_blatt and new_is_blatt:
+                    merged["source"] = "blatt"
                 by_date[e["date"]] = merged
             else:
                 by_date[e["date"]] = e
@@ -1833,8 +1842,8 @@ function renderMonthly(){{
     var prevYm=i>0?allMonths[i-1]:null;
     var prev=prevYm?monthMap[prevYm]||null:null;
     var isCurrent=(i===allMonths.length-1);
-    /* nav_prev = Vormonat-NAV aus aktuellem Report (gleiche Basis wie Karten) */
-    var prevNav=(e&&e.nav_prev!=null)?e.nav_prev:(prev&&prev.nav!=null?prev.nav:null);
+    /* prevNav = letzter Eintrag des Vormonats (Letzter des Monats zu letzter des Monats) */
+    var prevNav=(prev&&prev.nav!=null)?prev.nav:null;
     var navNow=e&&e.nav!=null?e.nav:null;
     var delta=(navNow!=null&&prevNav!=null)?navNow-prevNav:null;
     var deltaPct=(delta!=null&&prevNav)?delta/prevNav*100:null;
