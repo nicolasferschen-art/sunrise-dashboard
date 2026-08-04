@@ -202,17 +202,28 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                 # Für jedes Datum-NAV-Paar einen separaten nav_history-Eintrag anlegen.
                 # perf_ytd auf alle Punkte schreiben — wird später bei Duplikaten gemergt.
                 pt_ytd = round(float(perf_ytd), 4) if perf_ytd is not None else None
-                for point in nav_data_points:
+                sorted_pts = sorted(nav_data_points, key=lambda x: x["date"])
+                # nav_prev = älterer Punkt = Vormonat wie im aktuellen Report ausgewiesen
+                # Wird auf dem neuesten Eintrag gespeichert, damit das Monatsreporting
+                # dieselben Vergleichswerte nutzt wie die Karten.
+                nav_prev_reported = round(sorted_pts[-2]["nav"], 2) if len(sorted_pts) >= 2 else None
+                for idx, point in enumerate(sorted_pts):
                     pt_nav  = point["nav"]
                     pt_date = point["date"]
-                    print(f"    ✅ NAV-Paar: {pt_date} = {pt_nav/1e6:.2f} Mio. € | YTD={pt_ytd}")
-                    new_entries.append((fid, {
+                    is_latest = (idx == len(sorted_pts) - 1)
+                    entry = {
                         "date": pt_date,
                         "price": round(float(price), 4),
                         "nav": round(float(pt_nav), 2),
                         "perf_ytd": pt_ytd,
                         "source": "measured",
-                    }))
+                    }
+                    if is_latest and nav_prev_reported:
+                        entry["nav_prev"] = nav_prev_reported
+                        print(f"    ✅ NAV-Paar: {pt_date} = {pt_nav/1e6:.2f} Mio. € | YTD={pt_ytd} | nav_prev={nav_prev_reported/1e6:.2f} Mio. €")
+                    else:
+                        print(f"    ✅ NAV-Paar: {pt_date} = {pt_nav/1e6:.2f} Mio. € | YTD={pt_ytd}")
+                    new_entries.append((fid, entry))
             else:
                 # Fallback: einzelner Eintrag mit asset_date oder report_date
                 if nav is None and price and shares:
@@ -246,7 +257,7 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
             if existing:
                 # Merge: neue Werte überschreiben, aber nie einen vorhandenen Wert mit null ersetzen
                 merged = {**existing, **e}
-                for k in ("nav", "price", "perf_ytd"):
+                for k in ("nav", "price", "perf_ytd", "nav_prev"):
                     if merged.get(k) is None and existing.get(k) is not None:
                         merged[k] = existing[k]
                 by_date[e["date"]] = merged
@@ -1203,6 +1214,20 @@ a{{color:inherit;text-decoration:none}}
 .perf-table th,.data-table th,.monthly-table th{{background:#f8f8f6;padding:10px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#888;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}}
 .perf-table th:hover,.data-table th:hover{{background:#f0f0ee}}
 .perf-table td,.data-table td,.monthly-table td{{padding:11px 16px;border-top:1px solid #f0f0ee;font-size:13px;vertical-align:middle}}
+.monthly-table td{{padding:14px 18px}}
+.monthly-row-current td{{background:#f5fbf7}}
+.month-name{{font-weight:700;font-size:14px;color:#1a1a1a}}
+.month-stand{{font-size:11px;color:#bbb;margin-top:3px}}
+.monthly-nav{{font-size:15px;font-weight:700;color:#1a1a1a;font-variant-numeric:tabular-nums}}
+.monthly-price{{font-size:12px;color:#999;margin-top:3px;font-variant-numeric:tabular-nums}}
+.delta-pill{{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap}}
+.delta-pill.pos{{background:#e6f4ed;color:#1a7c4a}}
+.delta-pill.neg{{background:#fdecea;color:#c0392b}}
+.delta-pill.neu{{background:#f0f0ee;color:#888}}
+.ytd-pill{{display:inline-flex;align-items:center;padding:5px 11px;border-radius:100px;font-size:13px;font-weight:700}}
+.ytd-pill.pos{{background:#e6f4ed;color:#1a7c4a}}
+.ytd-pill.neg{{background:#fdecea;color:#c0392b}}
+.ytd-pill.neu{{background:#f0f0ee;color:#888}}
 td.pos{{color:#1a7c4a;font-weight:600}}
 td.neg{{color:#c0392b;font-weight:600}}
 td.num{{text-align:right;font-variant-numeric:tabular-nums}}
@@ -1445,12 +1470,9 @@ details[open] summary::before{{transform:rotate(90deg)}}
       <thead>
         <tr>
           <th>Monat</th>
-          <th style="text-align:right">Stand</th>
-          <th style="text-align:right">Nettoverm&#246;gen</th>
-          <th style="text-align:right">Fondspreis</th>
-          <th style="text-align:right">&#916; Vormonat</th>
-          <th style="text-align:right">&#916; %</th>
-          <th style="text-align:right">YTD %</th>
+          <th style="text-align:right">Nettoverm&#246;gen &amp; Fondspreis</th>
+          <th style="text-align:right">&#916; zum Vormonat</th>
+          <th style="text-align:right">YTD Performance</th>
         </tr>
       </thead>
       <tbody id="monthly-body"></tbody>
@@ -1808,27 +1830,35 @@ function renderMonthly(){{
     var e=monthMap[ym]||null;
     var prevYm=i>0?allMonths[i-1]:null;
     var prev=prevYm?monthMap[prevYm]||null:null;
-    var delta=(e&&prev&&prev.nav!=null&&e.nav!=null)?e.nav-prev.nav:null;
-    var deltaPct=(delta!=null&&prev.nav)?delta/prev.nav*100:null;
-    var dcls=delta!=null?(delta>=0?' pos':' neg'):'';
-    var dtxt=delta!=null?(delta>=0?'+':'')+ fmtInt.format(Math.round(Math.abs(delta)))+' \u20ac':'\u2014';
-    var dptxt=deltaPct!=null?(deltaPct>=0?'+':'')+fmtEur.format(deltaPct)+' %':'\u2014';
-    var ytd=e?e.perf_ytd:null,ycls=ytd!=null?(ytd>=0?' pos':' neg'):'';
-    var ytxt=ytd!=null?(ytd>=0?'+':'')+fmtEur.format(ytd)+' %':'\u2014';
-    /* Format date as DD.MM.YYYY */
-    var standTxt='\u2014';
+    var isCurrent=(i===allMonths.length-1);
+    /* nav_prev = Vormonat wie im aktuellen Report ausgewiesen (= gleiche Basis wie Karten) */
+    var prevNav=(e&&e.nav_prev!=null)?e.nav_prev:(prev&&prev.nav!=null?prev.nav:null);
+    var delta=(e&&e.nav!=null&&prevNav!=null)?e.nav-prevNav:null;
+    var deltaPct=(delta!=null&&prevNav)?delta/prevNav*100:null;
+    var pillCls=delta==null?'neu':(delta>=0?'pos':'neg');
+    var arrow=delta==null?'':delta>=0?'\u25b2\u202f':'\u25bc\u202f';
+    var dtxt=delta!=null?(delta>=0?'+':'\u2212')+fmtInt.format(Math.round(Math.abs(delta)))+'\u202f\u20ac':'';
+    var dptxt=deltaPct!=null?'('+  (deltaPct>=0?'+':'')+fmtEur.format(deltaPct)+'\u202f%)':'';
+    var deltaCellContent=delta!=null?'<span class="delta-pill '+pillCls+'">'+arrow+dtxt+'\u2002'+dptxt+'</span>':'<span style="color:#ccc">\u2014</span>';
+    var ytd=e?e.perf_ytd:null;
+    var ytdCls=ytd==null?'neu':(ytd>=0?'pos':'neg');
+    var ytdTxt=ytd!=null?(ytd>=0?'+':'')+fmtEur.format(ytd)+'\u202f%':'\u2014';
+    var ytdCell='<span class="ytd-pill '+ytdCls+'">'+ytdTxt+'</span>';
+    /* Stand date DD.MM.YYYY */
+    var standTxt='';
     if(e&&e.date){{var dp=e.date.split('-');standTxt=dp[2]+'.'+dp[1]+'.'+dp[0];}}
-    rows+='<tr>'+
-      '<td>'+(mn[parseInt(ym.slice(5,7),10)-1]||ym)+'</td>'+
-      '<td class="num" style="color:#888;font-size:12px">'+standTxt+'</td>'+
-      '<td class="num">'+(e&&e.nav!=null?fmtInt.format(Math.round(e.nav))+' \u20ac':'\u2014')+'</td>'+
-      '<td class="num">'+(e&&e.price!=null?fmtEur.format(e.price)+' \u20ac':'\u2014')+'</td>'+
-      '<td class="num'+dcls+'">'+dtxt+'</td>'+
-      '<td class="num'+dcls+'">'+dptxt+'</td>'+
-      '<td class="num'+ycls+'">'+ytxt+'</td>'+
+    /* Nettoverm\u00f6gen + Fondspreis stacked */
+    var navTxt=e&&e.nav!=null?fmtInt.format(Math.round(e.nav))+'\u202f\u20ac':'\u2014';
+    var priceTxt=e&&e.price!=null?fmtEur.format(e.price)+'\u202f\u20ac':'';
+    var navCell='<div class="monthly-nav">'+navTxt+'</div>'+(priceTxt?'<div class="monthly-price">Fondspreis: '+priceTxt+'</div>':'');
+    rows+='<tr'+(isCurrent?' class="monthly-row-current"':'')+'>' +
+      '<td><div class="month-name">'+(mn[parseInt(ym.slice(5,7),10)-1]||ym)+'</div>'+(standTxt?'<div class="month-stand">'+standTxt+'</div>':'')+'</td>'+
+      '<td style="text-align:right">'+navCell+'</td>'+
+      '<td style="text-align:right">'+deltaCellContent+'</td>'+
+      '<td style="text-align:right">'+ytdCell+'</td>'+
       '</tr>';
   }});
-  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="7" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
+  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
 function buildNewsHtml(fundFilter){{
   var html='';
