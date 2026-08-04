@@ -2371,7 +2371,21 @@ def main():
                     hist_entries = [h for h in nav_history.get(fid, []) if h["date"] < today_iso]
                 nav_ps_prev = hist_entries[-1]["price"] if hist_entries else None
             fund_parsed["nav_per_share_prev"] = nav_ps_prev
-            fund_parsed["nav_prev"] = prev_fund.get("nav") if prev_fund else None
+            # nav_prev: letzter Eintrag des Vormonats (Letzter des Monats zu letzter des Monats)
+            _today_d = date.today()
+            if _today_d.month == 1:
+                _prev_month_str = f"{_today_d.year - 1}-12"
+            else:
+                _prev_month_str = f"{_today_d.year}-{_today_d.month - 1:02d}"
+            _fid_history = nav_history.get(fid, [])
+            _prev_month_entries = [e for e in _fid_history if e["date"].startswith(_prev_month_str) and e.get("nav") is not None]
+            if _prev_month_entries:
+                _prev_month_last = max(_prev_month_entries, key=lambda e: e["date"])
+                fund_parsed["nav_prev"] = _prev_month_last.get("nav")
+                print(f"    → nav_prev für {fid}: {_prev_month_last['date']} = {_prev_month_last.get('nav'):.0f}")
+            else:
+                fund_parsed["nav_prev"] = prev_fund.get("nav") if prev_fund else None
+                print(f"    → nav_prev für {fid}: kein Vormonatseintrag, Fallback auf prev_data")
     
             # Price history aufbauen
             fund_parsed["price_history"] = build_price_history(
