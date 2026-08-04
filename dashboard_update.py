@@ -200,8 +200,9 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
 
             if nav_data_points:
                 # Für jedes Datum-NAV-Paar einen separaten nav_history-Eintrag anlegen.
-                # perf_ytd auf alle Punkte schreiben — wird später bei Duplikaten gemergt.
-                pt_ytd = round(float(perf_ytd), 4) if perf_ytd is not None else None
+                # perf_ytd_primary = neuestes Datum, perf_ytd_prev = Vergleichsdatum (älteres)
+                perf_ytd_primary = blatt_data.get("perf_ytd")
+                perf_ytd_prev    = blatt_data.get("perf_ytd_prev")
                 sorted_pts = sorted(nav_data_points, key=lambda x: x["date"])
                 # Monatlicher Abschluss-Report hat 2+ NAV-Zeilen → "blatt" (offiziell, perf_ytd geschützt)
                 # Tägliches INVENTARBLATT hat 1 NAV-Zeile → "inventarblatt" (wird von blatt-Werten überschrieben)
@@ -210,6 +211,15 @@ def backfill_nav_history_from_emails(access_token, existing_nav_history):
                 for idx, point in enumerate(sorted_pts):
                     pt_nav  = point["nav"]
                     pt_date = point["date"]
+                    is_newest = (idx == len(sorted_pts) - 1)
+                    if is_newest:
+                        # Neuestes Datum bekommt perf_ytd_primary (Spalte 4 im Excel)
+                        pt_ytd = round(float(perf_ytd_primary), 4) if perf_ytd_primary is not None else None
+                    else:
+                        # Älteres Vergleichsdatum bekommt perf_ytd_prev (Spalte 5 im Excel)
+                        # Fallback auf primary wenn kein prev vorhanden
+                        raw = perf_ytd_prev if perf_ytd_prev is not None else perf_ytd_primary
+                        pt_ytd = round(float(raw), 4) if raw is not None else None
                     print(f"    ✅ NAV-Paar [{entry_source}]: {pt_date} = {pt_nav/1e6:.2f} Mio. € | YTD={pt_ytd}")
                     new_entries.append((fid, {
                         "date": pt_date,
@@ -563,11 +573,16 @@ def _parse_inventarblatt(ws):
         # BVI Performance
         if "BVI" in row_str or "PERFORMANCE" in row_str or "RENDITE" in row_str:
             if any(k in row_str for k in ["01.01", "JAHRESBEG", "YTD", "YEAR TO DATE", "SEIT 01.01"]):
-                for cell in row:
-                    if isinstance(cell, (int, float)) and -50 < cell < 200:
-                        data["perf_ytd"] = float(cell)
-                        print(f"    → YTD gefunden Zeile {i+1}: {cell}")
-                        break
+                # Alle numerischen Werte sammeln: col4 = aktuelles Datum, col5 = Vergleichsdatum
+                ytd_vals = [float(cell) for cell in row
+                            if isinstance(cell, (int, float)) and not isinstance(cell, bool)
+                            and -50 < cell < 200]
+                if ytd_vals:
+                    data["perf_ytd"] = ytd_vals[0]          # primäres (neuestes) Datum
+                    print(f"    → YTD gefunden Zeile {i+1}: {ytd_vals[0]}")
+                if len(ytd_vals) > 1:
+                    data["perf_ytd_prev"] = ytd_vals[1]     # Vergleichsdatum (älteres)
+                    print(f"    → YTD Vergleich Zeile {i+1}: {ytd_vals[1]}")
             if any(k in row_str for k in ["01.10", "GESCHÄFTSJ", "GJ", "FISCAL", "FISKAL", "SEIT 01.10"]):
                 for cell in row:
                     if isinstance(cell, (int, float)) and -50 < cell < 200:
