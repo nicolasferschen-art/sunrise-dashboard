@@ -1470,8 +1470,10 @@ details[open] summary::before{{transform:rotate(90deg)}}
       <thead>
         <tr>
           <th>Monat</th>
-          <th style="text-align:right">Nettoverm&#246;gen &amp; Fondspreis</th>
-          <th style="text-align:right">&#916; zum Vormonat</th>
+          <th style="text-align:right">NAV Vormonat</th>
+          <th style="text-align:right">NAV Aktuell</th>
+          <th style="text-align:right">&#916; absolut</th>
+          <th style="text-align:right">&#916; %</th>
           <th style="text-align:right">YTD Performance</th>
         </tr>
       </thead>
@@ -1831,34 +1833,32 @@ function renderMonthly(){{
     var prevYm=i>0?allMonths[i-1]:null;
     var prev=prevYm?monthMap[prevYm]||null:null;
     var isCurrent=(i===allMonths.length-1);
-    /* nav_prev = Vormonat wie im aktuellen Report ausgewiesen (= gleiche Basis wie Karten) */
+    /* nav_prev = Vormonat-NAV aus aktuellem Report (gleiche Basis wie Karten) */
     var prevNav=(e&&e.nav_prev!=null)?e.nav_prev:(prev&&prev.nav!=null?prev.nav:null);
-    var delta=(e&&e.nav!=null&&prevNav!=null)?e.nav-prevNav:null;
+    var navNow=e&&e.nav!=null?e.nav:null;
+    var delta=(navNow!=null&&prevNav!=null)?navNow-prevNav:null;
     var deltaPct=(delta!=null&&prevNav)?delta/prevNav*100:null;
     var pillCls=delta==null?'neu':(delta>=0?'pos':'neg');
-    var arrow=delta==null?'':delta>=0?'\u25b2\u202f':'\u25bc\u202f';
-    var dtxt=delta!=null?(delta>=0?'+':'\u2212')+fmtInt.format(Math.round(Math.abs(delta)))+'\u202f\u20ac':'';
-    var dptxt=deltaPct!=null?'('+  (deltaPct>=0?'+':'')+fmtEur.format(deltaPct)+'\u202f%)':'';
-    var deltaCellContent=delta!=null?'<span class="delta-pill '+pillCls+'">'+arrow+dtxt+'\u2002'+dptxt+'</span>':'<span style="color:#ccc">\u2014</span>';
+    var arrow=delta==null?'':delta>=0?'\u25b2 ':'\u25bc ';
+    var deltaAbsTxt=delta!=null?arrow+(delta>=0?'+':'\u2212')+fmtInt.format(Math.round(Math.abs(delta)))+' \u20ac':'\u2014';
+    var deltaPctTxt=deltaPct!=null?(deltaPct>=0?'+':'')+fmtEur.format(deltaPct)+' %':'\u2014';
     var ytd=e?e.perf_ytd:null;
     var ytdCls=ytd==null?'neu':(ytd>=0?'pos':'neg');
-    var ytdTxt=ytd!=null?(ytd>=0?'+':'')+fmtEur.format(ytd)+'\u202f%':'\u2014';
-    var ytdCell='<span class="ytd-pill '+ytdCls+'">'+ytdTxt+'</span>';
-    /* Stand date DD.MM.YYYY */
+    var ytdTxt=ytd!=null?(ytd>=0?'+':'')+fmtEur.format(ytd)+' %':'\u2014';
     var standTxt='';
     if(e&&e.date){{var dp=e.date.split('-');standTxt=dp[2]+'.'+dp[1]+'.'+dp[0];}}
-    /* Nettoverm\u00f6gen + Fondspreis stacked */
-    var navTxt=e&&e.nav!=null?fmtInt.format(Math.round(e.nav))+'\u202f\u20ac':'\u2014';
-    var priceTxt=e&&e.price!=null?fmtEur.format(e.price)+'\u202f\u20ac':'';
-    var navCell='<div class="monthly-nav">'+navTxt+'</div>'+(priceTxt?'<div class="monthly-price">Fondspreis: '+priceTxt+'</div>':'');
+    var prevNavTxt=prevNav!=null?fmtInt.format(Math.round(prevNav))+' \u20ac':'\u2014';
+    var navNowCell=navNow!=null?'<div class="monthly-nav">'+fmtInt.format(Math.round(navNow))+' \u20ac</div>'+(e&&e.price!=null?'<div class="monthly-price">Fondspreis: '+fmtEur.format(e.price)+' \u20ac</div>':''):'\u2014';
     rows+='<tr'+(isCurrent?' class="monthly-row-current"':'')+'>' +
       '<td><div class="month-name">'+(mn[parseInt(ym.slice(5,7),10)-1]||ym)+'</div>'+(standTxt?'<div class="month-stand">'+standTxt+'</div>':'')+'</td>'+
-      '<td style="text-align:right">'+navCell+'</td>'+
-      '<td style="text-align:right">'+deltaCellContent+'</td>'+
-      '<td style="text-align:right">'+ytdCell+'</td>'+
+      '<td style="text-align:right;color:#888;font-variant-numeric:tabular-nums;font-size:13px">'+prevNavTxt+'</td>'+
+      '<td style="text-align:right">'+navNowCell+'</td>'+
+      '<td style="text-align:right"><span class="delta-pill '+pillCls+'">'+deltaAbsTxt+'</span></td>'+
+      '<td style="text-align:right"><span class="delta-pill '+pillCls+'">'+deltaPctTxt+'</span></td>'+
+      '<td style="text-align:right"><span class="ytd-pill '+ytdCls+'">'+ytdTxt+'</span></td>'+
       '</tr>';
   }});
-  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="4" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
+  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
 function buildNewsHtml(fundFilter){{
   var html='';
