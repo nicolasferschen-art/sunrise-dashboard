@@ -986,22 +986,16 @@ def summarize_news(company_name, articles, anthropic_key):
         articles_text += f"- {content}{src}\n"
 
     prompt = (
-        f"Du fasst Nachrichtenartikel für Investoren zusammen.\n"
-        f"Unternehmen: {company_name}\n\n"
-        f"Artikel:\n{articles_text}\n\n"
-        f"STRENGE REGELN – lies sie sorgfältig:\n"
-        f"1. Verwende AUSSCHLIESSLICH Informationen die WÖRTLICH im obigen Text stehen.\n"
-        f"2. VERBOTEN ohne expliziten Beleg im Text:\n"
-        f"   - Indexänderungen (ATX, DAX, MSCI etc. Aufnahme oder Ausschluss)\n"
-        f"   - Übernahmen, Fusionen, M&A\n"
-        f"   - CEO- oder Managementwechsel\n"
-        f"   - Konkrete Zahlen (Umsatz, Gewinn, Kurs) die nicht im Text stehen\n"
-        f"   - Zukunftsprognosen die nicht zitiert werden\n"
-        f"3. Im Zweifel: weglassen oder IRRELEVANT antworten.\n"
-        f"4. Wenn kein Artikel wirklich zu {company_name} passt (Geschäft, Zahlen, Strategie): antworte nur mit IRRELEVANT\n\n"
-        f"Antworte in diesem Format:\n"
-        f"HEADLINE: [präzise Überschrift, nur was belegt ist]\n"
-        f"TEXT: [2–3 Sätze, direkt, nur belegte Fakten – lieber kürzer als spekulativ]"
+        f"Du bist Redakteur eines Finanz-Newsletters für institutionelle Investoren.\n"
+        f"Schreib eine prägnante, informative Headline auf Deutsch über die aktuellen News zu: {company_name}\n\n"
+        f"Quellen:\n{articles_text}\n"
+        f"Regeln:\n"
+        f"- Nur eine einzige Zeile, kein Punkt am Ende\n"
+        f"- Natürlich formuliert, nicht nach KI klingend\n"
+        f"- Nur belegte Fakten aus den Quellen – nichts erfinden\n"
+        f"- Wenn die Artikel nichts mit {company_name} als Unternehmen zu tun haben: antworte mit IRRELEVANT\n"
+        f"- Keine Einleitung, kein 'HEADLINE:', direkt die Überschrift\n"
+        f"Beispiele guter Headlines: 'Erste Group steigert Halbjahresgewinn um 19 %' · 'UniCredit übernimmt Mehrheit an Commerzbank' · 'Apple wehrt sich gegen britischen iCloud-Datenzugriff'"
     )
     body = json.dumps({
         "model": "claude-haiku-4-5-20251001",
@@ -1022,13 +1016,9 @@ def summarize_news(company_name, articles, anthropic_key):
             raw = result["content"][0]["text"].strip()
         if raw.startswith("IRRELEVANT"):
             return None
-        headline, text = "", ""
-        for line in raw.splitlines():
-            if line.startswith("HEADLINE:"):
-                headline = line[9:].strip()
-            elif line.startswith("TEXT:"):
-                text = line[5:].strip()
-        return {"headline": headline, "text": text} if (headline or text) else None
+        # Response ist jetzt direkt die Headline (kein FORMAT-Prefix mehr)
+        headline = raw.splitlines()[0].strip().lstrip("HEADLINE:").strip()
+        return {"headline": headline, "text": ""} if headline else None
     except HTTPError as e:
         body_err = ""
         try: body_err = e.read().decode("utf-8", errors="replace")[:300]
@@ -1816,14 +1806,13 @@ function buildNewsHtml(fundFilter){{
     if(!articles.length&&!nd.summary)return;
     var co=esc(nd.company||key);
     var sumRaw=nd.summary;
-    var sumHeadline='',sumText='';
-    if(typeof sumRaw==='string'){{sumText=sumRaw;}}
-    else if(sumRaw&&typeof sumRaw==='object'){{sumHeadline=sumRaw.headline||'';sumText=sumRaw.text||'';}}
-    var sumHtml='';
-    if(sumHeadline)sumHtml+='<div class="news-headline">'+esc(sumHeadline)+'</div>';
-    if(sumText)sumHtml+='<div class="news-summary">'+esc(sumText)+'</div>';
+    var sumHeadline='';
+    if(typeof sumRaw==='string'){{sumHeadline=sumRaw;}}
+    else if(sumRaw&&typeof sumRaw==='object'){{sumHeadline=sumRaw.headline||'';}}
+    var sumHtml=sumHeadline?'<div class="news-headline">'+esc(sumHeadline)+'</div>':'';
     var ah=articles.map(function(a){{
-      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener">'+esc(a.title||'')+'</a>';
+      var title=(a.title||'').replace(/\s+[-–]\s+[^-–]{{3,60}}$/,'').trim();
+      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener">'+esc(title||a.title||'')+'</a>';
     }}).join('');
     html+='<div class="news-card"><h3 class="news-company">'+co+'</h3>'+sumHtml+'<div class="articles-list">'+ah+'</div></div>';
   }});
