@@ -986,20 +986,17 @@ def summarize_news(company_name, articles, anthropic_key):
         articles_text += f"- {content}{src}\n"
 
     prompt = (
-        f"Du bist Redakteur eines Finanz-Newsletters für institutionelle Investoren.\n"
-        f"Schreib eine prägnante, informative Headline auf Deutsch über die aktuellen News zu: {company_name}\n\n"
-        f"Quellen:\n{articles_text}\n"
-        f"Regeln:\n"
-        f"- Nur eine einzige Zeile, kein Punkt am Ende\n"
-        f"- Natürlich formuliert, nicht nach KI klingend\n"
-        f"- Nur belegte Fakten aus den Quellen – nichts erfinden\n"
-        f"- Wenn die Artikel nichts mit {company_name} als Unternehmen zu tun haben: antworte mit IRRELEVANT\n"
-        f"- Keine Einleitung, kein 'HEADLINE:', direkt die Überschrift\n"
-        f"Beispiele guter Headlines: 'Erste Group steigert Halbjahresgewinn um 19 %' · 'UniCredit übernimmt Mehrheit an Commerzbank' · 'Apple wehrt sich gegen britischen iCloud-Datenzugriff'"
+        f"Erstelle eine kurze Zusammenfassung auf Deutsch für folgende News zu {company_name}.\n\n"
+        f"Artikel:\n{articles_text}\n"
+        f"Antworte exakt in diesem Format:\n"
+        f"HEADLINE: [Prägnante Überschrift]\n"
+        f"TEXT: [2-3 Sätze Zusammenfassung der wichtigsten Entwicklungen]\n\n"
+        f"Nur gesicherte Fakten aus den Artikeln verwenden. "
+        f"Falls die Artikel nichts mit {company_name} zu tun haben, antworte mit: IRRELEVANT"
     )
     body = json.dumps({
         "model": "claude-haiku-4-5-20251001",
-        "max_tokens": 200,
+        "max_tokens": 300,
         "messages": [{"role": "user", "content": prompt}],
     }, ensure_ascii=False).encode("utf-8")
     req = Request(
@@ -1016,9 +1013,14 @@ def summarize_news(company_name, articles, anthropic_key):
             raw = result["content"][0]["text"].strip()
         if raw.startswith("IRRELEVANT"):
             return None
-        # Response ist jetzt direkt die Headline (kein FORMAT-Prefix mehr)
-        headline = raw.splitlines()[0].strip().lstrip("HEADLINE:").strip()
-        return {"headline": headline, "text": ""} if headline else None
+        headline = ""
+        text = ""
+        for line in raw.splitlines():
+            if line.upper().startswith("HEADLINE:"):
+                headline = line[line.index(":")+1:].strip()
+            elif line.upper().startswith("TEXT:"):
+                text = line[line.index(":")+1:].strip()
+        return {"headline": headline, "text": text} if (headline or text) else None
     except HTTPError as e:
         body_err = ""
         try: body_err = e.read().decode("utf-8", errors="replace")[:300]
@@ -1415,10 +1417,11 @@ details[open] summary::before{{transform:rotate(90deg)}}
       <thead>
         <tr>
           <th>Monat</th>
+          <th style="text-align:right">Stand</th>
           <th style="text-align:right">Nettoverm&#246;gen</th>
-          <th style="text-align:right">Fondspreis</th>
-          <th style="text-align:right">YTD %</th>
           <th style="text-align:right">&#916; Vormonat</th>
+          <th style="text-align:right">&#916; %</th>
+          <th style="text-align:right">YTD %</th>
         </tr>
       </thead>
       <tbody id="monthly-body"></tbody>
@@ -1761,11 +1764,8 @@ function renderMonthly(){{
       var ym=h.date.slice(0,7);
       var ex=monthMap[ym];
       if(!ex){{monthMap[ym]=h;return;}}
-      var hFull=(h.nav!=null&&h.perf_ytd!=null);
-      var exFull=(ex.nav!=null&&ex.perf_ytd!=null);
-      /* Prefer entries with complete data; among equal, take latest date */
-      if(hFull&&!exFull){{monthMap[ym]=h;}}
-      else if(hFull===exFull&&h.date>ex.date){{monthMap[ym]=h;}}
+      /* Always use the latest date (= Monatsletzter) */
+      if(h.date>ex.date){{monthMap[ym]=h;}}
     }}
   }});
   /* Generate all months Jan \u2192 current month of current year */
@@ -1780,19 +1780,25 @@ function renderMonthly(){{
     var prevYm=i>0?allMonths[i-1]:null;
     var prev=prevYm?monthMap[prevYm]||null:null;
     var delta=(e&&prev&&prev.nav!=null&&e.nav!=null)?e.nav-prev.nav:null;
+    var deltaPct=(delta!=null&&prev.nav)?delta/prev.nav*100:null;
     var dcls=delta!=null?(delta>=0?' pos':' neg'):'';
     var dtxt=delta!=null?(delta>=0?'+':'')+ fmtInt.format(Math.round(Math.abs(delta)))+' \u20ac':'\u2014';
+    var dptxt=deltaPct!=null?(deltaPct>=0?'+':'')+fmtEur.format(deltaPct)+' %':'\u2014';
     var ytd=e?e.perf_ytd:null,ycls=ytd!=null?(ytd>=0?' pos':' neg'):'';
     var ytxt=ytd!=null?(ytd>=0?'+':'')+fmtEur.format(ytd)+' %':'\u2014';
+    /* Format date as DD.MM.YYYY */
+    var standTxt='\u2014';
+    if(e&&e.date){{var dp=e.date.split('-');standTxt=dp[2]+'.'+dp[1]+'.'+dp[0];}}
     rows+='<tr>'+
       '<td>'+(mn[parseInt(ym.slice(5,7),10)-1]||ym)+'</td>'+
+      '<td class="num" style="color:#888;font-size:12px">'+standTxt+'</td>'+
       '<td class="num">'+(e&&e.nav!=null?fmtInt.format(Math.round(e.nav))+' \u20ac':'\u2014')+'</td>'+
-      '<td class="num">'+(e&&e.price!=null?fmtEur.format(e.price)+' \u20ac':'\u2014')+'</td>'+
-      '<td class="num'+ycls+'">'+ytxt+'</td>'+
       '<td class="num'+dcls+'">'+dtxt+'</td>'+
+      '<td class="num'+dcls+'">'+dptxt+'</td>'+
+      '<td class="num'+ycls+'">'+ytxt+'</td>'+
       '</tr>';
   }});
-  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
+  document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
 function buildNewsHtml(fundFilter){{
   var html='';
@@ -1806,13 +1812,14 @@ function buildNewsHtml(fundFilter){{
     if(!articles.length&&!nd.summary)return;
     var co=esc(nd.company||key);
     var sumRaw=nd.summary;
-    var sumHeadline='';
+    var sumHeadline='',sumText='';
     if(typeof sumRaw==='string'){{sumHeadline=sumRaw;}}
-    else if(sumRaw&&typeof sumRaw==='object'){{sumHeadline=sumRaw.headline||'';}}
-    var sumHtml=sumHeadline?'<div class="news-headline">'+esc(sumHeadline)+'</div>':'';
+    else if(sumRaw&&typeof sumRaw==='object'){{sumHeadline=sumRaw.headline||'';sumText=sumRaw.text||'';}}
+    var sumHtml='';
+    if(sumHeadline)sumHtml+='<div class="news-headline">'+esc(sumHeadline)+'</div>';
+    if(sumText)sumHtml+='<div class="news-summary">'+esc(sumText)+'</div>';
     var ah=articles.map(function(a){{
-      var title=(a.title||'').replace(/\s+[-–]\s+[^-–]{{3,60}}$/,'').trim();
-      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener">'+esc(title||a.title||'')+'</a>';
+      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener">'+esc(a.title||'')+'</a>';
     }}).join('');
     html+='<div class="news-card"><h3 class="news-company">'+co+'</h3>'+sumHtml+'<div class="articles-list">'+ah+'</div></div>';
   }});
