@@ -323,18 +323,25 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-08-03",
-        "label": "03.08.2026",
+        "date": "2026-08-04",
+        "label": "04.08.2026",
         "price": 227.77,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-08-04",
-        "label": "04.08.2026",
+        "date": "2026-08-05",
+        "label": "05.08.2026",
         "price": 227.77,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2269,7 +2276,6 @@
     "hhi": 133.7,
     "top10_weight": 28.7,
     "win_rate": 75.6,
-    "run_date": "2026-08-04",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -5889,18 +5895,25 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-08-03",
-        "label": "03.08.2026",
+        "date": "2026-08-04",
+        "label": "04.08.2026",
         "price": 196.28,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-08-04",
-        "label": "04.08.2026",
+        "date": "2026-08-05",
+        "label": "05.08.2026",
         "price": 196.28,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -7884,7 +7897,6 @@
     "hhi": 101.7,
     "top10_weight": 24.4,
     "win_rate": 75.2,
-    "run_date": "2026-08-04",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -11504,18 +11516,25 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-08-03",
-        "label": "03.08.2026",
+        "date": "2026-08-04",
+        "label": "04.08.2026",
         "price": 113.8,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-08-04",
-        "label": "04.08.2026",
+        "date": "2026-08-05",
+        "label": "05.08.2026",
         "price": 113.8,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -12267,7 +12286,6 @@
     "hhi": 73.9,
     "top10_weight": 20.8,
     "win_rate": 73.6,
-    "run_date": "2026-08-04",
     "holdings": [
       {
         "isin": "AT0000652011",
