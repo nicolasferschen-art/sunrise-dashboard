@@ -1784,8 +1784,8 @@ function renderHoldings(){{
   var rows='';
   holdings.forEach(function(h,i){{
     var plCls=h.pl==null?'':(h.pl>=0?' pos':' neg');
-    var isinKey=JSON.stringify((h.isin||h.name||'').toUpperCase());
-    rows+='<tr style="cursor:pointer" onclick="showCompanyDetail('+isinKey+')">'+
+    var isinKey=(h.isin||h.name||'').toUpperCase().replace(/'/g,'');
+    rows+='<tr style="cursor:pointer" onclick="showCompanyDetail(\''+isinKey+'\')">'+
       '<td class="rank">'+(i+1)+'</td>'+
       '<td><div class="h-name">'+esc(h.name||'\u2014')+'</div><div class="h-isin">'+esc(h.isin||'')+'</div></td>'+
       '<td class="num">'+(h.mv_eur!=null?fmtInt.format(Math.round(h.mv_eur))+' \u20ac':'\u2014')+'</td>'+
@@ -2004,8 +2004,8 @@ function doCompanySearch(q){{
   var html='';
   keys.forEach(function(k){{
     var m=matches[k];
-    var kJson=JSON.stringify(k);
-    html+='<div class="search-result-company" onclick="showCompanyDetail('+kJson+')" title="Details öffnen">'+
+    var kEsc=k.replace(/'/g,'');
+    html+='<div class="search-result-company" onclick="showCompanyDetail(\''+kEsc+'\')" title="Details öffnen">'+
       esc(m.name)+
       (m.isin?'<span style="font-weight:400;color:#888;font-size:12px;margin-left:8px">'+esc(m.isin)+'</span>':'')+
       '<span style="font-size:11px;color:#aaa;margin-left:8px;font-weight:400">&#8594;</span>'+
