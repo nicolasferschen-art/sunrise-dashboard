@@ -870,6 +870,13 @@ def compute_kpis(fund_data):
     total_with_pl  = len([h for h in holdings if h.get("pl") is not None])
     win_rate = win_positions / total_with_pl * 100 if total_with_pl else 0
 
+    # pct_nav für jede Position setzen (weight aus Excel, Fallback: mv_eur / nav * 100)
+    for h in holdings:
+        w = h.get("weight")
+        if w is None and nav and nav > 0 and h.get("mv_eur"):
+            w = round(h["mv_eur"] / nav * 100, 4)
+        h["pct_nav"] = round(w, 4) if w is not None else None
+
     fund_data.update({
         "total_pl":   total_pl,
         "pos_pl":     pos_pl,
@@ -1316,12 +1323,24 @@ details[open] summary::before{{transform:rotate(90deg)}}
 .search-input{{width:100%;border:1.5px solid #e0e0dd;border-radius:10px;padding:10px 14px;font-size:15px;outline:none;box-sizing:border-box}}
 .search-input:focus{{border-color:#3B7DD8}}
 .search-modal-body{{overflow-y:auto;padding:16px 24px 24px;flex:1}}
-.search-result-company{{font-size:15px;font-weight:700;margin-bottom:6px;margin-top:16px}}
+.search-result-company{{font-size:15px;font-weight:700;margin-bottom:6px;margin-top:16px;cursor:pointer;padding:6px 8px;border-radius:8px;transition:background .12s}}
+.search-result-company:hover{{background:#f0f0ee}}
 .search-result-company:first-child{{margin-top:0}}
 .search-result-row{{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;border-radius:8px;background:#f8f8f6;margin-bottom:4px;font-size:13px}}
 .search-result-fund{{font-weight:600;color:#3B7DD8}}
 .search-result-vals{{color:#555;display:flex;gap:16px}}
 .search-empty{{color:#aaa;text-align:center;padding:40px 0;font-size:14px}}
+.company-detail-overlay{{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px)}}
+.company-detail-overlay.open{{display:flex;align-items:flex-start;justify-content:center;padding-top:60px}}
+.company-detail-modal{{background:#fff;border-radius:16px;width:min(760px,95vw);max-height:85vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.2)}}
+.company-detail-header{{padding:20px 24px 16px;border-bottom:1px solid #e8e8e6}}
+.company-detail-body{{overflow-y:auto;padding:20px 24px 28px;flex:1}}
+.company-detail-kpi{{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px}}
+.company-detail-kpi-item{{background:#f8f8f6;border-radius:10px;padding:12px 14px}}
+.company-detail-kpi-label{{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:#888;font-weight:600;margin-bottom:4px}}
+.company-detail-kpi-value{{font-size:16px;font-weight:700;color:#1a1a1a}}
+.holdings-filter{{width:100%;box-sizing:border-box;padding:8px 12px;border:1.5px solid #d8d8d6;border-radius:8px;font-size:13px;outline:none;transition:border-color .15s;margin-bottom:12px}}
+.holdings-filter:focus{{border-color:#3B7DD8}}
 </style>
 </head>
 <body>
@@ -1344,6 +1363,35 @@ details[open] summary::before{{transform:rotate(90deg)}}
     </div>
     <div class="search-modal-body" id="search-results">
       <div class="search-empty">Suchbegriff eingeben um Unternehmen fondsübergreifend zu finden.</div>
+    </div>
+  </div>
+</div>
+<div class="company-detail-overlay" id="company-detail-overlay" onclick="if(event.target===this)closeCompanyDetail()">
+  <div class="company-detail-modal">
+    <div class="company-detail-header">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div id="company-detail-name" style="font-size:18px;font-weight:700;letter-spacing:-0.3px"></div>
+          <div id="company-detail-isin" style="font-size:12px;color:#888;margin-top:2px"></div>
+        </div>
+        <button class="news-drawer-close" onclick="closeCompanyDetail()">&#10005; Schlie&#223;en</button>
+      </div>
+    </div>
+    <div class="company-detail-body">
+      <div class="company-detail-kpi" id="company-detail-kpi"></div>
+      <div class="section-title">Positionen in Fonds</div>
+      <table class="data-table" style="margin-top:8px">
+        <thead><tr>
+          <th>Fonds</th>
+          <th style="text-align:right">Stück</th>
+          <th style="text-align:right">Marktwert</th>
+          <th style="text-align:right">% NAV</th>
+          <th style="text-align:right">P&amp;L</th>
+          <th>Sektor</th>
+          <th>Land</th>
+        </tr></thead>
+        <tbody id="company-detail-rows"></tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -1431,6 +1479,7 @@ details[open] summary::before{{transform:rotate(90deg)}}
     </div>
   </div>
   <div class="tab-panel" id="tab-holdings">
+    <input class="holdings-filter" id="holdings-search" type="text" placeholder="Position oder ISIN suchen…" oninput="renderHoldings()">
     <table class="data-table" id="holdings-table">
       <thead>
         <tr>
@@ -1718,6 +1767,13 @@ document.getElementById('gv-tabs').addEventListener('click',function(e){{
 }});
 function renderHoldings(){{
   var f=FUNDS_DATA[currentFundIdx],holdings=(f.holdings||[]).slice();
+  var q=(document.getElementById('holdings-search')||{{}}).value||'';
+  q=q.trim().toLowerCase();
+  if(q.length>=2){{
+    holdings=holdings.filter(function(h){{
+      return (h.name||'').toLowerCase().includes(q)||(h.isin||'').toLowerCase().includes(q);
+    }});
+  }}
   holdings.sort(function(a,b){{
     if(holdingsSortCol==='name'){{var va=(a.name||'').toLowerCase(),vb=(b.name||'').toLowerCase();return holdingsSortDir*(va<vb?-1:va>vb?1:0);}}
     if(holdingsSortCol==='sector'){{var va=(a.sector||'').toLowerCase(),vb=(b.sector||'').toLowerCase();return holdingsSortDir*(va<vb?-1:va>vb?1:0);}}
@@ -1728,7 +1784,8 @@ function renderHoldings(){{
   var rows='';
   holdings.forEach(function(h,i){{
     var plCls=h.pl==null?'':(h.pl>=0?' pos':' neg');
-    rows+='<tr>'+
+    var isinKey=JSON.stringify((h.isin||h.name||'').toUpperCase());
+    rows+='<tr style="cursor:pointer" onclick="showCompanyDetail('+isinKey+')">'+
       '<td class="rank">'+(i+1)+'</td>'+
       '<td><div class="h-name">'+esc(h.name||'\u2014')+'</div><div class="h-isin">'+esc(h.isin||'')+'</div></td>'+
       '<td class="num">'+(h.mv_eur!=null?fmtInt.format(Math.round(h.mv_eur))+' \u20ac':'\u2014')+'</td>'+
@@ -1947,7 +2004,12 @@ function doCompanySearch(q){{
   var html='';
   keys.forEach(function(k){{
     var m=matches[k];
-    html+='<div class="search-result-company">'+esc(m.name)+(m.isin?'<span style="font-weight:400;color:#888;font-size:12px;margin-left:8px">'+esc(m.isin)+'</span>':'')+'</div>';
+    var kJson=JSON.stringify(k);
+    html+='<div class="search-result-company" onclick="showCompanyDetail('+kJson+')" title="Details öffnen">'+
+      esc(m.name)+
+      (m.isin?'<span style="font-weight:400;color:#888;font-size:12px;margin-left:8px">'+esc(m.isin)+'</span>':'')+
+      '<span style="font-size:11px;color:#aaa;margin-left:8px;font-weight:400">&#8594;</span>'+
+    '</div>';
     m.funds.forEach(function(f){{
       var mvTxt=f.mv!=null?fmtInt.format(Math.round(f.mv))+' €':'—';
       var pctTxt=f.pct!=null?fmtEur.format(f.pct)+' %':'—';
@@ -1963,6 +2025,56 @@ function doCompanySearch(q){{
     }});
   }});
   container.innerHTML=html;
+}}
+function showCompanyDetail(key){{
+  /* Schließe andere Overlays */
+  closeSearchOverlay();
+  /* Alle Fonds nach key durchsuchen */
+  var name='',isin='';
+  var fundRows=[];
+  var totalMv=0,totalPl=0,hasQty=false;
+  FUNDS_DATA.forEach(function(f){{
+    (f.holdings||[]).forEach(function(h){{
+      var k=(h.isin||h.name||'').toUpperCase();
+      if(k===key){{
+        if(!name){{name=h.name||'';isin=h.isin||'';}}
+        var mv=h.mv_eur,pl=h.pl,pct=h.pct_nav,qty=h.qty;
+        if(mv!=null)totalMv+=mv;
+        if(pl!=null)totalPl+=pl;
+        if(qty!=null)hasQty=true;
+        fundRows.push({{fund:f.name,mv:mv,pl:pl,pct:pct,qty:qty,sector:h.sector,country:h.country}});
+      }}
+    }});
+  }});
+  document.getElementById('company-detail-name').textContent=name||key;
+  document.getElementById('company-detail-isin').textContent=isin?('ISIN: '+isin):'';
+  /* KPI-Box */
+  var kpis='';
+  kpis+='<div class="company-detail-kpi-item"><div class="company-detail-kpi-label">Marktwert gesamt</div><div class="company-detail-kpi-value">'+fmtInt.format(Math.round(totalMv))+' €</div></div>';
+  if(totalPl!==0)kpis+='<div class="company-detail-kpi-item"><div class="company-detail-kpi-label">P&L gesamt</div><div class="company-detail-kpi-value" style="color:'+(totalPl>=0?'#1a7c4a':'#c0392b')+'">'+(totalPl>=0?'+':'')+fmtInt.format(Math.round(totalPl))+' €</div></div>';
+  kpis+='<div class="company-detail-kpi-item"><div class="company-detail-kpi-label">Fonds</div><div class="company-detail-kpi-value">'+fundRows.length+'</div></div>';
+  document.getElementById('company-detail-kpi').innerHTML=kpis;
+  /* Tabelle */
+  var rows='';
+  fundRows.forEach(function(r){{
+    var plCls=r.pl==null?'':(r.pl>=0?' pos':' neg');
+    rows+='<tr>'+
+      '<td style="font-weight:600;color:#3B7DD8">'+esc(r.fund)+'</td>'+
+      '<td class="num">'+(r.qty!=null?fmtInt.format(r.qty):'—')+'</td>'+
+      '<td class="num">'+(r.mv!=null?fmtInt.format(Math.round(r.mv))+' €':'—')+'</td>'+
+      '<td class="num">'+(r.pct!=null?fmtEur.format(r.pct)+' %':'—')+'</td>'+
+      '<td class="num'+plCls+'">'+(r.pl!=null?(r.pl>=0?'+':'')+fmtInt.format(Math.round(r.pl))+' €':'—')+'</td>'+
+      '<td>'+esc(r.sector||'—')+'</td>'+
+      '<td>'+esc(r.country||'—')+'</td>'+
+    '</tr>';
+  }});
+  document.getElementById('company-detail-rows').innerHTML=rows||'<tr><td colspan="7" style="text-align:center;color:#aaa;padding:16px">Keine Daten</td></tr>';
+  document.getElementById('company-detail-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}}
+function closeCompanyDetail(){{
+  document.getElementById('company-detail-overlay').classList.remove('open');
+  document.body.style.overflow='';
 }}
 function openNewsOverlay(){{
   document.getElementById('news-drawer-content').innerHTML=buildNewsHtml(null);
