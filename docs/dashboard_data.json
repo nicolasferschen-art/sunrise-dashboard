@@ -335,27 +335,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [
-        {
-          "isin": "US2855121099",
-          "name": "EL. ARTS INC.      DL-,01",
-          "country": "United States",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 167599.86,
-          "pl": 68020.69,
-          "weight": 0.1,
-          "cost": null,
-          "price": 124.592893,
-          "pct_nav": 0.1
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2290,6 +2269,7 @@
     "hhi": 133.6,
     "top10_weight": 28.7,
     "win_rate": 77.0,
+    "run_date": "2026-08-07",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6183,27 +6163,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [
-        {
-          "isin": "US2855121099",
-          "name": "EL. ARTS INC.      DL-,01",
-          "country": "United States",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 68968.89,
-          "pl": 22610.19,
-          "weight": 0.12,
-          "cost": null,
-          "price": 140.9537,
-          "pct_nav": 0.12
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8187,6 +8146,7 @@
     "hhi": 100.1,
     "top10_weight": 24.3,
     "win_rate": 75.4,
+    "run_date": "2026-08-07",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12087,13 +12047,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -12845,6 +12798,7 @@
     "hhi": 73.4,
     "top10_weight": 20.7,
     "win_rate": 74.5,
+    "run_date": "2026-08-07",
     "holdings": [
       {
         "isin": "AT0000652011",
