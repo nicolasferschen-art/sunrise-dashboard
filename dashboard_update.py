@@ -1957,11 +1957,11 @@ function buildNewsHtml(fundFilter,onlySummary){{
     var nd=NEWS_DATA[key];
     if(fundFilter&&nd.funds&&!nd.funds.includes(fundFilter))return;
     if(onlySummary&&!nd.summary)return;
-    var articles=(nd.articles||[]).slice().sort(function(a,b){{return(b.pubDate||'').localeCompare(a.pubDate||'');}});
+    var articles=(nd.articles||[]).slice().sort(function(a,b){{return new Date(b.pubDate||0)-new Date(a.pubDate||0);}});
     if(!articles.length&&!nd.summary)return;
     companies.push({{key:key,nd:nd,articles:articles,latest:articles.length?articles[0].pubDate:''}});
   }});
-  companies.sort(function(a,b){{return(b.latest||'').localeCompare(a.latest||'');}});
+  companies.sort(function(a,b){{return new Date(b.latest||0)-new Date(a.latest||0);}});
   if(!companies.length)return'<p class="empty">Keine News verf\u00fcgbar.</p>';
   function fmtDate(s){{
     if(!s)return'';
