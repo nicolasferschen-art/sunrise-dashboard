@@ -1,4 +1,4 @@
-Xname: IQAM Dashboard Update
+name: IQAM Dashboard Update
 
 on:
   push:
