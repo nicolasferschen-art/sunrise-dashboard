@@ -1407,6 +1407,7 @@ details[open] summary::before{{transform:rotate(90deg)}}
   <div class="news-drawer">
     <div class="news-drawer-header">
       <span class="news-drawer-title">&#128240; News<span id="news-drawer-title-fund" style="font-weight:400;color:#888"></span></span>
+      <button id="news-filter-btn" onclick="toggleNewsFilter()" style="padding:6px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:13px;margin-right:8px;">&#128269; Nur vollst&#228;ndige</button>
       <button class="news-drawer-close" onclick="closeNewsOverlay()">&#10005; Schlie&#223;en</button>
     </div>
     <div class="news-drawer-body">
@@ -2114,6 +2115,7 @@ function closeNewsOverlay(){{
   document.getElementById('news-overlay').classList.remove('open');
   document.body.style.overflow='';
 }}
+var _newsFilterActive=false;function toggleNewsFilter(){{var btn=document.getElementById("news-filter-btn");_newsFilterActive=!_newsFilterActive;var grid=document.querySelector(".news-grid");Array.from(grid.children).forEach(function(card){{var ok=!!card.querySelector(".news-summary");card.style.display=_newsFilterActive&&!ok?"none":"";}});btn.textContent=_newsFilterActive?"✅ Nur vollständige":"&#128269; Nur vollständige";btn.style.background=_newsFilterActive?"#e8f5e9":"#fff";}}
 function overlayBgClick(e){{
   if(e.target===document.getElementById('news-overlay'))closeNewsOverlay();
 }}
