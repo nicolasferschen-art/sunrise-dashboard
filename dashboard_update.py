@@ -1,4 +1,4 @@
-X!/usr/bin/env python3
+ X!/usr/bin/env python3
 """
 IQAM Dashboard – tägliche Aktualisierung
 Läuft in GitHub Actions, authentifiziert via Microsoft Graph (Refresh Token).
