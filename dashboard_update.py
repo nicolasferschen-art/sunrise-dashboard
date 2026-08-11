@@ -1289,18 +1289,23 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
 .gv-rank{{font-size:11px;color:#aaa;width:20px;flex-shrink:0}}
 .gv-name{{font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 .gv-pl{{font-size:12px;font-weight:600;text-align:right;flex-shrink:0}}
-.news-grid{{display:flex;flex-direction:column;gap:10px}}
-.news-card{{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #e8e8e6}}
-.news-company{{font-size:15px;font-weight:700;margin-bottom:10px}}
-.news-headline{{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px;line-height:1.4}}
-.news-summary{{font-size:12px;color:#666;line-height:1.6;margin-bottom:12px;padding:10px;background:#f8f8f6;border-radius:8px}}
-.articles-list{{display:flex;flex-direction:column;gap:8px}}
-.news-meta{{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}}
-.news-company-tag{{font-size:11px;font-weight:700;color:#fff;background:#2a7af5;border-radius:4px;padding:2px 7px;white-space:nowrap}}
-.news-date{{font-size:11px;color:#999;white-space:nowrap}}
-.article-link{{display:block;font-size:13px;font-weight:500;line-height:1.4;color:#1a1a1a;text-decoration:none}}
-.article-link:hover{{color:#2a7af5;text-decoration:underline}}
-.article-title{{font-size:13px;font-weight:500;line-height:1.4}}
+.news-filter-bar{{display:flex;gap:8px;padding:0 0 14px 0}}
+.news-filter-btn{{border:1px solid #e8e8e6;background:#fff;border-radius:8px;padding:6px 14px;font-size:12px;cursor:pointer;color:#666;transition:all .15s}}
+.news-filter-btn.active,.news-filter-btn:hover{{background:#2a7af5;border-color:#2a7af5;color:#fff;font-weight:600}}
+.news-grid{{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(380px,1fr))}}
+.news-card{{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e8e6}}
+.news-card-header{{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}}
+.news-company{{font-size:15px;font-weight:700;flex:1}}
+.news-date{{font-size:11px;color:#999;white-space:nowrap;flex-shrink:0}}
+.news-headline{{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:8px;line-height:1.4;user-select:text}}
+.news-summary{{font-size:13px;color:#444;line-height:1.6;margin-bottom:14px;padding:12px;background:#f8f8f6;border-radius:8px;user-select:text}}
+.articles-list{{display:flex;flex-direction:column;gap:6px;border-top:1px solid #f0f0ee;padding-top:10px;margin-top:4px}}
+.article-link{{display:flex;align-items:baseline;gap:6px;padding:4px 0;color:#2a7af5;text-decoration:none;font-size:12px;line-height:1.4}}
+.article-link:hover{{text-decoration:underline}}
+.article-date{{font-size:11px;color:#bbb;white-space:nowrap;flex-shrink:0}}
+.article-title{{flex:1}}
+.news-meta{{display:flex;align-items:center;gap:8px;margin-bottom:6px}}
+.news-company-tag{{font-size:11px;font-weight:700;color:#fff;background:#2a7af5;border-radius:4px;padding:2px 7px}}
 .article-meta{{font-size:11px;color:#aaa}}
 .run-log-wrap{{padding:24px 24px 40px;margin-top:8px}}
 details{{background:#fff;border-radius:12px;border:1px solid #e8e8e6;overflow:hidden}}
@@ -1944,40 +1949,55 @@ function renderMonthly(){{
   }});
   document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
-function buildNewsHtml(fundFilter){{
-  /* Collect all articles from all companies into a flat list */
-  var allArticles=[];
+var _newsOnlySummary=false;
+function buildNewsHtml(fundFilter,onlySummary){{
+  /* Per-company cards sorted by most recent article */
+  var companies=[];
   Object.keys(NEWS_DATA).forEach(function(key){{
     var nd=NEWS_DATA[key];
     if(fundFilter&&nd.funds&&!nd.funds.includes(fundFilter))return;
-    var co=nd.company||key;
-    (nd.articles||[]).forEach(function(a){{
-      allArticles.push({{company:co,title:a.title||'',link:a.link||'#',pubDate:a.pubDate||'',source:a.source||''}});
-    }});
+    if(onlySummary&&!nd.summary)return;
+    var articles=(nd.articles||[]).slice().sort(function(a,b){{return(b.pubDate||'').localeCompare(a.pubDate||'');}});
+    if(!articles.length&&!nd.summary)return;
+    companies.push({{key:key,nd:nd,articles:articles,latest:articles.length?articles[0].pubDate:''}});
   }});
-  if(!allArticles.length)return'<p class="empty">Keine News verf\u00fcgbar.</p>';
-  /* Sort newest-first */
-  allArticles.sort(function(a,b){{
-    return(b.pubDate||'').localeCompare(a.pubDate||'');
-  }});
+  companies.sort(function(a,b){{return(b.latest||'').localeCompare(a.latest||'');}});
+  if(!companies.length)return'<p class="empty">Keine News verf\u00fcgbar.</p>';
+  function fmtDate(s){{
+    if(!s)return'';
+    try{{var d=new Date(s);if(!isNaN(d.getTime()))return d.toLocaleString('de-DE',{{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}});}}catch(e){{}}
+    return s;
+  }}
   var html='';
-  allArticles.forEach(function(a){{
-    var dateStr='';
-    if(a.pubDate){{
-      try{{var d=new Date(a.pubDate);if(!isNaN(d.getTime()))dateStr=d.toLocaleString('de-DE',{{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}});}}catch(e){{}}
-      if(!dateStr)dateStr=a.pubDate;
-    }}
-    html+='<div class="news-card">'
-      +'<div class="news-meta"><span class="news-company-tag">'+esc(a.company)+'</span>'
-      +(dateStr?'<span class="news-date">'+esc(dateStr)+'</span>':'')+'</div>'
-      +'<a class="article-link" href="'+esc(a.link)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a>'
-      +'</div>';
+  companies.forEach(function(item){{
+    var nd=item.nd,co=esc(nd.company||item.key);
+    var sumRaw=nd.summary,sumHeadline='',sumText='';
+    if(typeof sumRaw==='string'){{sumHeadline=sumRaw;}}
+    else if(sumRaw&&typeof sumRaw==='object'){{sumHeadline=sumRaw.headline||'';sumText=sumRaw.text||'';}}
+    var dateStr=fmtDate(item.latest);
+    var header='<div class="news-card-header"><span class="news-company">'+co+'</span>'+(dateStr?'<span class="news-date">'+esc(dateStr)+'</span>':'')+'</div>';
+    var body='';
+    if(sumHeadline)body+='<div class="news-headline">'+esc(sumHeadline)+'</div>';
+    if(sumText)body+='<div class="news-summary">'+esc(sumText)+'</div>';
+    var links=item.articles.map(function(a){{
+      var d=fmtDate(a.pubDate);
+      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener">'
+        +(d?'<span class="article-date">'+esc(d)+'</span>':'')
+        +'<span class="article-title">'+esc(a.title||'')+'</span></a>';
+    }}).join('');
+    html+='<div class="news-card">'+header+body+(links?'<div class="articles-list">'+links+'</div>':'')+'</div>';
   }});
   return html;
 }}
 function renderNews(){{
   var f=FUNDS_DATA[currentFundIdx];
-  document.getElementById('news-container').innerHTML=buildNewsHtml(f.id);
+  var old=document.getElementById('news-filter-bar');if(old)old.remove();
+  var bar=document.createElement('div');bar.id='news-filter-bar';bar.className='news-filter-bar';
+  function mkBtn(label,active,cb){{var b=document.createElement('button');b.textContent=label;b.className='news-filter-btn'+(active?' active':'');b.onclick=cb;return b;}}
+  bar.appendChild(mkBtn('Alle News',!_newsOnlySummary,function(){{_newsOnlySummary=false;renderNews();}}));
+  bar.appendChild(mkBtn('Nur mit Zusammenfassung',_newsOnlySummary,function(){{_newsOnlySummary=true;renderNews();}}));
+  document.getElementById('news-container').parentNode.insertBefore(bar,document.getElementById('news-container'));
+  document.getElementById('news-container').innerHTML=buildNewsHtml(f.id,_newsOnlySummary);
 }}
 function openSearchOverlay(){{
   document.getElementById('search-overlay').classList.add('open');
