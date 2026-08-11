@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - "dashboard_update.py"
+  schedule:
+    - cron: "0 5 * * 1-5"
+    - cron: "0 11 * * 1-5"
+    - cron: "0 14 * * 1-5"
   workflow_dispatch:
     inputs:
       run_mode:
@@ -30,18 +34,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Abhängigkeiten installieren
+      - name: Abhaengigkeiten installieren
         run: pip install openpyxl msal --quiet
 
       - name: Dashboard aktualisieren
         env:
-          MS_CLIENT_ID:       ${{ secrets.MS_CLIENT_ID }}
-          MS_TENANT_ID:       ${{ secrets.MS_TENANT_ID }}
-          MS_REFRESH_TOKEN:   ${{ secrets.MS_REFRESH_TOKEN }}
-          GITHUB_TOKEN:       ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY:  ${{ github.repository }}
-          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
-          RUN_MODE:           ${{ github.event.inputs.run_mode || 'full' }}
+          MS_CLIENT_ID: ${{ secrets.MS_CLIENT_ID }}
+          MS_TENANT_ID: ${{ secrets.MS_TENANT_ID }}
+          MS_REFRESH_TOKEN: ${{ secrets.MS_REFRESH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RUN_MODE: ${{ github.event_name == 'schedule' && 'news' || github.event.inputs.run_mode || 'full' }}
         run: python dashboard_update.py
 
       - name: Job Summary
@@ -51,6 +55,6 @@ jobs:
           echo "| Feld | Wert |" >> $GITHUB_STEP_SUMMARY
           echo "|------|------|" >> $GITHUB_STEP_SUMMARY
           echo "| Datum | $(date -u '+%d.%m.%Y %H:%M UTC') |" >> $GITHUB_STEP_SUMMARY
-          echo "| Modus | ${{ github.event.inputs.run_mode || 'full' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Modus | ${{ github.event.inputs.run_mode || 'news' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Status | ${{ job.status }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Dashboard | https://nicolasferschen-art.github.io/sunrise-dashboard/ |" >> $GITHUB_STEP_SUMMARY
