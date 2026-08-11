@@ -1289,14 +1289,17 @@ td.date-cell{{font-size:12px;color:#888;white-space:nowrap}}
 .gv-rank{{font-size:11px;color:#aaa;width:20px;flex-shrink:0}}
 .gv-name{{font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 .gv-pl{{font-size:12px;font-weight:600;text-align:right;flex-shrink:0}}
-.news-grid{{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(360px,1fr))}}
-.news-card{{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e8e6}}
+.news-grid{{display:flex;flex-direction:column;gap:10px}}
+.news-card{{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #e8e8e6}}
 .news-company{{font-size:15px;font-weight:700;margin-bottom:10px}}
 .news-headline{{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px;line-height:1.4}}
 .news-summary{{font-size:12px;color:#666;line-height:1.6;margin-bottom:12px;padding:10px;background:#f8f8f6;border-radius:8px}}
 .articles-list{{display:flex;flex-direction:column;gap:8px}}
-.article-link{{display:flex;flex-direction:column;gap:2px;padding:8px;border-radius:6px;border:1px solid #f0f0ee;transition:background .15s;color:inherit;text-decoration:none}}
-.article-link:hover{{background:#f8f8f6}}
+.news-meta{{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}}
+.news-company-tag{{font-size:11px;font-weight:700;color:#fff;background:#2a7af5;border-radius:4px;padding:2px 7px;white-space:nowrap}}
+.news-date{{font-size:11px;color:#999;white-space:nowrap}}
+.article-link{{display:block;font-size:13px;font-weight:500;line-height:1.4;color:#1a1a1a;text-decoration:none}}
+.article-link:hover{{color:#2a7af5;text-decoration:underline}}
 .article-title{{font-size:13px;font-weight:500;line-height:1.4}}
 .article-meta{{font-size:11px;color:#aaa}}
 .run-log-wrap{{padding:24px 24px 40px;margin-top:8px}}
@@ -1942,29 +1945,35 @@ function renderMonthly(){{
   document.getElementById('monthly-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:#aaa;padding:24px">Keine Daten</td></tr>';
 }}
 function buildNewsHtml(fundFilter){{
-  var html='';
+  /* Collect all articles from all companies into a flat list */
+  var allArticles=[];
   Object.keys(NEWS_DATA).forEach(function(key){{
     var nd=NEWS_DATA[key];
     if(fundFilter&&nd.funds&&!nd.funds.includes(fundFilter))return;
-    /* Sort articles newest-first */
-    var articles=(nd.articles||[]).slice().sort(function(a,b){{
-      return(b.pubDate||'').localeCompare(a.pubDate||'');
+    var co=nd.company||key;
+    (nd.articles||[]).forEach(function(a){{
+      allArticles.push({{company:co,title:a.title||'',link:a.link||'#',pubDate:a.pubDate||'',source:a.source||''}});
     }});
-    if(!articles.length&&!nd.summary)return;
-    var co=esc(nd.company||key);
-    var sumRaw=nd.summary;
-    var sumHeadline='',sumText='';
-    if(typeof sumRaw==='string'){{sumHeadline=sumRaw;}}
-    else if(sumRaw&&typeof sumRaw==='object'){{sumHeadline=sumRaw.headline||'';sumText=sumRaw.text||'';}}
-    var sumHtml='';
-    if(sumHeadline)sumHtml+='<div class="news-headline">'+esc(sumHeadline)+'</div>';
-    if(sumText)sumHtml+='<div class="news-summary">'+esc(sumText)+'</div>';
-    var ah=articles.map(function(a){{
-      return'<a class="article-link" href="'+esc(a.link||'#')+'" target="_blank" rel="noopener">'+esc(a.title||'')+'</a>';
-    }}).join('');
-    html+='<div class="news-card"><h3 class="news-company">'+co+'</h3>'+sumHtml+'<div class="articles-list">'+ah+'</div></div>';
   }});
-  return html||'<p class="empty">Keine News verf\u00fcgbar.</p>';
+  if(!allArticles.length)return'<p class="empty">Keine News verf\u00fcgbar.</p>';
+  /* Sort newest-first */
+  allArticles.sort(function(a,b){{
+    return(b.pubDate||'').localeCompare(a.pubDate||'');
+  }});
+  var html='';
+  allArticles.forEach(function(a){{
+    var dateStr='';
+    if(a.pubDate){{
+      try{{var d=new Date(a.pubDate);if(!isNaN(d.getTime()))dateStr=d.toLocaleString('de-DE',{{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}});}}catch(e){{}}
+      if(!dateStr)dateStr=a.pubDate;
+    }}
+    html+='<div class="news-card">'
+      +'<div class="news-meta"><span class="news-company-tag">'+esc(a.company)+'</span>'
+      +(dateStr?'<span class="news-date">'+esc(dateStr)+'</span>':'')+'</div>'
+      +'<a class="article-link" href="'+esc(a.link)+'" target="_blank" rel="noopener">'+esc(a.title)+'</a>'
+      +'</div>';
+  }});
+  return html;
 }}
 function renderNews(){{
   var f=FUNDS_DATA[currentFundIdx];
