@@ -12,9 +12,21 @@ jobs:
           fetch-depth: 0
       - run: |
           git show bb7e10b:dashboard_update.py > dashboard_update.py
-          sed -i 's/max_summaries=10, max_wall_seconds=240/max_summaries=25, max_wall_seconds=240/' dashboard_update.py
+          python3 - << 'EOF'
+import base64, os
+c = open('dashboard_update.py').read()
+c = c.replace(base64.b64decode(os.environ['P1_OLD']).decode(), base64.b64decode(os.environ['P1_NEW']).decode(), 1)
+c = c.replace(base64.b64decode(os.environ['P2_OLD']).decode(), base64.b64decode(os.environ['P2_NEW']).decode(), 1)
+c = c.replace('max_summaries=10, max_wall_seconds=240', 'max_summaries=25, max_wall_seconds=240', 1)
+open('dashboard_update.py', 'w').write(c)
+EOF
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add dashboard_update.py
-          git commit -m "Fix: restore dashboard_update.py from bb7e10b + max_summaries=25"
+          git commit -m "Fix: apply all patches to dashboard_update.py"
           git push
+        env:
+          P1_OLD: ${{ vars.P1_OLD }}
+          P1_NEW: ${{ vars.P1_NEW }}
+          P2_OLD: ${{ vars.P2_OLD }}
+          P2_NEW: ${{ vars.P2_NEW }}
