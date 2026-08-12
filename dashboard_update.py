@@ -1732,15 +1732,17 @@ function renderGV(){{
   var allH=(f.holdings||[]);
   var sorted,getVal,fmtVal;
   if(gvMode==='month'){{
-    /* Rendite % = pl / Einstandswert (mv_eur - pl) */
-    sorted=allH.filter(function(h){{return h.pl!=null&&h.mv_eur!=null;}}).slice();
-    sorted.sort(function(a,b){{
-      var ra=(a.pl||0)/Math.max(Math.abs((a.mv_eur||0)-(a.pl||0)),1)*100;
-      var rb=(b.pl||0)/Math.max(Math.abs((b.mv_eur||0)-(b.pl||0)),1)*100;
-      return rb-ra;
-    }});
-    getVal=function(h){{return(h.pl||0)/Math.max(Math.abs((h.mv_eur||0)-(h.pl||0)),1)*100;}};
-    fmtVal=function(v,isW){{return(v>=0?'+':'')+fmtEur.format(v)+' %';}};
+    var hasPerf1m=allH.some(function(h){{return h.perf_1m!=null;}});
+    if(hasPerf1m){{
+      sorted=allH.filter(function(h){{return h.perf_1m!=null;}}).slice();
+      sorted.sort(function(a,b){{return(b.perf_1m||0)-(a.perf_1m||0);}});
+      getVal=function(h){{return h.perf_1m||0;}};
+      fmtVal=function(v,isW){{return(v>=0?'+':'')+fmtEur.format(v)+' %';}};
+    }}else{{
+      sorted=[];
+      getVal=function(h){{return 0;}};
+      fmtVal=function(v){{return'Noch keine Daten';}};  
+    }}
   }}else if(gvMode==='day'){{
     /* Tagesrendite nicht direkt verf\u00fcgbar \u2013 zeige Gewichtung im Fonds */
     sorted=allH.filter(function(h){{return h.pct_nav!=null;}}).slice();
@@ -2335,6 +2337,7 @@ def main():
         run_log = load_run_log(github_token, github_repo)
         changes_history = load_json_from_github(github_token, github_repo, "docs/changes_history.json") or {}
         holdings_prev = load_json_from_github(github_token, github_repo, "docs/holdings_prev.json") or {}
+        holdings_month_ago = load_json_from_github(github_token, github_repo, "docs/holdings_month_ago.json") or {}
 
     if RUN_MODE == "backfill":
         # ── Backfill: Alle historischen Holdings aus Outlook-Mails laden ───────
@@ -2611,6 +2614,28 @@ def main():
                 for h in prev_holdings if h.get("isin") and h["isin"] not in ("None", "")
             ]
     
+            # Monatliche Rendite (perf_1m) berechnen
+            _mago = holdings_month_ago.get(fid, {})
+            _mago_isins = _mago.get("isins", {})
+            for _h in fund_parsed.get("holdings", []):
+                _isin = _h.get("isin")
+                if not _isin or _isin not in _mago_isins:
+                    continue
+                _old = _mago_isins[_isin]
+                _old_mv, _old_qty = _old.get("mv_eur"), _old.get("qty")
+                _cur_mv, _cur_qty = _h.get("mv_eur"), _h.get("qty")
+                if _old_mv and _old_qty and _cur_qty and _cur_mv:
+                    _op = _old_mv / _old_qty
+                    _cp = _cur_mv / _cur_qty
+                    if _op > 0:
+                        _h["perf_1m"] = round((_cp / _op - 1) * 100, 2)
+                elif _old_mv and _cur_mv and _old_mv > 0:
+                    _h["perf_1m"] = round((_cur_mv / _old_mv - 1) * 100, 2)
+            # Snapshot aktualisieren wenn >25 Tage alt
+            _mago_date = _mago.get("date", "")
+            _days_old = (date.today() - date.fromisoformat(_mago_date)).days if _mago_date else 999
+            if _days_old >= 25:
+                holdings_month_ago[fid] = {"date": date.today().isoformat(), "isins": {_h["isin"]: {"mv_eur": _h.get("mv_eur"), "qty": _h.get("qty")} for _h in fund_parsed.get("holdings", []) if _h.get("isin")}}
             # KPIs berechnen
             fund_parsed = compute_kpis(fund_parsed)
     
@@ -2747,6 +2772,9 @@ def main():
             git_push_file(github_token, github_repo, "docs/changes_history.json",
                          json.dumps(changes_history, ensure_ascii=False).encode("utf-8"),
                          f"Changes history {today_str}")
+            git_push_file(github_token, github_repo, "docs/holdings_month_ago.json",
+                         json.dumps(holdings_month_ago, ensure_ascii=False).encode("utf-8"),
+                         f"Holdings month ago {today_str}")
             git_push_file(github_token, github_repo, "docs/holdings_prev.json",
                          json.dumps(holdings_prev, ensure_ascii=False).encode("utf-8"),
                          f"Holdings prev {today_str}")
