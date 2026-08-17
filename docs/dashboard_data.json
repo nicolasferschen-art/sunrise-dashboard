@@ -335,42 +335,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "DE000FRE5EN2",
-          "name": "FRESENIUS SE+CO.KGAA O.N.",
-          "country": "Germany",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 828426.12,
-          "pl": 43174.48,
-          "weight": 0.49,
-          "cost": null,
-          "price": 45.176139,
-          "pct_nav": 0.49
-        }
-      ],
-      "removed": [
-        {
-          "isin": "DE0005785604",
-          "name": "FRESENIUS SE+CO.KGAA O.N.",
-          "country": "Germany",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 813825.24,
-          "pl": 28573.6,
-          "weight": 0.49,
-          "cost": null,
-          "price": 45.176139,
-          "perf_1m": -0.19,
-          "pct_nav": 0.49
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2298,6 +2262,7 @@
     "hhi": 134.1,
     "top10_weight": 28.5,
     "win_rate": 76.3,
+    "run_date": "2026-08-17",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6463,42 +6428,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "DE000FRE5EN2",
-          "name": "FRESENIUS SE+CO.KGAA O.N.",
-          "country": "Germany",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 284244.24,
-          "pl": 50096.32,
-          "weight": 0.49,
-          "cost": null,
-          "price": 39.260215,
-          "pct_nav": 0.49
-        }
-      ],
-      "removed": [
-        {
-          "isin": "DE0005785604",
-          "name": "FRESENIUS SE+CO.KGAA O.N.",
-          "country": "Germany",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 279234.48,
-          "pl": 45086.56,
-          "weight": 0.48,
-          "cost": null,
-          "price": 39.260215,
-          "perf_1m": -0.19,
-          "pct_nav": 0.48
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8475,6 +8404,7 @@
     "hhi": 99.5,
     "top10_weight": 24.1,
     "win_rate": 75.4,
+    "run_date": "2026-08-17",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12654,13 +12584,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13412,6 +13335,7 @@
     "hhi": 74.3,
     "top10_weight": 21.0,
     "win_rate": 70.8,
+    "run_date": "2026-08-17",
     "holdings": [
       {
         "isin": "AT0000652011",
