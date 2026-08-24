@@ -2710,6 +2710,7 @@ def main():
                 if fid not in companies_for_news[key]["funds"]:
                     companies_for_news[key]["funds"].append(fid)
         companies_for_news = dict(sorted(companies_for_news.items(), key=lambda x: x[1]["mv"], reverse=True))
+        _cn_items = list(companies_for_news.items()); _offset = date.today().toordinal() % len(_cn_items) if _cn_items else 0; _cn_items = _cn_items[_offset:] + _cn_items[:_offset]; companies_for_news = dict(_cn_items)
         anthropic_key = os.environ.get("ANTHROPIC_API_KEY", "")
         news_data = fetch_all_news(companies_for_news, anthropic_key=anthropic_key, prev_news_data=prev_news_data, max_summaries=25, max_wall_seconds=240)
         # Fallback: wenn Fetch nichts liefert (z.B. Google blockiert GitHub IPs) → Altdaten behalten
