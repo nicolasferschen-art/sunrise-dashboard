@@ -1909,10 +1909,8 @@ function renderMonthly(){{
       var ym=h.date.slice(0,7);
       var ex=monthMap[ym];
       if(!ex){{monthMap[ym]=h;return;}}
-      /* Prefer entries with nav; among those, take the latest date */
-      var hHasNav=h.nav!=null;var exHasNav=ex.nav!=null;
-      if(hHasNav&&!exHasNav){{monthMap[ym]=h;}}
-      else if(hHasNav===exHasNav&&h.date>ex.date){{monthMap[ym]=h;}}
+      /* Always use the latest date (= Monatsletzter) */
+      if(h.date>ex.date){{monthMap[ym]=h;}}
     }}
   }});
   /* Generate all months Jan \u2192 current month of current year */
