@@ -5,7 +5,7 @@ on:
 
 permissions:
   contents: read
-  secrets: write
+
 
 jobs:
   refresh-token:
