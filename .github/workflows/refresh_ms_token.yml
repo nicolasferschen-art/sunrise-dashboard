@@ -37,7 +37,7 @@ jobs:
               authority=f'https://login.microsoftonline.com/{tenant_id}'
           )
 
-          scopes = ['https://graph.microsoft.com/Mail.Read', 'offline_access']
+          scopes = ['https://graph.microsoft.com/Mail.Read']
           flow = app.initiate_device_flow(scopes=scopes)
           if 'user_code' not in flow:
               print('FEHLER beim Device Flow:', flow)
