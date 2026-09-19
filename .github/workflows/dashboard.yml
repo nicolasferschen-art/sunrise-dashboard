@@ -45,7 +45,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          RUN_MODE: ${{ github.event_name == 'schedule' && 'news' || github.event.inputs.run_mode || 'full' }}
+          RUN_MODE: ${{ github.event_name == 'schedule' && 'news' || github.event.inputs.run_mode || 'news' }}
         run: python dashboard_update.py
 
       - name: Job Summary
