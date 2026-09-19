@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: read
+  secrets: write
 
 jobs:
   refresh-token:
@@ -69,7 +70,8 @@ jobs:
           )
           if proc.returncode != 0:
               print('FEHLER gh secret set:', proc.stderr)
-              print('Bitte Token manuell als GitHub Secret setzen!')
+              print('Token fuer manuelles Setzen:')
+              print(refresh_token)
               sys.exit(1)
 
           print('MS_REFRESH_TOKEN erfolgreich aktualisiert!')
