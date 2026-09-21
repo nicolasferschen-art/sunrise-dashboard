@@ -335,42 +335,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "IL0006290147",
-          "name": "TEVA PHARMACEUT.   IS 0,1",
-          "country": "Israel",
-          "sector": "Prod. of chemicals & chem.products",
-          "currency": "EUR",
-          "mv_eur": 304143.88,
-          "pl": 212253.4,
-          "weight": 0.18,
-          "cost": null,
-          "price": 11.840408,
-          "pct_nav": 0.18
-        }
-      ],
-      "removed": [
-        {
-          "isin": "US8816242098",
-          "name": "TEVA PHARMACEUT. SP.ADR",
-          "country": "Israel",
-          "sector": "Prod. of chemicals & chem.products",
-          "currency": "EUR",
-          "mv_eur": 284661.64,
-          "pl": 193787.82,
-          "weight": 0.17,
-          "cost": null,
-          "price": 11.840408,
-          "perf_1m": 1.33,
-          "pct_nav": 0.17
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2298,6 +2262,7 @@
     "hhi": 134.2,
     "top10_weight": 28.8,
     "win_rate": 75.2,
+    "run_date": "2026-09-19",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6471,42 +6436,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "IL0006290147",
-          "name": "TEVA PHARMACEUT.   IS 0,1",
-          "country": "Israel",
-          "sector": "Prod. of chemicals & chem.products",
-          "currency": "EUR",
-          "mv_eur": 204411.71,
-          "pl": 109328.77,
-          "weight": 0.35,
-          "cost": null,
-          "price": 18.229387,
-          "pct_nav": 0.35
-        }
-      ],
-      "removed": [
-        {
-          "isin": "US8816242098",
-          "name": "TEVA PHARMACEUT. SP.ADR",
-          "country": "Israel",
-          "sector": "Prod. of chemicals & chem.products",
-          "currency": "EUR",
-          "mv_eur": 191317.91,
-          "pl": 97286.95,
-          "weight": 0.33,
-          "cost": null,
-          "price": 18.229388,
-          "perf_1m": 1.33,
-          "pct_nav": 0.33
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8483,6 +8412,7 @@
     "hhi": 102.5,
     "top10_weight": 24.7,
     "win_rate": 73.3,
+    "run_date": "2026-09-19",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12678,13 +12608,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13436,6 +13359,7 @@
     "hhi": 71.0,
     "top10_weight": 20.4,
     "win_rate": 72.6,
+    "run_date": "2026-09-19",
     "holdings": [
       {
         "isin": "AT0000652011",
