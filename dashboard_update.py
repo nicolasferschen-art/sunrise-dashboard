@@ -2163,7 +2163,7 @@ def git_push_file(token, repo, path, content_bytes, message, branch="main"):
                 with urlopen(req, timeout=30) as resp:
                     return json.loads(resp.read())
             except HTTPError as e:
-                if e.code in (502, 503, 504) and attempt < retries - 1:
+                if e.code in (500, 502, 503, 504) and attempt < retries - 1:
                     _time.sleep(3 * (attempt + 1))
                     continue
                 raise
