@@ -339,285 +339,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "AT0000A3EPA4",
-          "name": "AMS-OSRAM AG AKT O.N.",
-          "country": "Austria",
-          "sector": "Office machinery, computers",
-          "currency": "EUR",
-          "mv_eur": 342401.71,
-          "pl": -2295.96,
-          "weight": 0.2,
-          "cost": null,
-          "price": 20.395853,
-          "pct_nav": 0.2
-        },
-        {
-          "isin": "FR0000130577",
-          "name": "PUBLICIS GRP INH. EO 0,40",
-          "country": "France",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 295630.5,
-          "pl": -4981.74,
-          "weight": 0.17,
-          "cost": null,
-          "price": 97.760078,
-          "pct_nav": 0.17
-        },
-        {
-          "isin": "IE00028FXN24",
-          "name": "SMURFIT WESTROCK   DL-,01",
-          "country": "Ireland",
-          "sector": "Wood proc. & manu.; furn. prod.",
-          "currency": "EUR",
-          "mv_eur": 300427.01,
-          "pl": -9891.76,
-          "weight": 0.18,
-          "cost": null,
-          "price": 46.553961,
-          "pct_nav": 0.18
-        },
-        {
-          "isin": "JE00BV7DQ550",
-          "name": "AMCOR PLC      DL -,01",
-          "country": "Jersey",
-          "sector": "Glass,non-metallic mineral products",
-          "currency": "EUR",
-          "mv_eur": 291517.23,
-          "pl": 1343.65,
-          "weight": 0.17,
-          "cost": null,
-          "price": 42.592774,
-          "pct_nav": 0.17
-        },
-        {
-          "isin": "JP3164720009",
-          "name": "RENESAS ELECTRONICS CORP.",
-          "country": "Japan",
-          "sector": "Prod. of dev. f. el. prod.& dist.",
-          "currency": "EUR",
-          "mv_eur": 318253.86,
-          "pl": -1838.84,
-          "weight": 0.19,
-          "cost": null,
-          "price": 3478.985799,
-          "pct_nav": 0.19
-        },
-        {
-          "isin": "JP3866800000",
-          "name": "PANASONIC HOLDINGS CORP.",
-          "country": "Japan",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 310064.68,
-          "pl": -3498.26,
-          "weight": 0.18,
-          "cost": null,
-          "price": 4519.420935,
-          "pct_nav": 0.18
-        },
-        {
-          "isin": "US2681501092",
-          "name": "DYNATRACE INC.    DL-,001",
-          "country": "United States",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 331241.39,
-          "pl": -5656.09,
-          "weight": 0.2,
-          "cost": null,
-          "price": 58.827643,
-          "pct_nav": 0.2
-        },
-        {
-          "isin": "US46266C1053",
-          "name": "IQVIA HLDGS        DL-,01",
-          "country": "United States",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 324286.52,
-          "pl": -4801.97,
-          "weight": 0.19,
-          "cost": null,
-          "price": 274.98247,
-          "pct_nav": 0.19
-        },
-        {
-          "isin": "US64110D1046",
-          "name": "NETAPP INC.",
-          "country": "United States",
-          "sector": "Prod. of dev. f. el. prod.& dist.",
-          "currency": "EUR",
-          "mv_eur": 344820.46,
-          "pl": 11860.31,
-          "weight": 0.2,
-          "cost": null,
-          "price": 197.379196,
-          "pct_nav": 0.2
-        },
-        {
-          "isin": "US6974351057",
-          "name": "PALO ALTO NETWKS DL-,0001",
-          "country": "United States",
-          "sector": "Prod. of dev. f. el. prod.& dist.",
-          "currency": "EUR",
-          "mv_eur": 320531.16,
-          "pl": 4499.53,
-          "weight": 0.19,
-          "cost": null,
-          "price": 386.585944,
-          "pct_nav": 0.19
-        }
-      ],
-      "removed": [
-        {
-          "isin": "CH0010570767",
-          "name": "LINDT SPRUENGLI PS  SF 10",
-          "country": "Switzerland",
-          "sector": "Manufacture of food and beverages",
-          "currency": "EUR",
-          "mv_eur": 881164.64,
-          "pl": -333691.25,
-          "weight": 0.52,
-          "cost": null,
-          "price": 11829.189522,
-          "perf_1m": 0.12,
-          "pct_nav": 0.52
-        },
-        {
-          "isin": "FI0009005987",
-          "name": "UPM KYMMENE CORP.",
-          "country": "Finland",
-          "sector": "Paper and paperboard",
-          "currency": "EUR",
-          "mv_eur": 56466.61,
-          "pl": -9149.13,
-          "weight": 0.03,
-          "cost": null,
-          "price": 29.41091,
-          "perf_1m": 5.41,
-          "pct_nav": 0.03
-        },
-        {
-          "isin": "FI0009013403",
-          "name": "KONE OYJ           B O.N.",
-          "country": "Finland",
-          "sector": "Mechanical engineering",
-          "currency": "EUR",
-          "mv_eur": 43157.0,
-          "pl": -13214.51,
-          "weight": 0.03,
-          "cost": null,
-          "price": 67.269105,
-          "perf_1m": -0.43,
-          "pct_nav": 0.03
-        },
-        {
-          "isin": "FR0000121485",
-          "name": "KERING S.A. INH.     EO 4",
-          "country": "France",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 171756.15,
-          "pl": -101661.88,
-          "weight": 0.1,
-          "cost": null,
-          "price": 355.550104,
-          "perf_1m": -8.69,
-          "pct_nav": 0.1
-        },
-        {
-          "isin": "IE00BLP1HW54",
-          "name": "AON PLC A         DL -,01",
-          "country": "Ireland",
-          "sector": "Banking & insurance auxiliary activ",
-          "currency": "EUR",
-          "mv_eur": 91188.23,
-          "pl": -2286.09,
-          "weight": 0.05,
-          "cost": null,
-          "price": 284.959213,
-          "perf_1m": -13.36,
-          "pct_nav": 0.05
-        },
-        {
-          "isin": "IL0011301780",
-          "name": "WIX.COM LTD       IS -,01",
-          "country": "Israel",
-          "sector": "Data proc.& databases",
-          "currency": "EUR",
-          "mv_eur": 95267.18,
-          "pl": -141210.44,
-          "weight": 0.06,
-          "cost": null,
-          "price": 183.165733,
-          "perf_1m": -7.39,
-          "pct_nav": 0.06
-        },
-        {
-          "isin": "NL0015000IY2",
-          "name": "UNIVERSAL MUSIC GROUP EO1",
-          "country": "Netherlands",
-          "sector": "Culture, sports and ent.",
-          "currency": "EUR",
-          "mv_eur": 28479.68,
-          "pl": -11624.57,
-          "weight": 0.02,
-          "cost": null,
-          "price": 20.54521,
-          "perf_1m": 1.11,
-          "pct_nav": 0.02
-        },
-        {
-          "isin": "NO0003733800",
-          "name": "ORKLA             NK 1,25",
-          "country": "Norway",
-          "sector": "Company-related services",
-          "currency": "EUR",
-          "mv_eur": 513078.05,
-          "pl": -91074.32,
-          "weight": 0.3,
-          "cost": null,
-          "price": 109.920166,
-          "perf_1m": 0.73,
-          "pct_nav": 0.3
-        },
-        {
-          "isin": "US20030N1019",
-          "name": "COMCAST CORP.   A  DL-,01",
-          "country": "United States",
-          "sector": "Sattelite comm.",
-          "currency": "EUR",
-          "mv_eur": 227622.64,
-          "pl": -133918.96,
-          "weight": 0.13,
-          "cost": null,
-          "price": 34.800477,
-          "perf_1m": -16.21,
-          "pct_nav": 0.13
-        },
-        {
-          "isin": "US68902V1070",
-          "name": "OTIS WORLDWID.CORP DL-,01",
-          "country": "United States",
-          "sector": "Mechanical engineering",
-          "currency": "EUR",
-          "mv_eur": 61420.23,
-          "pl": -6383.38,
-          "weight": 0.04,
-          "cost": null,
-          "price": 72.793117,
-          "perf_1m": -5.99,
-          "pct_nav": 0.04
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2545,6 +2266,7 @@
     "hhi": 136.3,
     "top10_weight": 29.0,
     "win_rate": 76.3,
+    "run_date": "2026-09-30",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6708,66 +6430,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "DE000WCH8881",
-          "name": "WACKER CHEMIE        O.N.",
-          "country": "Germany",
-          "sector": "Prod. of chemicals & chem.products",
-          "currency": "EUR",
-          "mv_eur": 113120.85,
-          "pl": -1442.22,
-          "weight": 0.19,
-          "cost": null,
-          "price": 87.653458,
-          "pct_nav": 0.19
-        },
-        {
-          "isin": "ES0148396007",
-          "name": "INDITEX INH.      EO 0,03",
-          "country": "Spain",
-          "sector": "Trad.ag. & wh. (wo. m. t.)",
-          "currency": "EUR",
-          "mv_eur": 132923.28,
-          "pl": -752.07,
-          "weight": 0.22,
-          "cost": null,
-          "price": 53.641794,
-          "pct_nav": 0.22
-        },
-        {
-          "isin": "JP3735400008",
-          "name": "NTT INC.",
-          "country": "Japan",
-          "sector": "Sattelite comm.",
-          "currency": "EUR",
-          "mv_eur": 120580.6,
-          "pl": -1140.92,
-          "weight": 0.2,
-          "cost": null,
-          "price": 176.352982,
-          "pct_nav": 0.2
-        },
-        {
-          "isin": "SE0009922164",
-          "name": "ESSITY AB B",
-          "country": "Sweden",
-          "sector": "Paper and paperboard",
-          "currency": "EUR",
-          "mv_eur": 106965.16,
-          "pl": -581.57,
-          "weight": 0.18,
-          "cost": null,
-          "price": 260.508721,
-          "pct_nav": 0.18
-        }
-      ],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8744,6 +8406,7 @@
     "hhi": 109.5,
     "top10_weight": 25.6,
     "win_rate": 72.6,
+    "run_date": "2026-09-30",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12991,13 +12654,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13749,6 +13405,7 @@
     "hhi": 72.5,
     "top10_weight": 20.7,
     "win_rate": 67.9,
+    "run_date": "2026-09-30",
     "holdings": [
       {
         "isin": "AT0000652011",
