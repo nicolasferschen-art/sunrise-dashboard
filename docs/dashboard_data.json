@@ -333,12 +333,19 @@
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-10-03",
-        "label": "03.10.2026",
+        "date": "2026-10-05",
+        "label": "05.10.2026",
         "price": 229.07,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2266,7 +2273,6 @@
     "hhi": 131.9,
     "top10_weight": 28.3,
     "win_rate": 76.3,
-    "run_date": "2026-10-03",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6443,12 +6449,19 @@
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-10-03",
-        "label": "03.10.2026",
+        "date": "2026-10-05",
+        "label": "05.10.2026",
         "price": 196.3,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8453,7 +8466,6 @@
     "hhi": 110.5,
     "top10_weight": 25.8,
     "win_rate": 70.9,
-    "run_date": "2026-10-03",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12708,12 +12720,19 @@
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-10-03",
-        "label": "03.10.2026",
+        "date": "2026-10-05",
+        "label": "05.10.2026",
         "price": 112.61,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13465,7 +13484,6 @@
     "hhi": 72.1,
     "top10_weight": 20.8,
     "win_rate": 66.0,
-    "run_date": "2026-10-03",
     "holdings": [
       {
         "isin": "AT0000652011",
