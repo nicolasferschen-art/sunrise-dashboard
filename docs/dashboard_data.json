@@ -339,13 +339,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2273,6 +2266,7 @@
     "hhi": 127.2,
     "top10_weight": 27.9,
     "win_rate": 76.3,
+    "run_date": "2026-10-09",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6455,27 +6449,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "NL0015074BI5",
-          "name": "UNIVERSAL MUSIC GROUP ANR",
-          "country": "Netherlands",
-          "sector": "Culture, sports and ent.",
-          "currency": "EUR",
-          "mv_eur": 0.0,
-          "pl": -205.63,
-          "weight": 0.0,
-          "cost": null,
-          "price": 0.203998,
-          "pct_nav": 0.0
-        }
-      ],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8480,6 +8453,7 @@
     "hhi": 111.1,
     "top10_weight": 26.1,
     "win_rate": 71.7,
+    "run_date": "2026-10-09",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12753,27 +12727,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "NL0015074BI5",
-          "name": "UNIVERSAL MUSIC GROUP ANR",
-          "country": "Netherlands",
-          "sector": "Culture, sports and ent.",
-          "currency": "EUR",
-          "mv_eur": 0.0,
-          "pl": -301.1,
-          "weight": 0.0,
-          "cost": null,
-          "price": 0.203997,
-          "pct_nav": 0.0
-        }
-      ],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13525,6 +13478,7 @@
     "hhi": 72.6,
     "top10_weight": 21.1,
     "win_rate": 66.4,
+    "run_date": "2026-10-09",
     "holdings": [
       {
         "isin": "AT0000652011",
