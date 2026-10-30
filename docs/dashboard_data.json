@@ -339,27 +339,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "DE000TKCC1S8",
-          "name": "TK ACCELIS GROUP INH.",
-          "country": "Germany",
-          "sector": "Trad.ag. & wh. (wo. m. t.)",
-          "currency": "EUR",
-          "mv_eur": 71009.84,
-          "pl": 54572.96,
-          "weight": 0.04,
-          "cost": null,
-          "price": 6.314591,
-          "pct_nav": 0.04
-        }
-      ],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2287,6 +2266,7 @@
     "hhi": 123.3,
     "top10_weight": 27.6,
     "win_rate": 77.8,
+    "run_date": "2026-10-30",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6482,41 +6462,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "DE000TKCC1S8",
-          "name": "TK ACCELIS GROUP INH.",
-          "country": "Germany",
-          "sector": "Trad.ag. & wh. (wo. m. t.)",
-          "currency": "EUR",
-          "mv_eur": 10393.68,
-          "pl": 6284.79,
-          "weight": 0.02,
-          "cost": null,
-          "price": 10.7845,
-          "pct_nav": 0.02
-        }
-      ],
-      "removed": [
-        {
-          "isin": "NL0015074BI5",
-          "name": "UNIVERSAL MUSIC GROUP ANR",
-          "country": "Netherlands",
-          "sector": "Culture, sports and ent.",
-          "currency": "EUR",
-          "mv_eur": 0.0,
-          "pl": -205.63,
-          "weight": 0.0,
-          "cost": null,
-          "price": 0.203998,
-          "pct_nav": 0.0
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8528,6 +8473,7 @@
     "hhi": 107.7,
     "top10_weight": 25.6,
     "win_rate": 75.2,
+    "run_date": "2026-10-30",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12801,27 +12747,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [
-        {
-          "isin": "NL0015074BI5",
-          "name": "UNIVERSAL MUSIC GROUP ANR",
-          "country": "Netherlands",
-          "sector": "Culture, sports and ent.",
-          "currency": "EUR",
-          "mv_eur": 0.0,
-          "pl": -301.1,
-          "weight": 0.0,
-          "cost": null,
-          "price": 0.203997,
-          "pct_nav": 0.0
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13580,6 +13505,7 @@
     "hhi": 68.5,
     "top10_weight": 20.0,
     "win_rate": 67.0,
+    "run_date": "2026-10-30",
     "holdings": [
       {
         "isin": "AT0000652011",
