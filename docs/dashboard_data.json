@@ -339,13 +339,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2280,6 +2273,7 @@
     "hhi": 122.8,
     "top10_weight": 27.6,
     "win_rate": 78.2,
+    "run_date": "2026-11-04",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6475,13 +6469,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8507,6 +8494,7 @@
     "hhi": 104.7,
     "top10_weight": 25.0,
     "win_rate": 75.7,
+    "run_date": "2026-11-04",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12805,13 +12793,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13563,6 +13544,7 @@
     "hhi": 64.8,
     "top10_weight": 19.1,
     "win_rate": 67.9,
+    "run_date": "2026-11-04",
     "holdings": [
       {
         "isin": "AT0000652011",
