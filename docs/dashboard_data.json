@@ -339,13 +339,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2280,6 +2273,7 @@
     "hhi": 122.8,
     "top10_weight": 27.9,
     "win_rate": 78.9,
+    "run_date": "2026-11-06",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6475,42 +6469,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [
-        {
-          "isin": "DE000A41YH12",
-          "name": "DELIVERY HERO SE NA VERK.",
-          "country": "Germany",
-          "sector": "Accomodation & Rest. bus.",
-          "currency": "EUR",
-          "mv_eur": 130684.0,
-          "pl": 28773.92,
-          "weight": 0.21,
-          "cost": null,
-          "price": 28.853364,
-          "pct_nav": 0.21
-        }
-      ],
-      "removed": [
-        {
-          "isin": "DE000A2E4K43",
-          "name": "DELIVERY HERO SE NA O.N.",
-          "country": "Germany",
-          "sector": "Accomodation & Rest. bus.",
-          "currency": "EUR",
-          "mv_eur": 131390.4,
-          "pl": 29480.32,
-          "weight": 0.22,
-          "cost": null,
-          "price": 28.853364,
-          "perf_1m": -0.67,
-          "pct_nav": 0.22
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8536,6 +8494,7 @@
     "hhi": 106.1,
     "top10_weight": 25.4,
     "win_rate": 75.7,
+    "run_date": "2026-11-06",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12833,13 +12792,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13591,6 +13543,7 @@
     "hhi": 64.4,
     "top10_weight": 19.0,
     "win_rate": 65.1,
+    "run_date": "2026-11-06",
     "holdings": [
       {
         "isin": "AT0000652011",
