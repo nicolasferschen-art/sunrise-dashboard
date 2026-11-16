@@ -67,12 +67,34 @@ def get_access_token():
 
 
 # ─── Graph API Helper ─────────────────────────────────────────────────────────
+def _requests_get_retry(url, headers, retries=4):
+    """GET mit Wiederholung bei vorübergehenden Fehlern (429/5xx, Netzwerk)."""
+    import time as _time
+    for attempt in range(retries):
+        try:
+            resp = _requests.get(url, headers=headers, timeout=60)
+        except (_requests.ConnectionError, _requests.Timeout) as e:
+            if attempt < retries - 1:
+                wait = 5 * (attempt + 1)
+                print(f"  ⚠️  Graph Netzwerkfehler ({e.__class__.__name__}) – neuer Versuch in {wait}s")
+                _time.sleep(wait)
+                continue
+            raise
+        if resp.status_code in (429, 500, 502, 503, 504) and attempt < retries - 1:
+            wait = int(resp.headers.get("Retry-After", 0) or 0) or 5 * (attempt + 1)
+            wait = min(wait, 60)
+            print(f"  ⚠️  Graph HTTP {resp.status_code} – neuer Versuch in {wait}s")
+            _time.sleep(wait)
+            continue
+        resp.raise_for_status()
+        return resp
+
+
 def graph_get(access_token, path):
     url = f"https://graph.microsoft.com/v1.0{path}"
     headers = {"Authorization": f"Bearer {access_token}", "Accept": "application/json"}
     if _HAS_REQUESTS:
-        resp = _requests.get(url, headers=headers)
-        resp.raise_for_status()
+        resp = _requests_get_retry(url, headers)
         return resp.json()
     else:
         from urllib.parse import quote
@@ -86,8 +108,7 @@ def graph_get_bytes(access_token, path):
     url = f"https://graph.microsoft.com/v1.0{path}"
     headers = {"Authorization": f"Bearer {access_token}"}
     if _HAS_REQUESTS:
-        resp = _requests.get(url, headers=headers)
-        resp.raise_for_status()
+        resp = _requests_get_retry(url, headers)
         return resp.content
     else:
         from urllib.parse import quote
@@ -102,8 +123,7 @@ def graph_get_url(access_token, url):
     """Holt eine vollständige URL (für Pagination mit @odata.nextLink)."""
     headers = {"Authorization": f"Bearer {access_token}", "Accept": "application/json"}
     if _HAS_REQUESTS:
-        resp = _requests.get(url, headers=headers)
-        resp.raise_for_status()
+        resp = _requests_get_retry(url, headers)
         return resp.json()
     else:
         from urllib.parse import quote
@@ -2157,15 +2177,35 @@ def git_push_file(token, repo, path, content_bytes, message, branch="main"):
     import time as _time
     b64_content = base64.b64encode(content_bytes).decode()
 
-    def _api(req, retries=3):
+    def _api(req, retries=4):
         for attempt in range(retries):
             try:
                 with urlopen(req, timeout=30) as resp:
                     return json.loads(resp.read())
             except HTTPError as e:
-                if e.code in (500, 502, 503, 504) and attempt < retries - 1:
+                last = attempt >= retries - 1
+                if e.code in (500, 502, 503, 504) and not last:
                     _time.sleep(3 * (attempt + 1))
                     continue
+                try:
+                    err_body = e.read().decode("utf-8", "replace")[:500]
+                except Exception:
+                    err_body = ""
+                hdrs = e.headers or {}
+                rate_limited = e.code in (403, 429) and (
+                    hdrs.get("Retry-After") is not None
+                    or hdrs.get("X-RateLimit-Remaining") == "0"
+                    or "rate limit" in err_body.lower()
+                )
+                if rate_limited and not last:
+                    # Sekundäres Rate-Limit von GitHub: mind. 60s warten
+                    wait = int(hdrs.get("Retry-After") or 0) or 60 * (attempt + 1)
+                    wait = min(wait, 180)
+                    print(f"  ⏳ GitHub Rate-Limit ({e.code}) bei {path} – warte {wait}s")
+                    _time.sleep(wait)
+                    continue
+                if e.code != 404:
+                    print(f"  ❌ GitHub API {e.code} bei {path}: {err_body}")
                 raise
         raise RuntimeError("Unreachable")
 
@@ -2214,6 +2254,8 @@ def git_push_file(token, repo, path, content_bytes, message, branch="main"):
 
     commit_sha = result.get("commit", {}).get("sha", "")[:8]
     print(f"  ✅ Committed {path} → {commit_sha}")
+    # GitHub empfiehlt ≥1s Abstand zwischen schreibenden Requests (sekundäres Rate-Limit)
+    _time.sleep(1.5)
     return result
 
 
