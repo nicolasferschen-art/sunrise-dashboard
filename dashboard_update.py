@@ -2197,11 +2197,18 @@ def git_push_file(token, repo, path, content_bytes, message, branch="main"):
                     or hdrs.get("X-RateLimit-Remaining") == "0"
                     or "rate limit" in err_body.lower()
                 )
+                # GitHub-Regelprüfung (Ruleset/Push-Protection) lief in Timeout → vorübergehend
+                rule_timeout = e.code == 403 and "timeout" in err_body.lower()
                 if rate_limited and not last:
                     # Sekundäres Rate-Limit von GitHub: mind. 60s warten
                     wait = int(hdrs.get("Retry-After") or 0) or 60 * (attempt + 1)
                     wait = min(wait, 180)
                     print(f"  ⏳ GitHub Rate-Limit ({e.code}) bei {path} – warte {wait}s")
+                    _time.sleep(wait)
+                    continue
+                if rule_timeout and not last:
+                    wait = 15 * (attempt + 1)
+                    print(f"  ⏳ GitHub-Regelprüfung Timeout bei {path} – neuer Versuch in {wait}s")
                     _time.sleep(wait)
                     continue
                 if e.code != 404:
