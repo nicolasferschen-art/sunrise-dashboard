@@ -339,13 +339,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
@@ -2280,6 +2273,7 @@
     "hhi": 128.0,
     "top10_weight": 28.6,
     "win_rate": 78.5,
+    "run_date": "2026-11-17",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6475,28 +6469,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [
-        {
-          "isin": "DE0006062144",
-          "name": "COVESTRO AG  O.N.",
-          "country": "Germany",
-          "sector": "Prod. of chemicals & chem.products",
-          "currency": "EUR",
-          "mv_eur": 32568.2,
-          "pl": 2003.71,
-          "weight": 0.05,
-          "cost": null,
-          "price": 56.496275,
-          "perf_1m": -0.17,
-          "pct_nav": 0.05
-        }
-      ],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
@@ -8515,6 +8487,7 @@
     "hhi": 105.8,
     "top10_weight": 25.1,
     "win_rate": 76.2,
+    "run_date": "2026-11-17",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12785,13 +12758,6 @@
         "note": "Heute (Inventarblatt)"
       }
     ],
-    "changes": {
-      "added": [],
-      "removed": [],
-      "increased": [],
-      "decreased": [],
-      "date_prev": null
-    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
@@ -13543,6 +13509,7 @@
     "hhi": 68.2,
     "top10_weight": 19.4,
     "win_rate": 67.0,
+    "run_date": "2026-11-17",
     "holdings": [
       {
         "isin": "AT0000652011",
