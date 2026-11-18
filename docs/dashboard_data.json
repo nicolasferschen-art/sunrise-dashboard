@@ -311,8 +311,8 @@
         "value": 0.0
       }
     ],
-    "nav_per_share_prev": 232.35,
-    "nav_prev": 172162827.97,
+    "nav_per_share_prev": 228.5,
+    "nav_prev": 169286276.86,
     "price_history": [
       {
         "date": "2026-10-01",
@@ -327,66 +327,73 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-11-16",
-        "label": "16.11.2026",
-        "price": 232.35,
+        "date": "2026-11-17",
+        "label": "17.11.2026",
+        "price": 228.5,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-11-17",
-        "label": "17.11.2026",
+        "date": "2026-11-18",
+        "label": "18.11.2026",
         "price": 228.5,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT000000ETS9",
         "name": "EURO TELESITES AG INH.",
-        "mv_eur": 410228.85,
-        "pl": 47825.72,
+        "mv_eur": 412969.8,
+        "pl": 50566.67,
         "qty": null
       },
       {
         "isin": "AT000000STR1",
         "name": "STRABAG SE AKT. O.N.",
-        "mv_eur": 1911483.2,
-        "pl": 1265102.14,
+        "mv_eur": 1890086.0,
+        "pl": 1243704.94,
         "qty": null
       },
       {
         "isin": "AT00000AMAG3",
         "name": "AMAG AUSTRIA METALL",
-        "mv_eur": 152917.8,
-        "pl": 2542.71,
+        "mv_eur": 150068.4,
+        "pl": -306.69,
         "qty": null
       },
       {
         "isin": "AT00000FACC2",
         "name": "FACC AG AKT. O.N.",
-        "mv_eur": 365838.44,
-        "pl": 162032.61,
+        "mv_eur": 361547.08,
+        "pl": 157741.25,
         "qty": null
       },
       {
         "isin": "AT00000VIE62",
         "name": "FLUGHAFEN WIEN AKT. O.N.",
-        "mv_eur": 533222.8,
-        "pl": 141671.61,
+        "mv_eur": 526900.0,
+        "pl": 135348.81,
         "qty": null
       },
       {
         "isin": "AT0000606306",
         "name": "RAIFF.BK.INT. AG INH.AKT.",
-        "mv_eur": 4838520.05,
-        "pl": 3548373.2,
+        "mv_eur": 4800149.55,
+        "pl": 3510002.7,
         "qty": null
       },
       {
         "isin": "AT0000609607",
         "name": "PORR AG /STM",
-        "mv_eur": 390984.0,
-        "pl": 196389.2,
+        "mv_eur": 393353.6,
+        "pl": 198758.8,
         "qty": null
       },
       {
@@ -399,36 +406,36 @@
       {
         "isin": "AT0000641352",
         "name": "CA IMMO.ANL.AG AKT. O.N.",
-        "mv_eur": 491780.3,
-        "pl": -213812.75,
+        "mv_eur": 489432.9,
+        "pl": -216160.15,
         "qty": null
       },
       {
         "isin": "AT0000652011",
         "name": "ERSTE GROUP BK ST.AKT.ON",
-        "mv_eur": 8632184.0,
-        "pl": 6710392.22,
+        "mv_eur": 8676641.6,
+        "pl": 6754849.82,
         "qty": null
       },
       {
         "isin": "AT0000720008",
         "name": "TELEKOM AUSTRIA AKT. O.N.",
-        "mv_eur": 4202783.52,
-        "pl": 430972.17,
+        "mv_eur": 4164749.28,
+        "pl": 392937.93,
         "qty": null
       },
       {
         "isin": "AT0000730007",
         "name": "ANDRITZ AKT.O.N.",
-        "mv_eur": 1118512.0,
-        "pl": 512528.28,
+        "mv_eur": 1101365.0,
+        "pl": 495381.28,
         "qty": null
       },
       {
         "isin": "AT0000741053",
         "name": "EVN STAMMAKT. O.N.",
-        "mv_eur": 757491.3,
-        "pl": 306336.55,
+        "mv_eur": 752651.1,
+        "pl": 301496.35,
         "qty": null
       },
       {
@@ -441,43 +448,43 @@
       {
         "isin": "AT0000746409",
         "name": "VERBUND KAT.A O.N.",
-        "mv_eur": 4138834.05,
-        "pl": 739517.24,
+        "mv_eur": 4057128.0,
+        "pl": 657811.19,
         "qty": null
       },
       {
         "isin": "AT0000758305",
         "name": "PALFINGER AKT.O.N.",
-        "mv_eur": 274787.1,
-        "pl": -15193.76,
+        "mv_eur": 270847.5,
+        "pl": -19133.36,
         "qty": null
       },
       {
         "isin": "AT0000815402",
         "name": "UBM DEVEL. STAMMAKT.O.N.",
-        "mv_eur": 183805.65,
-        "pl": -153903.93,
+        "mv_eur": 178309.8,
+        "pl": -159399.78,
         "qty": null
       },
       {
         "isin": "AT0000818802",
         "name": "DO + CO. AKT. O.N.",
-        "mv_eur": 562302.0,
-        "pl": 316274.48,
+        "mv_eur": 550287.0,
+        "pl": 304259.48,
         "qty": null
       },
       {
         "isin": "AT0000821103",
         "name": "UNIQA INS GROUP /STM",
-        "mv_eur": 1481967.9,
-        "pl": 888655.68,
+        "mv_eur": 1472558.58,
+        "pl": 879246.36,
         "qty": null
       },
       {
         "isin": "AT0000831706",
         "name": "WIENERBERGER AKT.O.N.",
-        "mv_eur": 207698.4,
-        "pl": -101325.96,
+        "mv_eur": 205542.8,
+        "pl": -103481.56,
         "qty": null
       },
       {
@@ -490,57 +497,57 @@
       {
         "isin": "AT0000908504",
         "name": "VIENNA INSURANCE ST.O.N.",
-        "mv_eur": 2734701.6,
-        "pl": 1961197.36,
+        "mv_eur": 2759370.3,
+        "pl": 1985866.06,
         "qty": null
       },
       {
         "isin": "AT0000922554",
         "name": "ROSENBAUER INT. AKT.O.N.",
-        "mv_eur": 563068.8,
-        "pl": 188922.93,
+        "mv_eur": 516763.8,
+        "pl": 142617.93,
         "qty": null
       },
       {
         "isin": "AT0000937503",
         "name": "VOESTALPINE AG AKT. O.N.",
-        "mv_eur": 1131013.8,
-        "pl": 152036.1,
+        "mv_eur": 1062793.92,
+        "pl": 83816.22,
         "qty": null
       },
       {
         "isin": "AT0000938204",
         "name": "MAYR-MELNHOF AKT. O.N.",
-        "mv_eur": 365646.0,
-        "pl": -169775.62,
+        "mv_eur": 363192.0,
+        "pl": -172229.62,
         "qty": null
       },
       {
         "isin": "AT0000946652",
         "name": "SBO AG EUR 1,-",
-        "mv_eur": 251074.5,
-        "pl": -79875.12,
+        "mv_eur": 246393.45,
+        "pl": -84556.17,
         "qty": null
       },
       {
         "isin": "AT0000969985",
         "name": "AT+S AUST. TECH.SYS.O.N.",
-        "mv_eur": 1074397.8,
-        "pl": 854673.41,
+        "mv_eur": 1033821.2,
+        "pl": 814096.81,
         "qty": null
       },
       {
         "isin": "AT0000A21KS2",
         "name": "CPI EUROPE AG AKT.",
-        "mv_eur": 305208.06,
-        "pl": 16340.45,
+        "mv_eur": 305999.78,
+        "pl": 17132.17,
         "qty": null
       },
       {
         "isin": "AT0000A3EPA4",
         "name": "AMS-OSRAM AG AKT O.N.",
-        "mv_eur": 290107.57,
-        "pl": -62724.34,
+        "mv_eur": 249868.05,
+        "pl": -103059.37,
         "qty": null
       },
       {
@@ -553,22 +560,22 @@
       {
         "isin": "AT0000APOST4",
         "name": "POST AG AKT.O.N.",
-        "mv_eur": 529060.05,
-        "pl": -74327.07,
+        "mv_eur": 542307.25,
+        "pl": -61079.87,
         "qty": null
       },
       {
         "isin": "AT0000BAWAG2",
         "name": "BAWAG GROUP AG AKT",
-        "mv_eur": 3901578.0,
-        "pl": 3287898.06,
+        "mv_eur": 3885681.0,
+        "pl": 3272001.06,
         "qty": null
       },
       {
         "isin": "AT0000KTMI02",
         "name": "BAJAJ MOBILITY AKT O.N.",
-        "mv_eur": 448152.95,
-        "pl": 32494.09,
+        "mv_eur": 408030.0,
+        "pl": -7628.86,
         "qty": null
       },
       {
@@ -581,1688 +588,1688 @@
       {
         "isin": "AT000KAPSCH9",
         "name": "KAPSCH TRAFFIC COM AG O.N.",
-        "mv_eur": 28040.18,
-        "pl": -58725.58,
+        "mv_eur": 26075.1,
+        "pl": -60690.66,
         "qty": null
       },
       {
         "isin": "ATFREQUENT09",
         "name": "FREQUENTIS AG AKT",
-        "mv_eur": 669293.1,
-        "pl": 281817.32,
+        "mv_eur": 709389.0,
+        "pl": 321913.22,
         "qty": null
       },
       {
         "isin": "BE0974293251",
         "name": "ANHEUSER-BUSCH INBEV",
-        "mv_eur": 526702.5,
-        "pl": 143799.44,
+        "mv_eur": 529731.9,
+        "pl": 146828.84,
         "qty": null
       },
       {
         "isin": "CA5592224011",
         "name": "MAGNA INTL INC.",
-        "mv_eur": 566688.11,
-        "pl": 163140.58,
+        "mv_eur": 559545.28,
+        "pl": 155036.64,
         "qty": null
       },
       {
         "isin": "CA76131D1033",
         "name": "RESTAURANT BRANDS INTL",
-        "mv_eur": 102883.76,
-        "pl": 28462.85,
+        "mv_eur": 102372.18,
+        "pl": 27774.02,
         "qty": null
       },
       {
         "isin": "CA82509L1076",
         "name": "SHOPIFY A SUB.VTG",
-        "mv_eur": 771671.14,
-        "pl": 559220.55,
+        "mv_eur": 780970.36,
+        "pl": 568013.79,
         "qty": null
       },
       {
         "isin": "CH0011075394",
         "name": "ZURICH INSUR.GR.NA.SF0,10",
-        "mv_eur": 748863.82,
-        "pl": 251721.05,
+        "mv_eur": 758044.29,
+        "pl": 260766.95,
         "qty": null
       },
       {
         "isin": "CH0012005267",
         "name": "NOVARTIS NAM.     SF 0,49",
-        "mv_eur": 2064733.08,
-        "pl": 806839.27,
+        "mv_eur": 2088988.53,
+        "pl": 830754.21,
         "qty": null
       },
       {
         "isin": "CH0012221716",
         "name": "ABB LTD. NA     SF 0,12",
-        "mv_eur": 521632.45,
-        "pl": 328216.49,
+        "mv_eur": 512882.31,
+        "pl": 319414.0,
         "qty": null
       },
       {
         "isin": "CH0012549785",
         "name": "SONOVA HLDG AG NA.SF 0,05",
-        "mv_eur": 366232.95,
-        "pl": 54591.24,
+        "mv_eur": 380563.69,
+        "pl": 68837.62,
         "qty": null
       },
       {
         "isin": "CH0014852781",
         "name": "SWISS LIFE HLDG NA SF0,10",
-        "mv_eur": 317677.42,
-        "pl": 146770.17,
+        "mv_eur": 320667.42,
+        "pl": 149713.91,
         "qty": null
       },
       {
         "isin": "CH0024638196",
         "name": "SCHINDLER HLDG PS  SF-,10",
-        "mv_eur": 83297.25,
-        "pl": 26927.66,
+        "mv_eur": 83644.63,
+        "pl": 27259.78,
         "qty": null
       },
       {
         "isin": "CH0025238863",
         "name": "KUEHNE + NAGEL INTL  SF 1",
-        "mv_eur": 320355.06,
-        "pl": -40220.01,
+        "mv_eur": 318269.29,
+        "pl": -42403.38,
         "qty": null
       },
       {
         "isin": "CH0030170408",
         "name": "GEBERIT AG NA DISP. SF-10",
-        "mv_eur": 687142.67,
-        "pl": -10221.9,
+        "mv_eur": 674655.84,
+        "pl": -22897.51,
         "qty": null
       },
       {
         "isin": "CH0126881561",
         "name": "SWISS RE AG NAM.  DL -,12",
-        "mv_eur": 59746.86,
-        "pl": 27495.49,
+        "mv_eur": 60097.13,
+        "pl": 27837.03,
         "qty": null
       },
       {
         "isin": "CH0198251305",
         "name": "COCA-COLA HBC  NA.SF 6,70",
-        "mv_eur": 324307.94,
-        "pl": 164163.17,
+        "mv_eur": 335773.93,
+        "pl": 175379.74,
         "qty": null
       },
       {
         "isin": "CH0210483332",
         "name": "CIE FIN.RICHEMONT   SF 1",
-        "mv_eur": 946915.89,
-        "pl": 184064.58,
+        "mv_eur": 935342.65,
+        "pl": 172284.84,
         "qty": null
       },
       {
         "isin": "CH0244767585",
         "name": "UBS GROUP AG      SF -,10",
-        "mv_eur": 106123.74,
-        "pl": 30087.34,
+        "mv_eur": 105318.47,
+        "pl": 29261.49,
         "qty": null
       },
       {
         "isin": "CH0418792922",
         "name": "SIKA AG  NAM.     SF 0,01",
-        "mv_eur": 323866.31,
-        "pl": 4956.95,
+        "mv_eur": 317939.36,
+        "pl": -1056.32,
         "qty": null
       },
       {
         "isin": "CH0432492467",
         "name": "ALCON AG  NAM. SF -,04",
-        "mv_eur": 353993.29,
-        "pl": -61792.05,
+        "mv_eur": 365014.89,
+        "pl": -50883.0,
         "qty": null
       },
       {
         "isin": "CH0466642201",
         "name": "HELVETIA BA.HL.NA SF 0,02",
-        "mv_eur": 559498.38,
-        "pl": 269407.47,
+        "mv_eur": 560139.46,
+        "pl": 269970.02,
         "qty": null
       },
       {
         "isin": "CH1169151003",
         "name": "GEORG FISCHER NA  SF 0,05",
-        "mv_eur": 126134.44,
-        "pl": 23908.83,
+        "mv_eur": 124560.66,
+        "pl": 22307.38,
         "qty": null
       },
       {
         "isin": "CH1243598427",
         "name": "SANDOZ GROUP AG   SF -,05",
-        "mv_eur": 434029.66,
-        "pl": 212838.89,
+        "mv_eur": 422656.49,
+        "pl": 201405.84,
         "qty": null
       },
       {
         "isin": "CH1499059983",
         "name": "ROCHE HOLDING PS SF -,001",
-        "mv_eur": 780173.74,
-        "pl": 261834.73,
+        "mv_eur": 785760.27,
+        "pl": 267280.95,
         "qty": null
       },
       {
         "isin": "DE0005140008",
         "name": "DEUTSCHE BANK AG NA O.N.",
-        "mv_eur": 410545.88,
-        "pl": 308311.14,
+        "mv_eur": 404887.42,
+        "pl": 302652.68,
         "qty": null
       },
       {
         "isin": "DE0005190003",
         "name": "BAY.MOTOREN WERKE AG ST",
-        "mv_eur": 579404.94,
-        "pl": -308042.21,
+        "mv_eur": 577378.34,
+        "pl": -310068.81,
         "qty": null
       },
       {
         "isin": "DE0005439004",
         "name": "CONTINENTAL AG O.N.",
-        "mv_eur": 329743.4,
-        "pl": 62208.04,
+        "mv_eur": 322110.04,
+        "pl": 54574.68,
         "qty": null
       },
       {
         "isin": "DE0005552004",
         "name": "DHL AG",
-        "mv_eur": 673810.2,
-        "pl": 206379.35,
+        "mv_eur": 678930.0,
+        "pl": 211499.15,
         "qty": null
       },
       {
         "isin": "DE0005557508",
         "name": "DT.TELEKOM AG NA",
-        "mv_eur": 1105698.36,
-        "pl": 258702.49,
+        "mv_eur": 1125711.0,
+        "pl": 278715.13,
         "qty": null
       },
       {
         "isin": "DE0005785802",
         "name": "FRESEN.MED.CARE AG INH ON",
-        "mv_eur": 156301.56,
-        "pl": 10235.85,
+        "mv_eur": 157447.35,
+        "pl": 11381.64,
         "qty": null
       },
       {
         "isin": "DE0006048432",
         "name": "HENKEL AG+CO.KGAA VZO",
-        "mv_eur": 151577.92,
-        "pl": 4249.99,
+        "mv_eur": 154106.56,
+        "pl": 6778.63,
         "qty": null
       },
       {
         "isin": "DE0006231004",
         "name": "INFINEON TECH.AG NA O.N.",
-        "mv_eur": 3034000.53,
-        "pl": 1297202.94,
+        "mv_eur": 2866900.52,
+        "pl": 1130102.93,
         "qty": null
       },
       {
         "isin": "DE0006599905",
         "name": "MERCK KGAA O.N.",
-        "mv_eur": 161631.65,
-        "pl": 27290.44,
+        "mv_eur": 163322.7,
+        "pl": 28981.49,
         "qty": null
       },
       {
         "isin": "DE0006766504",
         "name": "AURUBIS AG",
-        "mv_eur": 138221.2,
-        "pl": 45705.86,
+        "mv_eur": 134170.4,
+        "pl": 41655.06,
         "qty": null
       },
       {
         "isin": "DE0007030009",
         "name": "RHEINMETALL AG",
-        "mv_eur": 150657.0,
-        "pl": 118153.89,
+        "mv_eur": 150091.5,
+        "pl": 117588.39,
         "qty": null
       },
       {
         "isin": "DE0007100000",
         "name": "MERCEDES-BENZ GRP NA O.N.",
-        "mv_eur": 64298.1,
-        "pl": -27689.86,
+        "mv_eur": 63871.5,
+        "pl": -28116.46,
         "qty": null
       },
       {
         "isin": "DE0007164600",
         "name": "SAP SE O.N.",
-        "mv_eur": 1318235.1,
-        "pl": 484210.67,
+        "mv_eur": 1323506.8,
+        "pl": 489482.37,
         "qty": null
       },
       {
         "isin": "DE0007165631",
         "name": "SARTORIUS AG VZO O.N.",
-        "mv_eur": 205563.6,
-        "pl": 42367.37,
+        "mv_eur": 208356.0,
+        "pl": 45159.77,
         "qty": null
       },
       {
         "isin": "DE0007236101",
         "name": "SIEMENS AG  NA O.N.",
-        "mv_eur": 3041514.9,
-        "pl": 1662749.57,
+        "mv_eur": 2942722.35,
+        "pl": 1563957.02,
         "qty": null
       },
       {
         "isin": "DE0007500001",
         "name": "THYSSENKRUPP AG O.N.",
-        "mv_eur": 648011.15,
-        "pl": 488988.04,
+        "mv_eur": 615207.05,
+        "pl": 456183.94,
         "qty": null
       },
       {
         "isin": "DE0008232125",
         "name": "LUFTHANSA AG VNA O.N.",
-        "mv_eur": 141322.86,
-        "pl": -45492.82,
+        "mv_eur": 142989.25,
+        "pl": -43826.43,
         "qty": null
       },
       {
         "isin": "DE0008404005",
         "name": "ALLIANZ SE NA O.N.",
-        "mv_eur": 1268394.0,
-        "pl": 627792.84,
+        "mv_eur": 1275912.0,
+        "pl": 635310.84,
         "qty": null
       },
       {
         "isin": "DE0008430026",
         "name": "MUENCH.RUECKVERS. NA O.N.",
-        "mv_eur": 206201.6,
-        "pl": 147619.37,
+        "mv_eur": 208243.2,
+        "pl": 149660.97,
         "qty": null
       },
       {
         "isin": "DE000A12DM80",
         "name": "SCOUT24 SE NA O.N.",
-        "mv_eur": 42931.65,
-        "pl": 18448.68,
+        "mv_eur": 42790.35,
+        "pl": 18307.38,
         "qty": null
       },
       {
         "isin": "DE000A1EWWW0",
         "name": "ADIDAS AG NA O.N.",
-        "mv_eur": 377788.25,
-        "pl": -67611.81,
+        "mv_eur": 377895.0,
+        "pl": -67505.06,
         "qty": null
       },
       {
         "isin": "DE000A1ML7J1",
         "name": "VONOVIA SE NA O.N.",
-        "mv_eur": 302445.0,
-        "pl": -240659.46,
+        "mv_eur": 300568.13,
+        "pl": -242536.33,
         "qty": null
       },
       {
         "isin": "DE000BASF111",
         "name": "BASF SE NA O.N.",
-        "mv_eur": 270072.0,
-        "pl": 28147.25,
+        "mv_eur": 266550.4,
+        "pl": 24625.65,
         "qty": null
       },
       {
         "isin": "DE000BAY0017",
         "name": "BAYER AG NA O.N.",
-        "mv_eur": 386417.92,
-        "pl": 65391.36,
+        "mv_eur": 389424.0,
+        "pl": 68397.44,
         "qty": null
       },
       {
         "isin": "DE000DTR0CK8",
         "name": "DAIMLER TRUCK HLDG NA ON",
-        "mv_eur": 33677.7,
-        "pl": 14468.51,
+        "mv_eur": 34041.1,
+        "pl": 14831.91,
         "qty": null
       },
       {
         "isin": "DE000ENAG999",
         "name": "E.ON SE NA O.N.",
-        "mv_eur": 515843.55,
-        "pl": 139666.12,
+        "mv_eur": 518671.94,
+        "pl": 142494.51,
         "qty": null
       },
       {
         "isin": "DE000ENER6Y0",
         "name": "SIEMENS ENERGY AG NA O.N.",
-        "mv_eur": 1506354.84,
-        "pl": 1233066.77,
+        "mv_eur": 1466115.66,
+        "pl": 1192827.59,
         "qty": null
       },
       {
         "isin": "DE000FRE5EN2",
         "name": "FRESENIUS SE+CO.KGAA O.N.",
-        "mv_eur": 926286.78,
-        "pl": 141035.14,
+        "mv_eur": 936194.52,
+        "pl": 150942.88,
         "qty": null
       },
       {
         "isin": "DE000KBX1006",
         "name": "KNORR-BREMSE AG  INH O.N.",
-        "mv_eur": 270208.4,
-        "pl": 6792.51,
+        "mv_eur": 268844.4,
+        "pl": 5428.51,
         "qty": null
       },
       {
         "isin": "DE000SHL1006",
         "name": "SIEMENS HEALTH.AG NA O.N.",
-        "mv_eur": 91804.8,
-        "pl": 15920.79,
+        "mv_eur": 92224.0,
+        "pl": 16339.99,
         "qty": null
       },
       {
         "isin": "DE000TKCC1S8",
         "name": "TK ACCELIS GROUP INH.",
-        "mv_eur": 68198.6,
-        "pl": 51761.72,
+        "mv_eur": 66168.26,
+        "pl": 49731.38,
         "qty": null
       },
       {
         "isin": "DE000TKMS001",
         "name": "TKMS AG + CO. KGAA O.N.",
-        "mv_eur": 199389.8,
-        "pl": 110460.09,
+        "mv_eur": 197828.0,
+        "pl": 108898.29,
         "qty": null
       },
       {
         "isin": "DE000ZAL1111",
         "name": "ZALANDO SE",
-        "mv_eur": 148731.96,
-        "pl": 24360.92,
+        "mv_eur": 146484.78,
+        "pl": 22113.74,
         "qty": null
       },
       {
         "isin": "DK0010244508",
         "name": "A.P.MOELL.-M.NAM B DK1000",
-        "mv_eur": 470768.04,
-        "pl": 187209.13,
+        "mv_eur": 474064.41,
+        "pl": 190494.12,
         "qty": null
       },
       {
         "isin": "DK0060542181",
         "name": "ISS AS              DK 1",
-        "mv_eur": 77382.99,
-        "pl": 23994.71,
+        "mv_eur": 78325.01,
+        "pl": 24934.59,
         "qty": null
       },
       {
         "isin": "DK0062498333",
         "name": "NOVO-NORDISK AS B  DK 0,1",
-        "mv_eur": 172557.0,
-        "pl": -99408.81,
+        "mv_eur": 178509.01,
+        "pl": -93467.72,
         "qty": null
       },
       {
         "isin": "ES0109067019",
         "name": "AMADEUS IT GRP SA EO 0,01",
-        "mv_eur": 55917.8,
-        "pl": 5700.18,
+        "mv_eur": 57032.56,
+        "pl": 6814.94,
         "qty": null
       },
       {
         "isin": "ES0113900J37",
         "name": "BCO SANTANDER N.EO0,5",
-        "mv_eur": 469023.49,
-        "pl": 276023.06,
+        "mv_eur": 466484.11,
+        "pl": 273483.68,
         "qty": null
       },
       {
         "isin": "ES0148396007",
         "name": "INDITEX INH.      EO 0,03",
-        "mv_eur": 802218.56,
-        "pl": 153357.2,
+        "mv_eur": 810552.6,
+        "pl": 161691.24,
         "qty": null
       },
       {
         "isin": "FI0009000681",
         "name": "NOKIA OYJ EO-,06",
-        "mv_eur": 260157.92,
-        "pl": 96367.54,
+        "mv_eur": 245579.81,
+        "pl": 81789.43,
         "qty": null
       },
       {
         "isin": "FI0009005961",
         "name": "STORA ENSO OYJ R EO 1,70",
-        "mv_eur": 84818.98,
-        "pl": -36159.44,
+        "mv_eur": 83974.66,
+        "pl": -37003.76,
         "qty": null
       },
       {
         "isin": "FR0000045072",
         "name": "CREDIT AGRICOLE INH. EO 3",
-        "mv_eur": 265500.76,
-        "pl": -15744.82,
+        "mv_eur": 265836.2,
+        "pl": -15409.38,
         "qty": null
       },
       {
         "isin": "FR0000052292",
         "name": "HERMES INTERNATIONAL O.N.",
-        "mv_eur": 52747.5,
-        "pl": 27142.78,
+        "mv_eur": 52630.5,
+        "pl": 27025.78,
         "qty": null
       },
       {
         "isin": "FR0000120073",
         "name": "AIR LIQUIDE INH. EO 5,50",
-        "mv_eur": 167963.64,
-        "pl": 96715.59,
+        "mv_eur": 168312.04,
+        "pl": 97063.99,
         "qty": null
       },
       {
         "isin": "FR0000120271",
         "name": "TOTALENERGIES SE  EO 2,50",
-        "mv_eur": 230763.06,
-        "pl": 110106.48,
+        "mv_eur": 234569.52,
+        "pl": 113912.94,
         "qty": null
       },
       {
         "isin": "FR0000120321",
         "name": "L OREAL    INH.    EO 0,2",
-        "mv_eur": 165334.5,
-        "pl": 82221.09,
+        "mv_eur": 166555.5,
+        "pl": 83442.09,
         "qty": null
       },
       {
         "isin": "FR0000120404",
         "name": "ACCOR SA INH.        EO 3",
-        "mv_eur": 45014.6,
-        "pl": 16491.13,
+        "mv_eur": 45637.4,
+        "pl": 17113.93,
         "qty": null
       },
       {
         "isin": "FR0000120578",
         "name": "SANOFI SA INHABER    EO 2",
-        "mv_eur": 159331.78,
-        "pl": -13082.55,
+        "mv_eur": 159947.52,
+        "pl": -12466.81,
         "qty": null
       },
       {
         "isin": "FR0000120644",
         "name": "DANONE S.A. EO -,25",
-        "mv_eur": 57324.8,
-        "pl": 3734.54,
+        "mv_eur": 58789.12,
+        "pl": 5198.86,
         "qty": null
       },
       {
         "isin": "FR0000121014",
         "name": "LVMH               EO 0,3",
-        "mv_eur": 26710.2,
-        "pl": 13001.51,
+        "mv_eur": 26664.0,
+        "pl": 12955.31,
         "qty": null
       },
       {
         "isin": "FR0000121220",
         "name": "SODEXO S.A. INH.     EO 4",
-        "mv_eur": 40363.75,
-        "pl": -5632.02,
+        "mv_eur": 40561.45,
+        "pl": -5434.32,
         "qty": null
       },
       {
         "isin": "FR0000121329",
         "name": "THALES S.A.          EO 3",
-        "mv_eur": 303124.2,
-        "pl": 149909.94,
+        "mv_eur": 305923.5,
+        "pl": 152709.24,
         "qty": null
       },
       {
         "isin": "FR0000121667",
         "name": "ESSILORLUXO. INH. EO -,18",
-        "mv_eur": 29863.4,
-        "pl": 2443.17,
+        "mv_eur": 30627.0,
+        "pl": 3206.77,
         "qty": null
       },
       {
         "isin": "FR0000121972",
         "name": "SCHNEIDER ELEC. INH. EO 4",
-        "mv_eur": 390700.8,
-        "pl": 144034.44,
+        "mv_eur": 385513.8,
+        "pl": 138847.44,
         "qty": null
       },
       {
         "isin": "FR0000125007",
         "name": "ST GOBAIN            EO 4",
-        "mv_eur": 290013.9,
-        "pl": -47490.53,
+        "mv_eur": 286651.42,
+        "pl": -50853.01,
         "qty": null
       },
       {
         "isin": "FR0000125338",
         "name": "CAPGEMINI SE INH. EO 8",
-        "mv_eur": 48089.0,
-        "pl": -2136.2,
+        "mv_eur": 47690.0,
+        "pl": -2535.2,
         "qty": null
       },
       {
         "isin": "FR0000125486",
         "name": "VINCI S.A. INH.   EO 2,50",
-        "mv_eur": 92044.8,
-        "pl": 33540.27,
+        "mv_eur": 92084.75,
+        "pl": 33580.22,
         "qty": null
       },
       {
         "isin": "FR0000130577",
         "name": "PUBLICIS GRP INH. EO 0,40",
-        "mv_eur": 323490.0,
-        "pl": 22877.76,
+        "mv_eur": 321337.5,
+        "pl": 20725.26,
         "qty": null
       },
       {
         "isin": "FR0000131104",
         "name": "BNP PARIBAS INH.     EO 2",
-        "mv_eur": 264076.8,
-        "pl": 29277.66,
+        "mv_eur": 263414.4,
+        "pl": 28615.26,
         "qty": null
       },
       {
         "isin": "FR0004125920",
         "name": "AMUNDI S.A.      EO 2,50",
-        "mv_eur": 657793.95,
-        "pl": 203865.97,
+        "mv_eur": 647658.45,
+        "pl": 193730.47,
         "qty": null
       },
       {
         "isin": "FR0010208488",
         "name": "ENGIE S.A. INH.      EO 1",
-        "mv_eur": 283730.04,
-        "pl": 134142.87,
+        "mv_eur": 282940.02,
+        "pl": 133352.85,
         "qty": null
       },
       {
         "isin": "FR0013326246",
         "name": "URW (STAPLED SHS)  EO-,05",
-        "mv_eur": 753316.32,
-        "pl": 106305.82,
+        "mv_eur": 759463.2,
+        "pl": 112452.7,
         "qty": null
       },
       {
         "isin": "FR001400AJ45",
         "name": "MICHELIN  NOM.    EO -,50",
-        "mv_eur": 321665.28,
-        "pl": 12575.63,
+        "mv_eur": 316615.44,
+        "pl": 7525.79,
         "qty": null
       },
       {
         "isin": "GB0002374006",
         "name": "DIAGEO PLC LS-,28935185",
-        "mv_eur": 163297.92,
-        "pl": -126288.2,
+        "mv_eur": 167082.47,
+        "pl": -122954.66,
         "qty": null
       },
       {
         "isin": "GB0002875804",
         "name": "BRIT.AMER.TOBACCO  LS-,25",
-        "mv_eur": 787960.92,
-        "pl": 272200.17,
+        "mv_eur": 807533.37,
+        "pl": 290969.35,
         "qty": null
       },
       {
         "isin": "GB0004544929",
         "name": "IMPERIAL BRANDS PLC LS-10",
-        "mv_eur": 193826.97,
-        "pl": 83917.93,
+        "mv_eur": 198121.9,
+        "pl": 88041.69,
         "qty": null
       },
       {
         "isin": "GB0007188757",
         "name": "RIO TINTO PLC      LS-,10",
-        "mv_eur": 263213.82,
-        "pl": 11733.16,
+        "mv_eur": 256329.82,
+        "pl": 4457.49,
         "qty": null
       },
       {
         "isin": "GB0007980591",
         "name": "BP PLC             DL-,25",
-        "mv_eur": 191471.02,
-        "pl": 18456.8,
+        "mv_eur": 192986.8,
+        "pl": 19703.12,
         "qty": null
       },
       {
         "isin": "GB0009895292",
         "name": "ASTRAZENECA PLC    DL-,25",
-        "mv_eur": 480718.3,
-        "pl": 162977.97,
+        "mv_eur": 485061.58,
+        "pl": 166826.38,
         "qty": null
       },
       {
         "isin": "GB00B2B0DG97",
         "name": "RELX PLC      LS -,144397",
-        "mv_eur": 371849.8,
-        "pl": -51463.02,
+        "mv_eur": 378226.93,
+        "pl": -45745.18,
         "qty": null
       },
       {
         "isin": "GB00BD6K4575",
         "name": "COMPASS GROUP    LS-,1105",
-        "mv_eur": 206393.42,
-        "pl": 59349.41,
+        "mv_eur": 208270.91,
+        "pl": 60418.6,
         "qty": null
       },
       {
         "isin": "GB00BMWC6P49",
         "name": "MONDI PLC         EO -,22",
-        "mv_eur": 104259.21,
-        "pl": -153700.02,
+        "mv_eur": 104051.49,
+        "pl": -154309.5,
         "qty": null
       },
       {
         "isin": "GB00BN7SWP63",
         "name": "GSK PLC  LS-,3125",
-        "mv_eur": 249676.79,
-        "pl": 49890.52,
+        "mv_eur": 253814.66,
+        "pl": 53717.24,
         "qty": null
       },
       {
         "isin": "GB00BP6MXD84",
         "name": "SHELL PLC           EO-07",
-        "mv_eur": 708037.76,
-        "pl": 224077.08,
+        "mv_eur": 715580.32,
+        "pl": 231619.64,
         "qty": null
       },
       {
         "isin": "GB00BSZBP530",
         "name": "RECKITT BENCK.LS-,1041666",
-        "mv_eur": 277976.08,
-        "pl": 31894.94,
+        "mv_eur": 283812.15,
+        "pl": 37347.76,
         "qty": null
       },
       {
         "isin": "GB00BVZK7T90",
         "name": "UNILEVER PLC     LS -,035",
-        "mv_eur": 1334982.44,
-        "pl": 87152.23,
+        "mv_eur": 1368142.7,
+        "pl": 120312.49,
         "qty": null
       },
       {
         "isin": "IE0001827041",
         "name": "CRH PLC            EO-,32",
-        "mv_eur": 844359.17,
-        "pl": 150716.62,
+        "mv_eur": 834989.21,
+        "pl": 137533.7,
         "qty": null
       },
       {
         "isin": "IE00028FXN24",
         "name": "SMURFIT WESTROCK   DL-,01",
-        "mv_eur": 295566.35,
-        "pl": -23094.7,
+        "mv_eur": 288450.16,
+        "pl": -31962.57,
         "qty": null
       },
       {
         "isin": "IE000IVNQZ81",
         "name": "TE CONNECTIVITY   DL-,01",
-        "mv_eur": 118687.44,
-        "pl": 56777.58,
+        "mv_eur": 116945.62,
+        "pl": 54695.44,
         "qty": null
       },
       {
         "isin": "IE000S9YS762",
         "name": "LINDE PLC        EO -,001",
-        "mv_eur": 667043.2,
-        "pl": 280398.24,
+        "mv_eur": 671799.8,
+        "pl": 285154.84,
         "qty": null
       },
       {
         "isin": "IE00B4BNMY34",
         "name": "ACCENTURE A   DL-,0000225",
-        "mv_eur": 328628.97,
-        "pl": 22594.33,
+        "mv_eur": 327460.93,
+        "pl": 19744.01,
         "qty": null
       },
       {
         "isin": "IE00B4Q5ZN47",
         "name": "JAZZ PHARMACEUT. DL-,0001",
-        "mv_eur": 188316.8,
-        "pl": 88200.26,
+        "mv_eur": 188879.33,
+        "pl": 88212.45,
         "qty": null
       },
       {
         "isin": "IE00B8KQN827",
         "name": "EATON CORP.PLC    DL -,01",
-        "mv_eur": 268310.74,
-        "pl": 197397.32,
+        "mv_eur": 253134.44,
+        "pl": 181831.21,
         "qty": null
       },
       {
         "isin": "IE00BKVD2N49",
         "name": "SEAGATE TEC.HLD.DL-,00001",
-        "mv_eur": 2004897.48,
-        "pl": 1544413.37,
+        "mv_eur": 1845293.48,
+        "pl": 1382278.09,
         "qty": null
       },
       {
         "isin": "IE00BTN1Y115",
         "name": "MEDTRONIC PLC    DL-,0001",
-        "mv_eur": 369683.72,
-        "pl": 33664.35,
+        "mv_eur": 378672.43,
+        "pl": 40805.96,
         "qty": null
       },
       {
         "isin": "IE00BY7QL619",
         "name": "JOHNSON CONTR.INTL.DL-,01",
-        "mv_eur": 1289925.18,
-        "pl": 498972.32,
+        "mv_eur": 1245426.42,
+        "pl": 450125.69,
         "qty": null
       },
       {
         "isin": "IL0006290147",
         "name": "TEVA PHARMACEUT.   IS 0,1",
-        "mv_eur": 351598.16,
-        "pl": 256224.37,
+        "mv_eur": 344783.74,
+        "pl": 248885.68,
         "qty": null
       },
       {
         "isin": "IT0000062072",
         "name": "GENERALI S.P.A.",
-        "mv_eur": 817462.72,
-        "pl": 382079.45,
+        "mv_eur": 810917.2,
+        "pl": 375533.93,
         "qty": null
       },
       {
         "isin": "IT0003128367",
         "name": "ENEL S.P.A.          EO 1",
-        "mv_eur": 502969.23,
-        "pl": 139630.04,
+        "mv_eur": 494354.14,
+        "pl": 131014.95,
         "qty": null
       },
       {
         "isin": "IT0003132476",
         "name": "ENI S.P.A.",
-        "mv_eur": 374256.18,
-        "pl": 85774.29,
+        "mv_eur": 379766.43,
+        "pl": 91284.54,
         "qty": null
       },
       {
         "isin": "IT0003153415",
         "name": "SNAM S.P.A.",
-        "mv_eur": 110978.59,
-        "pl": 41728.29,
+        "mv_eur": 111694.35,
+        "pl": 42444.05,
         "qty": null
       },
       {
         "isin": "IT0005239360",
         "name": "UNICREDIT",
-        "mv_eur": 5741714.16,
-        "pl": 4877525.75,
+        "mv_eur": 5679689.47,
+        "pl": 4815501.06,
         "qty": null
       },
       {
         "isin": "JE00B8KF9B49",
         "name": "WPP PLC            LS-,10",
-        "mv_eur": 29472.33,
-        "pl": -27838.36,
+        "mv_eur": 29349.59,
+        "pl": -28050.36,
         "qty": null
       },
       {
         "isin": "JE00BV7DQ550",
         "name": "AMCOR PLC      DL -,01",
-        "mv_eur": 306419.92,
-        "pl": 8445.62,
+        "mv_eur": 307893.28,
+        "pl": 8281.02,
         "qty": null
       },
       {
         "isin": "JP3143600009",
         "name": "ITOCHU CORP.",
-        "mv_eur": 831645.74,
-        "pl": 341232.72,
+        "mv_eur": 832189.58,
+        "pl": 338076.43,
         "qty": null
       },
       {
         "isin": "JP3164720009",
         "name": "RENESAS ELECTRONICS CORP.",
-        "mv_eur": 264382.22,
-        "pl": -59484.68,
+        "mv_eur": 253667.78,
+        "pl": -72642.67,
         "qty": null
       },
       {
         "isin": "JP3242800005",
         "name": "CANON INC.",
-        "mv_eur": 382514.65,
-        "pl": 12751.95,
+        "mv_eur": 391755.65,
+        "pl": 19203.12,
         "qty": null
       },
       {
         "isin": "JP3435000009",
         "name": "SONY GROUP CORP.",
-        "mv_eur": 242170.1,
-        "pl": 156320.97,
+        "mv_eur": 246220.07,
+        "pl": 159723.21,
         "qty": null
       },
       {
         "isin": "JP3435350008",
         "name": "SONY FINANCIAL GROUP INC.",
-        "mv_eur": 8428.72,
-        "pl": 4902.4,
+        "mv_eur": 8338.43,
+        "pl": 4785.5,
         "qty": null
       },
       {
         "isin": "JP3463000004",
         "name": "TAKEDA PHARM.CO.LTD.",
-        "mv_eur": 956986.12,
-        "pl": 418701.54,
+        "mv_eur": 980029.37,
+        "pl": 437683.48,
         "qty": null
       },
       {
         "isin": "JP3538800008",
         "name": "TDK CORP.",
-        "mv_eur": 283709.99,
-        "pl": 28698.09,
+        "mv_eur": 269276.86,
+        "pl": 12340.91,
         "qty": null
       },
       {
         "isin": "JP3633400001",
         "name": "TOYOTA MOTOR CORP.",
-        "mv_eur": 106696.6,
-        "pl": 64170.62,
+        "mv_eur": 108132.49,
+        "pl": 65285.65,
         "qty": null
       },
       {
         "isin": "JP3726800000",
         "name": "JAPAN TOBACCO",
-        "mv_eur": 321124.7,
-        "pl": 40842.19,
+        "mv_eur": 319068.83,
+        "pl": 36671.61,
         "qty": null
       },
       {
         "isin": "JP3756600007",
         "name": "NINTENDO CO. LTD",
-        "mv_eur": 337867.95,
-        "pl": -37330.97,
+        "mv_eur": 353575.85,
+        "pl": -24453.91,
         "qty": null
       },
       {
         "isin": "JP3814000000",
         "name": "FUJIFILM HOLDINGS CORP.",
-        "mv_eur": 182844.8,
-        "pl": 61843.61,
+        "mv_eur": 186017.91,
+        "pl": 64103.78,
         "qty": null
       },
       {
         "isin": "JP3830800003",
         "name": "BRIDGESTONE CORP.",
-        "mv_eur": 83425.05,
-        "pl": 48842.54,
+        "mv_eur": 85922.79,
+        "pl": 51079.36,
         "qty": null
       },
       {
         "isin": "JP3854600008",
         "name": "HONDA MOTOR",
-        "mv_eur": 34703.98,
-        "pl": 12913.15,
+        "mv_eur": 35429.07,
+        "pl": 13473.83,
         "qty": null
       },
       {
         "isin": "JP3866800000",
         "name": "PANASONIC HOLDINGS CORP.",
-        "mv_eur": 225831.12,
-        "pl": -91429.03,
+        "mv_eur": 214520.88,
+        "pl": -105132.97,
         "qty": null
       },
       {
         "isin": "JP3893600001",
         "name": "MITSUI + CO.",
-        "mv_eur": 739251.33,
-        "pl": 294986.35,
+        "mv_eur": 744243.59,
+        "pl": 296626.67,
         "qty": null
       },
       {
         "isin": "JP3900000005",
         "name": "MITSUBISHI HEAVY",
-        "mv_eur": 236705.21,
-        "pl": 202502.15,
+        "mv_eur": 219215.3,
+        "pl": 184754.19,
         "qty": null
       },
       {
         "isin": "JP3973400009",
         "name": "RICOH CO. LTD",
-        "mv_eur": 381117.4,
-        "pl": 29454.59,
+        "mv_eur": 387750.83,
+        "pl": 33434.75,
         "qty": null
       },
       {
         "isin": "KYG040111059",
         "name": "ANTA SPORTS PROD.  HD-,10",
-        "mv_eur": 30594.44,
-        "pl": 5932.52,
+        "mv_eur": 31400.37,
+        "pl": 6606.64,
         "qty": null
       },
       {
         "isin": "KYG217651051",
         "name": "CK HUTCHISON HLDGS",
-        "mv_eur": 396596.12,
-        "pl": 12764.19,
+        "mv_eur": 395266.12,
+        "pl": 9382.81,
         "qty": null
       },
       {
         "isin": "KYG9830T1067",
         "name": "XIAOMI CORP. CL.B",
-        "mv_eur": 390236.43,
-        "pl": 218223.13,
+        "mv_eur": 380544.52,
+        "pl": 207611.9,
         "qty": null
       },
       {
         "isin": "NL0000009165",
         "name": "HEINEKEN          EO 1,60",
-        "mv_eur": 505917.0,
-        "pl": 57034.4,
+        "mv_eur": 513032.4,
+        "pl": 64149.8,
         "qty": null
       },
       {
         "isin": "NL0000226223",
         "name": "STMICROELECTRONICS",
-        "mv_eur": 358577.46,
-        "pl": 58476.62,
+        "mv_eur": 347821.83,
+        "pl": 47720.99,
         "qty": null
       },
       {
         "isin": "NL0000235190",
         "name": "AIRBUS SE",
-        "mv_eur": 138936.1,
-        "pl": 84092.2,
+        "mv_eur": 136201.4,
+        "pl": 81357.5,
         "qty": null
       },
       {
         "isin": "NL0000379121",
         "name": "RANDSTAD NV       EO -,10",
-        "mv_eur": 147040.82,
-        "pl": -30610.04,
+        "mv_eur": 144732.0,
+        "pl": -32918.86,
         "qty": null
       },
       {
         "isin": "NL0010545661",
         "name": "CNH INDUSTRIAL    EO -,01",
-        "mv_eur": 96558.25,
-        "pl": 8472.75,
+        "mv_eur": 92952.41,
+        "pl": 4382.7,
         "qty": null
       },
       {
         "isin": "NL0011821202",
         "name": "ING GROEP NV      EO -,01",
-        "mv_eur": 414348.07,
-        "pl": 175680.67,
+        "mv_eur": 412829.3,
+        "pl": 174161.9,
         "qty": null
       },
       {
         "isin": "NL0012650360",
         "name": "RHI MAGNESITA N.V.",
-        "mv_eur": 431218.42,
-        "pl": 55532.23,
+        "mv_eur": 417262.73,
+        "pl": 40991.43,
         "qty": null
       },
       {
         "isin": "NL00150001Q9",
         "name": "STELLANTIS NV     EO -,01",
-        "mv_eur": 32733.12,
-        "pl": -77008.79,
+        "mv_eur": 31193.71,
+        "pl": -78548.2,
         "qty": null
       },
       {
         "isin": "NL0015002MS2",
         "name": "MAGNUM I.C.CO. EO 1",
-        "mv_eur": 90832.35,
-        "pl": 19124.58,
+        "mv_eur": 91664.65,
+        "pl": 19956.88,
         "qty": null
       },
       {
         "isin": "NO0005052605",
         "name": "NORSK HYDRO ASA  NK 1,098",
-        "mv_eur": 431753.58,
-        "pl": 50203.99,
+        "mv_eur": 423322.72,
+        "pl": 42635.47,
         "qty": null
       },
       {
         "isin": "SE0000106270",
         "name": "HENNES + MAURITZ B SK-125",
-        "mv_eur": 333111.72,
-        "pl": 53170.89,
+        "mv_eur": 337432.17,
+        "pl": 58350.41,
         "qty": null
       },
       {
         "isin": "SE0000108227",
         "name": "SKF AB B         SK 0,625",
-        "mv_eur": 358163.93,
-        "pl": 105760.66,
+        "mv_eur": 348817.06,
+        "pl": 97188.35,
         "qty": null
       },
       {
         "isin": "SE0000108656",
         "name": "ERICSSON B (FRIA)",
-        "mv_eur": 755465.91,
-        "pl": 242375.08,
+        "mv_eur": 747513.95,
+        "pl": 235997.66,
         "qty": null
       },
       {
         "isin": "SE0000115446",
         "name": "VOLVO B (FRIA)",
-        "mv_eur": 255181.44,
-        "pl": 93118.5,
+        "mv_eur": 253377.62,
+        "pl": 91812.0,
         "qty": null
       },
       {
         "isin": "SE0000667891",
         "name": "SANDVIK AB",
-        "mv_eur": 396035.75,
-        "pl": 194904.22,
+        "mv_eur": 379959.86,
+        "pl": 179445.55,
         "qty": null
       },
       {
         "isin": "SE0007100581",
         "name": "ASSA-ABLOY AB B    SK-,33",
-        "mv_eur": 325162.95,
-        "pl": 103000.15,
+        "mv_eur": 325560.97,
+        "pl": 104079.93,
         "qty": null
       },
       {
         "isin": "SE0009922164",
         "name": "ESSITY AB B",
-        "mv_eur": 61135.82,
-        "pl": 13824.33,
+        "mv_eur": 61915.64,
+        "pl": 14749.34,
         "qty": null
       },
       {
         "isin": "SE0017486897",
         "name": "ATLAS COPCO B FRIA.  O.N.",
-        "mv_eur": 215182.67,
-        "pl": 75251.9,
+        "mv_eur": 212679.57,
+        "pl": 73178.21,
         "qty": null
       },
       {
         "isin": "SG9999000020",
         "name": "FLEX LTD.",
-        "mv_eur": 642099.6,
-        "pl": 408022.29,
+        "mv_eur": 618190.81,
+        "pl": 382826.78,
         "qty": null
       },
       {
         "isin": "US00206R1023",
         "name": "AT + T INC.          DL 1",
-        "mv_eur": 547840.89,
-        "pl": 107453.0,
+        "mv_eur": 555322.77,
+        "pl": 112514.07,
         "qty": null
       },
       {
         "isin": "US0028241000",
         "name": "ABBOTT LABS",
-        "mv_eur": 55919.44,
-        "pl": 22754.22,
+        "mv_eur": 56331.68,
+        "pl": 22984.15,
         "qty": null
       },
       {
         "isin": "US00287Y1091",
         "name": "ABBVIE INC.        DL-,01",
-        "mv_eur": 1454622.64,
-        "pl": 665696.62,
+        "mv_eur": 1463115.44,
+        "pl": 669852.7,
         "qty": null
       },
       {
         "isin": "US00724F1012",
         "name": "ADOBE INC.",
-        "mv_eur": 120493.25,
-        "pl": -140910.0,
+        "mv_eur": 124944.58,
+        "pl": -137895.6,
         "qty": null
       },
       {
         "isin": "US0079031078",
         "name": "ADVANCED MIC.DEV.  DL-,01",
-        "mv_eur": 1567640.36,
-        "pl": 1258142.01,
+        "mv_eur": 1358064.62,
+        "pl": 1046864.96,
         "qty": null
       },
       {
         "isin": "US01609W1027",
         "name": "A.G.HLD.ADR8 DL-000003125",
-        "mv_eur": 237893.1,
-        "pl": -77788.97,
+        "mv_eur": 229719.97,
+        "pl": -87697.4,
         "qty": null
       },
       {
         "isin": "US02079K1079",
         "name": "ALPHABET INC.CL.C DL-,001",
-        "mv_eur": 1001358.33,
-        "pl": 426722.84,
+        "mv_eur": 958829.29,
+        "pl": 381035.03,
         "qty": null
       },
       {
         "isin": "US02209S1033",
         "name": "ALTRIA GRP INC.   DL-,333",
-        "mv_eur": 675097.78,
-        "pl": 235481.25,
+        "mv_eur": 687346.17,
+        "pl": 245313.06,
         "qty": null
       },
       {
         "isin": "US0231351067",
         "name": "AMAZON.COM INC.    DL-,01",
-        "mv_eur": 2410137.91,
-        "pl": 1198891.01,
+        "mv_eur": 2335581.27,
+        "pl": 1117676.14,
         "qty": null
       },
       {
         "isin": "US0258161092",
         "name": "AMER. EXPRESS     DL -,20",
-        "mv_eur": 322184.3,
-        "pl": 110448.11,
+        "mv_eur": 324963.7,
+        "pl": 112063.6,
         "qty": null
       },
       {
         "isin": "US0311621009",
         "name": "AMGEN INC.       DL-,0001",
-        "mv_eur": 474382.54,
-        "pl": 193716.51,
+        "mv_eur": 472149.45,
+        "pl": 189940.6,
         "qty": null
       },
       {
         "isin": "US0378331005",
         "name": "APPLE INC.",
-        "mv_eur": 4777483.61,
-        "pl": 3535155.39,
+        "mv_eur": 4775319.32,
+        "pl": 3526162.02,
         "qty": null
       },
       {
         "isin": "US0394831020",
         "name": "ARCHER DANIELS MIDLAND",
-        "mv_eur": 102801.17,
-        "pl": 55884.6,
+        "mv_eur": 102856.5,
+        "pl": 55682.03,
         "qty": null
       },
       {
         "isin": "US0527691069",
         "name": "AUTODESK INC.",
-        "mv_eur": 113250.66,
-        "pl": 27880.59,
+        "mv_eur": 116528.25,
+        "pl": 30688.9,
         "qty": null
       },
       {
         "isin": "US0584981064",
         "name": "BALL CORP.",
-        "mv_eur": 121356.16,
-        "pl": 26908.89,
+        "mv_eur": 122925.6,
+        "pl": 27959.16,
         "qty": null
       },
       {
         "isin": "US09062X1037",
         "name": "BIOGEN INC. DL -,0005",
-        "mv_eur": 247390.45,
-        "pl": 62697.14,
+        "mv_eur": 249912.28,
+        "pl": 64203.72,
         "qty": null
       },
       {
         "isin": "US09290D1019",
         "name": "BLACKROCK INC.       O.N.",
-        "mv_eur": 225369.4,
-        "pl": 104142.5,
+        "mv_eur": 223136.33,
+        "pl": 101243.04,
         "qty": null
       },
       {
         "isin": "US09857L1089",
         "name": "BOOKING HLDGS     DL-,008",
-        "mv_eur": 174797.81,
-        "pl": 88107.48,
+        "mv_eur": 171757.22,
+        "pl": 84590.36,
         "qty": null
       },
       {
         "isin": "US1101221083",
         "name": "BRISTOL-MYERS SQUIBBDL-10",
-        "mv_eur": 541966.91,
-        "pl": 81356.49,
+        "mv_eur": 550280.14,
+        "pl": 87137.75,
         "qty": null
       },
       {
         "isin": "US17275R1023",
         "name": "CISCO SYSTEMS    DL-,001",
-        "mv_eur": 526066.12,
-        "pl": 149123.33,
+        "mv_eur": 490119.61,
+        "pl": 111104.77,
         "qty": null
       },
       {
         "isin": "US1912161007",
         "name": "COCA-COLA CO.      DL-,25",
-        "mv_eur": 918180.38,
-        "pl": 335402.43,
+        "mv_eur": 942556.28,
+        "pl": 356574.8,
         "qty": null
       },
       {
         "isin": "US2441991054",
         "name": "DEERE CO.            DL 1",
-        "mv_eur": 215294.17,
-        "pl": 120419.31,
+        "mv_eur": 208568.5,
+        "pl": 113172.11,
         "qty": null
       },
       {
         "isin": "US24703L2025",
         "name": "DELL TECHS INC. C  DL-,01",
-        "mv_eur": 1036049.46,
-        "pl": 868734.76,
+        "mv_eur": 899671.95,
+        "pl": 731437.52,
         "qty": null
       },
       {
         "isin": "US2546871060",
         "name": "DISNEY (WALT) CO.",
-        "mv_eur": 359289.29,
-        "pl": 42063.14,
+        "mv_eur": 362700.44,
+        "pl": 43730.5,
         "qty": null
       },
       {
         "isin": "US26614N2018",
         "name": "DUPONT DE NEMO. NEW O.N.",
-        "mv_eur": 19151.4,
-        "pl": 3712.63,
+        "mv_eur": 18670.39,
+        "pl": 3146.75,
         "qty": null
       },
       {
         "isin": "US2681501092",
         "name": "DYNATRACE INC.    DL-,001",
-        "mv_eur": 264048.43,
-        "pl": -81905.85,
+        "mv_eur": 258522.41,
+        "pl": -89333.58,
         "qty": null
       },
       {
         "isin": "US2786421030",
         "name": "EBAY INC.         DL-,001",
-        "mv_eur": 215495.32,
-        "pl": 163380.66,
+        "mv_eur": 218032.57,
+        "pl": 165631.44,
         "qty": null
       },
       {
         "isin": "US2788651006",
         "name": "ECOLAB INC.          DL 1",
-        "mv_eur": 86923.2,
-        "pl": 28666.29,
+        "mv_eur": 88549.48,
+        "pl": 29972.33,
         "qty": null
       },
       {
         "isin": "US30303M1027",
         "name": "META PLATF.  A DL-,000006",
-        "mv_eur": 525756.23,
-        "pl": 3709.0,
+        "mv_eur": 531019.93,
+        "pl": 6103.0,
         "qty": null
       },
       {
         "isin": "US31428X1063",
         "name": "FEDEX CORP.        DL-,10",
-        "mv_eur": 152054.49,
-        "pl": 44456.32,
+        "mv_eur": 156888.56,
+        "pl": 48698.92,
         "qty": null
       },
       {
         "isin": "US3143521058",
         "name": "FEDEX FGHT HLDG CO. O.N.",
-        "mv_eur": 31251.07,
-        "pl": 7323.49,
+        "mv_eur": 31881.01,
+        "pl": 7821.9,
         "qty": null
       },
       {
         "isin": "US3453708600",
         "name": "FORD MOTOR         DL-,01",
-        "mv_eur": 92176.21,
-        "pl": -3824.66,
+        "mv_eur": 90112.7,
+        "pl": -6415.88,
         "qty": null
       },
       {
         "isin": "US3682872078",
         "name": "GAZPROM ADR SP./2 RL 5L 5",
-        "mv_eur": 5016.23,
-        "pl": -34907.62,
+        "mv_eur": 5043.8,
+        "pl": -35099.51,
         "qty": null
       },
       {
         "isin": "US36828A1016",
         "name": "GE VERNOVA INC.",
-        "mv_eur": 221143.55,
-        "pl": 192845.6,
+        "mv_eur": 207439.06,
+        "pl": 178985.56,
         "qty": null
       },
       {
         "isin": "US3696043013",
         "name": "GE AEROSPACE      DL -,06",
-        "mv_eur": 357872.34,
-        "pl": 244270.94,
+        "mv_eur": 353662.06,
+        "pl": 239436.19,
         "qty": null
       },
       {
         "isin": "US37045V1008",
         "name": "GENERAL MOTORS     DL-,01",
-        "mv_eur": 94382.82,
-        "pl": 71043.75,
+        "mv_eur": 92062.85,
+        "pl": 68595.49,
         "qty": null
       },
       {
         "isin": "US42824C1099",
         "name": "HEWLETT PACKARD ENT.",
-        "mv_eur": 278482.84,
-        "pl": 127126.79,
+        "mv_eur": 259972.81,
+        "pl": 107784.75,
         "qty": null
       },
       {
         "isin": "US43300A2033",
         "name": "HILTON WORLD.HDGS DL -,01",
-        "mv_eur": 1285091.84,
-        "pl": 568891.02,
+        "mv_eur": 1296212.61,
+        "pl": 576074.83,
         "qty": null
       },
       {
         "isin": "US43849R1059",
         "name": "HONEYWELL AEROSPACE INC.",
-        "mv_eur": 29891.81,
-        "pl": -1998.05,
+        "mv_eur": 29537.2,
+        "pl": -2527.96,
         "qty": null
       },
       {
         "isin": "US4385162056",
         "name": "HONEYWELL INTL NEW O.N.",
-        "mv_eur": 40181.22,
-        "pl": 4978.67,
+        "mv_eur": 39407.64,
+        "pl": 4011.58,
         "qty": null
       },
       {
         "isin": "US4581401001",
         "name": "INTEL CORP.       DL-,001",
-        "mv_eur": 356476.93,
-        "pl": 49655.02,
+        "mv_eur": 324876.99,
+        "pl": 16368.48,
         "qty": null
       },
       {
         "isin": "US4592001014",
         "name": "INTL BUS. MACH.    DL-,20",
-        "mv_eur": 1759881.81,
-        "pl": 433526.93,
+        "mv_eur": 1753933.85,
+        "pl": 420288.0,
         "qty": null
       },
       {
         "isin": "US46266C1053",
         "name": "IQVIA HLDGS        DL-,01",
-        "mv_eur": 333176.34,
-        "pl": -4759.01,
+        "mv_eur": 327124.11,
+        "pl": -12668.87,
         "qty": null
       },
       {
         "isin": "US46284V1017",
         "name": "IRON MOUNTAIN (NEW)DL-,01",
-        "mv_eur": 1086524.66,
-        "pl": 115827.05,
+        "mv_eur": 1073332.35,
+        "pl": 97298.82,
         "qty": null
       },
       {
         "isin": "US4781601046",
         "name": "JOHNSON + JOHNSON    DL 1",
-        "mv_eur": 1086017.51,
-        "pl": 533031.16,
+        "mv_eur": 1088251.36,
+        "pl": 532225.24,
         "qty": null
       },
       {
         "isin": "US4943681035",
         "name": "KIMBERLY-CLARK    DL 1,25",
-        "mv_eur": 220049.57,
-        "pl": -61102.1,
+        "mv_eur": 229943.5,
+        "pl": -52753.66,
         "qty": null
       },
       {
         "isin": "US5007541064",
         "name": "KRAFT HEINZ CO.DL -,01",
-        "mv_eur": 147921.89,
-        "pl": -59540.56,
+        "mv_eur": 152319.73,
+        "pl": -56283.14,
         "qty": null
       },
       {
         "isin": "US5128073062",
         "name": "LAM RESEARCH CORP. NEW",
-        "mv_eur": 2429376.95,
-        "pl": 1896374.91,
+        "mv_eur": 2202930.22,
+        "pl": 1666998.26,
         "qty": null
       },
       {
         "isin": "US5184391044",
         "name": "ESTEE LAUDER COS A DL-,01",
-        "mv_eur": 82584.17,
-        "pl": -63552.3,
+        "mv_eur": 81610.46,
+        "pl": -65329.32,
         "qty": null
       },
       {
         "isin": "US5324571083",
         "name": "ELI LILLY",
-        "mv_eur": 728697.6,
-        "pl": 669868.1,
+        "mv_eur": 734956.89,
+        "pl": 675804.01,
         "qty": null
       },
       {
         "isin": "US5717481023",
         "name": "MARSH+MCLENNAN COS.INC.D1",
-        "mv_eur": 29181.16,
-        "pl": 16942.72,
+        "mv_eur": 29939.27,
+        "pl": 17633.55,
         "qty": null
       },
       {
         "isin": "US5719032022",
         "name": "MARRIOTT INTL A    DL-,01",
-        "mv_eur": 344977.49,
-        "pl": 224667.59,
+        "mv_eur": 347723.33,
+        "pl": 226752.09,
         "qty": null
       },
       {
         "isin": "US57636Q1040",
         "name": "MASTERCARD INC.A DL-,0001",
-        "mv_eur": 421051.28,
-        "pl": 103349.24,
+        "mv_eur": 429275.8,
+        "pl": 109827.35,
         "qty": null
       },
       {
         "isin": "US5801351017",
         "name": "MCDONALDS CORP.   DL-,01",
-        "mv_eur": 921042.56,
-        "pl": 288763.95,
+        "mv_eur": 929625.43,
+        "pl": 293871.18,
         "qty": null
       },
       {
         "isin": "US58933Y1055",
         "name": "MERCK CO.          DL-,01",
-        "mv_eur": 422133.51,
-        "pl": 112318.67,
+        "mv_eur": 417261.8,
+        "pl": 105743.91,
         "qty": null
       },
       {
         "isin": "US5926881054",
         "name": "METTLER-TOLEDO INTL",
-        "mv_eur": 279976.93,
-        "pl": 41440.32,
+        "mv_eur": 280919.08,
+        "pl": 41071.24,
         "qty": null
       },
       {
         "isin": "US5949181045",
         "name": "MICROSOFT    DL-,00000625",
-        "mv_eur": 4221713.28,
-        "pl": 2454342.91,
+        "mv_eur": 4204256.47,
+        "pl": 2427170.87,
         "qty": null
       },
       {
         "isin": "US6092071058",
         "name": "MONDELEZ INTL INC. A",
-        "mv_eur": 277270.68,
-        "pl": 62112.54,
+        "mv_eur": 282899.69,
+        "pl": 66558.82,
         "qty": null
       },
       {
         "isin": "US6200763075",
         "name": "MOTOROLA SOLUTIONS DL-,01",
-        "mv_eur": 234370.04,
-        "pl": 158021.29,
+        "mv_eur": 237333.39,
+        "pl": 160564.95,
         "qty": null
       },
       {
         "isin": "US64110D1046",
         "name": "NETAPP INC.",
-        "mv_eur": 322338.01,
-        "pl": -19573.09,
+        "mv_eur": 309775.08,
+        "pl": -34015.51,
         "qty": null
       },
       {
         "isin": "US64110L1061",
         "name": "NETFLIX INC.      DL-,001",
-        "mv_eur": 324029.1,
-        "pl": 181092.23,
+        "mv_eur": 315727.78,
+        "pl": 172005.18,
         "qty": null
       },
       {
         "isin": "US67066G1040",
         "name": "NVIDIA CORP.      DL-,001",
-        "mv_eur": 1485670.87,
-        "pl": 1036617.65,
+        "mv_eur": 1403500.84,
+        "pl": 951979.18,
         "qty": null
       },
       {
         "isin": "US68389X1054",
         "name": "ORACLE CORP.       DL-,01",
-        "mv_eur": 482182.97,
-        "pl": 60840.29,
+        "mv_eur": 454242.98,
+        "pl": 30584.18,
         "qty": null
       },
       {
         "isin": "US6937181088",
         "name": "PACCAR INC.          DL 1",
-        "mv_eur": 99733.92,
-        "pl": 42279.5,
+        "mv_eur": 99527.66,
+        "pl": 41757.42,
         "qty": null
       },
       {
         "isin": "US6974351057",
         "name": "PALO ALTO NETWKS DL-,0001",
-        "mv_eur": 270863.54,
-        "pl": -53663.95,
+        "mv_eur": 266806.84,
+        "pl": -59504.57,
         "qty": null
       },
       {
         "isin": "US70450Y1038",
         "name": "PAYPAL HDGS INC.DL-,0001",
-        "mv_eur": 84553.83,
-        "pl": -62276.67,
+        "mv_eur": 85791.52,
+        "pl": -61846.11,
         "qty": null
       },
       {
         "isin": "US7134481081",
         "name": "PEPSICO INC.     DL-,0166",
-        "mv_eur": 281910.43,
-        "pl": -14188.34,
+        "mv_eur": 291769.03,
+        "pl": -5957.4,
         "qty": null
       },
       {
         "isin": "US7170811035",
         "name": "PFIZER INC.        DL-,05",
-        "mv_eur": 476223.2,
-        "pl": -71430.7,
+        "mv_eur": 479339.27,
+        "pl": -71325.09,
         "qty": null
       },
       {
         "isin": "US7181721090",
         "name": "PHILIP MORRIS INTL INC.",
-        "mv_eur": 590699.72,
-        "pl": 238898.13,
+        "mv_eur": 592074.29,
+        "pl": 238338.85,
         "qty": null
       },
       {
         "isin": "US7427181091",
         "name": "PROCTER GAMBLE",
-        "mv_eur": 336925.47,
-        "pl": 127430.46,
+        "mv_eur": 348838.25,
+        "pl": 138191.64,
         "qty": null
       },
       {
         "isin": "US74743L1008",
         "name": "QNITY ELECTRONICS O.N.",
-        "mv_eur": 22727.56,
-        "pl": 139.9,
+        "mv_eur": 21412.68,
+        "pl": -1299.14,
         "qty": null
       },
       {
         "isin": "US7475251036",
         "name": "QUALCOMM INC.    DL-,0001",
-        "mv_eur": 114449.1,
-        "pl": 22020.85,
+        "mv_eur": 109478.28,
+        "pl": 16541.96,
         "qty": null
       },
       {
         "isin": "US79466L3024",
         "name": "SALESFORCE INC.   DL-,001",
-        "mv_eur": 225699.51,
-        "pl": 83140.65,
+        "mv_eur": 224082.17,
+        "pl": 80739.66,
         "qty": null
       },
       {
         "isin": "US7960508882",
         "name": "SAMS.EL.0,5SP.GDRS144A/95",
-        "mv_eur": 2174400.22,
-        "pl": 1448862.73,
+        "mv_eur": 2084323.1,
+        "pl": 1354797.33,
         "qty": null
       },
       {
         "isin": "US83443Q1031",
         "name": "SOLSTICE ADV.MTLS DL-,001",
-        "mv_eur": 5949.93,
-        "pl": 1887.56,
+        "mv_eur": 5839.61,
+        "pl": 1754.91,
         "qty": null
       },
       {
         "isin": "US8574771031",
         "name": "STATE STREET CORP.   DL 1",
-        "mv_eur": 1219109.84,
-        "pl": 531875.96,
+        "mv_eur": 1199911.88,
+        "pl": 508900.27,
         "qty": null
       },
       {
         "isin": "US8636671013",
         "name": "STRYKER CORP.      DL-,10",
-        "mv_eur": 43189.51,
-        "pl": 18101.64,
+        "mv_eur": 43194.77,
+        "pl": 17968.99,
         "qty": null
       },
       {
         "isin": "US88160R1014",
         "name": "TESLA INC. DL -,001",
-        "mv_eur": 382850.68,
-        "pl": 244846.36,
+        "mv_eur": 367801.96,
+        "pl": 229039.03,
         "qty": null
       },
       {
         "isin": "US8835561023",
         "name": "THERMO FISH.SCIENTIF.DL 1",
-        "mv_eur": 416510.15,
-        "pl": 144647.38,
+        "mv_eur": 413943.73,
+        "pl": 140586.53,
         "qty": null
       },
       {
         "isin": "US88579Y1010",
         "name": "3M CO.             DL-,01",
-        "mv_eur": 581111.21,
-        "pl": 127696.56,
+        "mv_eur": 569999.13,
+        "pl": 114092.06,
         "qty": null
       },
       {
         "isin": "US9113121068",
         "name": "UNITED PARCEL SE.B DL-01",
-        "mv_eur": 208760.98,
-        "pl": -44532.28,
+        "mv_eur": 212646.97,
+        "pl": -42038.64,
         "qty": null
       },
       {
         "isin": "US9252831030",
         "name": "VERSANT MEDIA GRP A O.N.",
-        "mv_eur": 3821.68,
-        "pl": -3820.81,
+        "mv_eur": 3986.49,
+        "pl": -3698.02,
         "qty": null
       },
       {
         "isin": "US92826C8394",
         "name": "VISA INC. CL. A DL -,0001",
-        "mv_eur": 939634.88,
-        "pl": 328820.7,
+        "mv_eur": 958624.42,
+        "pl": 344452.59,
         "qty": null
       },
       {
         "isin": "US98956P1021",
         "name": "ZIMMER BIOMET HLDGS DL-01",
-        "mv_eur": 72563.21,
-        "pl": -8297.0,
+        "mv_eur": 70764.02,
+        "pl": -10540.68,
         "qty": null
       }
     ],
@@ -2273,7 +2280,6 @@
     "hhi": 128.0,
     "top10_weight": 28.6,
     "win_rate": 78.5,
-    "run_date": "2026-11-17",
     "holdings": [
       {
         "isin": "AT000000ETS9",
@@ -6441,8 +6447,8 @@
         "value": 0.03
       }
     ],
-    "nav_per_share_prev": 202.04,
-    "nav_prev": 61836275.92,
+    "nav_per_share_prev": 199.62,
+    "nav_prev": 61088508.96,
     "price_history": [
       {
         "date": "2026-10-01",
@@ -6457,45 +6463,52 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-11-16",
-        "label": "16.11.2026",
-        "price": 202.04,
+        "date": "2026-11-17",
+        "label": "17.11.2026",
+        "price": 199.62,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-11-17",
-        "label": "17.11.2026",
+        "date": "2026-11-18",
+        "label": "18.11.2026",
         "price": 199.62,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AN8068571086",
         "name": "SLB LTD.           DL-,01",
-        "mv_eur": 63071.08,
-        "pl": 1022.7,
+        "mv_eur": 62383.86,
+        "pl": -5.6,
         "qty": null
       },
       {
         "isin": "AT000000STR1",
         "name": "STRABAG SE AKT. O.N.",
-        "mv_eur": 442200.0,
-        "pl": 286119.32,
+        "mv_eur": 437250.0,
+        "pl": 281169.32,
         "qty": null
       },
       {
         "isin": "AT00000FACC2",
         "name": "FACC AG AKT. O.N.",
-        "mv_eur": 211965.6,
-        "pl": 85790.59,
+        "mv_eur": 209479.2,
+        "pl": 83304.19,
         "qty": null
       },
       {
         "isin": "AT0000609607",
         "name": "PORR AG /STM",
-        "mv_eur": 113586.0,
-        "pl": 63666.99,
+        "mv_eur": 114274.4,
+        "pl": 64355.39,
         "qty": null
       },
       {
@@ -6508,8 +6521,8 @@
       {
         "isin": "AT0000730007",
         "name": "ANDRITZ AKT.O.N.",
-        "mv_eur": 225568.0,
-        "pl": 81950.78,
+        "mv_eur": 222110.0,
+        "pl": 78492.78,
         "qty": null
       },
       {
@@ -6522,428 +6535,421 @@
       {
         "isin": "AT0000746409",
         "name": "VERBUND KAT.A O.N.",
-        "mv_eur": 141685.05,
-        "pl": 21456.98,
+        "mv_eur": 138888.0,
+        "pl": 18659.93,
         "qty": null
       },
       {
         "isin": "AT0000758305",
         "name": "PALFINGER AKT.O.N.",
-        "mv_eur": 30634.2,
-        "pl": 5027.24,
+        "mv_eur": 30195.0,
+        "pl": 4588.04,
         "qty": null
       },
       {
         "isin": "AT0000815402",
         "name": "UBM DEVEL. STAMMAKT.O.N.",
-        "mv_eur": 47497.8,
-        "pl": -25436.74,
+        "mv_eur": 46077.6,
+        "pl": -26856.94,
         "qty": null
       },
       {
         "isin": "AT0000818802",
         "name": "DO + CO. AKT. O.N.",
-        "mv_eur": 76284.0,
-        "pl": 51115.97,
+        "mv_eur": 74654.0,
+        "pl": 49485.97,
         "qty": null
       },
       {
         "isin": "AT0000831706",
         "name": "WIENERBERGER AKT.O.N.",
-        "mv_eur": 18476.64,
-        "pl": -6671.39,
+        "mv_eur": 18284.88,
+        "pl": -6863.15,
         "qty": null
       },
       {
         "isin": "AT0000922554",
         "name": "ROSENBAUER INT. AKT.O.N.",
-        "mv_eur": 194985.6,
-        "pl": 65337.7,
+        "mv_eur": 178950.6,
+        "pl": 49302.7,
         "qty": null
       },
       {
         "isin": "AT0000937503",
         "name": "VOESTALPINE AG AKT. O.N.",
-        "mv_eur": 68191.2,
-        "pl": 15890.76,
+        "mv_eur": 64078.08,
+        "pl": 11777.64,
         "qty": null
       },
       {
         "isin": "BE0003739530",
         "name": "UCB S.A.",
-        "mv_eur": 333576.0,
-        "pl": 149654.95,
+        "mv_eur": 333463.0,
+        "pl": 149541.95,
         "qty": null
       },
       {
         "isin": "BE0974293251",
         "name": "ANHEUSER-BUSCH INBEV",
-        "mv_eur": 179316.0,
-        "pl": 42912.52,
+        "mv_eur": 180347.36,
+        "pl": 43943.88,
         "qty": null
       },
       {
         "isin": "BMG2004J1036",
         "name": "CARNIVAL CORP. LTD DL-,01",
-        "mv_eur": 243967.54,
-        "pl": 13078.38,
+        "mv_eur": 242716.75,
+        "pl": 10558.39,
         "qty": null
       },
       {
         "isin": "BMG611881019",
         "name": "LIBERTY GLOBAL LTD CL.A",
-        "mv_eur": 25574.84,
-        "pl": -2040.21,
+        "mv_eur": 25425.4,
+        "pl": -2341.45,
         "qty": null
       },
       {
         "isin": "CA11271J1075",
         "name": "BROOKFIELD CORP. CL.A",
-        "mv_eur": 209612.36,
-        "pl": 22772.24,
+        "mv_eur": 204514.27,
+        "pl": 17229.17,
         "qty": null
       },
       {
         "isin": "CA76131D1033",
         "name": "RESTAURANT BRANDS INTL",
-        "mv_eur": 39366.0,
-        "pl": 10082.45,
+        "mv_eur": 39170.26,
+        "pl": 9816.97,
         "qty": null
       },
       {
         "isin": "CA82509L1076",
         "name": "SHOPIFY A SUB.VTG",
-        "mv_eur": 217331.04,
-        "pl": 150823.02,
+        "mv_eur": 219950.04,
+        "pl": 153283.62,
         "qty": null
       },
       {
         "isin": "CH0010570767",
         "name": "LINDT SPRUENGLI PS  SF 10",
-        "mv_eur": 36782.85,
-        "pl": -4806.05,
+        "mv_eur": 37160.96,
+        "pl": -4439.2,
         "qty": null
       },
       {
         "isin": "CH0011075394",
         "name": "ZURICH INSUR.GR.NA.SF0,10",
-        "mv_eur": 340264.56,
-        "pl": 123101.24,
+        "mv_eur": 344435.93,
+        "pl": 127213.83,
         "qty": null
       },
       {
         "isin": "CH0012005267",
         "name": "NOVARTIS NAM.     SF 0,49",
-        "mv_eur": 357561.62,
-        "pl": 123115.32,
+        "mv_eur": 361762.07,
+        "pl": 127252.31,
         "qty": null
       },
       {
         "isin": "CH0012221716",
         "name": "ABB LTD. NA     SF 0,12",
-        "mv_eur": 146892.55,
-        "pl": 90719.29,
+        "mv_eur": 144428.5,
+        "pl": 88240.03,
         "qty": null
       },
       {
         "isin": "CH0012549785",
         "name": "SONOVA HLDG AG NA.SF 0,05",
-        "mv_eur": 26180.99,
-        "pl": -3719.24,
+        "mv_eur": 27205.46,
+        "pl": -2702.87,
         "qty": null
       },
       {
         "isin": "CH0014852781",
         "name": "SWISS LIFE HLDG NA SF0,10",
-        "mv_eur": 73556.18,
-        "pl": 39665.79,
+        "mv_eur": 74248.5,
+        "pl": 40348.93,
         "qty": null
       },
       {
         "isin": "CH0024638196",
         "name": "SCHINDLER HLDG PS  SF-,10",
-        "mv_eur": 39982.68,
-        "pl": 7042.01,
+        "mv_eur": 40149.42,
+        "pl": 7199.83,
         "qty": null
       },
       {
         "isin": "CH0025238863",
         "name": "KUEHNE + NAGEL INTL  SF 1",
-        "mv_eur": 122879.41,
-        "pl": 20786.02,
+        "mv_eur": 122079.37,
+        "pl": 19958.34,
         "qty": null
       },
       {
         "isin": "CH0030170408",
         "name": "GEBERIT AG NA DISP. SF-10",
-        "mv_eur": 32936.35,
-        "pl": -1647.78,
+        "mv_eur": 32337.83,
+        "pl": -2255.67,
         "qty": null
       },
       {
         "isin": "CH0126881561",
         "name": "SWISS RE AG NAM.  DL -,12",
-        "mv_eur": 53656.96,
-        "pl": 24675.18,
+        "mv_eur": 53971.52,
+        "pl": 24981.89,
         "qty": null
       },
       {
         "isin": "CH0198251305",
         "name": "COCA-COLA HBC  NA.SF 6,70",
-        "mv_eur": 50636.94,
-        "pl": 24277.87,
+        "mv_eur": 52427.22,
+        "pl": 26027.1,
         "qty": null
       },
       {
         "isin": "CH0210483332",
         "name": "CIE FIN.RICHEMONT   SF 1",
-        "mv_eur": 191061.16,
-        "pl": 51784.92,
+        "mv_eur": 188726.0,
+        "pl": 49412.06,
         "qty": null
       },
       {
         "isin": "CH0244767585",
         "name": "UBS GROUP AG      SF -,10",
-        "mv_eur": 100259.82,
-        "pl": 40777.43,
+        "mv_eur": 99499.04,
+        "pl": 40000.55,
         "qty": null
       },
       {
         "isin": "CH0418792922",
         "name": "SIKA AG  NAM.     SF 0,01",
-        "mv_eur": 30014.83,
-        "pl": -7230.55,
+        "mv_eur": 29465.54,
+        "pl": -7789.93,
         "qty": null
       },
       {
         "isin": "CH1499059983",
         "name": "ROCHE HOLDING PS SF -,001",
-        "mv_eur": 168091.58,
-        "pl": 54228.47,
+        "mv_eur": 169295.22,
+        "pl": 55401.29,
         "qty": null
       },
       {
         "isin": "DE0005089031",
         "name": "UTD.INTERNET AG NA",
-        "mv_eur": 57018.78,
-        "pl": -3413.2,
+        "mv_eur": 57571.02,
+        "pl": -2860.96,
         "qty": null
       },
       {
         "isin": "DE0005140008",
         "name": "DEUTSCHE BANK AG NA O.N.",
-        "mv_eur": 456436.5,
-        "pl": 298332.79,
+        "mv_eur": 450145.54,
+        "pl": 292041.83,
         "qty": null
       },
       {
         "isin": "DE0005158703",
         "name": "BECHTLE AG O.N.",
-        "mv_eur": 15922.94,
-        "pl": -10534.09,
+        "mv_eur": 14899.52,
+        "pl": -11557.51,
         "qty": null
       },
       {
         "isin": "DE0005190003",
         "name": "BAY.MOTOREN WERKE AG ST",
-        "mv_eur": 195898.68,
-        "pl": -85756.84,
+        "mv_eur": 195213.48,
+        "pl": -86442.04,
         "qty": null
       },
       {
         "isin": "DE0005200000",
         "name": "BEIERSDORF AG O.N.",
-        "mv_eur": 241645.92,
-        "pl": -8284.75,
+        "mv_eur": 239864.04,
+        "pl": -10066.63,
         "qty": null
       },
       {
         "isin": "DE0005439004",
         "name": "CONTINENTAL AG O.N.",
-        "mv_eur": 159670.7,
-        "pl": 46762.28,
+        "mv_eur": 155974.42,
+        "pl": 43066.0,
         "qty": null
       },
       {
         "isin": "DE0005470306",
         "name": "CTS EVENTIM KGAA",
-        "mv_eur": 97200.0,
-        "pl": -28497.55,
+        "mv_eur": 98334.0,
+        "pl": -27363.55,
         "qty": null
       },
       {
         "isin": "DE0005552004",
         "name": "DHL AG",
-        "mv_eur": 297796.26,
-        "pl": 121741.31,
+        "mv_eur": 300059.0,
+        "pl": 124004.05,
         "qty": null
       },
       {
         "isin": "DE0005557508",
         "name": "DT.TELEKOM AG NA",
-        "mv_eur": 1051146.72,
-        "pl": 289490.95,
+        "mv_eur": 1070172.0,
+        "pl": 308516.23,
         "qty": null
       },
       {
         "isin": "DE0005773303",
         "name": "FRAPORT AG FFM.AIRPORT",
-        "mv_eur": 39690.45,
-        "pl": 11139.13,
+        "mv_eur": 40066.8,
+        "pl": 11515.48,
         "qty": null
       },
       {
         "isin": "DE0005785802",
         "name": "FRESEN.MED.CARE AG INH ON",
-        "mv_eur": 55542.24,
-        "pl": -7898.78,
+        "mv_eur": 55949.4,
+        "pl": -7491.62,
         "qty": null
       },
       {
         "isin": "DE0005810055",
         "name": "DEUTSCHE BOERSE NA O.N.",
-        "mv_eur": 392400.0,
-        "pl": 212284.81,
+        "mv_eur": 395400.0,
+        "pl": 215284.81,
         "qty": null
       },
       {
         "isin": "DE0006048432",
         "name": "HENKEL AG+CO.KGAA VZO",
-        "mv_eur": 355552.08,
-        "pl": 30582.02,
-        "qty": null
-      },
-      {
-        "isin": "DE0006062144",
-        "name": "COVESTRO AG  O.N.",
-        "mv_eur": 32568.2,
-        "pl": 2003.71,
+        "mv_eur": 361483.44,
+        "pl": 36513.38,
         "qty": null
       },
       {
         "isin": "DE0006070006",
         "name": "HOCHTIEF AG",
-        "mv_eur": 138501.2,
-        "pl": 112574.16,
+        "mv_eur": 134591.6,
+        "pl": 108664.56,
         "qty": null
       },
       {
         "isin": "DE0006231004",
         "name": "INFINEON TECH.AG NA O.N.",
-        "mv_eur": 658045.08,
-        "pl": 226025.3,
+        "mv_eur": 621802.72,
+        "pl": 189782.94,
         "qty": null
       },
       {
         "isin": "DE0006452907",
         "name": "NEMETSCHEK SE O.N.",
-        "mv_eur": 99508.6,
-        "pl": -27786.77,
+        "mv_eur": 98739.6,
+        "pl": -28555.77,
         "qty": null
       },
       {
         "isin": "DE0006599905",
         "name": "MERCK KGAA O.N.",
-        "mv_eur": 592896.3,
-        "pl": -27596.72,
+        "mv_eur": 599099.4,
+        "pl": -21393.62,
         "qty": null
       },
       {
         "isin": "DE0006602006",
         "name": "GEA GROUP AG",
-        "mv_eur": 51450.0,
-        "pl": 22310.04,
+        "mv_eur": 51817.5,
+        "pl": 22677.54,
         "qty": null
       },
       {
         "isin": "DE0006766504",
         "name": "AURUBIS AG",
-        "mv_eur": 273644.4,
-        "pl": 149934.03,
+        "mv_eur": 265624.8,
+        "pl": 141914.43,
         "qty": null
       },
       {
         "isin": "DE0006969603",
         "name": "PUMA SE",
-        "mv_eur": 23823.8,
-        "pl": -31762.9,
+        "mv_eur": 23605.4,
+        "pl": -31981.3,
         "qty": null
       },
       {
         "isin": "DE0007030009",
         "name": "RHEINMETALL AG",
-        "mv_eur": 106618.8,
-        "pl": 95839.36,
+        "mv_eur": 106218.6,
+        "pl": 95439.16,
         "qty": null
       },
       {
         "isin": "DE0007100000",
         "name": "MERCEDES-BENZ GRP NA O.N.",
-        "mv_eur": 143978.91,
-        "pl": -59244.28,
+        "mv_eur": 143023.65,
+        "pl": -60199.54,
         "qty": null
       },
       {
         "isin": "DE0007164600",
         "name": "SAP SE O.N.",
-        "mv_eur": 1502303.4,
-        "pl": 671660.91,
+        "mv_eur": 1508311.2,
+        "pl": 677668.71,
         "qty": null
       },
       {
         "isin": "DE0007236101",
         "name": "SIEMENS AG  NA O.N.",
-        "mv_eur": 908200.8,
-        "pl": 598574.33,
+        "mv_eur": 878701.2,
+        "pl": 569074.73,
         "qty": null
       },
       {
         "isin": "DE0007493991",
         "name": "STROEER SE + CO. KGAA",
-        "mv_eur": 91797.36,
-        "pl": -41993.97,
+        "mv_eur": 90722.34,
+        "pl": -43068.99,
         "qty": null
       },
       {
         "isin": "DE0007500001",
         "name": "THYSSENKRUPP AG O.N.",
-        "mv_eur": 94830.9,
-        "pl": 55086.68,
+        "mv_eur": 90030.3,
+        "pl": 50286.08,
         "qty": null
       },
       {
         "isin": "DE0008232125",
         "name": "LUFTHANSA AG VNA O.N.",
-        "mv_eur": 54190.08,
-        "pl": -5714.65,
+        "mv_eur": 54829.06,
+        "pl": -5075.67,
         "qty": null
       },
       {
         "isin": "DE0008402215",
         "name": "HANNOVER RUECK SE NA O.N.",
-        "mv_eur": 108332.0,
-        "pl": 54418.09,
+        "mv_eur": 109865.0,
+        "pl": 55951.09,
         "qty": null
       },
       {
         "isin": "DE0008404005",
         "name": "ALLIANZ SE NA O.N.",
-        "mv_eur": 2342159.2,
-        "pl": 1231426.58,
+        "mv_eur": 2356041.6,
+        "pl": 1245308.98,
         "qty": null
       },
       {
         "isin": "DE0008430026",
         "name": "MUENCH.RUECKVERS. NA O.N.",
-        "mv_eur": 1019877.8,
-        "pl": 502266.81,
+        "mv_eur": 1029975.6,
+        "pl": 512364.61,
         "qty": null
       },
       {
         "isin": "DE000A0D9PT0",
         "name": "MTU AERO ENGINES NA O.N.",
-        "mv_eur": 126162.2,
-        "pl": 35943.79,
+        "mv_eur": 125315.0,
+        "pl": 35096.59,
         "qty": null
       },
       {
@@ -6956,43 +6962,43 @@
       {
         "isin": "DE000A12DM80",
         "name": "SCOUT24 SE NA O.N.",
-        "mv_eur": 37280.35,
-        "pl": 10068.61,
+        "mv_eur": 37157.65,
+        "pl": 9945.91,
         "qty": null
       },
       {
         "isin": "DE000A13SX22",
         "name": "HELLA GMBH+CO. KGAA O.N.",
-        "mv_eur": 101958.6,
-        "pl": -20576.07,
+        "mv_eur": 103517.6,
+        "pl": -19017.07,
         "qty": null
       },
       {
         "isin": "DE000A1DAHH0",
         "name": "BRENNTAG SE NA O.N.",
-        "mv_eur": 89893.6,
-        "pl": -18527.95,
+        "mv_eur": 90989.1,
+        "pl": -17432.45,
         "qty": null
       },
       {
         "isin": "DE000A1EWWW0",
         "name": "ADIDAS AG NA O.N.",
-        "mv_eur": 218887.15,
-        "pl": -26870.9,
+        "mv_eur": 218949.0,
+        "pl": -26809.05,
         "qty": null
       },
       {
         "isin": "DE000A1J5RX9",
         "name": "TELEFONICA DTLD HLDG NA",
-        "mv_eur": 28947.6,
-        "pl": -20171.05,
+        "mv_eur": 28545.55,
+        "pl": -20573.1,
         "qty": null
       },
       {
         "isin": "DE000A1ML7J1",
         "name": "VONOVIA SE NA O.N.",
-        "mv_eur": 338992.2,
-        "pl": -235529.61,
+        "mv_eur": 336888.53,
+        "pl": -237633.28,
         "qty": null
       },
       {
@@ -7005,71 +7011,71 @@
       {
         "isin": "DE000AUM0V10",
         "name": "AUMOVIO SE NA O.N.",
-        "mv_eur": 34722.5,
-        "pl": -7927.86,
+        "mv_eur": 33432.5,
+        "pl": -9217.86,
         "qty": null
       },
       {
         "isin": "DE000BASF111",
         "name": "BASF SE NA O.N.",
-        "mv_eur": 159865.2,
-        "pl": 17253.12,
+        "mv_eur": 157780.64,
+        "pl": 15168.56,
         "qty": null
       },
       {
         "isin": "DE000BAY0017",
         "name": "BAYER AG NA O.N.",
-        "mv_eur": 333421.2,
-        "pl": 39411.88,
+        "mv_eur": 336015.0,
+        "pl": 42005.68,
         "qty": null
       },
       {
         "isin": "DE000CBK1001",
         "name": "COMMERZBANK AG",
-        "mv_eur": 487221.28,
-        "pl": 395567.69,
+        "mv_eur": 484169.28,
+        "pl": 392515.69,
         "qty": null
       },
       {
         "isin": "DE000DTR0CK8",
         "name": "DAIMLER TRUCK HLDG NA ON",
-        "mv_eur": 183650.04,
-        "pl": 32831.81,
+        "mv_eur": 185631.72,
+        "pl": 34813.49,
         "qty": null
       },
       {
         "isin": "DE000ENAG999",
         "name": "E.ON SE NA O.N.",
-        "mv_eur": 463659.8,
-        "pl": 214287.69,
+        "mv_eur": 466202.06,
+        "pl": 216829.95,
         "qty": null
       },
       {
         "isin": "DE000ENER6Y0",
         "name": "SIEMENS ENERGY AG NA O.N.",
-        "mv_eur": 394512.04,
-        "pl": 340524.54,
+        "mv_eur": 383973.46,
+        "pl": 329985.96,
         "qty": null
       },
       {
         "isin": "DE000EVNK013",
         "name": "EVONIK INDUSTRIES NA O.N.",
-        "mv_eur": 160146.0,
-        "pl": 10756.81,
+        "mv_eur": 161671.2,
+        "pl": 12282.01,
         "qty": null
       },
       {
         "isin": "DE000FRE5EN2",
         "name": "FRESENIUS SE+CO.KGAA O.N.",
-        "mv_eur": 317821.56,
-        "pl": 83673.64,
+        "mv_eur": 321221.04,
+        "pl": 87073.12,
         "qty": null
       },
       {
         "isin": "DE000KBX1006",
         "name": "KNORR-BREMSE AG  INH O.N.",
-        "mv_eur": 71018.85,
-        "pl": 20182.23,
+        "mv_eur": 70660.35,
+        "pl": 19823.73,
         "qty": null
       },
       {
@@ -7082,659 +7088,659 @@
       {
         "isin": "DE000LEG1110",
         "name": "LEG IMMOBILIEN SE NA O.N.",
-        "mv_eur": 44401.5,
-        "pl": -5220.25,
+        "mv_eur": 43881.24,
+        "pl": -5740.51,
         "qty": null
       },
       {
         "isin": "DE000SHL1006",
         "name": "SIEMENS HEALTH.AG NA O.N.",
-        "mv_eur": 176689.2,
-        "pl": -37877.18,
+        "mv_eur": 177496.0,
+        "pl": -37070.38,
         "qty": null
       },
       {
         "isin": "DE000SYM9999",
         "name": "SYMRISE AG INH. O.N.",
-        "mv_eur": 151032.52,
-        "pl": -36544.06,
+        "mv_eur": 149599.16,
+        "pl": -37977.42,
         "qty": null
       },
       {
         "isin": "DE000TKCC1S8",
         "name": "TK ACCELIS GROUP INH.",
-        "mv_eur": 9982.2,
-        "pl": 5873.31,
+        "mv_eur": 9685.02,
+        "pl": 5576.13,
         "qty": null
       },
       {
         "isin": "DE000TKMS001",
         "name": "TKMS AG + CO. KGAA O.N.",
-        "mv_eur": 29184.6,
-        "pl": 6956.55,
+        "mv_eur": 28956.0,
+        "pl": 6727.95,
         "qty": null
       },
       {
         "isin": "DE000WCH8881",
         "name": "WACKER CHEMIE        O.N.",
-        "mv_eur": 107370.05,
-        "pl": -7193.02,
+        "mv_eur": 105017.45,
+        "pl": -9545.62,
         "qty": null
       },
       {
         "isin": "DE000ZAL1111",
         "name": "ZALANDO SE",
-        "mv_eur": 115149.16,
-        "pl": -960.13,
+        "mv_eur": 113409.38,
+        "pl": -2699.91,
         "qty": null
       },
       {
         "isin": "DK0010181759",
         "name": "CARLSBERG A/S NAM. B DK20",
-        "mv_eur": 112673.92,
-        "pl": 13922.81,
+        "mv_eur": 113010.33,
+        "pl": 14255.26,
         "qty": null
       },
       {
         "isin": "DK0010244508",
         "name": "A.P.MOELL.-M.NAM B DK1000",
-        "mv_eur": 115674.43,
-        "pl": 43195.23,
+        "mv_eur": 116484.4,
+        "pl": 44002.29,
         "qty": null
       },
       {
         "isin": "DK0062498333",
         "name": "NOVO-NORDISK AS B  DK 0,1",
-        "mv_eur": 30542.37,
-        "pl": 5496.47,
+        "mv_eur": 31595.87,
+        "pl": 6548.97,
         "qty": null
       },
       {
         "isin": "ES0113900J37",
         "name": "BCO SANTANDER N.EO0,5",
-        "mv_eur": 544935.19,
-        "pl": 414535.26,
+        "mv_eur": 541984.81,
+        "pl": 411584.88,
         "qty": null
       },
       {
         "isin": "ES0148396007",
         "name": "INDITEX INH.      EO 0,03",
-        "mv_eur": 148722.56,
-        "pl": 14992.21,
+        "mv_eur": 150267.6,
+        "pl": 16537.25,
         "qty": null
       },
       {
         "isin": "ES0178430E18",
         "name": "TELEFONICA INH.      EO 1",
-        "mv_eur": 90483.48,
-        "pl": -10641.84,
+        "mv_eur": 90899.5,
+        "pl": -10225.82,
         "qty": null
       },
       {
         "isin": "FI0009000681",
         "name": "NOKIA OYJ EO-,06",
-        "mv_eur": 244866.64,
-        "pl": 118553.46,
+        "mv_eur": 231145.39,
+        "pl": 104832.21,
         "qty": null
       },
       {
         "isin": "FI0009005961",
         "name": "STORA ENSO OYJ R EO 1,70",
-        "mv_eur": 60458.24,
-        "pl": -20081.29,
+        "mv_eur": 59856.41,
+        "pl": -20683.12,
         "qty": null
       },
       {
         "isin": "FI4000603337",
         "name": "UPM KYMMENE       EO 1",
-        "mv_eur": 22230.72,
-        "pl": -7865.82,
+        "mv_eur": 22270.56,
+        "pl": -7825.98,
         "qty": null
       },
       {
         "isin": "FI4000603345",
         "name": "WISA GROUP OYJ O.N.",
-        "mv_eur": 518.42,
-        "pl": -156.69,
+        "mv_eur": 539.83,
+        "pl": -135.28,
         "qty": null
       },
       {
         "isin": "FR0000052292",
         "name": "HERMES INTERNATIONAL O.N.",
-        "mv_eur": 40575.0,
-        "pl": 15428.99,
+        "mv_eur": 40485.0,
+        "pl": 15338.99,
         "qty": null
       },
       {
         "isin": "FR0000120073",
         "name": "AIR LIQUIDE INH. EO 5,50",
-        "mv_eur": 63637.2,
-        "pl": 30436.66,
+        "mv_eur": 63769.2,
+        "pl": 30568.66,
         "qty": null
       },
       {
         "isin": "FR0000120271",
         "name": "TOTALENERGIES SE  EO 2,50",
-        "mv_eur": 630607.23,
-        "pl": 207382.65,
+        "mv_eur": 641009.16,
+        "pl": 217784.58,
         "qty": null
       },
       {
         "isin": "FR0000120321",
         "name": "L OREAL    INH.    EO 0,2",
-        "mv_eur": 202423.05,
-        "pl": 28764.05,
+        "mv_eur": 203917.95,
+        "pl": 30258.95,
         "qty": null
       },
       {
         "isin": "FR0000120578",
         "name": "SANOFI SA INHABER    EO 2",
-        "mv_eur": 127834.94,
-        "pl": -3628.68,
+        "mv_eur": 128328.96,
+        "pl": -3134.66,
         "qty": null
       },
       {
         "isin": "FR0000120628",
         "name": "AXA S.A. INH.     EO 2,29",
-        "mv_eur": 601534.12,
-        "pl": 295755.81,
+        "mv_eur": 603987.78,
+        "pl": 298209.47,
         "qty": null
       },
       {
         "isin": "FR0000120644",
         "name": "DANONE S.A. EO -,25",
-        "mv_eur": 36172.5,
-        "pl": 8475.36,
+        "mv_eur": 37096.5,
+        "pl": 9399.36,
         "qty": null
       },
       {
         "isin": "FR0000121014",
         "name": "LVMH               EO 0,3",
-        "mv_eur": 21853.8,
-        "pl": -6880.41,
+        "mv_eur": 21816.0,
+        "pl": -6918.21,
         "qty": null
       },
       {
         "isin": "FR0000121220",
         "name": "SODEXO S.A. INH.     EO 4",
-        "mv_eur": 18681.25,
-        "pl": 521.57,
+        "mv_eur": 18772.75,
+        "pl": 613.07,
         "qty": null
       },
       {
         "isin": "FR0000121329",
         "name": "THALES S.A.          EO 3",
-        "mv_eur": 68902.2,
-        "pl": 41891.41,
+        "mv_eur": 69538.5,
+        "pl": 42527.71,
         "qty": null
       },
       {
         "isin": "FR0000121667",
         "name": "ESSILORLUXO. INH. EO -,18",
-        "mv_eur": 28604.1,
-        "pl": 3413.1,
+        "mv_eur": 29335.5,
+        "pl": 4144.5,
         "qty": null
       },
       {
         "isin": "FR0000121972",
         "name": "SCHNEIDER ELEC. INH. EO 4",
-        "mv_eur": 98899.2,
-        "pl": 37118.62,
+        "mv_eur": 97586.2,
+        "pl": 35805.62,
         "qty": null
       },
       {
         "isin": "FR0000124141",
         "name": "VEOLIA ENVIRONNE. EO 5",
-        "mv_eur": 128657.92,
-        "pl": 20562.81,
+        "mv_eur": 129288.96,
+        "pl": 21193.85,
         "qty": null
       },
       {
         "isin": "FR0000125007",
         "name": "ST GOBAIN            EO 4",
-        "mv_eur": 54268.5,
-        "pl": 16217.69,
+        "mv_eur": 53639.3,
+        "pl": 15588.49,
         "qty": null
       },
       {
         "isin": "FR0000125486",
         "name": "VINCI S.A. INH.   EO 2,50",
-        "mv_eur": 28569.6,
-        "pl": 6947.58,
+        "mv_eur": 28582.0,
+        "pl": 6959.98,
         "qty": null
       },
       {
         "isin": "FR0000130577",
         "name": "PUBLICIS GRP INH. EO 0,40",
-        "mv_eur": 163586.0,
-        "pl": 13803.2,
+        "mv_eur": 162497.5,
+        "pl": 12714.7,
         "qty": null
       },
       {
         "isin": "FR0000130809",
         "name": "STE GENERALE INH. EO 1,25",
-        "mv_eur": 121086.32,
-        "pl": 80964.59,
+        "mv_eur": 119703.4,
+        "pl": 79581.67,
         "qty": null
       },
       {
         "isin": "FR0000131104",
         "name": "BNP PARIBAS INH.     EO 2",
-        "mv_eur": 215662.72,
-        "pl": 80275.26,
+        "mv_eur": 215121.76,
+        "pl": 79734.3,
         "qty": null
       },
       {
         "isin": "FR0004125920",
         "name": "AMUNDI S.A.      EO 2,50",
-        "mv_eur": 251747.1,
-        "pl": 74935.17,
+        "mv_eur": 247868.1,
+        "pl": 71056.17,
         "qty": null
       },
       {
         "isin": "FR0010208488",
         "name": "ENGIE S.A. INH.      EO 1",
-        "mv_eur": 116926.14,
-        "pl": 52652.9,
+        "mv_eur": 116600.57,
+        "pl": 52327.33,
         "qty": null
       },
       {
         "isin": "FR001400AJ45",
         "name": "MICHELIN  NOM.    EO -,50",
-        "mv_eur": 31734.4,
-        "pl": 1951.81,
+        "mv_eur": 31236.2,
+        "pl": 1453.61,
         "qty": null
       },
       {
         "isin": "GB0002374006",
         "name": "DIAGEO PLC LS-,28935185",
-        "mv_eur": 92566.54,
-        "pl": -41835.04,
+        "mv_eur": 94711.84,
+        "pl": -39899.06,
         "qty": null
       },
       {
         "isin": "GB0004544929",
         "name": "IMPERIAL BRANDS PLC LS-10",
-        "mv_eur": 48081.65,
-        "pl": 22137.92,
+        "mv_eur": 49147.07,
+        "pl": 23162.94,
         "qty": null
       },
       {
         "isin": "GB0005405286",
         "name": "HSBC HLDGS PLC     DL-,50",
-        "mv_eur": 237500.67,
-        "pl": 132992.11,
+        "mv_eur": 236640.81,
+        "pl": 131969.49,
         "qty": null
       },
       {
         "isin": "GB0006731235",
         "name": "ASSOC. BR. FOODS LS-,0568",
-        "mv_eur": 82015.65,
-        "pl": -19955.39,
+        "mv_eur": 84600.31,
+        "pl": -17529.55,
         "qty": null
       },
       {
         "isin": "GB0007980591",
         "name": "BP PLC             DL-,25",
-        "mv_eur": 170445.9,
-        "pl": 63174.22,
+        "mv_eur": 171795.24,
+        "pl": 64356.49,
         "qty": null
       },
       {
         "isin": "GB0009895292",
         "name": "ASTRAZENECA PLC    DL-,25",
-        "mv_eur": 60818.78,
-        "pl": 31494.27,
+        "mv_eur": 61368.28,
+        "pl": 31998.09,
         "qty": null
       },
       {
         "isin": "GB0031348658",
         "name": "BARCLAYS PLC      LS 0,25",
-        "mv_eur": 269876.43,
-        "pl": 132155.17,
+        "mv_eur": 267669.47,
+        "pl": 129733.72,
         "qty": null
       },
       {
         "isin": "GB00BD6K4575",
         "name": "COMPASS GROUP    LS-,1105",
-        "mv_eur": 140483.22,
-        "pl": 27336.76,
+        "mv_eur": 141761.15,
+        "pl": 27992.72,
         "qty": null
       },
       {
         "isin": "GB00BDCPN049",
         "name": "COCA-COLA EU.PA.  EO -,01",
-        "mv_eur": 70370.38,
-        "pl": 34660.17,
+        "mv_eur": 72124.79,
+        "pl": 36218.28,
         "qty": null
       },
       {
         "isin": "GB00BH4HKS39",
         "name": "VODAFONE GROUP PLC",
-        "mv_eur": 283142.67,
-        "pl": 84181.09,
+        "mv_eur": 282841.77,
+        "pl": 83880.19,
         "qty": null
       },
       {
         "isin": "GB00BN7SWP63",
         "name": "GSK PLC  LS-,3125",
-        "mv_eur": 109739.55,
-        "pl": 31620.61,
+        "mv_eur": 111558.25,
+        "pl": 33317.64,
         "qty": null
       },
       {
         "isin": "GB00BP6MXD84",
         "name": "SHELL PLC           EO-07",
-        "mv_eur": 878208.6,
-        "pl": 348494.3,
+        "mv_eur": 887563.95,
+        "pl": 357849.65,
         "qty": null
       },
       {
         "isin": "GB00BSZBP530",
         "name": "RECKITT BENCK.LS-,1041666",
-        "mv_eur": 167124.64,
-        "pl": -1175.82,
+        "mv_eur": 170633.4,
+        "pl": 2070.82,
         "qty": null
       },
       {
         "isin": "GB00BVZK7T90",
         "name": "UNILEVER PLC     LS -,035",
-        "mv_eur": 96167.5,
-        "pl": 15725.21,
+        "mv_eur": 98556.25,
+        "pl": 18113.96,
         "qty": null
       },
       {
         "isin": "IE0001827041",
         "name": "CRH PLC            EO-,32",
-        "mv_eur": 69083.16,
-        "pl": 39450.97,
+        "mv_eur": 68316.54,
+        "pl": 38521.46,
         "qty": null
       },
       {
         "isin": "IE000S9YS762",
         "name": "LINDE PLC        EO -,001",
-        "mv_eur": 105849.6,
-        "pl": 77677.98,
+        "mv_eur": 106604.4,
+        "pl": 78432.78,
         "qty": null
       },
       {
         "isin": "IE00B4BNMY34",
         "name": "ACCENTURE A   DL-,0000225",
-        "mv_eur": 106380.92,
-        "pl": -19996.86,
+        "mv_eur": 106002.82,
+        "pl": -21069.66,
         "qty": null
       },
       {
         "isin": "IE00B4Q5ZN47",
         "name": "JAZZ PHARMACEUT. DL-,0001",
-        "mv_eur": 313426.93,
-        "pl": 165986.34,
+        "mv_eur": 314363.17,
+        "pl": 166112.1,
         "qty": null
       },
       {
         "isin": "IE00B8KQN827",
         "name": "EATON CORP.PLC    DL -,01",
-        "mv_eur": 79163.02,
-        "pl": 48410.74,
+        "mv_eur": 74685.37,
+        "pl": 43764.05,
         "qty": null
       },
       {
         "isin": "IE00BKVD2N49",
         "name": "SEAGATE TEC.HLD.DL-,00001",
-        "mv_eur": 173889.14,
-        "pl": 104642.45,
+        "mv_eur": 160046.34,
+        "pl": 90419.0,
         "qty": null
       },
       {
         "isin": "IE00BLP1HW54",
         "name": "AON PLC A         DL -,01",
-        "mv_eur": 43686.71,
-        "pl": 16113.58,
+        "mv_eur": 45204.8,
+        "pl": 17480.1,
         "qty": null
       },
       {
         "isin": "IE00BTN1Y115",
         "name": "MEDTRONIC PLC    DL-,0001",
-        "mv_eur": 27559.73,
-        "pl": -4533.5,
+        "mv_eur": 28229.84,
+        "pl": -4039.81,
         "qty": null
       },
       {
         "isin": "IE00BY7QL619",
         "name": "JOHNSON CONTR.INTL.DL-,01",
-        "mv_eur": 400090.63,
-        "pl": 207468.45,
+        "mv_eur": 386288.64,
+        "pl": 192607.61,
         "qty": null
       },
       {
         "isin": "IL0006290147",
         "name": "TEVA PHARMACEUT.   IS 0,1",
-        "mv_eur": 236305.2,
-        "pl": 137617.93,
+        "mv_eur": 231725.3,
+        "pl": 132495.55,
         "qty": null
       },
       {
         "isin": "IT0000062072",
         "name": "GENERALI S.P.A.",
-        "mv_eur": 450499.2,
-        "pl": 279498.66,
+        "mv_eur": 446892.0,
+        "pl": 275891.46,
         "qty": null
       },
       {
         "isin": "IT0003128367",
         "name": "ENEL S.P.A.          EO 1",
-        "mv_eur": 270763.93,
-        "pl": 85445.48,
+        "mv_eur": 266126.16,
+        "pl": 80807.71,
         "qty": null
       },
       {
         "isin": "IT0003132476",
         "name": "ENI S.P.A.",
-        "mv_eur": 167847.3,
-        "pl": 87094.11,
+        "mv_eur": 170318.55,
+        "pl": 89565.36,
         "qty": null
       },
       {
         "isin": "IT0005239360",
         "name": "UNICREDIT",
-        "mv_eur": 295513.92,
-        "pl": 252200.85,
+        "mv_eur": 292321.64,
+        "pl": 249008.57,
         "qty": null
       },
       {
         "isin": "JP3122400009",
         "name": "ADVANTEST CORP.",
-        "mv_eur": 271122.3,
-        "pl": 170817.2,
+        "mv_eur": 247841.68,
+        "pl": 146779.79,
         "qty": null
       },
       {
         "isin": "JP3242800005",
         "name": "CANON INC.",
-        "mv_eur": 50657.2,
-        "pl": 32163.51,
+        "mv_eur": 51881.0,
+        "pl": 33247.77,
         "qty": null
       },
       {
         "isin": "JP3249600002",
         "name": "KYOCERA CORP.",
-        "mv_eur": 34110.69,
-        "pl": 16869.69,
+        "mv_eur": 32506.16,
+        "pl": 15135.08,
         "qty": null
       },
       {
         "isin": "JP3435000009",
         "name": "SONY GROUP CORP.",
-        "mv_eur": 140802.19,
-        "pl": 76792.54,
+        "mv_eur": 143156.92,
+        "pl": 78664.32,
         "qty": null
       },
       {
         "isin": "JP3435350008",
         "name": "SONY FINANCIAL GROUP INC.",
-        "mv_eur": 4900.61,
-        "pl": 2271.36,
+        "mv_eur": 4848.12,
+        "pl": 2199.03,
         "qty": null
       },
       {
         "isin": "JP3436100006",
         "name": "SOFTBANK GROUP CORP.",
-        "mv_eur": 92946.53,
-        "pl": 28158.23,
+        "mv_eur": 85580.77,
+        "pl": 20303.65,
         "qty": null
       },
       {
         "isin": "JP3463000004",
         "name": "TAKEDA PHARM.CO.LTD.",
-        "mv_eur": 159484.83,
-        "pl": 61157.8,
+        "mv_eur": 163325.06,
+        "pl": 64256.16,
         "qty": null
       },
       {
         "isin": "JP3481800005",
         "name": "DAIKIN IND. LTD",
-        "mv_eur": 20229.8,
-        "pl": 1816.33,
+        "mv_eur": 20693.71,
+        "pl": 2141.31,
         "qty": null
       },
       {
         "isin": "JP3633400001",
         "name": "TOYOTA MOTOR CORP.",
-        "mv_eur": 127111.47,
-        "pl": 61969.16,
+        "mv_eur": 128822.1,
+        "pl": 63188.3,
         "qty": null
       },
       {
         "isin": "JP3735400008",
         "name": "NTT INC.",
-        "mv_eur": 116974.22,
-        "pl": -6182.52,
+        "mv_eur": 118630.76,
+        "pl": -5455.18,
         "qty": null
       },
       {
         "isin": "JP3788600009",
         "name": "HITACHI LTD",
-        "mv_eur": 132298.71,
-        "pl": 40835.33,
+        "mv_eur": 131022.2,
+        "pl": 38868.74,
         "qty": null
       },
       {
         "isin": "JP3814000000",
         "name": "FUJIFILM HOLDINGS CORP.",
-        "mv_eur": 24927.84,
-        "pl": 6434.04,
+        "mv_eur": 25360.44,
+        "pl": 6727.11,
         "qty": null
       },
       {
         "isin": "JP3818000006",
         "name": "FUJITSU LTD",
-        "mv_eur": 100308.92,
-        "pl": 48789.77,
+        "mv_eur": 100325.55,
+        "pl": 48417.69,
         "qty": null
       },
       {
         "isin": "JP3830800003",
         "name": "BRIDGESTONE CORP.",
-        "mv_eur": 36318.45,
-        "pl": 17706.03,
+        "mv_eur": 37405.83,
+        "pl": 18652.98,
         "qty": null
       },
       {
         "isin": "JP3854600008",
         "name": "HONDA MOTOR",
-        "mv_eur": 30404.37,
-        "pl": 11780.42,
+        "mv_eur": 31039.62,
+        "pl": 12275.15,
         "qty": null
       },
       {
         "isin": "JP3900000005",
         "name": "MITSUBISHI HEAVY",
-        "mv_eur": 190954.57,
-        "pl": 172681.31,
+        "mv_eur": 176845.13,
+        "pl": 158434.0,
         "qty": null
       },
       {
         "isin": "NL0000009165",
         "name": "HEINEKEN          EO 1,60",
-        "mv_eur": 92625.6,
-        "pl": -3274.02,
+        "mv_eur": 93928.32,
+        "pl": -1971.3,
         "qty": null
       },
       {
         "isin": "NL0000235190",
         "name": "AIRBUS SE",
-        "mv_eur": 237253.7,
-        "pl": 107357.4,
+        "mv_eur": 232583.8,
+        "pl": 102687.5,
         "qty": null
       },
       {
         "isin": "NL0000379121",
         "name": "RANDSTAD NV       EO -,10",
-        "mv_eur": 52569.44,
-        "pl": -16736.14,
+        "mv_eur": 51744.0,
+        "pl": -17561.58,
         "qty": null
       },
       {
         "isin": "NL0009538784",
         "name": "NXP SEMICONDUCTORS EO-,20",
-        "mv_eur": 32606.65,
-        "pl": 6101.67,
+        "mv_eur": 31179.04,
+        "pl": 4528.36,
         "qty": null
       },
       {
         "isin": "NL0010545661",
         "name": "CNH INDUSTRIAL    EO -,01",
-        "mv_eur": 88683.89,
-        "pl": 12834.24,
+        "mv_eur": 85372.11,
+        "pl": 9105.51,
         "qty": null
       },
       {
         "isin": "NL0011585146",
         "name": "FERRARI N.V.",
-        "mv_eur": 52440.6,
-        "pl": 27263.47,
+        "mv_eur": 52312.8,
+        "pl": 27135.67,
         "qty": null
       },
       {
         "isin": "NL0011821202",
         "name": "ING GROEP NV      EO -,01",
-        "mv_eur": 150260.07,
-        "pl": 120740.55,
+        "mv_eur": 149709.3,
+        "pl": 120189.78,
         "qty": null
       },
       {
         "isin": "NL0012650360",
         "name": "RHI MAGNESITA N.V.",
-        "mv_eur": 65494.74,
-        "pl": 15695.86,
+        "mv_eur": 63375.1,
+        "pl": 13498.66,
         "qty": null
       },
       {
         "isin": "NL0015000IY2",
         "name": "UNIVERSAL MUSIC GROUP EO1",
-        "mv_eur": 17312.4,
-        "pl": -2782.86,
+        "mv_eur": 17624.88,
+        "pl": -2470.38,
         "qty": null
       },
       {
         "isin": "NL0015001OI1",
         "name": "MFE-MEDIAFOREU. A EO -,06",
-        "mv_eur": 37845.36,
-        "pl": -18183.61,
+        "mv_eur": 37144.52,
+        "pl": -18884.45,
         "qty": null
       },
       {
         "isin": "NL0015002MS2",
         "name": "MAGNUM I.C.CO. EO 1",
-        "mv_eur": 6550.67,
-        "pl": 1922.24,
+        "mv_eur": 6610.69,
+        "pl": 1982.26,
         "qty": null
       },
       {
         "isin": "NO0010096985",
         "name": "EQUINOR ASA       NK 2,50",
-        "mv_eur": 160186.07,
-        "pl": 37858.09,
+        "mv_eur": 156578.47,
+        "pl": 34526.96,
         "qty": null
       },
       {
@@ -7747,736 +7753,736 @@
       {
         "isin": "SE0000106270",
         "name": "HENNES + MAURITZ B SK-125",
-        "mv_eur": 104949.94,
-        "pl": 27204.35,
+        "mv_eur": 106311.14,
+        "pl": 28804.13,
         "qty": null
       },
       {
         "isin": "SE0000108227",
         "name": "SKF AB B         SK 0,625",
-        "mv_eur": 129853.48,
-        "pl": 36264.24,
+        "mv_eur": 126464.74,
+        "pl": 33162.7,
         "qty": null
       },
       {
         "isin": "SE0000108656",
         "name": "ERICSSON B (FRIA)",
-        "mv_eur": 137785.74,
-        "pl": 60073.53,
+        "mv_eur": 136335.42,
+        "pl": 58861.69,
         "qty": null
       },
       {
         "isin": "SE0000115446",
         "name": "VOLVO B (FRIA)",
-        "mv_eur": 38196.79,
-        "pl": 15513.11,
+        "mv_eur": 37926.78,
+        "pl": 15312.71,
         "qty": null
       },
       {
         "isin": "SE0000667891",
         "name": "SANDVIK AB",
-        "mv_eur": 137779.1,
-        "pl": 62274.41,
+        "mv_eur": 132186.37,
+        "pl": 56913.39,
         "qty": null
       },
       {
         "isin": "SE0007100581",
         "name": "ASSA-ABLOY AB B    SK-,33",
-        "mv_eur": 175803.25,
-        "pl": 31221.2,
+        "mv_eur": 176018.44,
+        "pl": 31880.08,
         "qty": null
       },
       {
         "isin": "SE0009922164",
         "name": "ESSITY AB B",
-        "mv_eur": 122323.96,
-        "pl": 12363.78,
+        "mv_eur": 123884.27,
+        "pl": 14261.53,
         "qty": null
       },
       {
         "isin": "SE0017486897",
         "name": "ATLAS COPCO B FRIA.  O.N.",
-        "mv_eur": 28585.38,
-        "pl": 9218.39,
+        "mv_eur": 28252.86,
+        "pl": 8945.3,
         "qty": null
       },
       {
         "isin": "SE0028329433",
         "name": "OCTAVE INT.SDRS O.N.",
-        "mv_eur": 18102.91,
-        "pl": 3139.61,
+        "mv_eur": 18833.52,
+        "pl": 3916.13,
         "qty": null
       },
       {
         "isin": "US00206R1023",
         "name": "AT + T INC.          DL 1",
-        "mv_eur": 293742.45,
-        "pl": 8059.49,
+        "mv_eur": 297754.1,
+        "pl": 10500.74,
         "qty": null
       },
       {
         "isin": "US0028241000",
         "name": "ABBOTT LABS",
-        "mv_eur": 189273.26,
-        "pl": -29601.66,
+        "mv_eur": 190668.59,
+        "pl": -29409.48,
         "qty": null
       },
       {
         "isin": "US00287Y1091",
         "name": "ABBVIE INC.        DL-,01",
-        "mv_eur": 464031.81,
-        "pl": 195732.69,
+        "mv_eur": 466741.05,
+        "pl": 196967.09,
         "qty": null
       },
       {
         "isin": "US00724F1012",
         "name": "ADOBE INC.",
-        "mv_eur": 56690.03,
-        "pl": -34889.3,
+        "mv_eur": 58784.3,
+        "pl": -33298.45,
         "qty": null
       },
       {
         "isin": "US0079031078",
         "name": "ADVANCED MIC.DEV.  DL-,01",
-        "mv_eur": 401430.17,
-        "pl": 348152.26,
+        "mv_eur": 347763.51,
+        "pl": 294192.73,
         "qty": null
       },
       {
         "isin": "US01609W1027",
         "name": "A.G.HLD.ADR8 DL-000003125",
-        "mv_eur": 71282.66,
-        "pl": -25938.03,
+        "mv_eur": 68833.65,
+        "pl": -28921.46,
         "qty": null
       },
       {
         "isin": "US02079K1079",
         "name": "ALPHABET INC.CL.C DL-,001",
-        "mv_eur": 1016570.87,
-        "pl": 262620.8,
+        "mv_eur": 973395.73,
+        "pl": 215301.19,
         "qty": null
       },
       {
         "isin": "US02209S1033",
         "name": "ALTRIA GRP INC.   DL-,333",
-        "mv_eur": 95969.78,
-        "pl": 25340.48,
+        "mv_eur": 97710.98,
+        "pl": 26693.43,
         "qty": null
       },
       {
         "isin": "US0231351067",
         "name": "AMAZON.COM INC.    DL-,01",
-        "mv_eur": 2299938.08,
-        "pl": 548090.26,
+        "mv_eur": 2228790.43,
+        "pl": 467312.7,
         "qty": null
       },
       {
         "isin": "US0258161092",
         "name": "AMER. EXPRESS     DL -,20",
-        "mv_eur": 164684.75,
-        "pl": 77034.1,
+        "mv_eur": 166105.44,
+        "pl": 77972.97,
         "qty": null
       },
       {
         "isin": "US0268747849",
         "name": "AMER.INTL GRP NEW DL 2,50",
-        "mv_eur": 56332.49,
-        "pl": 14642.42,
+        "mv_eur": 56765.63,
+        "pl": 14846.39,
         "qty": null
       },
       {
         "isin": "US03073E1055",
         "name": "CENCORA            DL-,01",
-        "mv_eur": 288558.55,
-        "pl": 99837.28,
+        "mv_eur": 296423.01,
+        "pl": 106664.34,
         "qty": null
       },
       {
         "isin": "US0311621009",
         "name": "AMGEN INC.       DL-,0001",
-        "mv_eur": 72170.3,
-        "pl": 41176.89,
+        "mv_eur": 71830.57,
+        "pl": 40666.79,
         "qty": null
       },
       {
         "isin": "US0378331005",
         "name": "APPLE INC.",
-        "mv_eur": 2029901.41,
-        "pl": 899206.48,
+        "mv_eur": 2028981.83,
+        "pl": 892071.47,
         "qty": null
       },
       {
         "isin": "US0382221051",
         "name": "APPLIED MATERIALS INC.",
-        "mv_eur": 435804.18,
-        "pl": 231153.64,
+        "mv_eur": 402886.15,
+        "pl": 197110.65,
         "qty": null
       },
       {
         "isin": "US0394831020",
         "name": "ARCHER DANIELS MIDLAND",
-        "mv_eur": 180976.23,
-        "pl": 45782.1,
+        "mv_eur": 181073.63,
+        "pl": 45136.34,
         "qty": null
       },
       {
         "isin": "US0846707026",
         "name": "BERKSH. H.B NEW DL-,00333",
-        "mv_eur": 678492.38,
-        "pl": 252842.27,
+        "mv_eur": 685715.11,
+        "pl": 257725.2,
         "qty": null
       },
       {
         "isin": "US09062X1037",
         "name": "BIOGEN INC. DL -,0005",
-        "mv_eur": 78766.58,
-        "pl": -3271.67,
+        "mv_eur": 79569.51,
+        "pl": -2919.71,
         "qty": null
       },
       {
         "isin": "US09260D1072",
         "name": "BLACKSTONE INC. DL-,00001",
-        "mv_eur": 77552.04,
-        "pl": 24532.84,
+        "mv_eur": 76971.87,
+        "pl": 23661.22,
         "qty": null
       },
       {
         "isin": "US09290D1019",
         "name": "BLACKROCK INC.       O.N.",
-        "mv_eur": 180295.52,
-        "pl": 66525.3,
+        "mv_eur": 178509.07,
+        "pl": 64113.46,
         "qty": null
       },
       {
         "isin": "US09857L1089",
         "name": "BOOKING HLDGS     DL-,008",
-        "mv_eur": 61907.56,
-        "pl": 29805.15,
+        "mv_eur": 60830.68,
+        "pl": 28551.8,
         "qty": null
       },
       {
         "isin": "US1101221083",
         "name": "BRISTOL-MYERS SQUIBBDL-10",
-        "mv_eur": 206109.61,
-        "pl": 55851.82,
+        "mv_eur": 209271.12,
+        "pl": 58187.36,
         "qty": null
       },
       {
         "isin": "US11135F1012",
         "name": "BROADCOM INC.     DL-,001",
-        "mv_eur": 378632.81,
-        "pl": 30705.54,
+        "mv_eur": 348364.53,
+        "pl": -1475.29,
         "qty": null
       },
       {
         "isin": "US1255231003",
         "name": "CIGNA GROUP, THE     DL 1",
-        "mv_eur": 111102.92,
-        "pl": -15134.42,
+        "mv_eur": 113180.45,
+        "pl": -13750.82,
         "qty": null
       },
       {
         "isin": "US1491231015",
         "name": "CATERPILLAR INC.     DL 1",
-        "mv_eur": 108295.7,
-        "pl": 74346.9,
+        "mv_eur": 102632.22,
+        "pl": 68496.8,
         "qty": null
       },
       {
         "isin": "US1667641005",
         "name": "CHEVRON CORP.      DL-,75",
-        "mv_eur": 142910.45,
-        "pl": 43586.63,
+        "mv_eur": 144220.73,
+        "pl": 44350.93,
         "qty": null
       },
       {
         "isin": "US17275R1023",
         "name": "CISCO SYSTEMS    DL-,001",
-        "mv_eur": 402546.13,
-        "pl": 217636.46,
+        "mv_eur": 375039.83,
+        "pl": 189113.71,
         "qty": null
       },
       {
         "isin": "US1729674242",
         "name": "CITIGROUP INC. DL -,01",
-        "mv_eur": 590788.6,
-        "pl": 221613.59,
+        "mv_eur": 580916.23,
+        "pl": 209711.86,
         "qty": null
       },
       {
         "isin": "US1912161007",
         "name": "COCA-COLA CO.      DL-,25",
-        "mv_eur": 232538.78,
-        "pl": 91154.55,
+        "mv_eur": 238712.23,
+        "pl": 96550.81,
         "qty": null
       },
       {
         "isin": "US1941621039",
         "name": "COLGATE-PALMOLIVE    DL 1",
-        "mv_eur": 82803.42,
-        "pl": 4311.55,
+        "mv_eur": 85886.46,
+        "pl": 6963.12,
         "qty": null
       },
       {
         "isin": "US20030N1019",
         "name": "COMCAST CORP.   A  DL-,01",
-        "mv_eur": 13132.25,
-        "pl": -12795.34,
+        "mv_eur": 13630.38,
+        "pl": -12439.73,
         "qty": null
       },
       {
         "isin": "US20825C1045",
         "name": "CONOCOPHILLIPS     DL-,01",
-        "mv_eur": 61256.08,
-        "pl": 12252.18,
+        "mv_eur": 61795.09,
+        "pl": 12521.82,
         "qty": null
       },
       {
         "isin": "US2358511028",
         "name": "DANAHER CORP.      DL-,01",
-        "mv_eur": 85383.02,
-        "pl": -13373.67,
+        "mv_eur": 85020.33,
+        "pl": -14279.23,
         "qty": null
       },
       {
         "isin": "US2441991054",
         "name": "DEERE CO.            DL 1",
-        "mv_eur": 72991.47,
-        "pl": 55072.34,
+        "mv_eur": 70711.26,
+        "pl": 52693.63,
         "qty": null
       },
       {
         "isin": "US24703L2025",
         "name": "DELL TECHS INC. C  DL-,01",
-        "mv_eur": 382355.58,
-        "pl": 328130.64,
+        "mv_eur": 332025.26,
+        "pl": 277502.25,
         "qty": null
       },
       {
         "isin": "US2546871060",
         "name": "DISNEY (WALT) CO.",
-        "mv_eur": 25320.12,
-        "pl": -8611.44,
+        "mv_eur": 25560.51,
+        "pl": -8557.57,
         "qty": null
       },
       {
         "isin": "US26614N2018",
         "name": "DUPONT DE NEMO. NEW O.N.",
-        "mv_eur": 21108.48,
-        "pl": 8041.73,
+        "mv_eur": 20578.31,
+        "pl": 7439.73,
         "qty": null
       },
       {
         "isin": "US2786421030",
         "name": "EBAY INC.         DL-,001",
-        "mv_eur": 88152.24,
-        "pl": 48499.29,
+        "mv_eur": 89190.15,
+        "pl": 49319.23,
         "qty": null
       },
       {
         "isin": "US2788651006",
         "name": "ECOLAB INC.          DL 1",
-        "mv_eur": 42361.31,
-        "pl": 13390.05,
+        "mv_eur": 43153.86,
+        "pl": 14023.34,
         "qty": null
       },
       {
         "isin": "US30233Q1085",
         "name": "EXX.HO.COR. O.N.",
-        "mv_eur": 87448.24,
-        "pl": 29572.12,
+        "mv_eur": 86421.86,
+        "pl": 28227.59,
         "qty": null
       },
       {
         "isin": "US30303M1027",
         "name": "META PLATF.  A DL-,000006",
-        "mv_eur": 92979.4,
-        "pl": -11717.75,
+        "mv_eur": 93910.28,
+        "pl": -11362.39,
         "qty": null
       },
       {
         "isin": "US31428X1063",
         "name": "FEDEX CORP.        DL-,10",
-        "mv_eur": 39239.87,
-        "pl": 14277.43,
+        "mv_eur": 40487.37,
+        "pl": 15387.71,
         "qty": null
       },
       {
         "isin": "US3143521058",
         "name": "FEDEX FGHT HLDG CO. O.N.",
-        "mv_eur": 8049.52,
-        "pl": 2511.24,
+        "mv_eur": 8211.78,
+        "pl": 2643.06,
         "qty": null
       },
       {
         "isin": "US3453708600",
         "name": "FORD MOTOR         DL-,01",
-        "mv_eur": 102875.62,
-        "pl": -9135.78,
+        "mv_eur": 100572.59,
+        "pl": -12054.54,
         "qty": null
       },
       {
         "isin": "US3682872078",
         "name": "GAZPROM ADR SP./2 RL 5L 5",
-        "mv_eur": 2924.21,
-        "pl": -24733.48,
+        "mv_eur": 2940.28,
+        "pl": -24869.44,
         "qty": null
       },
       {
         "isin": "US36828A1016",
         "name": "GE VERNOVA INC.",
-        "mv_eur": 73961.05,
-        "pl": 67840.35,
+        "mv_eur": 69377.61,
+        "pl": 63223.26,
         "qty": null
       },
       {
         "isin": "US3696043013",
         "name": "GE AEROSPACE      DL -,06",
-        "mv_eur": 432017.98,
-        "pl": 228769.88,
+        "mv_eur": 426935.4,
+        "pl": 222570.04,
         "qty": null
       },
       {
         "isin": "US3755581036",
         "name": "GILEAD SCIENCES   DL-,001",
-        "mv_eur": 147211.4,
-        "pl": 48116.77,
+        "mv_eur": 147694.53,
+        "pl": 48055.17,
         "qty": null
       },
       {
         "isin": "US38141G1040",
         "name": "GOLDMAN SACHS GRP INC.",
-        "mv_eur": 181622.01,
-        "pl": 81846.79,
+        "mv_eur": 178210.79,
+        "pl": 77887.1,
         "qty": null
       },
       {
         "isin": "US42824C1099",
         "name": "HEWLETT PACKARD ENT.",
-        "mv_eur": 132079.92,
-        "pl": 100260.79,
+        "mv_eur": 123300.91,
+        "pl": 91306.87,
         "qty": null
       },
       {
         "isin": "US43300A2033",
         "name": "HILTON WORLD.HDGS DL -,01",
-        "mv_eur": 79476.33,
-        "pl": 52029.74,
+        "mv_eur": 80164.09,
+        "pl": 52566.63,
         "qty": null
       },
       {
         "isin": "US43849R1059",
         "name": "HONEYWELL AEROSPACE INC.",
-        "mv_eur": 10815.13,
-        "pl": 1894.02,
+        "mv_eur": 10686.83,
+        "pl": 1716.68,
         "qty": null
       },
       {
         "isin": "US4385162056",
         "name": "HONEYWELL INTL NEW O.N.",
-        "mv_eur": 14537.93,
-        "pl": 4773.5,
+        "mv_eur": 14258.04,
+        "pl": 4439.93,
         "qty": null
       },
       {
         "isin": "US4581401001",
         "name": "INTEL CORP.       DL-,001",
-        "mv_eur": 153463.15,
-        "pl": 54231.4,
+        "mv_eur": 139859.39,
+        "pl": 40082.17,
         "qty": null
       },
       {
         "isin": "US4592001014",
         "name": "INTL BUS. MACH.    DL-,20",
-        "mv_eur": 527522.36,
-        "pl": 78012.86,
+        "mv_eur": 525739.47,
+        "pl": 73759.02,
         "qty": null
       },
       {
         "isin": "US46284V1017",
         "name": "IRON MOUNTAIN (NEW)DL-,01",
-        "mv_eur": 421605.53,
-        "pl": 23654.77,
+        "mv_eur": 416486.5,
+        "pl": 16348.2,
         "qty": null
       },
       {
         "isin": "US4781601046",
         "name": "JOHNSON + JOHNSON    DL 1",
-        "mv_eur": 540831.08,
-        "pl": 237205.59,
+        "mv_eur": 541943.53,
+        "pl": 236649.01,
         "qty": null
       },
       {
         "isin": "US4943681035",
         "name": "KIMBERLY-CLARK    DL 1,25",
-        "mv_eur": 20814.19,
-        "pl": -6204.77,
+        "mv_eur": 21750.05,
+        "pl": -5417.43,
         "qty": null
       },
       {
         "isin": "US5128073062",
         "name": "LAM RESEARCH CORP. NEW",
-        "mv_eur": 593612.98,
-        "pl": 409288.8,
+        "mv_eur": 538281.21,
+        "pl": 352943.8,
         "qty": null
       },
       {
         "isin": "US5324571083",
         "name": "ELI LILLY",
-        "mv_eur": 464302.9,
-        "pl": 392835.86,
+        "mv_eur": 468291.11,
+        "pl": 396431.21,
         "qty": null
       },
       {
         "isin": "US5719032022",
         "name": "MARRIOTT INTL A    DL-,01",
-        "mv_eur": 81735.49,
-        "pl": 54731.5,
+        "mv_eur": 82386.06,
+        "pl": 55233.63,
         "qty": null
       },
       {
         "isin": "US57636Q1040",
         "name": "MASTERCARD INC.A DL-,0001",
-        "mv_eur": 231755.12,
-        "pl": 100248.6,
+        "mv_eur": 236282.06,
+        "pl": 104052.64,
         "qty": null
       },
       {
         "isin": "US5801351017",
         "name": "MCDONALDS CORP.   DL-,01",
-        "mv_eur": 279403.52,
-        "pl": 44066.75,
+        "mv_eur": 282007.18,
+        "pl": 45376.76,
         "qty": null
       },
       {
         "isin": "US58155Q1031",
         "name": "MCKESSON           DL-,01",
-        "mv_eur": 151827.41,
-        "pl": 50439.64,
+        "mv_eur": 156629.33,
+        "pl": 54684.23,
         "qty": null
       },
       {
         "isin": "US58933Y1055",
         "name": "MERCK CO.          DL-,01",
-        "mv_eur": 83656.53,
-        "pl": 46621.11,
+        "mv_eur": 82691.08,
+        "pl": 45452.08,
         "qty": null
       },
       {
         "isin": "US5926881054",
         "name": "METTLER-TOLEDO INTL",
-        "mv_eur": 92282.9,
-        "pl": 31156.62,
+        "mv_eur": 92593.44,
+        "pl": 31131.15,
         "qty": null
       },
       {
         "isin": "US5949181045",
         "name": "MICROSOFT    DL-,00000625",
-        "mv_eur": 1672995.08,
-        "pl": 833752.65,
+        "mv_eur": 1666077.23,
+        "pl": 822221.48,
         "qty": null
       },
       {
         "isin": "US6092071058",
         "name": "MONDELEZ INTL INC. A",
-        "mv_eur": 72355.02,
-        "pl": 8309.91,
+        "mv_eur": 73823.93,
+        "pl": 9426.77,
         "qty": null
       },
       {
         "isin": "US6200763075",
         "name": "MOTOROLA SOLUTIONS DL-,01",
-        "mv_eur": 140430.31,
-        "pl": 19023.86,
+        "mv_eur": 142205.9,
+        "pl": 20132.08,
         "qty": null
       },
       {
         "isin": "US64110L1061",
         "name": "NETFLIX INC.      DL-,001",
-        "mv_eur": 95169.39,
-        "pl": 41903.89,
+        "mv_eur": 92731.24,
+        "pl": 39172.94,
         "qty": null
       },
       {
         "isin": "US6541061031",
         "name": "NIKE INC. B",
-        "mv_eur": 19824.3,
-        "pl": -47839.89,
+        "mv_eur": 20197.22,
+        "pl": -47838.92,
         "qty": null
       },
       {
         "isin": "US67066G1040",
         "name": "NVIDIA CORP.      DL-,001",
-        "mv_eur": 964116.75,
-        "pl": 836830.8,
+        "mv_eur": 910793.02,
+        "pl": 782807.38,
         "qty": null
       },
       {
         "isin": "US68389X1054",
         "name": "ORACLE CORP.       DL-,01",
-        "mv_eur": 101766.1,
-        "pl": 38238.64,
+        "mv_eur": 95869.29,
+        "pl": 31992.62,
         "qty": null
       },
       {
         "isin": "US68902V1070",
         "name": "OTIS WORLDWID.CORP DL-,01",
-        "mv_eur": 34364.99,
-        "pl": 5020.5,
+        "mv_eur": 34813.7,
+        "pl": 5307.9,
         "qty": null
       },
       {
         "isin": "US7010941042",
         "name": "PARKER-HANNIFIN   DL-,50",
-        "mv_eur": 99550.63,
-        "pl": 70511.66,
+        "mv_eur": 97675.81,
+        "pl": 68477.21,
         "qty": null
       },
       {
         "isin": "US70450Y1038",
         "name": "PAYPAL HDGS INC.DL-,0001",
-        "mv_eur": 32609.86,
-        "pl": -27960.78,
+        "mv_eur": 33087.2,
+        "pl": -27816.4,
         "qty": null
       },
       {
         "isin": "US7134481081",
         "name": "PEPSICO INC.     DL-,0166",
-        "mv_eur": 34708.53,
-        "pl": 733.74,
+        "mv_eur": 35922.32,
+        "pl": 1760.77,
         "qty": null
       },
       {
         "isin": "US7170811035",
         "name": "PFIZER INC.        DL-,05",
-        "mv_eur": 146618.39,
-        "pl": -1338.68,
+        "mv_eur": 147577.76,
+        "pl": -1192.63,
         "qty": null
       },
       {
         "isin": "US7181721090",
         "name": "PHILIP MORRIS INTL INC.",
-        "mv_eur": 344219.42,
-        "pl": 65352.18,
+        "mv_eur": 345020.43,
+        "pl": 64620.25,
         "qty": null
       },
       {
         "isin": "US7185461040",
         "name": "PHILLIPS 66        DL-,01",
-        "mv_eur": 110471.38,
-        "pl": 76646.44,
+        "mv_eur": 110111.12,
+        "pl": 76100.24,
         "qty": null
       },
       {
         "isin": "US7427181091",
         "name": "PROCTER GAMBLE",
-        "mv_eur": 282871.63,
-        "pl": 64032.38,
+        "mv_eur": 292873.21,
+        "pl": 72831.0,
         "qty": null
       },
       {
         "isin": "US74743L1008",
         "name": "QNITY ELECTRONICS O.N.",
-        "mv_eur": 25166.61,
-        "pl": 6049.34,
+        "mv_eur": 23710.63,
+        "pl": 4488.27,
         "qty": null
       },
       {
         "isin": "US7475251036",
         "name": "QUALCOMM INC.    DL-,0001",
-        "mv_eur": 37135.93,
-        "pl": 9943.24,
+        "mv_eur": 35523.02,
+        "pl": 8180.85,
         "qty": null
       },
       {
         "isin": "US79466L3024",
         "name": "SALESFORCE INC.   DL-,001",
-        "mv_eur": 69204.03,
-        "pl": 12360.06,
+        "mv_eur": 68708.12,
+        "pl": 11551.68,
         "qty": null
       },
       {
         "isin": "US7960508882",
         "name": "SAMS.EL.0,5SP.GDRS144A/95",
-        "mv_eur": 761216.28,
-        "pl": 158284.66,
+        "mv_eur": 729681.99,
+        "pl": 123436.05,
         "qty": null
       },
       {
         "isin": "US83443Q1031",
         "name": "SOLSTICE ADV.MTLS DL-,001",
-        "mv_eur": 2163.61,
-        "pl": 1020.77,
+        "mv_eur": 2123.5,
+        "pl": 974.38,
         "qty": null
       },
       {
         "isin": "US8574771031",
         "name": "STATE STREET CORP.   DL 1",
-        "mv_eur": 269029.77,
-        "pl": 142994.8,
+        "mv_eur": 264793.22,
+        "pl": 138065.44,
         "qty": null
       },
       {
         "isin": "US8636671013",
         "name": "STRYKER CORP.      DL-,10",
-        "mv_eur": 36132.4,
-        "pl": 8739.45,
+        "mv_eur": 36136.8,
+        "pl": 8593.27,
         "qty": null
       },
       {
         "isin": "US8740391003",
         "name": "TAIWAN SEMICON.MANU.ADR/5",
-        "mv_eur": 1684763.04,
-        "pl": 873822.82,
+        "mv_eur": 1560170.0,
+        "pl": 744772.04,
         "qty": null
       },
       {
         "isin": "US88160R1014",
         "name": "TESLA INC. DL -,001",
-        "mv_eur": 98047.12,
-        "pl": 27965.14,
+        "mv_eur": 94193.19,
+        "pl": 23725.97,
         "qty": null
       },
       {
         "isin": "US8835561023",
         "name": "THERMO FISH.SCIENTIF.DL 1",
-        "mv_eur": 91012.84,
-        "pl": 28078.74,
+        "mv_eur": 90452.04,
+        "pl": 27171.99,
         "qty": null
       },
       {
         "isin": "US88579Y1010",
         "name": "3M CO.             DL-,01",
-        "mv_eur": 139513.81,
-        "pl": 61997.83,
+        "mv_eur": 136846.01,
+        "pl": 58903.93,
         "qty": null
       },
       {
         "isin": "US9113121068",
         "name": "UNITED PARCEL SE.B DL-01",
-        "mv_eur": 51167.89,
-        "pl": -29519.54,
+        "mv_eur": 52120.35,
+        "pl": -29010.61,
         "qty": null
       },
       {
         "isin": "US9252831030",
         "name": "VERSANT MEDIA GRP A O.N.",
-        "mv_eur": 738.64,
-        "pl": -738.6,
+        "mv_eur": 770.5,
+        "pl": -714.86,
         "qty": null
       },
       {
         "isin": "US92826C8394",
         "name": "VISA INC. CL. A DL -,0001",
-        "mv_eur": 202815.29,
-        "pl": 107136.75,
+        "mv_eur": 206914.08,
+        "pl": 110709.59,
         "qty": null
       },
       {
         "isin": "US98956P1021",
         "name": "ZIMMER BIOMET HLDGS DL-01",
-        "mv_eur": 43367.86,
-        "pl": -12933.6,
+        "mv_eur": 42292.56,
+        "pl": -14318.39,
         "qty": null
       }
     ],
@@ -8487,7 +8493,6 @@
     "hhi": 105.8,
     "top10_weight": 25.1,
     "win_rate": 76.2,
-    "run_date": "2026-11-17",
     "holdings": [
       {
         "isin": "AN8068571086",
@@ -12730,8 +12735,8 @@
         "value": 0.15
       }
     ],
-    "nav_per_share_prev": 113.54,
-    "nav_prev": 28405508.42,
+    "nav_per_share_prev": 112.37,
+    "nav_prev": 27278917.39,
     "price_history": [
       {
         "date": "2026-10-01",
@@ -12746,759 +12751,766 @@
         "note": "Jahresstart (berechnet aus BVI)"
       },
       {
-        "date": "2026-11-16",
-        "label": "16.11.2026",
-        "price": 113.54,
+        "date": "2026-11-17",
+        "label": "17.11.2026",
+        "price": 112.37,
         "note": "Vortag (Inventarblatt)"
       },
       {
-        "date": "2026-11-17",
-        "label": "17.11.2026",
+        "date": "2026-11-18",
+        "label": "18.11.2026",
         "price": 112.37,
         "note": "Heute (Inventarblatt)"
       }
     ],
+    "changes": {
+      "added": [],
+      "removed": [],
+      "increased": [],
+      "decreased": [],
+      "date_prev": null
+    },
     "prev_holdings": [
       {
         "isin": "AT0000652011",
         "name": "ERSTE GROUP BK ST.AKT.ON",
-        "mv_eur": 285541.5,
-        "pl": 108879.46,
+        "mv_eur": 287012.1,
+        "pl": 110350.06,
         "qty": null
       },
       {
         "isin": "AU000000BHP4",
         "name": "BHP GROUP LTD.    DL -,50",
-        "mv_eur": 51835.26,
-        "pl": 14277.63,
+        "mv_eur": 49226.31,
+        "pl": 11610.19,
         "qty": null
       },
       {
         "isin": "BE0974293251",
         "name": "ANHEUSER-BUSCH INBEV",
-        "mv_eur": 177097.5,
-        "pl": 19009.4,
+        "mv_eur": 178116.1,
+        "pl": 20028.0,
         "qty": null
       },
       {
         "isin": "CA82509L1076",
         "name": "SHOPIFY A SUB.VTG",
-        "mv_eur": 127771.55,
-        "pl": 47435.18,
+        "mv_eur": 129311.29,
+        "pl": 48783.59,
         "qty": null
       },
       {
         "isin": "CH0011075394",
         "name": "ZURICH INSUR.GR.NA.SF0,10",
-        "mv_eur": 36633.04,
-        "pl": 8040.79,
+        "mv_eur": 37082.13,
+        "pl": 8482.14,
         "qty": null
       },
       {
         "isin": "CH0012005267",
         "name": "NOVARTIS NAM.     SF 0,49",
-        "mv_eur": 168392.49,
-        "pl": 27353.93,
+        "mv_eur": 170370.68,
+        "pl": 29293.94,
         "qty": null
       },
       {
         "isin": "CH0038863350",
         "name": "NESTLE NAM.        SF-,10",
-        "mv_eur": 38608.83,
-        "pl": 1429.38,
+        "mv_eur": 39310.75,
+        "pl": 2121.23,
         "qty": null
       },
       {
         "isin": "CH1499059983",
         "name": "ROCHE HOLDING PS SF -,001",
-        "mv_eur": 207694.31,
-        "pl": 67185.73,
+        "mv_eur": 209181.53,
+        "pl": 68634.91,
         "qty": null
       },
       {
         "isin": "DE0005140008",
         "name": "DEUTSCHE BANK AG NA O.N.",
-        "mv_eur": 266065.5,
-        "pl": 67613.16,
+        "mv_eur": 262398.38,
+        "pl": 63946.04,
         "qty": null
       },
       {
         "isin": "DE0005190003",
         "name": "BAY.MOTOREN WERKE AG ST",
-        "mv_eur": 25959.72,
-        "pl": -8727.71,
+        "mv_eur": 25868.92,
+        "pl": -8818.51,
         "qty": null
       },
       {
         "isin": "DE0005552004",
         "name": "DHL AG",
-        "mv_eur": 187068.6,
-        "pl": 47815.18,
+        "mv_eur": 188490.0,
+        "pl": 49236.58,
         "qty": null
       },
       {
         "isin": "DE0005557508",
         "name": "DT.TELEKOM AG NA",
-        "mv_eur": 118146.6,
-        "pl": -5084.31,
+        "mv_eur": 120285.0,
+        "pl": -2945.91,
         "qty": null
       },
       {
         "isin": "DE0006231004",
         "name": "INFINEON TECH.AG NA O.N.",
-        "mv_eur": 113078.7,
-        "pl": 3102.44,
+        "mv_eur": 106850.8,
+        "pl": -3125.46,
         "qty": null
       },
       {
         "isin": "DE0007030009",
         "name": "RHEINMETALL AG",
-        "mv_eur": 59490.2,
-        "pl": -57909.49,
+        "mv_eur": 59266.9,
+        "pl": -58132.79,
         "qty": null
       },
       {
         "isin": "DE0007100000",
         "name": "MERCEDES-BENZ GRP NA O.N.",
-        "mv_eur": 27021.48,
-        "pl": -10520.92,
+        "mv_eur": 26842.2,
+        "pl": -10700.2,
         "qty": null
       },
       {
         "isin": "DE0007164600",
         "name": "SAP SE O.N.",
-        "mv_eur": 212124.9,
-        "pl": -21951.38,
+        "mv_eur": 212973.2,
+        "pl": -21103.08,
         "qty": null
       },
       {
         "isin": "DE0007236101",
         "name": "SIEMENS AG  NA O.N.",
-        "mv_eur": 300573.9,
-        "pl": 94046.98,
+        "mv_eur": 290810.85,
+        "pl": 84283.93,
         "qty": null
       },
       {
         "isin": "DE0007664039",
         "name": "VOLKSWAGEN AG VZO O.N.",
-        "mv_eur": 25598.16,
-        "pl": -9424.77,
+        "mv_eur": 25341.12,
+        "pl": -9681.81,
         "qty": null
       },
       {
         "isin": "DE0008404005",
         "name": "ALLIANZ SE NA O.N.",
-        "mv_eur": 270212.8,
-        "pl": 70277.94,
+        "mv_eur": 271814.4,
+        "pl": 71879.54,
         "qty": null
       },
       {
         "isin": "DE0008430026",
         "name": "MUENCH.RUECKVERS. NA O.N.",
-        "mv_eur": 105444.0,
-        "pl": 17765.44,
+        "mv_eur": 106488.0,
+        "pl": 18809.44,
         "qty": null
       },
       {
         "isin": "DE000A1ML7J1",
         "name": "VONOVIA SE NA O.N.",
-        "mv_eur": 22012.92,
-        "pl": -19426.29,
+        "mv_eur": 21876.32,
+        "pl": -19562.89,
         "qty": null
       },
       {
         "isin": "DE000BASF111",
         "name": "BASF SE NA O.N.",
-        "mv_eur": 165691.35,
-        "pl": 11666.3,
+        "mv_eur": 163530.82,
+        "pl": 9505.77,
         "qty": null
       },
       {
         "isin": "DE000CBK1001",
         "name": "COMMERZBANK AG",
-        "mv_eur": 209567.41,
-        "pl": 28432.15,
+        "mv_eur": 208254.66,
+        "pl": 27119.4,
         "qty": null
       },
       {
         "isin": "DE000DTR0CK8",
         "name": "DAIMLER TRUCK HLDG NA ON",
-        "mv_eur": 124948.53,
-        "pl": 12638.9,
+        "mv_eur": 126296.79,
+        "pl": 13987.16,
         "qty": null
       },
       {
         "isin": "DE000ENAG999",
         "name": "E.ON SE NA O.N.",
-        "mv_eur": 119457.7,
-        "pl": 16595.74,
+        "mv_eur": 120112.69,
+        "pl": 17250.73,
         "qty": null
       },
       {
         "isin": "DE000ENER6Y0",
         "name": "SIEMENS ENERGY AG NA O.N.",
-        "mv_eur": 267425.36,
-        "pl": 46148.24,
+        "mv_eur": 260281.64,
+        "pl": 39004.52,
         "qty": null
       },
       {
         "isin": "DE000PAG9113",
         "name": "DR.ING.H.C.F.PORSCHE VZO",
-        "mv_eur": 21480.2,
-        "pl": -10570.2,
+        "mv_eur": 20682.9,
+        "pl": -11367.5,
         "qty": null
       },
       {
         "isin": "DK0062498333",
         "name": "NOVO-NORDISK AS B  DK 0,1",
-        "mv_eur": 14275.24,
-        "pl": -27002.02,
+        "mv_eur": 14767.63,
+        "pl": -26511.29,
         "qty": null
       },
       {
         "isin": "ES0113900J37",
         "name": "BCO SANTANDER N.EO0,5",
-        "mv_eur": 248247.88,
-        "pl": 93689.99,
+        "mv_eur": 246903.82,
+        "pl": 92345.93,
         "qty": null
       },
       {
         "isin": "ES0144580Y14",
         "name": "IBERDROLA INH.    EO -,75",
-        "mv_eur": 176917.2,
-        "pl": 27547.63,
+        "mv_eur": 175401.2,
+        "pl": 26031.63,
         "qty": null
       },
       {
         "isin": "ES0148396007",
         "name": "INDITEX INH.      EO 0,03",
-        "mv_eur": 254177.12,
-        "pl": 37206.12,
+        "mv_eur": 256817.7,
+        "pl": 39846.7,
         "qty": null
       },
       {
         "isin": "ES0178430E18",
         "name": "TELEFONICA INH.      EO 1",
-        "mv_eur": 110281.2,
-        "pl": -21715.69,
+        "mv_eur": 110788.24,
+        "pl": -21208.65,
         "qty": null
       },
       {
         "isin": "FI0009000681",
         "name": "NOKIA OYJ EO-,06",
-        "mv_eur": 276541.43,
-        "pl": 121964.75,
+        "mv_eur": 261045.26,
+        "pl": 106468.58,
         "qty": null
       },
       {
         "isin": "FI4000297767",
         "name": "NORDEA BANK ABP",
-        "mv_eur": 138256.28,
-        "pl": 6729.13,
+        "mv_eur": 138134.82,
+        "pl": 6607.67,
         "qty": null
       },
       {
         "isin": "FR0000045072",
         "name": "CREDIT AGRICOLE INH. EO 3",
-        "mv_eur": 111633.16,
-        "pl": 1234.99,
+        "mv_eur": 111774.2,
+        "pl": 1376.03,
         "qty": null
       },
       {
         "isin": "FR0000052292",
         "name": "HERMES INTERNATIONAL O.N.",
-        "mv_eur": 25697.5,
-        "pl": -15323.24,
+        "mv_eur": 25640.5,
+        "pl": -15380.24,
         "qty": null
       },
       {
         "isin": "FR0000120073",
         "name": "AIR LIQUIDE INH. EO 5,50",
-        "mv_eur": 273061.44,
-        "pl": 42732.36,
+        "mv_eur": 273627.84,
+        "pl": 43298.76,
         "qty": null
       },
       {
         "isin": "FR0000120271",
         "name": "TOTALENERGIES SE  EO 2,50",
-        "mv_eur": 242051.26,
-        "pl": 23753.48,
+        "mv_eur": 246043.92,
+        "pl": 27746.14,
         "qty": null
       },
       {
         "isin": "FR0000120321",
         "name": "L OREAL    INH.    EO 0,2",
-        "mv_eur": 53622.0,
-        "pl": 6985.79,
+        "mv_eur": 54018.0,
+        "pl": 7381.79,
         "qty": null
       },
       {
         "isin": "FR0000120578",
         "name": "SANOFI SA INHABER    EO 2",
-        "mv_eur": 51732.24,
-        "pl": -7505.58,
+        "mv_eur": 51932.16,
+        "pl": -7305.66,
         "qty": null
       },
       {
         "isin": "FR0000120628",
         "name": "AXA S.A. INH.     EO 2,29",
-        "mv_eur": 209470.26,
-        "pl": 36423.55,
+        "mv_eur": 210324.69,
+        "pl": 37277.98,
         "qty": null
       },
       {
         "isin": "FR0000120644",
         "name": "DANONE S.A. EO -,25",
-        "mv_eur": 33761.0,
-        "pl": 2026.2,
+        "mv_eur": 34623.4,
+        "pl": 2888.6,
         "qty": null
       },
       {
         "isin": "FR0000121014",
         "name": "LVMH               EO 0,3",
-        "mv_eur": 31971.3,
-        "pl": -20039.09,
+        "mv_eur": 31916.0,
+        "pl": -20094.39,
         "qty": null
       },
       {
         "isin": "FR0000121329",
         "name": "THALES S.A.          EO 3",
-        "mv_eur": 46389.6,
-        "pl": 15613.15,
+        "mv_eur": 46818.0,
+        "pl": 16041.55,
         "qty": null
       },
       {
         "isin": "FR0000121667",
         "name": "ESSILORLUXO. INH. EO -,18",
-        "mv_eur": 171444.7,
-        "pl": -92215.06,
+        "mv_eur": 175828.5,
+        "pl": -87831.26,
         "qty": null
       },
       {
         "isin": "FR0000121972",
         "name": "SCHNEIDER ELEC. INH. EO 4",
-        "mv_eur": 123868.8,
-        "pl": 3422.66,
+        "mv_eur": 122224.3,
+        "pl": 1778.16,
         "qty": null
       },
       {
         "isin": "FR0000125007",
         "name": "ST GOBAIN            EO 4",
-        "mv_eur": 126297.6,
-        "pl": -26755.18,
+        "mv_eur": 124833.28,
+        "pl": -28219.5,
         "qty": null
       },
       {
         "isin": "FR0000125338",
         "name": "CAPGEMINI SE INH. EO 8",
-        "mv_eur": 18982.5,
-        "pl": -8673.28,
+        "mv_eur": 18825.0,
+        "pl": -8830.78,
         "qty": null
       },
       {
         "isin": "FR0000125486",
         "name": "VINCI S.A. INH.   EO 2,50",
-        "mv_eur": 161856.0,
-        "pl": -5529.11,
+        "mv_eur": 161926.25,
+        "pl": -5458.86,
         "qty": null
       },
       {
         "isin": "FR0000130809",
         "name": "STE GENERALE INH. EO 1,25",
-        "mv_eur": 128367.68,
-        "pl": -2876.45,
+        "mv_eur": 126901.6,
+        "pl": -4342.53,
         "qty": null
       },
       {
         "isin": "FR0000131104",
         "name": "BNP PARIBAS INH.     EO 2",
-        "mv_eur": 201884.8,
-        "pl": 55015.1,
+        "mv_eur": 201378.4,
+        "pl": 54508.7,
         "qty": null
       },
       {
         "isin": "FR0000133308",
         "name": "ORANGE INH.          EO 4",
-        "mv_eur": 138575.27,
-        "pl": -26156.41,
+        "mv_eur": 139783.38,
+        "pl": -24948.3,
         "qty": null
       },
       {
         "isin": "FR0010208488",
         "name": "ENGIE S.A. INH.      EO 1",
-        "mv_eur": 139074.48,
-        "pl": 46779.36,
+        "mv_eur": 138687.24,
+        "pl": 46392.12,
         "qty": null
       },
       {
         "isin": "FR0013326246",
         "name": "URW (STAPLED SHS)  EO-,05",
-        "mv_eur": 34927.5,
-        "pl": 6805.18,
+        "mv_eur": 35212.5,
+        "pl": 7090.18,
         "qty": null
       },
       {
         "isin": "GB0002875804",
         "name": "BRIT.AMER.TOBACCO  LS-,25",
-        "mv_eur": 659451.33,
-        "pl": 89830.28,
+        "mv_eur": 675831.68,
+        "pl": 105323.47,
         "qty": null
       },
       {
         "isin": "GB0005405286",
         "name": "HSBC HLDGS PLC     DL-,50",
-        "mv_eur": 678490.05,
-        "pl": 177105.55,
+        "mv_eur": 676033.59,
+        "pl": 173868.21,
         "qty": null
       },
       {
         "isin": "GB0007188757",
         "name": "RIO TINTO PLC      LS-,10",
-        "mv_eur": 105996.71,
-        "pl": -6677.82,
+        "mv_eur": 103224.51,
+        "pl": -9625.51,
         "qty": null
       },
       {
         "isin": "GB0007980591",
         "name": "BP PLC             DL-,25",
-        "mv_eur": 39160.98,
-        "pl": 10938.69,
+        "mv_eur": 39471.0,
+        "pl": 11204.75,
         "qty": null
       },
       {
         "isin": "GB0009895292",
         "name": "ASTRAZENECA PLC    DL-,25",
-        "mv_eur": 33491.99,
-        "pl": 5264.45,
+        "mv_eur": 33794.58,
+        "pl": 5523.08,
         "qty": null
       },
       {
         "isin": "GB00BP6MXD84",
         "name": "SHELL PLC           EO-07",
-        "mv_eur": 157243.68,
-        "pl": 30475.31,
+        "mv_eur": 158918.76,
+        "pl": 32150.39,
         "qty": null
       },
       {
         "isin": "GB00BVZK7T90",
         "name": "UNILEVER PLC     LS -,035",
-        "mv_eur": 132504.02,
-        "pl": 9305.45,
+        "mv_eur": 135795.35,
+        "pl": 12596.78,
         "qty": null
       },
       {
         "isin": "IE000IVNQZ81",
         "name": "TE CONNECTIVITY   DL-,01",
-        "mv_eur": 46057.81,
-        "pl": 15179.11,
+        "mv_eur": 45381.88,
+        "pl": 14333.44,
         "qty": null
       },
       {
         "isin": "IE00B4BNMY34",
         "name": "ACCENTURE A   DL-,0000225",
-        "mv_eur": 49237.88,
-        "pl": -21775.01,
+        "mv_eur": 49062.87,
+        "pl": -22340.38,
         "qty": null
       },
       {
         "isin": "IE00B8KQN827",
         "name": "EATON CORP.PLC    DL -,01",
-        "mv_eur": 133019.83,
-        "pl": -8498.73,
+        "mv_eur": 125495.91,
+        "pl": -16800.57,
         "qty": null
       },
       {
         "isin": "IE00BTN1Y115",
         "name": "MEDTRONIC PLC    DL-,0001",
-        "mv_eur": 58039.71,
-        "pl": 7369.79,
+        "mv_eur": 59450.92,
+        "pl": 8502.47,
         "qty": null
       },
       {
         "isin": "IT0000062072",
         "name": "GENERALI S.P.A.",
-        "mv_eur": 146614.56,
-        "pl": 60855.71,
+        "mv_eur": 145440.6,
+        "pl": 59681.75,
         "qty": null
       },
       {
         "isin": "IT0003128367",
         "name": "ENEL S.P.A.          EO 1",
-        "mv_eur": 200782.75,
-        "pl": 48348.57,
+        "mv_eur": 197343.65,
+        "pl": 44909.47,
         "qty": null
       },
       {
         "isin": "IT0003132476",
         "name": "ENI S.P.A.",
-        "mv_eur": 153431.28,
-        "pl": 35904.16,
+        "mv_eur": 155690.28,
+        "pl": 38163.16,
         "qty": null
       },
       {
         "isin": "IT0005239360",
         "name": "UNICREDIT",
-        "mv_eur": 209504.88,
-        "pl": 72075.96,
+        "mv_eur": 207241.71,
+        "pl": 69812.79,
         "qty": null
       },
       {
         "isin": "JE00B4T3BW64",
         "name": "GLENCORE PLC      DL -,01",
-        "mv_eur": 111424.51,
-        "pl": -12720.08,
+        "mv_eur": 108416.95,
+        "pl": -15920.99,
         "qty": null
       },
       {
         "isin": "JP3122400009",
         "name": "ADVANTEST CORP.",
-        "mv_eur": 277730.91,
-        "pl": 109588.36,
+        "mv_eur": 253882.82,
+        "pl": 84471.65,
         "qty": null
       },
       {
         "isin": "JP3143600009",
         "name": "ITOCHU CORP.",
-        "mv_eur": 41377.78,
-        "pl": 14902.21,
+        "mv_eur": 41404.84,
+        "pl": 14729.51,
         "qty": null
       },
       {
         "isin": "JP3242800005",
         "name": "CANON INC.",
-        "mv_eur": 69014.0,
-        "pl": -5101.2,
+        "mv_eur": 70681.28,
+        "pl": -3993.12,
         "qty": null
       },
       {
         "isin": "JP3436100006",
         "name": "SOFTBANK GROUP CORP.",
-        "mv_eur": 37601.1,
-        "pl": -9849.07,
+        "mv_eur": 34621.31,
+        "pl": -13186.87,
         "qty": null
       },
       {
         "isin": "JP3571400005",
         "name": "TOKYO ELECTRON LTD",
-        "mv_eur": 118565.26,
-        "pl": -6485.7,
+        "mv_eur": 112911.62,
+        "pl": -13082.84,
         "qty": null
       },
       {
         "isin": "JP3633400001",
         "name": "TOYOTA MOTOR CORP.",
-        "mv_eur": 51576.44,
-        "pl": 12756.84,
+        "mv_eur": 52270.54,
+        "pl": 13158.05,
         "qty": null
       },
       {
         "isin": "JP3893600001",
         "name": "MITSUI + CO.",
-        "mv_eur": 86293.93,
-        "pl": 34569.87,
+        "mv_eur": 86876.68,
+        "pl": 34762.37,
         "qty": null
       },
       {
         "isin": "JP3898400001",
         "name": "MITSUBISHI CORP.",
-        "mv_eur": 118738.96,
-        "pl": -2021.89,
+        "mv_eur": 120444.09,
+        "pl": -1227.89,
         "qty": null
       },
       {
         "isin": "JP3902900004",
         "name": "MITSUBISHI UFJ FINL GRP",
-        "mv_eur": 142091.82,
-        "pl": 16210.59,
+        "mv_eur": 139766.92,
+        "pl": 12935.93,
         "qty": null
       },
       {
         "isin": "NL0000009165",
         "name": "HEINEKEN          EO 1,60",
-        "mv_eur": 34315.1,
-        "pl": 2782.2,
+        "mv_eur": 34797.72,
+        "pl": 3264.82,
         "qty": null
       },
       {
         "isin": "NL0000235190",
         "name": "AIRBUS SE",
-        "mv_eur": 60615.3,
-        "pl": 23784.33,
+        "mv_eur": 59422.2,
+        "pl": 22591.23,
         "qty": null
       },
       {
         "isin": "NL0009538784",
         "name": "NXP SEMICONDUCTORS EO-,20",
-        "mv_eur": 125354.46,
-        "pl": -6969.63,
+        "mv_eur": 119866.08,
+        "pl": -13185.4,
         "qty": null
       },
       {
         "isin": "NL0010273215",
         "name": "ASML HOLDING    EO -,09",
-        "mv_eur": 603038.4,
-        "pl": 11803.9,
+        "mv_eur": 572290.8,
+        "pl": -18943.7,
         "qty": null
       },
       {
         "isin": "NL0011821202",
         "name": "ING GROEP NV      EO -,01",
-        "mv_eur": 752860.87,
-        "pl": 212404.45,
+        "mv_eur": 750101.3,
+        "pl": 209644.88,
         "qty": null
       },
       {
         "isin": "NL0015000IY2",
         "name": "UNIVERSAL MUSIC GROUP EO1",
-        "mv_eur": 25350.3,
-        "pl": -9740.69,
+        "mv_eur": 25807.86,
+        "pl": -9283.13,
         "qty": null
       },
       {
         "isin": "NL0015002MS2",
         "name": "MAGNUM I.C.CO. EO 1",
-        "mv_eur": 42042.4,
-        "pl": 9044.71,
+        "mv_eur": 42427.64,
+        "pl": 9429.95,
         "qty": null
       },
       {
         "isin": "US00287Y1091",
         "name": "ABBVIE INC.        DL-,01",
-        "mv_eur": 245053.49,
-        "pl": 80608.75,
+        "mv_eur": 246484.24,
+        "pl": 81135.54,
         "qty": null
       },
       {
         "isin": "US02079K1079",
         "name": "ALPHABET INC.CL.C DL-,001",
-        "mv_eur": 537509.51,
-        "pl": 8411.0,
+        "mv_eur": 514680.76,
+        "pl": -17326.21,
         "qty": null
       },
       {
         "isin": "US0231351067",
         "name": "AMAZON.COM INC.    DL-,01",
-        "mv_eur": 190433.04,
-        "pl": 18950.24,
+        "mv_eur": 184542.07,
+        "pl": 12116.62,
         "qty": null
       },
       {
         "isin": "US0378331005",
         "name": "APPLE INC.",
-        "mv_eur": 226399.75,
-        "pl": 81252.32,
+        "mv_eur": 226297.18,
+        "pl": 80351.88,
         "qty": null
       },
       {
         "isin": "US0605051046",
         "name": "BANK AMERICA      DL 0,01",
-        "mv_eur": 50845.47,
-        "pl": 3438.57,
+        "mv_eur": 50689.73,
+        "pl": 3022.23,
         "qty": null
       },
       {
         "isin": "US11135F1012",
         "name": "BROADCOM INC.     DL-,001",
-        "mv_eur": 483333.01,
-        "pl": 86342.55,
+        "mv_eur": 444694.89,
+        "pl": 45522.18,
         "qty": null
       },
       {
         "isin": "US17275R1023",
         "name": "CISCO SYSTEMS    DL-,001",
-        "mv_eur": 139006.08,
-        "pl": 63225.51,
+        "mv_eur": 129507.69,
+        "pl": 53310.55,
         "qty": null
       },
       {
         "isin": "US30233Q1085",
         "name": "EXX.HO.COR. O.N.",
-        "mv_eur": 120893.36,
-        "pl": 41755.33,
+        "mv_eur": 119474.43,
+        "pl": 39901.37,
         "qty": null
       },
       {
         "isin": "US30303M1027",
         "name": "META PLATF.  A DL-,000006",
-        "mv_eur": 109321.23,
-        "pl": -7707.81,
+        "mv_eur": 110415.72,
+        "pl": -7256.63,
         "qty": null
       },
       {
         "isin": "US4592001014",
         "name": "INTL BUS. MACH.    DL-,20",
-        "mv_eur": 82687.91,
-        "pl": 6310.53,
+        "mv_eur": 82408.45,
+        "pl": 5611.22,
         "qty": null
       },
       {
         "isin": "US46625H1005",
         "name": "JPMORGAN CHASE       DL 1",
-        "mv_eur": 275086.22,
-        "pl": 48483.95,
+        "mv_eur": 272878.87,
+        "pl": 45030.97,
         "qty": null
       },
       {
         "isin": "US4781601046",
         "name": "JOHNSON + JOHNSON    DL 1",
-        "mv_eur": 163453.45,
-        "pl": 43830.92,
+        "mv_eur": 163789.66,
+        "pl": 43509.57,
         "qty": null
       },
       {
         "isin": "US5324571083",
         "name": "ELI LILLY",
-        "mv_eur": 47720.02,
-        "pl": 17161.32,
+        "mv_eur": 48129.92,
+        "pl": 17403.24,
         "qty": null
       },
       {
         "isin": "US5949181045",
         "name": "MICROSOFT    DL-,00000625",
-        "mv_eur": 115313.78,
-        "pl": 23848.91,
+        "mv_eur": 114836.96,
+        "pl": 22869.31,
         "qty": null
       },
       {
         "isin": "US5951121038",
         "name": "MICRON TECHN. INC. DL-,10",
-        "mv_eur": 128425.72,
-        "pl": 8057.86,
+        "mv_eur": 116287.08,
+        "pl": -4742.44,
         "qty": null
       },
       {
         "isin": "US67066G1040",
         "name": "NVIDIA CORP.      DL-,001",
-        "mv_eur": 249438.93,
-        "pl": 38887.39,
+        "mv_eur": 235642.87,
+        "pl": 23933.93,
         "qty": null
       },
       {
         "isin": "US68389X1054",
         "name": "ORACLE CORP.       DL-,01",
-        "mv_eur": 70294.42,
-        "pl": -67605.66,
+        "mv_eur": 66221.22,
+        "pl": -72436.89,
         "qty": null
       },
       {
         "isin": "US7427181091",
         "name": "PROCTER GAMBLE",
-        "mv_eur": 86546.88,
-        "pl": -446.05,
+        "mv_eur": 89606.94,
+        "pl": 2135.81,
         "qty": null
       },
       {
         "isin": "US7960508882",
         "name": "SAMS.EL.0,5SP.GDRS144A/95",
-        "mv_eur": 105724.48,
-        "pl": 75190.77,
+        "mv_eur": 101344.72,
+        "pl": 70643.17,
         "qty": null
       },
       {
         "isin": "US8740391003",
         "name": "TAIWAN SEMICON.MANU.ADR/5",
-        "mv_eur": 876824.26,
-        "pl": 288809.97,
+        "mv_eur": 811980.6,
+        "pl": 220734.0,
         "qty": null
       }
     ],
@@ -13509,7 +13521,6 @@
     "hhi": 68.2,
     "top10_weight": 19.4,
     "win_rate": 67.0,
-    "run_date": "2026-11-17",
     "holdings": [
       {
         "isin": "AT0000652011",
