@@ -13,7 +13,7 @@ import subprocess
 import sys
 import tempfile
 from datetime import date, timedelta
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 # ── Konfiguration ─────────────────────────────────────────────────────────────
@@ -46,15 +46,37 @@ def missing_weekdays(last: date, today: date) -> list:
         d += timedelta(days=1)
     return days
 
-def parqet_last_date(isin: str) -> date:
+def parqet_last_date(isin: str):
+    """Letztes Kursdatum bei Parqet – None, wenn die Abfrage scheitert (z.B. HTTP 403)."""
     token = base64.b64encode(f"{PARQET_USER}:{PARQET_PASS}".encode()).decode()
     req = Request(f"{PARQET_QUOTES}/{isin}", headers={"Authorization": f"Basic {token}"})
-    with urlopen(req, timeout=15) as resp:
-        data = json.loads(resp.read())
-    dates = [q["date"] for q in data["quotes"]]
-    return date.fromisoformat(max(dates))
+    try:
+        with urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read())
+    except HTTPError as e:
+        body = ""
+        try:
+            body = e.read().decode("utf-8", "replace")[:300]
+        except Exception:
+            pass
+        print(f"  ⚠️  Parqet-Abfrage {isin}: HTTP {e.code} {body}")
+        return None
+    except URLError as e:
+        print(f"  ⚠️  Parqet nicht erreichbar ({isin}): {e}")
+        return None
+    dates = [q["date"] for q in data.get("quotes", [])]
+    return date.fromisoformat(max(dates)) if dates else None
 
-def fetch_nav_wienerborse(isin: str, target_date: date):
+_WB_CACHE: dict = {}
+
+def wienerborse_latest(isin: str):
+    """Neuester NAV laut Wiener Börse als (Datum, Rücknahmepreis) – oder None.
+
+    Das Datum kommt aus dem NAV-Block („Datum, Zeit … TT.MM.JJJJ“), nicht aus
+    irgendeiner Stelle im HTML (die Fußzeile enthält immer das heutige Datum).
+    """
+    if isin in _WB_CACHE:
+        return _WB_CACHE[isin]
     cfg = ISINS[isin]
     url = f"{WIENERBORSE_URL}?ISIN={isin}&ID_NOTATION={cfg['notation']}&cHash={cfg['chash']}"
     headers = {
@@ -62,29 +84,37 @@ def fetch_nav_wienerborse(isin: str, target_date: date):
         "Accept": "text/html,application/xhtml+xml",
         "Accept-Language": "de-AT,de;q=0.9",
     }
+    result = None
     try:
         req = Request(url, headers=headers)
         with urlopen(req, timeout=15) as resp:
-            html = resp.read().decode("utf-8", errors="replace")
+            raw = resp.read().decode("utf-8", errors="replace")
     except URLError as e:
         print(f"  ⚠️  Wienerbörse nicht erreichbar: {e}")
+        _WB_CACHE[isin] = None
         return None
 
-    target_str = target_date.strftime("%d.%m.%Y")
-    if target_str not in html:
-        print(f"  ⏭️  Datum {target_str} nicht im HTML – kein aktueller Kurs")
-        return None
+    plain = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", raw))
+    m_date = re.search(r"Datum, Zeit\s+[\d.,]+\s+\S+\s*%\s+\S+\s+(\d{2})\.(\d{2})\.(\d{4})", plain)
+    m_price = re.search(r"Rücknahmepreis\s+([\d.]*\d,\d+)", plain)
+    if not m_date or not m_price:
+        print(f"  ⚠️  NAV-Datum oder Rücknahmepreis auf Wienerbörse nicht gefunden")
+    else:
+        d, mth, y = (int(x) for x in m_date.groups())
+        price = float(m_price.group(1).replace(".", "").replace(",", "."))
+        result = (date(y, mth, d), price)
+    _WB_CACHE[isin] = result
+    return result
 
-    # Rücknahmepreis extrahieren
-    m = re.search(r"Rücknahmepreis\s*<[^>]+>\s*([\d,]+)", html)
-    if not m:
-        plain = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
-        m = re.search(r"Rücknahmepreis\s+([\d,]+)", plain)
-    if not m:
-        print(f"  ⚠️  Rücknahmepreis nicht gefunden")
+def fetch_nav_wienerborse(isin: str, target_date: date):
+    latest = wienerborse_latest(isin)
+    if latest is None:
         return None
-
-    return float(m.group(1).replace(",", "."))
+    nav_date, price = latest
+    if nav_date != target_date:
+        print(f"  ⏭️  Wienerbörse hat Kurs vom {nav_date.strftime('%d.%m.%Y')}, nicht vom {target_date.strftime('%d.%m.%Y')}")
+        return None
+    return price
 
 def upload_to_parqet(rows: list) -> int:
     csv_content = "Isin,Date,Price\n" + "".join(
@@ -94,15 +124,24 @@ def upload_to_parqet(rows: list) -> int:
     with tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False) as f:
         f.write(csv_content)
         tmp = f.name
+    body_file = tmp + ".resp"
     result = subprocess.run(
-        ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}",
+        ["curl", "-s", "-o", body_file, "-w", "%{http_code}",
          "-X", "POST", PARQET_QUOTES,
          "-u", f"{PARQET_USER}:{PARQET_PASS}",
          "-F", f"file=@{tmp}"],
         capture_output=True, text=True
     )
     os.unlink(tmp)
-    return int(result.stdout.strip())
+    code = int(result.stdout.strip() or 0)
+    try:
+        resp_body = open(body_file, encoding="utf-8", errors="replace").read()[:300]
+        os.unlink(body_file)
+    except OSError:
+        resp_body = ""
+    if code != 204 and resp_body:
+        print(f"  Antwort von Parqet: {resp_body}")
+    return code
 
 def create_github_issue(title: str, body: str):
     """Erstellt ein GitHub Issue als Benachrichtigung (sendet automatisch E-Mail)."""
@@ -141,6 +180,13 @@ def main():
     missing: dict = {}
     for isin in ISINS:
         last = parqet_last_date(isin)
+        if last is None:
+            # Abfrage bei Parqet gescheitert → mindestens den neuesten Börsenkurs hochladen
+            latest = wienerborse_latest(isin)
+            days = [latest[0]] if latest and latest[0] <= today else []
+            missing[isin] = days
+            print(f"  {isin}: Parqet-Stand unbekannt → lade neuesten Kurs hoch: {days}")
+            continue
         days = missing_weekdays(last, today)
         missing[isin] = days
         print(f"  {isin}: letzter Eintrag {last} → {len(days)} fehlende(r) Tag(e)")
